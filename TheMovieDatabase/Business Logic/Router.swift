@@ -16,11 +16,20 @@ enum Router: URLRequestConvertible {
     }
     
     case getCreateRequestToken(api_key: String)
+    case postValidateToken(username: String, password: String, request_token: String,api_key: String)
+    case postCreateSession(request_token: String, api_key: String)
+    case deleteSession(sessionId: String, api_key: String)
     
     private var path: String {
         switch self {
         case .getCreateRequestToken:
             return "authentication/token/new"
+        case .postValidateToken:
+            return "authentication/token/validate_with_login"
+        case .postCreateSession:
+            return "authentication/session/new"
+        case .deleteSession:
+            return "authentication/session"
         }
     }
     
@@ -28,6 +37,12 @@ enum Router: URLRequestConvertible {
         switch self {
         case .getCreateRequestToken:
             return .get
+        case .postValidateToken:
+            return .post
+        case .postCreateSession:
+            return .post
+        case .deleteSession:
+            return .delete
         }
     }
     
@@ -35,6 +50,12 @@ enum Router: URLRequestConvertible {
         switch self {
         case let .getCreateRequestToken(api_key):
             return ["api_key": api_key]
+        case let .postValidateToken(username, password, request_token, api_key):
+            return ["username": username, "password": password, "request_token": request_token, "api_key": api_key]
+        case let .postCreateSession(request_token, api_key):
+            return ["request_token": request_token, "api_key": api_key]
+        case let .deleteSession(sessionId, api_key):
+            return ["session_id": sessionId, "api_key": api_key]
         }
     }
     

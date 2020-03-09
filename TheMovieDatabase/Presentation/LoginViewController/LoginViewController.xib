@@ -17,6 +17,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="TheMovieDatabase" customModuleProvider="target">
             <connections>
                 <outlet property="enterButton" destination="QEP-cS-wUb" id="g2N-H2-nSO"/>
+                <outlet property="errorLabel" destination="pii-dR-aWD" id="iiq-ve-vel"/>
                 <outlet property="loginTextField" destination="g8f-EZ-Fio" id="ZQr-On-mIF"/>
                 <outlet property="passwordTextField" destination="aoT-ji-AqT" id="kL8-pj-65N"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -106,13 +107,13 @@
     </objects>
     <resources>
         <namedColor name="Gray">
-            <color red="0.396078431372549" green="0.42745098039215684" blue="0.54117647058823526" alpha="0.39482555650684931" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.39599999785423279" green="0.42699998617172241" blue="0.54100000858306885" alpha="0.39500001072883606" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Light">
-            <color red="0.90588235294117647" green="0.92941176470588238" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.90600001811981201" green="0.92900002002716064" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="LightGray">
-            <color red="0.13725490196078433" green="0.14901960784313725" blue="0.21176470588235294" alpha="0.89969076013565064" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.13725490196078433" green="0.14901960784313725" blue="0.21176470588235294" alpha="0.89999997615814209" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Red">
             <color red="0.88200002908706665" green="0.090000003576278687" blue="0.18400000035762787" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

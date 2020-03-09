@@ -15,6 +15,7 @@ extension UINavigationController {
         self.navigationBar.barTintColor = UIColor(named: "Bg_black")
         self.navigationBar.isTranslucent = false
         self.navigationBar.tintColor = UIColor(named: "Light")
+        self.navigationBar.setValue(true, forKey: "hidesShadow")
         //self.editButtonItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .normal)
         //self.editButtonItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .highlighted)
         
