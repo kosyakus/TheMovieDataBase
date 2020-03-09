@@ -11,17 +11,26 @@ import XCTest
 
 class TheMovieDatabaseTests: XCTestCase {
     
+    var loginUnderTests: LoginViewController!
+    
     override func setUp() {
-       
-    }
-
-    override func tearDown() {
+        super.setUp()
+        loginUnderTests = LoginViewController()
         
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    override func tearDown() {
+        loginUnderTests = nil
+        super.tearDown()
+    }
+
+    func testValidateTextFields() {
+        // 1. given
+        
+        // 2. when
+        
+        // 3. then
+        //XCTAssertTrue(loginUnderTests.validateTextFields(), "Test completed successfully")
     }
 
     func testPerformanceExample() {
