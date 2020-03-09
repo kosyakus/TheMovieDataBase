@@ -16,11 +16,6 @@ extension UINavigationController {
         self.navigationBar.isTranslucent = false
         self.navigationBar.tintColor = UIColor(named: "Light")
         self.navigationBar.setValue(true, forKey: "hidesShadow")
-        //self.editButtonItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .normal)
-        //self.editButtonItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .highlighted)
-        
-        //self.navigationBar.backItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        //self.navigationBar.backItem?.title = " "
     }
 }
 

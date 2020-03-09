@@ -12,7 +12,6 @@ import SwiftyJSON
 
 class User: Object {
     
-    @objc dynamic var isSessionCreated = true
     @objc dynamic var sessionId = ""
     @objc dynamic var name: String = ""
     @objc dynamic var email: String = ""

@@ -33,6 +33,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         setUpView()
+        
     }
     
     
@@ -44,22 +45,36 @@ class LoginViewController: UIViewController {
         passwordTextField.addTap()
         passwordTextField.setVisibilityOnIcon()
         enterButton.layer.cornerRadius = 0.02 * enterButton.bounds.size.width
+        loginTextField.addTarget(self, action: #selector(LoginViewController.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        passwordTextField.addTarget(self, action: #selector(LoginViewController.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if validateTextFields() {
+            enterButton.titleLabel?.textColor = UIColor(named: "Light")
+            enterButton.backgroundColor = UIColor(named: "Orange")
+        } else {
+            enterButton.titleLabel?.textColor = UIColor(named: "Gray")
+            enterButton.backgroundColor = UIColor(named: "LightGray")
+        }
+    }
+    
+    func validateTextFields() -> Bool {
+        guard loginTextField.text != "",
+            passwordTextField.text != ""
+            else { return false }
+        return true
     }
     
     
     // MARK: - IBAction
     
     @IBAction func tapEnterButton(_ sender: Any) {
-        
+        guard validateTextFields() else { return }
         guard let login = loginTextField.text,
             let password = passwordTextField.text
             else { return }
-        
-        enterButton.titleLabel?.textColor = UIColor(named: "Light")
-        enterButton.backgroundColor = UIColor(named: "Orange")
-        
         let appDelegate = UIApplication.shared.delegate! as! AppDelegate
-        
         userService.createToken(username: login, password: password) {
             print("token created")
             appDelegate.presentViewController()

@@ -67,10 +67,22 @@ class UserService {
         let json = JSON(rawJson)
         guard let sessionId = json["session_id"].string else { return }
         let user = User()
-        user.isSessionCreated = true
         user.sessionId = sessionId
         self.saveUser(user: user)
         completion()
+    }
+    
+    func deleteSession(sessionId: String, completion: @escaping downloadCompletion) {
+        AF.request(Router.deleteSession(session_id: sessionId, api_key: apiKey)).responseJSON { [weak self] response in
+            switch response.result {
+            case .success(let rawJson):
+                print("Session deleted successfully \(JSON(rawJson))")
+                self?.deleteUser()
+                completion()
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     private func saveUser(user: User) {

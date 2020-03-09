@@ -23,18 +23,21 @@ class FavoriveViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let searchImage = UIImage(named: "search_icon")!
+        let listImage = UIImage(named: "list_icon")!
+
+        let searchButton = UIBarButtonItem(image: searchImage,  style: .plain, target: self, action: #selector(didTapEditButton))
+        let listButton = UIBarButtonItem(image: listImage,  style: .plain, target: self, action: #selector(didTapSearchButton))
+
+        self.navigationController?.navigationItem.rightBarButtonItems = [searchButton, listButton]
+    }
+    
+    @objc func didTapEditButton(sender: AnyObject){
+        print("didTapEditButton")
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func didTapSearchButton(sender: AnyObject){
+        
     }
-    */
 
 }

@@ -18,7 +18,7 @@ enum Router: URLRequestConvertible {
     case getCreateRequestToken(api_key: String)
     case postValidateToken(username: String, password: String, request_token: String,api_key: String)
     case postCreateSession(request_token: String, api_key: String)
-    case deleteSession(sessionId: String, api_key: String)
+    case deleteSession(session_id: String, api_key: String)
     
     private var path: String {
         switch self {
@@ -54,8 +54,8 @@ enum Router: URLRequestConvertible {
             return ["username": username, "password": password, "request_token": request_token, "api_key": api_key]
         case let .postCreateSession(request_token, api_key):
             return ["request_token": request_token, "api_key": api_key]
-        case let .deleteSession(sessionId, api_key):
-            return ["session_id": sessionId, "api_key": api_key]
+        case let .deleteSession(session_id, api_key):
+            return ["session_id": session_id, "api_key": api_key]
         }
     }
     
