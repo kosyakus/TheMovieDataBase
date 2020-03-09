@@ -13,10 +13,12 @@ import RealmSwift
 
 class UserService {
     
+    // MARK: - Types
     typealias downloadCompletion = () -> Void
     
-    var requestedToken = ""
-    let apiKey = "93a57d2565c91c4db19ce6040806f41b"
+    // MARK: - Private Properties
+    private var requestedToken = ""
+    private let apiKey = "93a57d2565c91c4db19ce6040806f41b"
     
     func createToken(username: String, password: String, completion: @escaping downloadCompletion) {
         AF.request(Router.getCreateRequestToken(api_key: apiKey)).responseJSON { [weak self] response in
@@ -82,7 +84,7 @@ class UserService {
         }
     }
     
-    private func deleteUser() {
+    func deleteUser() {
         do {
             let realm = try Realm()
             try realm.write {

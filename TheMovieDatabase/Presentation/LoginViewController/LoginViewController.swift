@@ -58,14 +58,11 @@ class LoginViewController: UIViewController {
         enterButton.titleLabel?.textColor = UIColor(named: "Light")
         enterButton.backgroundColor = UIColor(named: "Orange")
         
-        let vc = TabBarController()
         let appDelegate = UIApplication.shared.delegate! as! AppDelegate
         
         userService.createToken(username: login, password: password) {
             print("token created")
-            appDelegate.window?.rootViewController =  UINavigationController(rootViewController: vc, isTranslucent: false)
-            //self.navigationController?.navigationBar.barTintColor = UIColor(named: "Bg_black")
-            appDelegate.window?.makeKeyAndVisible()
+            appDelegate.presentViewController()
         }
     }
     

@@ -40,9 +40,11 @@ class ProfileViewController: UIViewController {
     // MARK: - IBAction
     
     @IBAction func exitButtonTapped(_ sender: Any) {
-        let vc = LoginViewController()
-        navigationController?.pushViewController(vc, animated: true)
-        //self.present(vc, animated: true, completion: nil)
+        let user = UserService()
+        user.deleteUser()
+        
+        let appDelegate = UIApplication.shared.delegate! as! AppDelegate
+        appDelegate.presentViewController()
     }
     
 }
