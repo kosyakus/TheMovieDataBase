@@ -9,6 +9,16 @@
 import UIKit
 
 class FavoriveViewController: UIViewController {
+    
+    // MARK: - Initializers
+    
+    init() {
+        super.init(nibName: "FavoriveViewController", bundle: Bundle(for: FavoriveViewController.self))
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

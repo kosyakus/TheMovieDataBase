@@ -8,6 +8,9 @@ target 'TheMovieDatabase' do
   # Pods for TheMovieDatabase
 
   pod 'SwiftLint'
+  pod 'Alamofire'
+  pod 'RealmSwift'
+  pod 'SwiftyJSON'
 
   target 'TheMovieDatabaseTests' do
     inherit! :search_paths

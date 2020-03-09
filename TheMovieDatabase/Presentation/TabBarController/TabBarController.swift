@@ -9,22 +9,54 @@
 import UIKit
 
 class TabBarController: UITabBarController {
+    
+    // MARK: - Initializers
+    
+    init() {
+        super.init(nibName: "TabBarController", bundle: Bundle(for: TabBarController.self))
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setUpTabBar()
+        self.tabBar.barTintColor = UIColor(named: "DarkBlue")
+        navigationController?.navigationBar.barTintColor = UIColor(named: "Bg_black")
     }
 
 
-    /*
-    // MARK: - Navigation
+    // MARK: - Public methods
+    
+    func setUpTabBar() {
+        let firstViewController = MainViewController()
+                
+        firstViewController.tabBarItem = UITabBarItem(
+        title: "Фильмы",
+        image: UIImage(named: "movie_tabbar_icon"),
+        tag: 0)
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let secondViewController = FavoriveViewController()
+
+        secondViewController.tabBarItem = UITabBarItem(
+        title: "Избранное",
+        image: UIImage(named: "favorite_tabbar_icon"),
+        tag: 1)
+        
+        let thirdViewController = ProfileViewController()
+
+        thirdViewController.tabBarItem = UITabBarItem(
+        title: "Профиль",
+        image: UIImage(named: "account_tabbar_icon"),
+        tag: 2)
+
+        let tabBarList = [firstViewController, secondViewController, thirdViewController]
+
+        viewControllers = tabBarList
+        UITabBar.appearance().tintColor = UIColor(named: "Orange")
     }
-    */
-
+    
 }
