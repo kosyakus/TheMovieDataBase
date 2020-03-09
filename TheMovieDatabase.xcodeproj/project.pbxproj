@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C8B5D0F6AE81E6D0D9BB7EA8 /* Pods_TheMovieDatabaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97DC9B31A6DF12A6DAC00704 /* Pods_TheMovieDatabaseTests.framework */; };
+		E16B937E2416D6EB00814B94 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E16B93802416D6EB00814B94 /* Localizable.strings */; };
 		E1C736A22411153B00E60D7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C736A12411153B00E60D7C /* AppDelegate.swift */; };
 		E1C736AB2411154700E60D7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1C736AA2411154700E60D7C /* Assets.xcassets */; };
 		E1C736AE2411154700E60D7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1C736AC2411154700E60D7C /* LaunchScreen.storyboard */; };
@@ -60,6 +61,8 @@
 		8C5FA27E5F7CC7A64E5BFC96 /* Pods_TheMovieDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheMovieDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97DC9B31A6DF12A6DAC00704 /* Pods_TheMovieDatabaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheMovieDatabaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B69970511E691E7B3E2CDE77 /* Pods-TheMovieDatabase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieDatabase.release.xcconfig"; path = "Target Support Files/Pods-TheMovieDatabase/Pods-TheMovieDatabase.release.xcconfig"; sourceTree = "<group>"; };
+		E16B937F2416D6EB00814B94 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E16B93822416D79400814B94 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		E1C7369E2411153B00E60D7C /* TheMovieDatabase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheMovieDatabase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1C736A12411153B00E60D7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1C736AA2411154700E60D7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -182,6 +185,7 @@
 		E1C736C32411570000E60D7C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E1D321392416D6470076A1B5 /* Localization */,
 				E1C736C52411967400E60D7C /* Fonts */,
 				E1C736AC2411154700E60D7C /* LaunchScreen.storyboard */,
 				E1C736AA2411154700E60D7C /* Assets.xcassets */,
@@ -310,6 +314,14 @@
 			path = TheMovieDatabaseUITests;
 			sourceTree = "<group>";
 		};
+		E1D321392416D6470076A1B5 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				E16B93802416D6EB00814B94 /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		FF21FBDC9C16FC0617AB890D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -410,6 +422,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"en-GB",
 			);
 			mainGroup = E1C736952411153B00E60D7C;
 			productRefGroup = E1C7369F2411153B00E60D7C /* Products */;
@@ -437,6 +450,7 @@
 				E1C737152413FECA00E60D7C /* ProfileViewController.xib in Resources */,
 				E1C737102413F84800E60D7C /* FavoriveViewController.xib in Resources */,
 				E1C736FB2413C1AB00E60D7C /* Default-568h@2x.png in Resources */,
+				E16B937E2416D6EB00814B94 /* Localizable.strings in Resources */,
 				E1C7370B2413DF6000E60D7C /* MainViewController.xib in Resources */,
 				E1C736C7241196B900E60D7C /* SFProDisplay-Thin.ttf in Resources */,
 				E1C736D52412C78000E60D7C /* Colors.xcassets in Resources */,
@@ -576,10 +590,19 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		E16B93802416D6EB00814B94 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E16B937F2416D6EB00814B94 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		E1C736AC2411154700E60D7C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				E1C736AD2411154700E60D7C /* Base */,
+				E16B93822416D79400814B94 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -591,6 +614,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -651,6 +675,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
