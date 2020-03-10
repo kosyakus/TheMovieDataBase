@@ -32,6 +32,8 @@ class FavoriveViewController: UIViewController {
         self.navigationController?.navigationItem.rightBarButtonItems = [searchButton, listButton]
     }
     
+    // MARK: - Public methods
+    
     @objc func didTapEditButton(sender: AnyObject){
         print("didTapEditButton")
     }

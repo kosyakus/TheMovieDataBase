@@ -11,6 +11,8 @@ import RealmSwift
 
 class ProfileViewController: UIViewController {
     
+    // MARK: - IBOutlet
+    
     @IBOutlet weak var exitButton: UIButton!
     @IBOutlet weak var avatarImageView: UIImageView!
     
@@ -63,8 +65,6 @@ class ProfileViewController: UIViewController {
             let appDelegate = UIApplication.shared.delegate! as! AppDelegate
             appDelegate.presentViewController()
         }*/
-        
-        
     }
     
 }
