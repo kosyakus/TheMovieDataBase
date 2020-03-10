@@ -25,27 +25,57 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Избранное" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COX-IK-2Wa">
-                    <rect key="frame" x="24" y="55" width="165.5" height="37.5"/>
+                    <rect key="frame" x="24" y="55" width="158" height="38.5"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
                     <color key="textColor" name="Light"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вы не добавили ни одного фильма" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCb-GY-30r">
+                    <rect key="frame" x="24" y="127.5" width="244" height="19.5"/>
+                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="16"/>
+                    <color key="textColor" name="Light"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_movie" translatesAutoresizingMaskIntoConstraints="NO" id="ZX5-zt-K5u">
+                    <rect key="frame" x="83" y="277" width="248" height="193"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="193" id="4Gk-75-eIb"/>
+                        <constraint firstAttribute="width" constant="248" id="HzY-Ow-RbF"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="It3-6K-IUK">
+                    <rect key="frame" x="24" y="160" width="153" height="29"/>
+                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
+                    <state key="normal" title="Найти любимые фильмы">
+                        <color key="titleColor" name="Purpure"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" name="Bg_black"/>
             <constraints>
+                <constraint firstItem="aCb-GY-30r" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="9QE-b9-Ece"/>
+                <constraint firstItem="ZX5-zt-K5u" firstAttribute="top" secondItem="It3-6K-IUK" secondAttribute="bottom" constant="88" id="AfV-57-xZa"/>
                 <constraint firstItem="COX-IK-2Wa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="24" id="Cb3-pM-Gwj"/>
                 <constraint firstItem="COX-IK-2Wa" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="11" id="ebJ-vW-9XT"/>
+                <constraint firstItem="aCb-GY-30r" firstAttribute="top" secondItem="COX-IK-2Wa" secondAttribute="bottom" constant="34" id="jCx-1L-ZBQ"/>
+                <constraint firstItem="ZX5-zt-K5u" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="kbh-IR-e0t"/>
+                <constraint firstItem="It3-6K-IUK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="lbO-w6-7ER"/>
+                <constraint firstItem="It3-6K-IUK" firstAttribute="top" secondItem="aCb-GY-30r" secondAttribute="bottom" constant="13" id="tUU-6V-YQK"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="139" y="129"/>
         </view>
     </objects>
     <resources>
+        <image name="no_movie" width="248" height="193"/>
         <namedColor name="Bg_black">
             <color red="0.097999997437000275" green="0.10199999809265137" blue="0.14499999582767487" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Light">
             <color red="0.90600001811981201" green="0.92900002002716064" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Purpure">
+            <color red="0.42399999499320984" green="0.3880000114440918" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
