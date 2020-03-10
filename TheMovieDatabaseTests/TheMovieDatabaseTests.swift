@@ -11,26 +11,28 @@ import XCTest
 
 class TheMovieDatabaseTests: XCTestCase {
     
-    var loginUnderTests: LoginViewController!
+    var validationUnderTests: HelperLoginVC!
     
     override func setUp() {
         super.setUp()
-        loginUnderTests = LoginViewController()
+        validationUnderTests = HelperLoginVC()
         
     }
 
     override func tearDown() {
-        loginUnderTests = nil
+        validationUnderTests = nil
         super.tearDown()
     }
 
     func testValidateTextFields() {
         // 1. given
-        
+        let login = "txt"
+        let pass = "txt"
         // 2. when
+        let validation = validationUnderTests.validate(login: login, password: pass)
         
         // 3. then
-        //XCTAssertTrue(loginUnderTests.validateTextFields(), "Test completed successfully")
+        XCTAssertTrue(validation, "Test completed successfully")
     }
 
     func testPerformanceExample() {

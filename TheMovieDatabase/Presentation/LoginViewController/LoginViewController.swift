@@ -50,7 +50,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        if validateTextFields() {
+        if HelperLoginVC().validate(login: loginTextField.text, password: passwordTextField.text) {
             enterButton.titleLabel?.textColor = UIColor(named: "Light")
             enterButton.backgroundColor = UIColor(named: "Orange")
         } else {
@@ -59,18 +59,10 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func validateTextFields() -> Bool {
-        guard loginTextField.text != "",
-            passwordTextField.text != ""
-            else { return false }
-        return true
-    }
-    
-    
     // MARK: - IBAction
     
     @IBAction func tapEnterButton(_ sender: Any) {
-        guard validateTextFields() else { return }
+        guard HelperLoginVC().validate(login: loginTextField.text, password: passwordTextField.text) else { return }
         guard let login = loginTextField.text,
             let password = passwordTextField.text
             else { return }
