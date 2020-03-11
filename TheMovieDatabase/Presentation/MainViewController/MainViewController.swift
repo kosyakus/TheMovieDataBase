@@ -9,15 +9,11 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    
     @IBOutlet weak var findMovieTextField: UITextField!
-    
     // MARK: - Initializers
-    
     init() {
         super.init(nibName: "MainViewController", bundle: Bundle(for: MainViewController.self))
     }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -29,8 +25,5 @@ class MainViewController: UIViewController {
             findMovieTextField.setLeftView(image: image)
         }
         self.hideKeyboardWhenTappedAround()
-        
     }
-    
-
 }

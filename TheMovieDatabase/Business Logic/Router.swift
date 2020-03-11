@@ -10,16 +10,13 @@ import Foundation
 import Alamofire
 
 enum Router: URLRequestConvertible {
-    
     private var besePath: String {
         return "https://api.themoviedb.org/3/"
     }
-    
-    case getCreateRequestToken(api_key: String)
-    case postValidateToken(username: String, password: String, request_token: String,api_key: String)
-    case postCreateSession(request_token: String, api_key: String)
-    case deleteSession(session_id: String, api_key: String)
-    
+    case getCreateRequestToken(apiKey: String)
+    case postValidateToken(username: String, password: String, requestToken: String, apiKey: String)
+    case postCreateSession(requestToken: String, apiKey: String)
+    case deleteSession(sessionId: String, apiKey: String)
     private var path: String {
         switch self {
         case .getCreateRequestToken:
@@ -32,7 +29,6 @@ enum Router: URLRequestConvertible {
             return "authentication/session"
         }
     }
-    
     private var method: HTTPMethod {
         switch self {
         case .getCreateRequestToken:
@@ -45,25 +41,21 @@ enum Router: URLRequestConvertible {
             return .delete
         }
     }
-    
     private var parameters: Parameters {
         switch self {
-        case let .getCreateRequestToken(api_key):
-            return ["api_key": api_key]
-        case let .postValidateToken(username, password, request_token, api_key):
-            return ["username": username, "password": password, "request_token": request_token, "api_key": api_key]
-        case let .postCreateSession(request_token, api_key):
-            return ["request_token": request_token, "api_key": api_key]
-        case let .deleteSession(session_id, api_key):
-            return ["session_id": session_id, "api_key": api_key]
+        case let .getCreateRequestToken(apiKey):
+            return ["api_key": apiKey]
+        case let .postValidateToken(username, password, requestToken, apiKey):
+            return ["username": username, "password": password, "request_token": requestToken, "api_key": apiKey]
+        case let .postCreateSession(requestToken, apiKey):
+            return ["request_token": requestToken, "api_key": apiKey]
+        case let .deleteSession(sessionId, apiKey):
+            return ["session_id": sessionId, "api_key": apiKey]
         }
     }
-    
     func asURLRequest() throws -> URLRequest {
         let url = try besePath.asURL()
         let urlRequest = URLRequest(url: url.appendingPathComponent(path))
-        
         return try URLEncoding.default.encode(urlRequest, with: parameters)
-    
     }
 }

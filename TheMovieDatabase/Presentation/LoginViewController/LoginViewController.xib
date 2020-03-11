@@ -43,10 +43,11 @@
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Логин" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g8f-EZ-Fio">
                     <rect key="frame" x="24" y="187" width="367" height="48"/>
                     <color key="backgroundColor" name="LightGray"/>
+                    <color key="tintColor" name="Light"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="EQE-jb-4Ld"/>
                     </constraints>
-                    <color key="textColor" name="Gray"/>
+                    <color key="textColor" name="Light"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="16"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
@@ -56,7 +57,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="DF8-B9-fy8"/>
                     </constraints>
-                    <color key="textColor" name="Gray"/>
+                    <color key="textColor" name="Light"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="16"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                 </textField>

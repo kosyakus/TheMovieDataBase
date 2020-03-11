@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UINavigationController {
-    convenience init(rootViewController: UIViewController,isTranslucent: Bool) {
+    convenience init(rootViewController: UIViewController, isTranslucent: Bool) {
         self.init(rootViewController: rootViewController)
         self.navigationBar.barTintColor = UIColor(named: "Bg_black")
         self.navigationBar.isTranslucent = false
@@ -18,4 +18,3 @@ extension UINavigationController {
         self.navigationBar.setValue(true, forKey: "hidesShadow")
     }
 }
-

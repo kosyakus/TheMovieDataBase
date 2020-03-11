@@ -15,7 +15,6 @@
 		E1C736AE2411154700E60D7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1C736AC2411154700E60D7C /* LaunchScreen.storyboard */; };
 		E1C736B92411154700E60D7C /* TheMovieDatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C736B82411154700E60D7C /* TheMovieDatabaseTests.swift */; };
 		E1C736C7241196B900E60D7C /* SFProDisplay-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1C736C6241196B900E60D7C /* SFProDisplay-Thin.ttf */; };
-		E1C736CB241284B700E60D7C /* Rules.swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E1C736CA241284B700E60D7C /* Rules.swiftlint.yml */; };
 		E1C736D02412A67400E60D7C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C736CE2412A67400E60D7C /* LoginViewController.swift */; };
 		E1C736D12412A67400E60D7C /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1C736CF2412A67400E60D7C /* LoginViewController.xib */; };
 		E1C736D32412A84E00E60D7C /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1C736D22412A84E00E60D7C /* SFProDisplay-Regular.ttf */; };
@@ -74,7 +73,6 @@
 		E1C736B82411154700E60D7C /* TheMovieDatabaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMovieDatabaseTests.swift; sourceTree = "<group>"; };
 		E1C736BA2411154700E60D7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1C736C6241196B900E60D7C /* SFProDisplay-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Thin.ttf"; sourceTree = "<group>"; };
-		E1C736CA241284B700E60D7C /* Rules.swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = Rules.swiftlint.yml; sourceTree = "<group>"; };
 		E1C736CE2412A67400E60D7C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E1C736CF2412A67400E60D7C /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		E1C736D22412A84E00E60D7C /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 			isa = PBXGroup;
 			children = (
 				E1C736A12411153B00E60D7C /* AppDelegate.swift */,
-				E1C736CA241284B700E60D7C /* Rules.swiftlint.yml */,
 				E1C736C42411648D00E60D7C /* Supporting files */,
 				E1C736C32411570000E60D7C /* Resources */,
 				E1C7371C2416225300E60D7C /* Business Logic */,
@@ -344,6 +341,7 @@
 			buildConfigurationList = E1C736BD2411154700E60D7C /* Build configuration list for PBXNativeTarget "TheMovieDatabase" */;
 			buildPhases = (
 				4E77A8B9BD7BAB0F28CE7A0F /* [CP] Check Pods Manifest.lock */,
+				E16B93852418A97500814B94 /* ShellScript */,
 				E1C7369A2411153B00E60D7C /* Sources */,
 				E1C7369B2411153B00E60D7C /* Frameworks */,
 				E1C7369C2411153B00E60D7C /* Resources */,
@@ -445,7 +443,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1C736D12412A67400E60D7C /* LoginViewController.xib in Resources */,
-				E1C736CB241284B700E60D7C /* Rules.swiftlint.yml in Resources */,
 				E1C736AE2411154700E60D7C /* LaunchScreen.storyboard in Resources */,
 				E1C736D32412A84E00E60D7C /* SFProDisplay-Regular.ttf in Resources */,
 				E1C737062413DCE200E60D7C /* TabBarController.xib in Resources */,
@@ -537,6 +534,23 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		E16B93852418A97500814B94 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
