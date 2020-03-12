@@ -7,16 +7,20 @@
 //
 
 import Foundation
+
 import Alamofire
 
 enum Router: URLRequestConvertible {
+    
     private var besePath: String {
         return "https://api.themoviedb.org/3/"
     }
+    
     case getCreateRequestToken(apiKey: String)
     case postValidateToken(username: String, password: String, requestToken: String, apiKey: String)
     case postCreateSession(requestToken: String, apiKey: String)
     case deleteSession(sessionId: String, apiKey: String)
+    
     private var path: String {
         switch self {
         case .getCreateRequestToken:
@@ -29,6 +33,7 @@ enum Router: URLRequestConvertible {
             return "authentication/session"
         }
     }
+    
     private var method: HTTPMethod {
         switch self {
         case .getCreateRequestToken:
@@ -41,6 +46,7 @@ enum Router: URLRequestConvertible {
             return .delete
         }
     }
+    
     private var parameters: Parameters {
         switch self {
         case let .getCreateRequestToken(apiKey):
@@ -53,6 +59,7 @@ enum Router: URLRequestConvertible {
             return ["session_id": sessionId, "api_key": apiKey]
         }
     }
+    
     func asURLRequest() throws -> URLRequest {
         let url = try besePath.asURL()
         let urlRequest = URLRequest(url: url.appendingPathComponent(path))

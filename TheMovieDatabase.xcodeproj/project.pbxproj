@@ -36,6 +36,9 @@
 		E1C7371E2416228E00E60D7C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C7371D2416228E00E60D7C /* Router.swift */; };
 		E1C73720241632F400E60D7C /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C7371F241632F400E60D7C /* UserService.swift */; };
 		E1D321202416C2470076A1B5 /* TheMovieDatabaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D3211F2416C2470076A1B5 /* TheMovieDatabaseUITests.swift */; };
+		E1FF6EFC241981250007B93D /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF6EFB241981250007B93D /* KeychainPasswordItem.swift */; };
+		E1FF6EFE241981520007B93D /* KeychainSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF6EFD241981520007B93D /* KeychainSettings.swift */; };
+		E1FF6F00241A17A20007B93D /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF6EFF241A17A20007B93D /* NotificationExtension.swift */; };
 		E9B6C8C9A547CB22CCCB1D9C /* Pods_TheMovieDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C5FA27E5F7CC7A64E5BFC96 /* Pods_TheMovieDatabase.framework */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +99,9 @@
 		E1D3211D2416C2470076A1B5 /* TheMovieDatabaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheMovieDatabaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D3211F2416C2470076A1B5 /* TheMovieDatabaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMovieDatabaseUITests.swift; sourceTree = "<group>"; };
 		E1D321212416C2470076A1B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1FF6EFB241981250007B93D /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
+		E1FF6EFD241981520007B93D /* KeychainSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainSettings.swift; sourceTree = "<group>"; };
+		E1FF6EFF241A17A20007B93D /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		F19F5C25969CC56FED218C66 /* Pods-TheMovieDatabaseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieDatabaseTests.release.xcconfig"; path = "Target Support Files/Pods-TheMovieDatabaseTests/Pods-TheMovieDatabaseTests.release.xcconfig"; sourceTree = "<group>"; };
 		F2F9485C947B9B43A887C2E3 /* Pods-TheMovieDatabase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieDatabase.debug.xcconfig"; path = "Target Support Files/Pods-TheMovieDatabase/Pods-TheMovieDatabase.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -256,6 +262,7 @@
 				E1C736FE2413C40B00E60D7C /* ViewControllerExtension.swift */,
 				E1C737002413C85900E60D7C /* TextFieldExtension.swift */,
 				E1C73716241540A200E60D7C /* NavigationControllerExtension.swift */,
+				E1FF6EFF241A17A20007B93D /* NotificationExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -299,6 +306,7 @@
 		E1C7371C2416225300E60D7C /* Business Logic */ = {
 			isa = PBXGroup;
 			children = (
+				E1FF6EFA241980DA0007B93D /* Helper */,
 				E1C7371D2416228E00E60D7C /* Router.swift */,
 				E1C7371F241632F400E60D7C /* UserService.swift */,
 			);
@@ -320,6 +328,15 @@
 				E16B93802416D6EB00814B94 /* Localizable.strings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		E1FF6EFA241980DA0007B93D /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				E1FF6EFB241981250007B93D /* KeychainPasswordItem.swift */,
+				E1FF6EFD241981520007B93D /* KeychainSettings.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		FF21FBDC9C16FC0617AB890D /* Pods */ = {
@@ -564,6 +581,8 @@
 				E1C736A22411153B00E60D7C /* AppDelegate.swift in Sources */,
 				E1C7370A2413DF6000E60D7C /* MainViewController.swift in Sources */,
 				E1C7371E2416228E00E60D7C /* Router.swift in Sources */,
+				E1FF6EFC241981250007B93D /* KeychainPasswordItem.swift in Sources */,
+				E1FF6F00241A17A20007B93D /* NotificationExtension.swift in Sources */,
 				E1C737052413DCE200E60D7C /* TabBarController.swift in Sources */,
 				E1C73720241632F400E60D7C /* UserService.swift in Sources */,
 				E1C7370F2413F84800E60D7C /* FavoriveViewController.swift in Sources */,
@@ -572,6 +591,7 @@
 				E16B938424175AA300814B94 /* HelperLoginVC.swift in Sources */,
 				E1C737192416057900E60D7C /* User.swift in Sources */,
 				E1C7371B2416058C00E60D7C /* Movie.swift in Sources */,
+				E1FF6EFE241981520007B93D /* KeychainSettings.swift in Sources */,
 				E1C736FF2413C40B00E60D7C /* ViewControllerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

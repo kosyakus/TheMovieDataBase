@@ -7,54 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1D050F38-7B47-4CF8-9CBE-64502A55281C"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TheMovieDatabase/Business Logic/UserService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "deleteSession(sessionId:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "1D050F38-7B47-4CF8-9CBE-64502A55281C - 6fd5ba24c01ea35e"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TheMovieDatabase.UserService.deleteSession(sessionId: Swift.String, completion: () -&gt; ()) -&gt; ()"
-                  moduleName = "TheMovieDatabase"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/natali/Desktop/RedMadRobot/TheMovieDatabase/TheMovieDatabase/Business%20Logic/UserService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "76"
-                  endingLineNumber = "76"
-                  offsetFromSymbolStart = "164">
-               </Location>
-               <Location
-                  uuid = "1D050F38-7B47-4CF8-9CBE-64502A55281C - c8436a109ed63154"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any, Alamofire.AFError&gt;) -&gt; () in TheMovieDatabase.UserService.deleteSession(sessionId: Swift.String, completion: () -&gt; ()) -&gt; ()"
-                  moduleName = "TheMovieDatabase"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/natali/Desktop/RedMadRobot/TheMovieDatabase/TheMovieDatabase/Business%20Logic/UserService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "76"
-                  endingLineNumber = "76"
-                  offsetFromSymbolStart = "188">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "2DFD4EAE-7744-4630-9F07-72A4807A5ACC"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -65,6 +17,38 @@
             startingLineNumber = "33"
             endingLineNumber = "33"
             landmarkName = "testValidateTextFields()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "974F46E4-6EBF-40B6-B955-9181EF48A1BD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheMovieDatabase/Presentation/Common/Extensions/TextFieldExtension.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "setBorderPuppure()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B3373C8C-5785-4ED3-8F63-FA499D258627"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheMovieDatabase/Business Logic/UserService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "saveSessionId(sessionId:user:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

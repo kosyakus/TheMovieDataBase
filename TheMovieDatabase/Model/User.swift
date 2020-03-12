@@ -10,8 +10,9 @@ import Foundation
 import RealmSwift
 import SwiftyJSON
 
-class User: Object {
+class User: Object, Decodable, Encodable {
     @objc dynamic var sessionId = ""
+    @objc dynamic var login = ""
     @objc dynamic var name: String = ""
     @objc dynamic var email: String = ""
     @objc dynamic var icon: String = ""
