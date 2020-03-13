@@ -14,16 +14,6 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var findMovieTextField: UITextField!
     
-    // MARK: - Initializers
-    
-    init() {
-        super.init(nibName: "MainViewController", bundle: Bundle(for: MainViewController.self))
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         let searchIcon = "search_icon"

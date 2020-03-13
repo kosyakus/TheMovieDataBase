@@ -12,14 +12,14 @@ import Alamofire
 
 enum Router: URLRequestConvertible {
     
-    private var besePath: String {
-        return "https://api.themoviedb.org/3/"
-    }
-    
     case getCreateRequestToken(apiKey: String)
     case postValidateToken(username: String, password: String, requestToken: String, apiKey: String)
     case postCreateSession(requestToken: String, apiKey: String)
     case deleteSession(sessionId: String, apiKey: String)
+    
+    private var besePath: String {
+        return "https://api.themoviedb.org/3/"
+    }
     
     private var path: String {
         switch self {

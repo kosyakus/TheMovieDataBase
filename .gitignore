@@ -6,6 +6,6 @@ DerivedData/
 *.pbxuser
 xcuserdata/
 
-*.xcworkspace
+Pods/
 *.xcodeproj/
 *.xcworkspace/
