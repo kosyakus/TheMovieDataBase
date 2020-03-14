@@ -7,13 +7,29 @@
 //
 
 import Foundation
-import RealmSwift
-import SwiftyJSON
 
-class User: Object, Decodable, Encodable {
-    @objc dynamic var sessionId = ""
-    @objc dynamic var login = ""
-    @objc dynamic var name: String = ""
-    @objc dynamic var email: String = ""
-    @objc dynamic var icon: String = ""
+class User: Codable, Decodable {
+    
+    // MARK: - Public Properties
+    
+    let login: String
+    let name: String
+    let email: String
+    let icon: String
+    
+    enum UserKeys: String, CodingKey {
+        case login
+        case name
+        case email
+        case icon
+    }
+    
+    init(from decoder: Decoder) throws {
+        let userContainer = try decoder.container(keyedBy: UserKeys.self)
+        
+        login = try userContainer.decode(String.self, forKey: .login)
+        name = try userContainer.decode(String.self, forKey: .name)
+        email = try userContainer.decode(String.self, forKey: .email)
+        icon = try userContainer.decode(String.self, forKey: .icon)
+    }
 }

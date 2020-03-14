@@ -9,12 +9,21 @@ target 'TheMovieDatabase' do
 
   pod 'SwiftLint'
   pod 'Alamofire'
-  pod 'RealmSwift'
-  pod 'SwiftyJSON'
 
   target 'TheMovieDatabaseTests' do
     inherit! :search_paths
     # Pods for testing
   end
+
+end
+
+target 'TheMovieDatabaseAPI' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for TheMovieDatabaseAPI
+
+  pod 'SwiftLint'
+  pod 'Alamofire'
 
 end

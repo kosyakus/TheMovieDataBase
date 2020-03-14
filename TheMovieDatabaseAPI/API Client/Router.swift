@@ -18,7 +18,7 @@ enum Router: URLRequestConvertible {
     case deleteSession(sessionId: String, apiKey: String)
     
     private var besePath: String {
-        return "https://api.themoviedb.org/3/"
+        "https://api.themoviedb.org/3/"
     }
     
     private var path: String {

@@ -7,6 +7,7 @@
 //
 
 import XCTest
+
 @testable import TheMovieDatabase
 
 class TheMovieDatabaseTests: XCTestCase {

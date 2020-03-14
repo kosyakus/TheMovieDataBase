@@ -30,23 +30,19 @@ class LoginViewController: UIViewController {
         errorLabel.isHidden = true
         passwordTextField.setVisibilityOnIcon()
         enterButton.layer.cornerRadius = 0.02 * enterButton.bounds.size.width
-        loginTextField.addTarget(self, action: #selector(LoginViewController.textFieldDidChange(_:)),
-                                 for: UIControl.Event.editingChanged)
-        passwordTextField.addTarget(self, action: #selector(LoginViewController.textFieldDidChange(_:)),
-                                    for: UIControl.Event.editingChanged)
-        loginTextField.addTarget(self, action: #selector(LoginViewController.textFieldDidBeginEditing(_:)),
-                                 for: .allTouchEvents)
-        passwordTextField.addTarget(self, action: #selector(LoginViewController.textFieldDidBeginEditing(_:)),
-                                    for: .allTouchEvents)
+        loginTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        loginTextField.addTarget(self, action: #selector(textFieldDidBeginEditing(_:)), for: .allTouchEvents)
+        passwordTextField.addTarget(self, action: #selector(textFieldDidBeginEditing(_:)), for: .allTouchEvents)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         if HelperLoginVC().validate(login: loginTextField.text, password: passwordTextField.text) {
             enterButton.titleLabel?.textColor = UIColor(named: "Light")
-            enterButton.backgroundColor = UIColor(named: "Orange")
+            enterButton.backgroundColor = UIColor.CustomColor.orange
         } else {
-            enterButton.titleLabel?.textColor = UIColor(named: "Gray")
-            enterButton.backgroundColor = UIColor(named: "LightGray")
+            enterButton.titleLabel?.textColor = UIColor.CustomColor.gray
+            enterButton.backgroundColor = UIColor.CustomColor.lightGray
         }
     }
     

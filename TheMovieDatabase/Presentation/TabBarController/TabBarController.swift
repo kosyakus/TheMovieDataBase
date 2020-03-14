@@ -14,8 +14,8 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
 
         setUpTabBar()
-        self.tabBar.barTintColor = UIColor(named: "DarkBlue")
-        navigationController?.navigationBar.barTintColor = UIColor(named: "Bg_black")
+        self.tabBar.barTintColor = UIColor.CustomColor.darkBlue
+        navigationController?.navigationBar.barTintColor = UIColor.CustomColor.bgBlack
     }
 
     // MARK: - Public methods
@@ -42,6 +42,6 @@ class TabBarController: UITabBarController {
         let tabBarList = [firstViewController, secondViewController, thirdViewController]
 
         viewControllers = tabBarList
-        UITabBar.appearance().tintColor = UIColor(named: "Orange")
+        UITabBar.appearance().tintColor = UIColor.CustomColor.orange
     }
 }
