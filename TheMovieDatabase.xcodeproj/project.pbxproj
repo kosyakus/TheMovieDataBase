@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		34414F6FF03942E213ADEDD2 /* Pods_TheMovieDatabaseAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BCC2272996F4023B8E6E00 /* Pods_TheMovieDatabaseAPI.framework */; };
 		C8B5D0F6AE81E6D0D9BB7EA8 /* Pods_TheMovieDatabaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97DC9B31A6DF12A6DAC00704 /* Pods_TheMovieDatabaseTests.framework */; };
+		E11C765F241D6131000969C7 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C765E241D6131000969C7 /* APIClient.swift */; };
+		E11C7661241D62E0000969C7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7660241D62E0000969C7 /* Constants.swift */; };
+		E11C7663241D6697000969C7 /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7662241D6697000969C7 /* APIConfiguration.swift */; };
+		E11C7665241D6710000969C7 /* UserEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7664241D6710000969C7 /* UserEndpoint.swift */; };
+		E11C7668241D712E000969C7 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7667241D712E000969C7 /* Endpoint.swift */; };
 		E16B937E2416D6EB00814B94 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E16B93802416D6EB00814B94 /* Localizable.strings */; };
 		E16B938424175AA300814B94 /* HelperLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16B938324175AA300814B94 /* HelperLoginVC.swift */; };
 		E1C736A22411153B00E60D7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C736A12411153B00E60D7C /* AppDelegate.swift */; };
@@ -96,6 +101,11 @@
 		B69970511E691E7B3E2CDE77 /* Pods-TheMovieDatabase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieDatabase.release.xcconfig"; path = "Target Support Files/Pods-TheMovieDatabase/Pods-TheMovieDatabase.release.xcconfig"; sourceTree = "<group>"; };
 		B7660A608791AB3ACE54BDA3 /* Pods-TheMovieDatabaseAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieDatabaseAPI.release.xcconfig"; path = "Target Support Files/Pods-TheMovieDatabaseAPI/Pods-TheMovieDatabaseAPI.release.xcconfig"; sourceTree = "<group>"; };
 		CBFF849678DBDCC236B10C53 /* Pods-TheMovieDatabase-TheMovieDatabaseAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieDatabase-TheMovieDatabaseAPI.release.xcconfig"; path = "Target Support Files/Pods-TheMovieDatabase-TheMovieDatabaseAPI/Pods-TheMovieDatabase-TheMovieDatabaseAPI.release.xcconfig"; sourceTree = "<group>"; };
+		E11C765E241D6131000969C7 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		E11C7660241D62E0000969C7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E11C7662241D6697000969C7 /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
+		E11C7664241D6710000969C7 /* UserEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEndpoint.swift; sourceTree = "<group>"; };
+		E11C7667241D712E000969C7 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		E16B937F2416D6EB00814B94 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E16B93822416D79400814B94 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		E16B938324175AA300814B94 /* HelperLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperLoginVC.swift; sourceTree = "<group>"; };
@@ -189,6 +199,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E11C7666241D7107000969C7 /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				E11C7667241D712E000969C7 /* Endpoint.swift */,
+			);
+			path = Endpoint;
+			sourceTree = "<group>";
+		};
 		E1C736952411153B00E60D7C = {
 			isa = PBXGroup;
 			children = (
@@ -221,7 +239,6 @@
 				E1C736C42411648D00E60D7C /* Supporting files */,
 				E1C736C32411570000E60D7C /* Resources */,
 				E1C7371C2416225300E60D7C /* Business Logic */,
-				E1C736C8241197AC00E60D7C /* Model */,
 				E1C736C9241197B900E60D7C /* Presentation */,
 			);
 			path = TheMovieDatabase;
@@ -390,7 +407,9 @@
 		E1FF6F09241BE70A0007B93D /* TheMovieDatabaseAPI */ = {
 			isa = PBXGroup;
 			children = (
+				E11C7666241D7107000969C7 /* Endpoint */,
 				E1FF6F17241BEBA00007B93D /* API Client */,
+				E1C736C8241197AC00E60D7C /* Model */,
 				E1FF6F0A241BE70A0007B93D /* TheMovieDatabaseAPI.h */,
 				E1FF6F0B241BE70A0007B93D /* Info.plist */,
 			);
@@ -403,6 +422,10 @@
 				E1C7371D2416228E00E60D7C /* Router.swift */,
 				E1C7371F241632F400E60D7C /* UserService.swift */,
 				E1FF6F1B241C15370007B93D /* HandleErrors.swift */,
+				E11C765E241D6131000969C7 /* APIClient.swift */,
+				E11C7660241D62E0000969C7 /* Constants.swift */,
+				E11C7662241D6697000969C7 /* APIConfiguration.swift */,
+				E11C7664241D6710000969C7 /* UserEndpoint.swift */,
 			);
 			path = "API Client";
 			sourceTree = "<group>";
@@ -752,9 +775,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E11C7661241D62E0000969C7 /* Constants.swift in Sources */,
+				E11C7665241D6710000969C7 /* UserEndpoint.swift in Sources */,
+				E11C7668241D712E000969C7 /* Endpoint.swift in Sources */,
+				E11C7663241D6697000969C7 /* APIConfiguration.swift in Sources */,
 				E1FF6F16241BEB960007B93D /* UserService.swift in Sources */,
 				E1FF6F15241BEB930007B93D /* Router.swift in Sources */,
 				E1FF6F1C241C15370007B93D /* HandleErrors.swift in Sources */,
+				E11C765F241D6131000969C7 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

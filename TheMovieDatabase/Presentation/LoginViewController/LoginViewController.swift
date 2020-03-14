@@ -8,6 +8,8 @@
 
 import UIKit
 
+import TheMovieDatabaseAPI
+
 class LoginViewController: UIViewController {
     
     // MARK: - IBOutlet

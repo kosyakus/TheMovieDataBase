@@ -9,7 +9,7 @@
 import Foundation
 
 import Alamofire
-import TheMovieDatabase
+//import TheMovieDatabase
 
 public final class UserService {
     
@@ -22,7 +22,7 @@ public final class UserService {
     private var requestedToken = ""
     private let apiKey = "93a57d2565c91c4db19ce6040806f41b"
     static let serviceName = "MovieService"
-    let user = User()
+    //let user = User()
     
     func createToken(username: String, password: String, completion: @escaping DownloadCompletion) {
         AF.request(Router.getCreateRequestToken(apiKey: apiKey)).responseJSON { [weak self] response in
@@ -48,7 +48,7 @@ public final class UserService {
                                             apiKey: apiKey)).responseJSON { [weak self] response in
                                                 switch response.result {
                                                 case .success:
-                                                    self?.user.login = username
+                                                    //self?.user.login = username
                                                     self?.createSession { completion() }
                                                 case .failure(let error):
                                                     print(error)
@@ -73,7 +73,7 @@ public final class UserService {
         let sessionId = getSessionID()
         AF.request(Router.deleteSession(sessionId: sessionId, apiKey: apiKey)).responseJSON { [weak self] response in
             switch response.result {
-            case .success(let rawJson):
+            case .success:
                 //print("Session deleted successfully \(JSON(rawJson))")
                 try? self?.deleteSessionId()
                 completion()

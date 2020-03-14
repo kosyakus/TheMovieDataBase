@@ -82,19 +82,19 @@
     <resources>
         <image name="avatar" width="136" height="136"/>
         <namedColor name="Bg_black">
-            <color red="0.098039215686274508" green="0.10196078431372549" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.097999997437000275" green="0.10199999809265137" blue="0.14499999582767487" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DarkBlue">
-            <color red="0.16470588235294117" green="0.1803921568627451" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.16500000655651093" green="0.18000000715255737" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Gray">
-            <color red="0.396078431372549" green="0.42745098039215684" blue="0.54117647058823526" alpha="0.39482555650684931" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.39599999785423279" green="0.42699998617172241" blue="0.54100000858306885" alpha="0.39500001072883606" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Light">
-            <color red="0.90588235294117647" green="0.92941176470588238" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.90600001811981201" green="0.92900002002716064" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="LightGray">
-            <color red="0.13725490196078433" green="0.14901960784313725" blue="0.21176470588235294" alpha="0.89969076013565064" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.13725490196078433" green="0.14901960784313725" blue="0.21176470588235294" alpha="0.89999997615814209" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Purpure">
             <color red="0.42399999499320984" green="0.3880000114440918" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

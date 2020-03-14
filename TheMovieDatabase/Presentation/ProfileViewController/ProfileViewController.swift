@@ -17,18 +17,18 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var exitButton: UIButton!
     @IBOutlet weak var avatarImageView: UIImageView!
     
-    var user = User()
+    //var user = User(from: <#Decoder#>)
     
     // MARK: - Initializers
     
-    init(user: User = User()) {
+    /*init(user: User = User()) {
         self.user = user
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
+    }*/
 
     override func viewDidLoad() {
         super.viewDidLoad()

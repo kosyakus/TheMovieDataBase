@@ -1,40 +1,24 @@
 //
-//  Router.swift
-//  TheMovieDatabase
+//  UserEndpoint.swift
+//  TheMovieDatabaseAPI
 //
-//  Created by Natali on 09.03.2020.
+//  Created by Natali on 14.03.2020.
 //  Copyright © 2020 Redmadrobot. All rights reserved.
 //
 
+import Alamofire
 import Foundation
 
-import Alamofire
-
-enum Router: URLRequestConvertible {
+enum UserEndpoint: APIConfiguration {
     
     case getCreateRequestToken(apiKey: String)
     case postValidateToken(username: String, password: String, requestToken: String, apiKey: String)
     case postCreateSession(requestToken: String, apiKey: String)
     case deleteSession(sessionId: String, apiKey: String)
+ 
+    // MARK: - HTTPMethod
     
-    private var basePath: String {
-        "https://api.themoviedb.org/3/"
-    }
-    
-    private var path: String {
-        switch self {
-        case .getCreateRequestToken:
-            return "authentication/token/new"
-        case .postValidateToken:
-            return "authentication/token/validate_with_login"
-        case .postCreateSession:
-            return "authentication/session/new"
-        case .deleteSession:
-            return "authentication/session"
-        }
-    }
-    
-    private var method: HTTPMethod {
+    var method: HTTPMethod {
         switch self {
         case .getCreateRequestToken:
             return .get
@@ -47,7 +31,24 @@ enum Router: URLRequestConvertible {
         }
     }
     
-    private var parameters: Parameters? {
+    // MARK: - Path
+    
+    var path: String {
+        switch self {
+        case .getCreateRequestToken:
+            return "authentication/token/new"
+        case .postValidateToken:
+            return "authentication/token/validate_with_login"
+        case .postCreateSession:
+            return "authentication/session/new"
+        case .deleteSession:
+            return "authentication/session"
+        }
+    }
+    
+    // MARK: - Parameters
+    
+    var parameters: Parameters? {
         switch self {
         case let .getCreateRequestToken(apiKey):
             return ["api_key": apiKey]
@@ -60,14 +61,19 @@ enum Router: URLRequestConvertible {
         }
     }
     
+    // MARK: - URLRequestConvertible
+    
     func asURLRequest() throws -> URLRequest {
-        let url = try basePath.asURL()
+        let url = try Constants.ProductionServer.baseURL.asURL()
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
-        // HTTPMethod
+        
+        // HTTP Method
         urlRequest.httpMethod = method.rawValue
-        // Common headers
+        
+        // Common Headers
         urlRequest.setValue(Constants.ContentType.json.rawValue, forHTTPHeaderField: Constants.HTTPHeaderField.acceptType.rawValue)
         urlRequest.setValue(Constants.ContentType.json.rawValue, forHTTPHeaderField: Constants.HTTPHeaderField.contentType.rawValue)
+ 
         // Parameters
         if let parameters = parameters {
             do {
@@ -76,6 +82,6 @@ enum Router: URLRequestConvertible {
                 throw AFError.parameterEncodingFailed(reason: .jsonEncodingFailed(error: error))
             }
         }
-        return urlRequest //try URLEncoding.default.encode(urlRequest, with: parameters)
+        return urlRequest
     }
 }
