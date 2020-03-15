@@ -46,10 +46,10 @@ class ProfileViewController: UIViewController {
     // MARK: - IBAction
     
     @IBAction func exitButtonTapped(_ sender: Any) {
-        let userService = TheMovieDatabaseAPI.UserService()
+        /*let userService = TheMovieDatabaseAPI.UserService()
         userService.deleteSession {
             let appDelegate = UIApplication.shared.delegate as? AppDelegate
             appDelegate?.presentViewController()
-        }
+        }*/
     }
 }

@@ -1,16 +1,15 @@
 //
-//  Router.swift
-//  TheMovieDatabase
+//  LoginEndpoint.swift
+//  TheMovieDatabaseAPI
 //
-//  Created by Natali on 09.03.2020.
+//  Created by Natali on 15.03.2020.
 //  Copyright © 2020 Redmadrobot. All rights reserved.
 //
 
+import Alamofire
 import Foundation
 
-import Alamofire
-
-enum Router: URLRequestConvertible {
+enum LoginEndpoint: URLRequestConvertible {
     
     case getCreateRequestToken(apiKey: String)
     case postValidateToken(username: String, password: String, requestToken: String, apiKey: String)

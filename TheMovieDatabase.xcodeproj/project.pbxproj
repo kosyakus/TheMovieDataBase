@@ -14,6 +14,10 @@
 		E11C7663241D6697000969C7 /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7662241D6697000969C7 /* APIConfiguration.swift */; };
 		E11C7665241D6710000969C7 /* UserEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7664241D6710000969C7 /* UserEndpoint.swift */; };
 		E11C7668241D712E000969C7 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7667241D712E000969C7 /* Endpoint.swift */; };
+		E11C766A241D75AF000969C7 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7669241D75AF000969C7 /* Session.swift */; };
+		E11C766C241E1F89000969C7 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C766B241E1F89000969C7 /* Token.swift */; };
+		E11C766E241EC425000969C7 /* LoginEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C766D241EC425000969C7 /* LoginEndpoint.swift */; };
+		E11C7670241ECBE9000969C7 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C766F241ECBE9000969C7 /* LoginService.swift */; };
 		E16B937E2416D6EB00814B94 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E16B93802416D6EB00814B94 /* Localizable.strings */; };
 		E16B938424175AA300814B94 /* HelperLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16B938324175AA300814B94 /* HelperLoginVC.swift */; };
 		E1C736A22411153B00E60D7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C736A12411153B00E60D7C /* AppDelegate.swift */; };
@@ -106,6 +110,10 @@
 		E11C7662241D6697000969C7 /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
 		E11C7664241D6710000969C7 /* UserEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEndpoint.swift; sourceTree = "<group>"; };
 		E11C7667241D712E000969C7 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		E11C7669241D75AF000969C7 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		E11C766B241E1F89000969C7 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		E11C766D241EC425000969C7 /* LoginEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEndpoint.swift; sourceTree = "<group>"; };
+		E11C766F241ECBE9000969C7 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		E16B937F2416D6EB00814B94 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E16B93822416D79400814B94 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		E16B938324175AA300814B94 /* HelperLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperLoginVC.swift; sourceTree = "<group>"; };
@@ -203,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				E11C7667241D712E000969C7 /* Endpoint.swift */,
+				E11C766D241EC425000969C7 /* LoginEndpoint.swift */,
 			);
 			path = Endpoint;
 			sourceTree = "<group>";
@@ -287,6 +296,8 @@
 			children = (
 				E1C737182416057900E60D7C /* User.swift */,
 				E1C7371A2416058C00E60D7C /* Movie.swift */,
+				E11C7669241D75AF000969C7 /* Session.swift */,
+				E11C766B241E1F89000969C7 /* Token.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -420,6 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				E1C7371D2416228E00E60D7C /* Router.swift */,
+				E11C766F241ECBE9000969C7 /* LoginService.swift */,
 				E1C7371F241632F400E60D7C /* UserService.swift */,
 				E1FF6F1B241C15370007B93D /* HandleErrors.swift */,
 				E11C765E241D6131000969C7 /* APIClient.swift */,
@@ -776,13 +788,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				E11C7661241D62E0000969C7 /* Constants.swift in Sources */,
+				E11C766C241E1F89000969C7 /* Token.swift in Sources */,
 				E11C7665241D6710000969C7 /* UserEndpoint.swift in Sources */,
 				E11C7668241D712E000969C7 /* Endpoint.swift in Sources */,
 				E11C7663241D6697000969C7 /* APIConfiguration.swift in Sources */,
+				E11C766E241EC425000969C7 /* LoginEndpoint.swift in Sources */,
 				E1FF6F16241BEB960007B93D /* UserService.swift in Sources */,
+				E11C7670241ECBE9000969C7 /* LoginService.swift in Sources */,
 				E1FF6F15241BEB930007B93D /* Router.swift in Sources */,
 				E1FF6F1C241C15370007B93D /* HandleErrors.swift in Sources */,
 				E11C765F241D6131000969C7 /* APIClient.swift in Sources */,
+				E11C766A241D75AF000969C7 /* Session.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

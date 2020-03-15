@@ -71,8 +71,10 @@ enum UserEndpoint: APIConfiguration {
         urlRequest.httpMethod = method.rawValue
         
         // Common Headers
-        urlRequest.setValue(Constants.ContentType.json.rawValue, forHTTPHeaderField: Constants.HTTPHeaderField.acceptType.rawValue)
-        urlRequest.setValue(Constants.ContentType.json.rawValue, forHTTPHeaderField: Constants.HTTPHeaderField.contentType.rawValue)
+        urlRequest.setValue(Constants.ContentType.json.rawValue,
+                            forHTTPHeaderField: Constants.HTTPHeaderField.acceptType.rawValue)
+        urlRequest.setValue(Constants.ContentType.json.rawValue,
+                            forHTTPHeaderField: Constants.HTTPHeaderField.contentType.rawValue)
  
         // Parameters
         if let parameters = parameters {

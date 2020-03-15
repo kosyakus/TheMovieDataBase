@@ -12,7 +12,7 @@ struct User: Codable {
     
     // MARK: - Public Properties
     
-    var avatar: String
+    /*var avatar: String
     var gravatar: NSObject
     let hash: String
     let id: Int
@@ -37,7 +37,7 @@ struct User: Codable {
     init?(json: [String: Any]) {
 
         guard
-            let avatar = json["avatar"][0]["garavatar"][0][hash] as? String,
+            let avatar = json["avatar"][0]["garavatar"][0]["hash"] as? String,
             let id = json["id"] as? Int,
             let iso639 = json["iso_639_1"] as? String,
             let iso3166 = json["iso_3166_1"] as? String,
@@ -78,5 +78,5 @@ struct User: Codable {
             }
         }
         return user
-    }
+    }*/
 }

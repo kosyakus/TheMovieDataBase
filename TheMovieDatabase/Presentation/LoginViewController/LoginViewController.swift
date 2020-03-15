@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var enterButton: UIButton!
-    let userService = UserService()
+    //let userService = UserService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,13 +62,22 @@ class LoginViewController: UIViewController {
     
     @IBAction func tapEnterButton(_ sender: Any) {
         guard HelperLoginVC().validate(login: loginTextField.text, password: passwordTextField.text) else { return }
-        guard let login = loginTextField.text,
-            let password = passwordTextField.text
-            else { return }
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        userService.createToken(username: login, password: password) {
-            print("token created")
-            appDelegate?.presentViewController()
+         guard let login = loginTextField.text,
+         let password = passwordTextField.text
+         else { return }
+         let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        
+        TheMovieDatabaseAPI.LoginService.parseTokenFromJson { token in
+            print("Token \(token.token)")
+            TheMovieDatabaseAPI.LoginService.validateToken(username: login,
+                                                           password: password,
+                                                           requestToken: token.token) {_ in
+            print("validated")
+                TheMovieDatabaseAPI.LoginService.createSession(requestToken: token.token) { session in
+                                                                print("Session \(session)")
+                appDelegate?.presentViewController()
+                }
+            }
         }
     }
 }
