@@ -23,16 +23,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "974F46E4-6EBF-40B6-B955-9181EF48A1BD"
-            shouldBeEnabled = "No"
+            uuid = "1A78B758-A3FC-4759-BF49-CB2642A64D7B"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TheMovieDatabase/Presentation/Common/Extensions/TextFieldExtension.swift"
+            filePath = "TheMovieDatabase/Presentation/MainViewController/MainViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "setVisibilityOffIcon()"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "searchMovies(language:query:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

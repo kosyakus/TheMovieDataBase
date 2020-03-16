@@ -17,7 +17,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController" customModule="TheMovieDatabase" customModuleProvider="target">
             <connections>
                 <outlet property="avatarImageView" destination="jzh-Oi-MHB" id="jUy-1I-n9q"/>
+                <outlet property="emailLabel" destination="skr-Iv-r0V" id="hVO-pN-ueB"/>
                 <outlet property="exitButton" destination="6R5-K4-Wqd" id="2QA-h7-nfk"/>
+                <outlet property="nameLabel" destination="QE1-OF-2ng" id="47o-SY-6LP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

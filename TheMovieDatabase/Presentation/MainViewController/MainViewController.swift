@@ -6,6 +6,7 @@
 //  Copyright © 2020 Redmadrobot. All rights reserved.
 //
 
+import TheMovieDatabaseAPI
 import UIKit
 
 class MainViewController: UIViewController {
@@ -21,5 +22,12 @@ class MainViewController: UIViewController {
             findMovieTextField.setLeftView(image: image)
         }
         self.hideKeyboardWhenTappedAround()
+        self.searchMovies(language: "ru-RU", query: "дулиттл")
+    }
+    
+    func searchMovies(language: String, query: String) {
+        TheMovieDatabaseAPI.SearchMoviesService.parseMoviesFromJson(language: language, query: query) { result in
+            print("Movies list \(result)")
+        }
     }
 }

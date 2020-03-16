@@ -1,82 +1,74 @@
 //
 //  User.swift
-//  TheMovieDatabase
+//  TheMovieDatabaseAPI
 //
-//  Created by Natali on 09.03.2020.
+//  Created by Natali on 16.03.2020.
 //  Copyright © 2020 Redmadrobot. All rights reserved.
 //
 
 import Foundation
 
-struct User: Codable {
+public struct User {
     
     // MARK: - Public Properties
     
-    /*var avatar: String
-    var gravatar: NSObject
-    let hash: String
-    let id: Int
-    let iso639: String
-    let iso3166: String
-    let name: String
-    let isIncludeAdult: Bool
-    let username: String
+    public let hash: String
+    public let id: Int
+    public let iso639: String
+    public let iso3166: String
+    public let name: String
+    public let isIncludeAdult: Bool
+    public let username: String
     
-    /*enum UserKeys: String, CodingKey {
-        case avatar
+    enum UserKeys: String, CodingKey {
         case gravatar
-        case hash
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case avatar
         case id
         case iso639 = "iso_639_1"
         case iso3166 = "iso_3166_1"
         case name
         case isIncludeAdult = "include_adult"
         case username
-    }*/
-    
-    init?(json: [String: Any]) {
-
-        guard
-            let avatar = json["avatar"][0]["garavatar"][0]["hash"] as? String,
-            let id = json["id"] as? Int,
-            let iso639 = json["iso_639_1"] as? String,
-            let iso3166 = json["iso_3166_1"] as? String,
-            let name = json["name"] as? String,
-            let isIncludeAdult = json["include_adult"] as? Bool,
-            let username = json["username"] as? String
-        else {
-            return nil
-        }
-
-        self.avatar = avatar
-        self.id = id
-        self.iso639 = iso639
-        self.iso3166 = iso3166
-        self.name = name
-        self.isIncludeAdult = isIncludeAdult
-        self.username = username
     }
-
     
-    /*required init(from decoder: Decoder) throws {
-        let userContainer = try decoder.container(keyedBy: UserKeys.self)
-        
-        login = try userContainer.decode(String.self, forKey: .login)
-        name = try userContainer.decode(String.self, forKey: .name)
-        email = try userContainer.decode(String.self, forKey: .email)
-        icon = try userContainer.decode(String.self, forKey: .icon)
-    }*/
-
-    static func getUser(from jsonArray: Any) -> User? {
-
-        guard let jsonArray = jsonArray as? Array<[String: Any]> else { return nil }
-        var user: User = User()
-
-        for jsonObject in jsonArray {
-            if let user = User(json: jsonObject) {
-                user = user
-            }
-        }
-        return user
-    }*/
 }
+
+extension User: Decodable {
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let user = try values.nestedContainer(keyedBy: UserKeys.self, forKey: .avatar)
+        let gravatar = try user.decode([String: Data].self, forKey: .gravatar)
+        print("gravatar \(gravatar.values)")
+        if let data: Data = gravatar["hash"] {
+            self.hash = data.base64EncodedString(options: NSData.Base64EncodingOptions())
+        } else { self.hash = " " }
+        self.id = try values.decode(Int.self, forKey: .id)
+        self.iso639 = try values.decode(String.self, forKey: .iso639)
+        self.iso3166 = try values.decode(String.self, forKey: .iso3166)
+        self.name = try values.decode(String.self, forKey: .name)
+        self.isIncludeAdult = try values.decode(Bool.self, forKey: .isIncludeAdult)
+        self.username = try values.decode(String.self, forKey: .username)
+    }
+}
+
+/*struct Gravatar: Decodable {
+    var hash: String
+    
+    enum UserKeys: String, CodingKey {
+        case hash
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case gravatar
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+
+        let user = try values.nestedContainer(keyedBy: UserKeys.self, forKey: .gravatar)
+        self.hash = try user.decode(String.self, forKey: .hash)
+    }
+}*/

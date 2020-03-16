@@ -58,6 +58,25 @@ class LoginViewController: UIViewController {
         }
     }
     
+    func sendApiRequest(login: String, password: String) {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        
+        TheMovieDatabaseAPI.LoginService.parseTokenFromJson { token in
+            print("Token \(token.token)")
+            TheMovieDatabaseAPI.LoginService.validateToken(username: login,
+                                                           password: password,
+                                                           requestToken: token.token) {_ in
+                print("validated")
+                TheMovieDatabaseAPI.LoginService.parseSessionFromJson(requestToken: token.token) { session in
+                        print("Session \(session)")
+                        try? ManageKeychain().saveSessionId(sessionId: session.sessionId,
+                                                            user: KeychainUser(username: login))
+                        appDelegate?.presentViewController()
+                }
+            }
+        }
+    }
+    
     // MARK: - IBAction
     
     @IBAction func tapEnterButton(_ sender: Any) {
@@ -65,19 +84,6 @@ class LoginViewController: UIViewController {
          guard let login = loginTextField.text,
          let password = passwordTextField.text
          else { return }
-         let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        
-        TheMovieDatabaseAPI.LoginService.parseTokenFromJson { token in
-            print("Token \(token.token)")
-            TheMovieDatabaseAPI.LoginService.validateToken(username: login,
-                                                           password: password,
-                                                           requestToken: token.token) {_ in
-            print("validated")
-                TheMovieDatabaseAPI.LoginService.createSession(requestToken: token.token) { session in
-                                                                print("Session \(session)")
-                appDelegate?.presentViewController()
-                }
-            }
-        }
+         sendApiRequest(login: login, password: password)
     }
 }

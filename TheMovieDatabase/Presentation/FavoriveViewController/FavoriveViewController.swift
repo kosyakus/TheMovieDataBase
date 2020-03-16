@@ -13,8 +13,8 @@ class FavoriveViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let searchImage = UIImage(named: "search_icon")!
-        let listImage = UIImage(named: "list_icon")!
+        let searchImage = #imageLiteral(resourceName: "search_icon")
+        let listImage = #imageLiteral(resourceName: "list_icon")
 
         let searchButton = UIBarButtonItem(image: searchImage,
                                            style: .plain,

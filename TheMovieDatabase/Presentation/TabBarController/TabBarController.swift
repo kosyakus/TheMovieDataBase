@@ -23,20 +23,20 @@ class TabBarController: UITabBarController {
         let firstViewController = MainViewController()
         firstViewController.tabBarItem = UITabBarItem(
         title: "Фильмы",
-        image: UIImage(named: "movie_tabbar_icon"),
+        image: #imageLiteral(resourceName: "movie_tabbar_icon"),
         tag: 0)
 
         let secondViewController = FavoriveViewController()
 
         secondViewController.tabBarItem = UITabBarItem(
         title: "Избранное",
-        image: UIImage(named: "favorite_tabbar_icon"),
+        image: #imageLiteral(resourceName: "favorite_tabbar_icon"),
         tag: 1)
         let thirdViewController = ProfileViewController()
 
         thirdViewController.tabBarItem = UITabBarItem(
         title: "Профиль",
-        image: UIImage(named: "account_tabbar_icon"),
+        image: #imageLiteral(resourceName: "account_tabbar_icon"),
         tag: 2)
 
         let tabBarList = [firstViewController, secondViewController, thirdViewController]

@@ -16,24 +16,14 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var exitButton: UIButton!
     @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
     
-    //var user = User(from: <#Decoder#>)
-    
-    // MARK: - Initializers
-    
-    /*init(user: User = User()) {
-        self.user = user
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }*/
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setUpButtonAndImage()
+        loadProfile()
     }
 
     // MARK: - Public methods
@@ -43,13 +33,29 @@ class ProfileViewController: UIViewController {
         avatarImageView.layer.cornerRadius = 0.17 * exitButton.bounds.size.width
     }
     
+    func loadProfile() {
+        guard let session = try? ManageKeychain().getSessionID() else { return }
+        TheMovieDatabaseAPI.AccountService.parseUserFromJson(session: session) { result in
+            print("User \(result)")
+            let decodedimage = result.hash.toUIImage
+            self.avatarImageView.image = decodedimage
+            if result.name != "" {
+                self.nameLabel.text = result.name
+            } else {
+                self.nameLabel.text = result.username
+            }
+        }
+    }
+    
     // MARK: - IBAction
     
     @IBAction func exitButtonTapped(_ sender: Any) {
-        /*let userService = TheMovieDatabaseAPI.UserService()
-        userService.deleteSession {
+        guard let session = try? ManageKeychain().getSessionID() else { return }
+        TheMovieDatabaseAPI.LoginService.deleteSession(session: session) { result in
+            print("deletion result \(result)")
+            try? ManageKeychain().deleteSessionId()
             let appDelegate = UIApplication.shared.delegate as? AppDelegate
             appDelegate?.presentViewController()
-        }*/
+        }
     }
 }

@@ -44,14 +44,12 @@ extension UITextField {
     }
     
     func setVisibilityOnIcon() {
-        guard let image = UIImage(named: "visibility_on_icon") else { return }
-        self.setRightView(image: image)
+        self.setRightView(image: #imageLiteral(resourceName: "visibility_on_icon"))
         self.isSecureTextEntry = true
     }
     
     func setVisibilityOffIcon() {
-        guard let image = UIImage(named: "visibility_off_icon") else { return }
-        self.setRightView(image: image)
+        self.setRightView(image: #imageLiteral(resourceName: "visibility_off_icon"))
         self.isSecureTextEntry = false
     }
     

@@ -14,12 +14,12 @@ final class KeychainSettings {
     case user = "current_user"
   }
   
-  static var currentUser: User? {
+  static var currentUser: KeychainUser? {
     get {
       guard let data = UserDefaults.standard.data(forKey: Keys.user.rawValue) else {
         return nil
       }
-      return try? JSONDecoder().decode(User.self, from: data)
+      return try? JSONDecoder().decode(KeychainUser.self, from: data)
     }
     set {
       if let data = try? JSONEncoder().encode(newValue) {
