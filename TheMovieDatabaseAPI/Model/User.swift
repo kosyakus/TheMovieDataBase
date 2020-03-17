@@ -8,21 +8,17 @@
 
 import Foundation
 
-public struct User {
+public struct User: Codable {
     
     // MARK: - Public Properties
     
-    public let hash: String
+    public let avatar: Gravatar
     public let id: Int
     public let iso639: String
     public let iso3166: String
     public let name: String
     public let isIncludeAdult: Bool
     public let username: String
-    
-    enum UserKeys: String, CodingKey {
-        case gravatar
-    }
     
     enum CodingKeys: String, CodingKey {
         case avatar
@@ -33,9 +29,27 @@ public struct User {
         case isIncludeAdult = "include_adult"
         case username
     }
-    
 }
 
+public struct Gravatar: Codable {
+    
+    public let gravatar: Hash
+    
+    enum CodingKeys: String, CodingKey {
+        case gravatar
+    }
+}
+
+public struct Hash: Codable {
+    
+    public let hash: String
+    
+    enum CodingKeys: String, CodingKey {
+        case hash
+    }
+}
+
+/*
 extension User: Decodable {
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
@@ -52,23 +66,4 @@ extension User: Decodable {
         self.isIncludeAdult = try values.decode(Bool.self, forKey: .isIncludeAdult)
         self.username = try values.decode(String.self, forKey: .username)
     }
-}
-
-/*struct Gravatar: Decodable {
-    var hash: String
-    
-    enum UserKeys: String, CodingKey {
-        case hash
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case gravatar
-    }
-    
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-
-        let user = try values.nestedContainer(keyedBy: UserKeys.self, forKey: .gravatar)
-        self.hash = try user.decode(String.self, forKey: .hash)
-    }
-}*/
+*/

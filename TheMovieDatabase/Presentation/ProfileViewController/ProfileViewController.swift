@@ -35,9 +35,11 @@ class ProfileViewController: UIViewController {
     
     func loadProfile() {
         guard let session = try? ManageKeychain().getSessionID() else { return }
+        print("Session \(session)")
         TheMovieDatabaseAPI.AccountService.parseUserFromJson(session: session) { result in
             print("User \(result)")
-            let decodedimage = result.hash.toUIImage
+            let decodedimage = result.avatar.gravatar.hash.toUIImage
+            //   .hash.toUIImage
             self.avatarImageView.image = decodedimage
             if result.name != "" {
                 self.nameLabel.text = result.name

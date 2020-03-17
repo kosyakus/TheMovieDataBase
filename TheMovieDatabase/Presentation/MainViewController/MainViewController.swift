@@ -27,7 +27,7 @@ class MainViewController: UIViewController {
     
     func searchMovies(language: String, query: String) {
         TheMovieDatabaseAPI.SearchMoviesService.parseMoviesFromJson(language: language, query: query) { result in
-            print("Movies list \(result)")
+            //print("Movies list \(result)")
         }
     }
 }

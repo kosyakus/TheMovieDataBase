@@ -29,6 +29,8 @@
 		E11C7683242006E8000969C7 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7682242006E8000969C7 /* Movie.swift */; };
 		E11C768524200C95000969C7 /* SearchMoviesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C768424200C95000969C7 /* SearchMoviesEndpoint.swift */; };
 		E11C768724200D9D000969C7 /* SearchMoviesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C768624200D9D000969C7 /* SearchMoviesService.swift */; };
+		E11C76892420D426000969C7 /* FavoriteEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C76882420D426000969C7 /* FavoriteEndpoint.swift */; };
+		E11C768B2420D4ED000969C7 /* FavoriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C768A2420D4ED000969C7 /* FavoriteService.swift */; };
 		E16B937E2416D6EB00814B94 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E16B93802416D6EB00814B94 /* Localizable.strings */; };
 		E16B938424175AA300814B94 /* HelperLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16B938324175AA300814B94 /* HelperLoginVC.swift */; };
 		E1C736A22411153B00E60D7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C736A12411153B00E60D7C /* AppDelegate.swift */; };
@@ -134,6 +136,8 @@
 		E11C7682242006E8000969C7 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		E11C768424200C95000969C7 /* SearchMoviesEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesEndpoint.swift; sourceTree = "<group>"; };
 		E11C768624200D9D000969C7 /* SearchMoviesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesService.swift; sourceTree = "<group>"; };
+		E11C76882420D426000969C7 /* FavoriteEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteEndpoint.swift; sourceTree = "<group>"; };
+		E11C768A2420D4ED000969C7 /* FavoriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteService.swift; sourceTree = "<group>"; };
 		E16B937F2416D6EB00814B94 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E16B93822416D79400814B94 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		E16B938324175AA300814B94 /* HelperLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperLoginVC.swift; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 				E11C766D241EC425000969C7 /* LoginEndpoint.swift */,
 				E11C7678241FC612000969C7 /* AccountEndpoint.swift */,
 				E11C768424200C95000969C7 /* SearchMoviesEndpoint.swift */,
+				E11C76882420D426000969C7 /* FavoriteEndpoint.swift */,
 			);
 			path = Endpoint;
 			sourceTree = "<group>";
@@ -467,6 +472,7 @@
 				E11C766F241ECBE9000969C7 /* LoginService.swift */,
 				E11C767A241FC860000969C7 /* AccountService.swift */,
 				E11C768624200D9D000969C7 /* SearchMoviesService.swift */,
+				E11C768A2420D4ED000969C7 /* FavoriteService.swift */,
 				E1C7371F241632F400E60D7C /* UserService.swift */,
 				E1FF6F1B241C15370007B93D /* HandleErrors.swift */,
 				E11C765E241D6131000969C7 /* APIClient.swift */,
@@ -826,6 +832,7 @@
 				E11C7661241D62E0000969C7 /* Constants.swift in Sources */,
 				E11C766C241E1F89000969C7 /* Token.swift in Sources */,
 				E11C7683242006E8000969C7 /* Movie.swift in Sources */,
+				E11C768B2420D4ED000969C7 /* FavoriteService.swift in Sources */,
 				E11C7665241D6710000969C7 /* UserEndpoint.swift in Sources */,
 				E11C767B241FC860000969C7 /* AccountService.swift in Sources */,
 				E11C767D241FCA10000969C7 /* User.swift in Sources */,
@@ -837,6 +844,7 @@
 				E11C766E241EC425000969C7 /* LoginEndpoint.swift in Sources */,
 				E1FF6F16241BEB960007B93D /* UserService.swift in Sources */,
 				E11C7679241FC612000969C7 /* AccountEndpoint.swift in Sources */,
+				E11C76892420D426000969C7 /* FavoriteEndpoint.swift in Sources */,
 				E11C7670241ECBE9000969C7 /* LoginService.swift in Sources */,
 				E1FF6F15241BEB930007B93D /* Router.swift in Sources */,
 				E1FF6F1C241C15370007B93D /* HandleErrors.swift in Sources */,

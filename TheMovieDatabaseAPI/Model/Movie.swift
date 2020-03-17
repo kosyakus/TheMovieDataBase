@@ -12,26 +12,23 @@ public struct Movie: Codable {
     
     // MARK: - Public Properties
     
-    public let genres: [String]
+    public let id: Int
+    public let title: String?
+    public let originalTitle: String?
+    public let averageVote: Double
+    public let voteCount: Int?
+    public let overview: String?
+    public let poster: String?
     public let runtime: Int?
     
-    enum UserKeys: String, CodingKey {
-        case name
-    }
-    
     enum CodingKeys: String, CodingKey {
-        case genres
+        case id
+        case title
+        case originalTitle = "original_title"
+        case averageVote = "vote_average"
+        case voteCount = "vote_count"
+        case overview
+        case poster = "poster_path"
         case runtime
     }
-    
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        let genres = try values.nestedContainer(keyedBy: UserKeys.self, forKey: .genres)
-        let array = try genres.decode([String].self, forKey: .name)
-        
-        print("Genres \(array)")
-        self.genres = array
-        runtime = try values.decode(Int.self, forKey: .runtime)
-    }
-    
 }

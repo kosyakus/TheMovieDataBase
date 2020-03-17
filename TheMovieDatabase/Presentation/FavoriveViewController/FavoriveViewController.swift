@@ -6,13 +6,20 @@
 //  Copyright © 2020 Redmadrobot. All rights reserved.
 //
 
+import TheMovieDatabaseAPI
 import UIKit
 
 class FavoriveViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setUpNavBar()
+        loadFavoriteMovies()
+    }
+    
+    // MARK: - Public methods
+    
+    func setUpNavBar() {
         let searchImage = #imageLiteral(resourceName: "search_icon")
         let listImage = #imageLiteral(resourceName: "list_icon")
 
@@ -28,7 +35,12 @@ class FavoriveViewController: UIViewController {
         self.navigationController?.navigationItem.rightBarButtonItems = [searchButton, listButton]
     }
     
-    // MARK: - Public methods
+    func loadFavoriteMovies() {
+        guard let session = try? ManageKeychain().getSessionID() else { return }
+        TheMovieDatabaseAPI.FavoriteService.parseMoviesFromJson(session: session) { result in
+            print("Favorite Movies \(result)")
+        }
+    }
     
     @objc func didTapEditButton(sender: AnyObject) {
         print("didTapEditButton")
