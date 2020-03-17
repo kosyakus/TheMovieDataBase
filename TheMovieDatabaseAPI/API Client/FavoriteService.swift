@@ -33,3 +33,28 @@ public class FavoriteService {
         }
     }
 }
+
+// Class to check API errors
+
+public class FavoriteServices {
+    private static let apiKey = "93a57d2565c91c4db19ce6040806f41b"
+    static public func getFavoriteMoviesList(session: String,
+                                             completion: @escaping (AFResult<Movies>) -> Void) {
+        APIClient.performRequest(route: FavoriteEndpoint.getFavoriteList(session: session,
+                                                                         apiKey: apiKey),
+                                 completion: completion)
+    }
+    
+    static public func parseMoviesFromJson(session: String, completion: @escaping (Movies?, Int?) -> Void) {
+        FavoriteServices.getFavoriteMoviesList(session: session) { result in
+            //let response = HandleErrors.handleNetworkResponse(result)
+            switch result {
+            case .success(let movies):
+                completion(movies, nil)
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(nil, error.responseCode)
+            }
+        }
+    }
+}

@@ -41,7 +41,7 @@ class ProfileViewController: UIViewController {
             let decodedimage = result.avatar.gravatar.hash.toUIImage
             //   .hash.toUIImage
             self.avatarImageView.image = decodedimage
-            if result.name != "" {
+            if !result.name.isEmpty {
                 self.nameLabel.text = result.name
             } else {
                 self.nameLabel.text = result.username

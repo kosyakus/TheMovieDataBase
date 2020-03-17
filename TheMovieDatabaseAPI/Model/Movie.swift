@@ -18,7 +18,7 @@ public struct Movie: Codable {
     public let averageVote: Double
     public let voteCount: Int?
     public let overview: String?
-    public let poster: String?
+    public let posterPath: String?
     public let runtime: Int?
     
     enum CodingKeys: String, CodingKey {
@@ -28,7 +28,11 @@ public struct Movie: Codable {
         case averageVote = "vote_average"
         case voteCount = "vote_count"
         case overview
-        case poster = "poster_path"
+        case posterPath = "poster_path"
         case runtime
+    }
+    
+    public func getPoster() -> String {
+        "https://image.tmdb.org/t/p/w185\(posterPath ?? "")"
     }
 }

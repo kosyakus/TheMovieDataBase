@@ -17,9 +17,10 @@ class APIClient {
     static func performRequest<T: Decodable> (route: URLRequestConvertible,
                                               decoder: JSONDecoder = JSONDecoder(),
                                               completion: @escaping (AFResult<T>) -> Void) -> DataRequest {
-        return AF.request(route)
-        .responseDecodable(decoder: decoder) { (response: AFDataResponse<T>) in
+        let dataRequest = AF.request(route).responseDecodable(decoder: decoder) { (response: AFDataResponse<T>) in
             completion(response.result)
         }
+        dataRequest.validate()
+        return dataRequest
     }
 }

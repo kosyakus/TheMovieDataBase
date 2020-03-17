@@ -16,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavoriveViewController" customModule="TheMovieDatabase" customModuleProvider="target">
             <connections>
+                <outlet property="noMovieView" destination="ZX5-zt-K5u" id="sZx-6s-3aK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

@@ -11,6 +11,8 @@ import UIKit
 
 class FavoriveViewController: UIViewController {
     
+    @IBOutlet weak var noMovieView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavBar()
@@ -35,10 +37,21 @@ class FavoriveViewController: UIViewController {
         self.navigationController?.navigationItem.rightBarButtonItems = [searchButton, listButton]
     }
     
+    //Этим методом можно протестировать загрузку любимых фильмов и постеров
+    
     func loadFavoriteMovies() {
         guard let session = try? ManageKeychain().getSessionID() else { return }
-        TheMovieDatabaseAPI.FavoriteService.parseMoviesFromJson(session: session) { result in
-            print("Favorite Movies \(result)")
+        TheMovieDatabaseAPI.FavoriteServices.parseMoviesFromJson(session: session) { result, error in
+            if error != nil {
+                print("Error \(String(describing: error))")
+            } else {
+                print("Favorite Movies \(String(describing: result))")
+                guard let movies = result else { return }
+                for movie in movies.results {
+                    let url = URL(string: movie.getPoster())
+                    self.noMovieView.load(url: url!)
+                }
+            }
         }
     }
     
@@ -49,4 +62,18 @@ class FavoriveViewController: UIViewController {
     @objc func didTapSearchButton(sender: AnyObject) {
     }
 
+}
+
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
 }

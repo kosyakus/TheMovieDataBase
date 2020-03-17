@@ -12,7 +12,7 @@ public struct Movies: Codable {
     
     // MARK: - Public Properties
     
-    let results: [Movie]
+    public let results: [Movie]
     
     enum CodingKeys: String, CodingKey {
         case results

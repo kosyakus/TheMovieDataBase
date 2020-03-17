@@ -12,15 +12,11 @@ class ManageKeychain {
     
     static let serviceName = "MovieService"
     
-    func getSessionID() -> String {
+    func getSessionID() throws -> String {
         var sessionId = ""
         guard let currentUser = KeychainSettings.currentUser else { return sessionId }
-        do {
         sessionId = try KeychainPasswordItem(service: ManageKeychain.serviceName,
                                              account: currentUser.username).readPassword()
-        } catch {
-            
-        }
         return sessionId
     }
     
