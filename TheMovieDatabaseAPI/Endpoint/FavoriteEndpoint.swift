@@ -14,7 +14,7 @@ enum FavoriteEndpoint: URLRequestConvertible {
     case getFavoriteList(session: String, apiKey: String)
     
     private var basePath: String {
-        "https://api.themoviedb.org/3/"
+        UserDefaults.standard.string(forKey: "kBaseUrl") ?? "https://api.themoviedb.org/3/"
     }
     
     private var path: String {
