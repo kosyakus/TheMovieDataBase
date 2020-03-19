@@ -17,7 +17,7 @@ enum LoginEndpoint: URLRequestConvertible {
     case deleteSession(sessionId: String, apiKey: String)
     
     private var basePath: String {
-        "https://api.themoviedb.org/3/"
+        UserDefaults.standard.string(forKey: "kBaseUrl") ?? ""
     }
     
     private var path: String {
