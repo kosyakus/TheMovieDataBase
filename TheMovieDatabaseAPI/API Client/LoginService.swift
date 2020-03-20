@@ -28,8 +28,8 @@ public class LoginService {
                                      password: String,
                                      requestToken: String,
                                      completion: @escaping (AFResult<Token>) -> Void) {
-        APIClient.performRequest(route: LoginEndpoint.postValidateToken(username: "kosyak",
-                                                                        password: "kosyakus",
+        APIClient.performRequest(route: LoginEndpoint.postValidateToken(username: username,
+                                                                        password: password,
                                                                         requestToken: requestToken,
                                                                         apiKey: apiKey),
                                  completion: completion)
