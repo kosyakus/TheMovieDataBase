@@ -1,13 +1,14 @@
 //
 //  FavoriteService.swift
-//  TheMovieDatabaseAPI
+//  TheMovieDatabase
 //
-//  Created by Natali on 17.03.2020.
+//  Created by Natali on 21.03.2020.
 //  Copyright © 2020 Redmadrobot. All rights reserved.
 //
 
 import Alamofire
 import Foundation
+import TheMovieDatabaseAPI
 
 public class FavoriteService {
     
@@ -17,7 +18,7 @@ public class FavoriteService {
     
     static public func getFavoriteMoviesList(session: String,
                                              completion: @escaping (AFResult<Movies>) -> Void) {
-        APIClient.performRequest(route: FavoriteEndpoint.getFavoriteList(session: session,
+        TheMovieDatabaseAPI.APIClient.performRequest(route: FavoriteEndpoint.getFavoriteList(session: session,
                                                                          apiKey: apiKey),
                                  completion: completion)
     }

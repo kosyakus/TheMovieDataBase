@@ -16,24 +16,25 @@
 		E11C766A241D75AF000969C7 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7669241D75AF000969C7 /* Session.swift */; };
 		E11C766C241E1F89000969C7 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C766B241E1F89000969C7 /* Token.swift */; };
 		E11C766E241EC425000969C7 /* LoginEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C766D241EC425000969C7 /* LoginEndpoint.swift */; };
-		E11C7670241ECBE9000969C7 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C766F241ECBE9000969C7 /* LoginService.swift */; };
 		E11C7672241ECFC9000969C7 /* ManageKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7671241ECFC9000969C7 /* ManageKeychain.swift */; };
 		E11C7675241F5687000969C7 /* KeychainUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7674241F5687000969C7 /* KeychainUser.swift */; };
 		E11C7677241F5DCA000969C7 /* DeletionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7676241F5DCA000969C7 /* DeletionResult.swift */; };
 		E11C7679241FC612000969C7 /* AccountEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7678241FC612000969C7 /* AccountEndpoint.swift */; };
-		E11C767B241FC860000969C7 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C767A241FC860000969C7 /* AccountService.swift */; };
 		E11C767D241FCA10000969C7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C767C241FCA10000969C7 /* User.swift */; };
 		E11C767F241FEDB7000969C7 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C767E241FEDB7000969C7 /* StringExtension.swift */; };
 		E11C76812420009E000969C7 /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C76802420009E000969C7 /* Movies.swift */; };
 		E11C7683242006E8000969C7 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7682242006E8000969C7 /* Movie.swift */; };
 		E11C768524200C95000969C7 /* SearchMoviesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C768424200C95000969C7 /* SearchMoviesEndpoint.swift */; };
-		E11C768724200D9D000969C7 /* SearchMoviesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C768624200D9D000969C7 /* SearchMoviesService.swift */; };
 		E11C76892420D426000969C7 /* FavoriteEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C76882420D426000969C7 /* FavoriteEndpoint.swift */; };
-		E11C768B2420D4ED000969C7 /* FavoriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C768A2420D4ED000969C7 /* FavoriteService.swift */; };
-		E11C768D2420FC02000969C7 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C768C2420FC02000969C7 /* Errors.swift */; };
+		E11C768D2420FC02000969C7 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C768C2420FC02000969C7 /* APIError.swift */; };
 		E16B937E2416D6EB00814B94 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E16B93802416D6EB00814B94 /* Localizable.strings */; };
 		E16B938424175AA300814B94 /* HelperLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16B938324175AA300814B94 /* HelperLoginVC.swift */; };
 		E1B48E572423F07800AE89EF /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B48E562423F07800AE89EF /* UserSettings.swift */; };
+		E1B48E5A242551E800AE89EF /* APIRequestAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B48E59242551E800AE89EF /* APIRequestAdapter.swift */; };
+		E1B48E5D242637D900AE89EF /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B48E5C242637D900AE89EF /* LoginService.swift */; };
+		E1B48E5F2426380500AE89EF /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B48E5E2426380500AE89EF /* AccountService.swift */; };
+		E1B48E612426382700AE89EF /* SearchMoviesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B48E602426382700AE89EF /* SearchMoviesService.swift */; };
+		E1B48E632426383B00AE89EF /* FavoriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B48E622426383B00AE89EF /* FavoriteService.swift */; };
 		E1C736A22411153B00E60D7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C736A12411153B00E60D7C /* AppDelegate.swift */; };
 		E1C736AB2411154700E60D7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1C736AA2411154700E60D7C /* Assets.xcassets */; };
 		E1C736AE2411154700E60D7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1C736AC2411154700E60D7C /* LaunchScreen.storyboard */; };
@@ -123,25 +124,26 @@
 		E11C7669241D75AF000969C7 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		E11C766B241E1F89000969C7 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		E11C766D241EC425000969C7 /* LoginEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEndpoint.swift; sourceTree = "<group>"; };
-		E11C766F241ECBE9000969C7 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		E11C7671241ECFC9000969C7 /* ManageKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageKeychain.swift; sourceTree = "<group>"; };
 		E11C7674241F5687000969C7 /* KeychainUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainUser.swift; sourceTree = "<group>"; };
 		E11C7676241F5DCA000969C7 /* DeletionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletionResult.swift; sourceTree = "<group>"; };
 		E11C7678241FC612000969C7 /* AccountEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountEndpoint.swift; sourceTree = "<group>"; };
-		E11C767A241FC860000969C7 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		E11C767C241FCA10000969C7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E11C767E241FEDB7000969C7 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		E11C76802420009E000969C7 /* Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
 		E11C7682242006E8000969C7 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		E11C768424200C95000969C7 /* SearchMoviesEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesEndpoint.swift; sourceTree = "<group>"; };
-		E11C768624200D9D000969C7 /* SearchMoviesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesService.swift; sourceTree = "<group>"; };
 		E11C76882420D426000969C7 /* FavoriteEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteEndpoint.swift; sourceTree = "<group>"; };
-		E11C768A2420D4ED000969C7 /* FavoriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteService.swift; sourceTree = "<group>"; };
-		E11C768C2420FC02000969C7 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		E11C768C2420FC02000969C7 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		E16B937F2416D6EB00814B94 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E16B93822416D79400814B94 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		E16B938324175AA300814B94 /* HelperLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperLoginVC.swift; sourceTree = "<group>"; };
 		E1B48E562423F07800AE89EF /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		E1B48E59242551E800AE89EF /* APIRequestAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestAdapter.swift; sourceTree = "<group>"; };
+		E1B48E5C242637D900AE89EF /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		E1B48E5E2426380500AE89EF /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
+		E1B48E602426382700AE89EF /* SearchMoviesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesService.swift; sourceTree = "<group>"; };
+		E1B48E622426383B00AE89EF /* FavoriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteService.swift; sourceTree = "<group>"; };
 		E1C7369E2411153B00E60D7C /* TheMovieDatabase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheMovieDatabase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1C736A12411153B00E60D7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1C736AA2411154700E60D7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -250,6 +252,25 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		E1B48E58242551BA00AE89EF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E1B48E59242551E800AE89EF /* APIRequestAdapter.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		E1B48E5B2426376300AE89EF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E1B48E5C242637D900AE89EF /* LoginService.swift */,
+				E1B48E5E2426380500AE89EF /* AccountService.swift */,
+				E1B48E602426382700AE89EF /* SearchMoviesService.swift */,
+				E1B48E622426383B00AE89EF /* FavoriteService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		E1C736952411153B00E60D7C = {
 			isa = PBXGroup;
 			children = (
@@ -335,7 +356,7 @@
 				E11C767C241FCA10000969C7 /* User.swift */,
 				E11C76802420009E000969C7 /* Movies.swift */,
 				E11C7682242006E8000969C7 /* Movie.swift */,
-				E11C768C2420FC02000969C7 /* Errors.swift */,
+				E11C768C2420FC02000969C7 /* APIError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -423,6 +444,7 @@
 		E1C7371C2416225300E60D7C /* Business Logic */ = {
 			isa = PBXGroup;
 			children = (
+				E1B48E5B2426376300AE89EF /* Services */,
 				E1FF6EFA241980DA0007B93D /* Helper */,
 			);
 			path = "Business Logic";
@@ -470,11 +492,8 @@
 		E1FF6F17241BEBA00007B93D /* API Client */ = {
 			isa = PBXGroup;
 			children = (
+				E1B48E58242551BA00AE89EF /* Common */,
 				E1C7371D2416228E00E60D7C /* Router.swift */,
-				E11C766F241ECBE9000969C7 /* LoginService.swift */,
-				E11C767A241FC860000969C7 /* AccountService.swift */,
-				E11C768624200D9D000969C7 /* SearchMoviesService.swift */,
-				E11C768A2420D4ED000969C7 /* FavoriteService.swift */,
 				E1FF6F1B241C15370007B93D /* HandleErrors.swift */,
 				E11C765E241D6131000969C7 /* APIClient.swift */,
 				E11C7660241D62E0000969C7 /* Constants.swift */,
@@ -789,8 +808,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1B48E5D242637D900AE89EF /* LoginService.swift in Sources */,
 				E1C736D02412A67400E60D7C /* LoginViewController.swift in Sources */,
 				E1C737012413C85900E60D7C /* TextFieldExtension.swift in Sources */,
+				E1B48E632426383B00AE89EF /* FavoriteService.swift in Sources */,
 				E11C7675241F5687000969C7 /* KeychainUser.swift in Sources */,
 				E1C736A22411153B00E60D7C /* AppDelegate.swift in Sources */,
 				E11C7672241ECFC9000969C7 /* ManageKeychain.swift in Sources */,
@@ -801,11 +822,13 @@
 				E1FF6F00241A17A20007B93D /* NotificationExtension.swift in Sources */,
 				E1C737052413DCE200E60D7C /* TabBarController.swift in Sources */,
 				E1C7370F2413F84800E60D7C /* FavoriveViewController.swift in Sources */,
+				E1B48E5F2426380500AE89EF /* AccountService.swift in Sources */,
 				E1C737142413FECA00E60D7C /* ProfileViewController.swift in Sources */,
 				E1B48E572423F07800AE89EF /* UserSettings.swift in Sources */,
 				E1C73717241540A400E60D7C /* NavigationControllerExtension.swift in Sources */,
 				E16B938424175AA300814B94 /* HelperLoginVC.swift in Sources */,
 				E1FF6EFE241981520007B93D /* KeychainSettings.swift in Sources */,
+				E1B48E612426382700AE89EF /* SearchMoviesService.swift in Sources */,
 				E1C736FF2413C40B00E60D7C /* ViewControllerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -832,20 +855,17 @@
 			files = (
 				E11C7661241D62E0000969C7 /* Constants.swift in Sources */,
 				E11C766C241E1F89000969C7 /* Token.swift in Sources */,
-				E11C768D2420FC02000969C7 /* Errors.swift in Sources */,
+				E1B48E5A242551E800AE89EF /* APIRequestAdapter.swift in Sources */,
+				E11C768D2420FC02000969C7 /* APIError.swift in Sources */,
 				E11C7683242006E8000969C7 /* Movie.swift in Sources */,
-				E11C768B2420D4ED000969C7 /* FavoriteService.swift in Sources */,
-				E11C767B241FC860000969C7 /* AccountService.swift in Sources */,
 				E11C767D241FCA10000969C7 /* User.swift in Sources */,
 				E11C7668241D712E000969C7 /* Endpoint.swift in Sources */,
 				E11C768524200C95000969C7 /* SearchMoviesEndpoint.swift in Sources */,
 				E11C7677241F5DCA000969C7 /* DeletionResult.swift in Sources */,
 				E11C7663241D6697000969C7 /* APIConfiguration.swift in Sources */,
-				E11C768724200D9D000969C7 /* SearchMoviesService.swift in Sources */,
 				E11C766E241EC425000969C7 /* LoginEndpoint.swift in Sources */,
 				E11C7679241FC612000969C7 /* AccountEndpoint.swift in Sources */,
 				E11C76892420D426000969C7 /* FavoriteEndpoint.swift in Sources */,
-				E11C7670241ECBE9000969C7 /* LoginService.swift in Sources */,
 				E1FF6F15241BEB930007B93D /* Router.swift in Sources */,
 				E1FF6F1C241C15370007B93D /* HandleErrors.swift in Sources */,
 				E11C765F241D6131000969C7 /* APIClient.swift in Sources */,

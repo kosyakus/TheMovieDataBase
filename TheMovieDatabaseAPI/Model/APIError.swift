@@ -20,3 +20,11 @@ public struct Errors: Codable {
         case errorMessage = "status_message"
     }
 }
+
+public struct ErrorResponse: Decodable {
+    
+    // MARK: - Public Properties
+    
+    public let statusCode: Int
+    public let errorMessage: String
+}

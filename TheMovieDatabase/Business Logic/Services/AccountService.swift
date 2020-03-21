@@ -1,13 +1,14 @@
 //
 //  AccountService.swift
-//  TheMovieDatabaseAPI
+//  TheMovieDatabase
 //
-//  Created by Natali on 16.03.2020.
+//  Created by Natali on 21.03.2020.
 //  Copyright © 2020 Redmadrobot. All rights reserved.
 //
 
 import Alamofire
 import Foundation
+import TheMovieDatabaseAPI
 
 public class AccountService {
     

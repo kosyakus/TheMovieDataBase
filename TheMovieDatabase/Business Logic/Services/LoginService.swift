@@ -1,34 +1,32 @@
 //
 //  LoginService.swift
-//  TheMovieDatabaseAPI
+//  TheMovieDatabase
 //
-//  Created by Natali on 15.03.2020.
+//  Created by Natali on 21.03.2020.
 //  Copyright © 2020 Redmadrobot. All rights reserved.
 //
 
 import Alamofire
 import Foundation
+import TheMovieDatabaseAPI
 
 public class LoginService {
-    
-    // MARK: - Types
-    
-    public typealias DownloadCompletion = () -> Void
     
     // MARK: - Private Properties
     
     private static let apiKey = "93a57d2565c91c4db19ce6040806f41b"
     
     static func createToken(completion: @escaping (AFResult<Token>) -> Void) {
-        APIClient.performRequest(route: LoginEndpoint.getCreateRequestToken(apiKey: apiKey),
-                                 completion: completion)//.responseJSON { responseJSON in
+        TheMovieDatabaseAPI.APIClient.performRequest(
+            route: TheMovieDatabaseAPI.LoginEndpoint.getCreateRequestToken(apiKey: apiKey),
+            completion: completion)
     }
     
     static public func validateToken(username: String,
                                      password: String,
                                      requestToken: String,
                                      completion: @escaping (AFResult<Token>) -> Void) {
-        APIClient.performRequest(route: LoginEndpoint.postValidateToken(username: username,
+        TheMovieDatabaseAPI.APIClient.performRequest(route: TheMovieDatabaseAPI.LoginEndpoint.postValidateToken(username: username,
                                                                         password: password,
                                                                         requestToken: requestToken,
                                                                         apiKey: apiKey),
@@ -36,13 +34,13 @@ public class LoginService {
     }
     
     static func createSession(requestToken: String, completion: @escaping (AFResult<Session>) -> Void) {
-        APIClient.performRequest(route: LoginEndpoint.postCreateSession(requestToken: requestToken,
+        TheMovieDatabaseAPI.APIClient.performRequest(route: TheMovieDatabaseAPI.LoginEndpoint.postCreateSession(requestToken: requestToken,
                                                                         apiKey: apiKey),
                                  completion: completion)
     }
     
     static public func deleteSession(session: String, completion: @escaping (AFResult<DeletionResult>) -> Void) {
-        APIClient.performRequest(route: LoginEndpoint.deleteSession(sessionId: session,
+        TheMovieDatabaseAPI.APIClient.performRequest(route: TheMovieDatabaseAPI.LoginEndpoint.deleteSession(sessionId: session,
                                                                     apiKey: apiKey),
                                  completion: completion)
     }

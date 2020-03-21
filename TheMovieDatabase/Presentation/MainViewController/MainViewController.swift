@@ -6,7 +6,6 @@
 //  Copyright © 2020 Redmadrobot. All rights reserved.
 //
 
-import TheMovieDatabaseAPI
 import UIKit
 
 class MainViewController: UIViewController {
@@ -26,7 +25,7 @@ class MainViewController: UIViewController {
     }
     
     func searchMovies(language: String, query: String) {
-        TheMovieDatabaseAPI.SearchMoviesService.parseMoviesFromJson(language: language, query: query) { _ in
+        SearchMoviesService.parseMoviesFromJson(language: language, query: query) { _ in
             //print("Movies list \(result)")
         }
     }

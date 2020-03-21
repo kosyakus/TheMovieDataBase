@@ -8,8 +8,6 @@
 
 import UIKit
 
-import TheMovieDatabaseAPI
-
 class LoginViewController: UIViewController {
     
     // MARK: - IBOutlet
@@ -61,13 +59,13 @@ class LoginViewController: UIViewController {
     func sendApiRequest(login: String, password: String) {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         
-        TheMovieDatabaseAPI.LoginService.parseTokenFromJson { token in
+        LoginService.parseTokenFromJson { token in
             print("Token \(token.token)")
-            TheMovieDatabaseAPI.LoginService.validateToken(username: login,
-                                                           password: password,
-                                                           requestToken: token.token) {_ in
+            LoginService.validateToken(username: login,
+                                       password: password,
+                                       requestToken: token.token) {_ in
                 print("validated")
-                TheMovieDatabaseAPI.LoginService.parseSessionFromJson(requestToken: token.token) { session in
+                LoginService.parseSessionFromJson(requestToken: token.token) { session in
                         print("Session \(session)")
                         try? ManageKeychain().saveSessionId(sessionId: session.sessionId,
                                                             user: KeychainUser(username: login))

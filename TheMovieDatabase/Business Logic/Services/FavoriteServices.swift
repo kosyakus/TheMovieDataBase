@@ -1,0 +1,61 @@
+//
+//  FavoriteService.swift
+//  TheMovieDatabaseAPI
+//
+//  Created by Natali on 17.03.2020.
+//  Copyright © 2020 Redmadrobot. All rights reserved.
+//
+
+import Alamofire
+import Foundation
+import TheMovieDatabaseAPI
+
+public class FavoriteService {
+    
+    // MARK: - Private Properties
+    
+    private static let apiKey = "93a57d2565c91c4db19ce6040806f41b"
+    
+    static public func getFavoriteMoviesList(session: String,
+                                             completion: @escaping (AFResult<Movies>) -> Void) {
+        TheMovieDatabaseAPI.APIClient.performRequest(route: FavoriteEndpoint.getFavoriteList(session: session,
+                                                                         apiKey: apiKey),
+                                 completion: completion)
+    }
+    
+    static public func parseMoviesFromJson(session: String, completion: @escaping (Movies) -> Void) {
+        FavoriteService.getFavoriteMoviesList(session: session) { result in
+            switch result {
+            case .success(let movies):
+                completion(movies)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+}
+
+// Class to check API errors
+
+public class FavoriteServices {
+    private static let apiKey = "93a57d2565c91c4db19ce6040806f41b"
+    static public func getFavoriteMoviesList(session: String,
+                                             completion: @escaping (AFResult<Movies>) -> Void) {
+        APIClient.performRequest(route: FavoriteEndpoint.getFavoriteList(session: session,
+                                                                         apiKey: apiKey),
+                                 completion: completion)
+    }
+    
+    static public func parseMoviesFromJson(session: String, completion: @escaping (Movies?, Int?) -> Void) {
+        FavoriteServices.getFavoriteMoviesList(session: session) { result in
+            //let response = HandleErrors.handleNetworkResponse(result)
+            switch result {
+            case .success(let movies):
+                completion(movies, nil)
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(nil, error.responseCode)
+            }
+        }
+    }
+}
