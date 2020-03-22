@@ -35,7 +35,7 @@ final class FavoriveViewController: UIViewController {
     func setUpNavBar() {
         let searchImage = #imageLiteral(resourceName: "search_icon")
         let listImage = #imageLiteral(resourceName: "list_icon")
-
+        
         let searchButton = UIBarButtonItem(image: searchImage,
                                            style: .plain,
                                            target: self,
@@ -44,7 +44,7 @@ final class FavoriveViewController: UIViewController {
                                          style: .plain,
                                          target: self,
                                          action: #selector(didTapSearchButton))
-
+        
         self.navigationController?.navigationItem.rightBarButtonItems = [searchButton, listButton]
     }
     
@@ -54,30 +54,26 @@ final class FavoriveViewController: UIViewController {
         
         favoriteService.obtainFavoriteMovies(accountId: "9116288") { result in //9121461
             print(result)
+            switch result {
+            case .success(let movies):
+                for movie in movies.results {
+                let url = URL(string: movie.getPoster())
+                self.noMovieView.load(url: url!)
+                }
+            case .failure(let error):
+                print(error)
+            
+            }
         }
-        
-//        guard let session = try? ManageKeychain().getSessionID() else { return }
-//        TheMovieDatabaseAPI.FavoriteServices.parseMoviesFromJson(session: session) { result, error in
-//            if error != nil {
-//                print("Error \(String(describing: error))")
-//            } else {
-//                print("Favorite Movies \(String(describing: result))")
-//                guard let movies = result else { return }
-//                for movie in movies.results {
-//                    let url = URL(string: movie.getPoster())
-//                    self.noMovieView.load(url: url!)
-//                }
-//            }
-//        }
     }
     
     @objc func didTapEditButton(sender: AnyObject) {
         print("didTapEditButton")
     }
-
+    
     @objc func didTapSearchButton(sender: AnyObject) {
     }
-
+    
 }
 
 extension UIImageView {

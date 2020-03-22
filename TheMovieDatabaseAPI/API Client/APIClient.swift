@@ -18,7 +18,7 @@ class APIClient {
                                               decoder: JSONDecoder = JSONDecoder(),
                                               completion: @escaping (Result<T>) -> Void) -> DataRequest {
         let dataRequest = Alamofire.request(route).responseData(completionHandler: { responce in
-            // TODO: Понизил версию Alamofire, оставил для работы старых запросов
+            // TODO: Повысить Alamofire
             // swiftlint:disable force_try
             completion(.success(try! decoder.decode(T.self, from: responce.data ?? Data())))
         })
