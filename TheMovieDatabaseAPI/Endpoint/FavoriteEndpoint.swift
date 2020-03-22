@@ -9,44 +9,31 @@
 import Alamofire
 import Foundation
 
-enum FavoriteEndpoint: URLRequestConvertible {
+public struct FavoriteEndpoint: Endpoint {
     
-    case getFavoriteList(session: String, apiKey: String)
+    public typealias Content = Movies
     
-    private var basePath: String {
-        UserDefaults.standard.string(forKey: "kBaseUrl") ?? "https://api.themoviedb.org/3/"
+    private let accountId: String
+    
+    public init(accountId: String) {
+        self.accountId = accountId
     }
     
-    private var path: String {
-        switch self {
-        case .getFavoriteList:
-            return "account/{account_id}/favorite/movies"
-        }
+    public func makeRequest() throws -> URLRequest {
+        var request = URLRequest(url: URL(string: "account/\(accountId)/favorite/movies")!)
+        request.httpMethod = "GET"
+        return request
     }
     
-    private var method: HTTPMethod {
-        switch self {
-        case .getFavoriteList:
-            return .get
-        }
-    }
-    
-    private var parameters: Parameters {
-        switch self {
-        case let .getFavoriteList(session, apiKey):
-            return ["session_id": session, "api_key": apiKey]
-        }
-    }
-    
-    func asURLRequest() throws -> URLRequest {
-        let url = try basePath.asURL()
-        var urlRequest = URLRequest(url: url.appendingPathComponent(path))
-        // HTTP Method
-        urlRequest.httpMethod = method.rawValue
-        // Common Headers
-        urlRequest.setValue(Constants.ProductionServer.apiKey,
-                            forHTTPHeaderField: Constants.HTTPHeaderField.authentication.rawValue)
-        return try URLEncoding.default.encode(urlRequest, with: parameters)
-            //URLEncoding.queryString.encode(urlRequest, with: parameters)
+    public func content(from data: Data, response: URLResponse?) throws -> Content {
+        
+        // TODO: Вынести общие данные в базовый Endpoint
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
+        decoder.dateDecodingStrategy = .formatted(formatter)
+        return try decoder.decode(Content.self, from: data)
     }
 }

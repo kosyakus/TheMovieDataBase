@@ -8,8 +8,7 @@ target 'TheMovieDatabase' do
   # Pods for TheMovieDatabase
 
   pod 'SwiftLint'
-  pod 'Alamofire'
-
+  
   target 'TheMovieDatabaseTests' do
     inherit! :search_paths
     # Pods for testing
@@ -24,6 +23,6 @@ target 'TheMovieDatabaseAPI' do
   # Pods for TheMovieDatabaseAPI
 
   pod 'SwiftLint'
-  pod 'Alamofire'
+  pod 'Alamofire', '~> 4.8'
 
 end

@@ -9,9 +9,20 @@
 import TheMovieDatabaseAPI
 import UIKit
 
-class FavoriveViewController: UIViewController {
+final class FavoriveViewController: UIViewController {
     
     @IBOutlet weak var noMovieView: UIImageView!
+    
+    private let favoriteService: FavoriteServices
+    
+    init(favoriteService: FavoriteServices = ServiceLayer.shared.favoriteService) {
+        self.favoriteService = favoriteService
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,19 +51,24 @@ class FavoriveViewController: UIViewController {
     //Этим методом можно протестировать загрузку любимых фильмов и постеров
     
     func loadFavoriteMovies() {
-        guard let session = try? ManageKeychain().getSessionID() else { return }
-        TheMovieDatabaseAPI.FavoriteServices.parseMoviesFromJson(session: session) { result, error in
-            if error != nil {
-                print("Error \(String(describing: error))")
-            } else {
-                print("Favorite Movies \(String(describing: result))")
-                guard let movies = result else { return }
-                for movie in movies.results {
-                    let url = URL(string: movie.getPoster())
-                    self.noMovieView.load(url: url!)
-                }
-            }
+        
+        favoriteService.obtainFavoriteMovies(accountId: "9116288") { result in //9121461
+            print(result)
         }
+        
+//        guard let session = try? ManageKeychain().getSessionID() else { return }
+//        TheMovieDatabaseAPI.FavoriteServices.parseMoviesFromJson(session: session) { result, error in
+//            if error != nil {
+//                print("Error \(String(describing: error))")
+//            } else {
+//                print("Favorite Movies \(String(describing: result))")
+//                guard let movies = result else { return }
+//                for movie in movies.results {
+//                    let url = URL(string: movie.getPoster())
+//                    self.noMovieView.load(url: url!)
+//                }
+//            }
+//        }
     }
     
     @objc func didTapEditButton(sender: AnyObject) {

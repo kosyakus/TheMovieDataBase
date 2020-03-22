@@ -9,44 +9,26 @@
 import Alamofire
 import Foundation
 
-enum AccountEndpoint: URLRequestConvertible {
+public struct AccountEndpoint: Endpoint, Encodable {
     
-    case getAccountDetails(sessionId: String, apiKey: String)
+    public typealias Content = User
     
-    private var basePath: String {
-        "https://api.themoviedb.org/3/"
+    public init() {}
+
+    public func makeRequest() throws -> URLRequest {
+        var request = URLRequest(url: URL(string: "account")!)
+        request.httpMethod = "GET"
+        return request
     }
     
-    private var path: String {
-        switch self {
-        case .getAccountDetails:
-            return "account"
-        }
-    }
-    
-    private var method: HTTPMethod {
-        switch self {
-        case .getAccountDetails:
-            return .get
-        }
-    }
-    
-    private var parameters: Parameters {
-        switch self {
-        case let .getAccountDetails(sessionId, apiKey):
-        return ["session_id": sessionId, "api_key": apiKey]
-        }
-    }
-    
-    func asURLRequest() throws -> URLRequest {
-        let url = try basePath.asURL()
-        var urlRequest = URLRequest(url: url.appendingPathComponent(path))
-        // HTTP Method
-        urlRequest.httpMethod = method.rawValue
-        // Common Headers
-        urlRequest.setValue(Constants.ProductionServer.apiKey,
-                            forHTTPHeaderField: Constants.HTTPHeaderField.authentication.rawValue)
-        return try URLEncoding.queryString.encode(urlRequest, with: parameters)
-        //URLEncoding.default.encode(urlRequest, with: parameters)
+    public func content(from data: Data, response: URLResponse?) throws -> Content {
+        
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
+        decoder.dateDecodingStrategy = .formatted(formatter)
+        return try decoder.decode(Content.self, from: data)
     }
 }

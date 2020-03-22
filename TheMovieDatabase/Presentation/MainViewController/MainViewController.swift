@@ -15,6 +15,17 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var findMovieTextField: UITextField!
     
+    private let searchMoviesService: SearchMoviesService
+    
+    init(searchMoviesService: SearchMoviesService = ServiceLayer.shared.searchMoviesService) {
+        self.searchMoviesService = searchMoviesService
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let searchIcon = "search_icon"
@@ -25,9 +36,18 @@ class MainViewController: UIViewController {
         self.searchMovies(language: "ru-RU", query: "дулиттл")
     }
     
-    func searchMovies(language: String, query: String) {
-        TheMovieDatabaseAPI.SearchMoviesService.parseMoviesFromJson(language: language, query: query) { _ in
-            //print("Movies list \(result)")
+    func searchMovies(language: String?, query: String) {
+        searchMoviesService.fetchSearchMovies(language: language, query: "дулиттл") { result in
+            switch result {
+            case .success(let movie):
+                print(movie)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
         }
+        
+//        TheMovieDatabaseAPI.SearchMoviesService.parseMoviesFromJson(language: language, query: query) { _ in
+//            //print("Movies list \(result)")
+//        }
     }
 }

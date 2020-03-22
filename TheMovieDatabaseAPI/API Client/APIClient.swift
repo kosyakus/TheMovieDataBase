@@ -16,10 +16,12 @@ class APIClient {
     @discardableResult
     static func performRequest<T: Decodable> (route: URLRequestConvertible,
                                               decoder: JSONDecoder = JSONDecoder(),
-                                              completion: @escaping (AFResult<T>) -> Void) -> DataRequest {
-        let dataRequest = AF.request(route).responseDecodable(decoder: decoder) { (response: AFDataResponse<T>) in
-            completion(response.result)
-        }
+                                              completion: @escaping (Result<T>) -> Void) -> DataRequest {
+        let dataRequest = Alamofire.request(route).responseData(completionHandler: { responce in
+            // TODO: Понизил версию Alamofire, оставил для работы старых запросов
+            // swiftlint:disable force_try
+            completion(.success(try! decoder.decode(T.self, from: responce.data ?? Data())))
+        })
         dataRequest.validate()
         return dataRequest
     }

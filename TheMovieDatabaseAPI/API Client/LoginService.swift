@@ -19,7 +19,7 @@ public class LoginService {
     
     private static let apiKey = "93a57d2565c91c4db19ce6040806f41b"
     
-    static func createToken(completion: @escaping (AFResult<Token>) -> Void) {
+    static func createToken(completion: @escaping (Result<Token>) -> Void) {
         APIClient.performRequest(route: LoginEndpoint.getCreateRequestToken(apiKey: apiKey),
                                  completion: completion)//.responseJSON { responseJSON in
     }
@@ -27,7 +27,7 @@ public class LoginService {
     static public func validateToken(username: String,
                                      password: String,
                                      requestToken: String,
-                                     completion: @escaping (AFResult<Token>) -> Void) {
+                                     completion: @escaping (Result<Token>) -> Void) {
         APIClient.performRequest(route: LoginEndpoint.postValidateToken(username: username,
                                                                         password: password,
                                                                         requestToken: requestToken,
@@ -35,13 +35,13 @@ public class LoginService {
                                  completion: completion)
     }
     
-    static func createSession(requestToken: String, completion: @escaping (AFResult<Session>) -> Void) {
+    static func createSession(requestToken: String, completion: @escaping (Result<Session>) -> Void) {
         APIClient.performRequest(route: LoginEndpoint.postCreateSession(requestToken: requestToken,
                                                                         apiKey: apiKey),
                                  completion: completion)
     }
     
-    static public func deleteSession(session: String, completion: @escaping (AFResult<DeletionResult>) -> Void) {
+    static public func deleteSession(session: String, completion: @escaping (Result<DeletionResult>) -> Void) {
         APIClient.performRequest(route: LoginEndpoint.deleteSession(sessionId: session,
                                                                     apiKey: apiKey),
                                  completion: completion)

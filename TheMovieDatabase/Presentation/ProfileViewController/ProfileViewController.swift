@@ -19,6 +19,17 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
+    private let accountService: AccountService
+    
+    init(accountService: AccountService = ServiceLayer.shared.accountService) {
+        self.accountService = accountService
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,19 +45,23 @@ class ProfileViewController: UIViewController {
     }
     
     func loadProfile() {
-        guard let session = try? ManageKeychain().getSessionID() else { return }
-        print("Session \(session)")
-        TheMovieDatabaseAPI.AccountService.parseUserFromJson(session: session) { result in
-            print("User \(result)")
-            let decodedimage = result.avatar.gravatar.hash.toUIImage
-            //   .hash.toUIImage
-            self.avatarImageView.image = decodedimage
-            if !result.name.isEmpty {
-                self.nameLabel.text = result.name
-            } else {
-                self.nameLabel.text = result.username
-            }
+        
+        accountService.fetchUser() { result in
+            print(result)
         }
+//        guard let session = try? ManageKeychain().getSessionID() else { return }
+//        print("Session \(session)")
+//        TheMovieDatabaseAPI.AccountService.parseUserFromJson(session: session) { result in
+//            print("User \(result)")
+//            let decodedimage = result.avatar.gravatar.hash.toUIImage
+//            //   .hash.toUIImage
+//            self.avatarImageView.image = decodedimage
+//            if !result.name.isEmpty {
+//                self.nameLabel.text = result.name
+//            } else {
+//                self.nameLabel.text = result.username
+//            }
+//        }
     }
     
     // MARK: - IBAction

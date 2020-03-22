@@ -14,39 +14,25 @@ public struct User: Codable {
     
     public let avatar: Gravatar
     public let id: Int
-    public let iso639: String
-    public let iso3166: String
+    public let iso6391: String
+    public let iso31661: String
     public let name: String
-    public let isIncludeAdult: Bool
+    public let includeAdult: Bool
     public let username: String
-    
-    enum CodingKeys: String, CodingKey {
-        case avatar
-        case id
-        case iso639 = "iso_639_1"
-        case iso3166 = "iso_3166_1"
-        case name
-        case isIncludeAdult = "include_adult"
-        case username
-    }
 }
 
 public struct Gravatar: Codable {
     
-    public let gravatar: Hash
+    // MARK: - Public Properties
     
-    enum CodingKeys: String, CodingKey {
-        case gravatar
-    }
+    public let gravatar: Hash
 }
 
 public struct Hash: Codable {
     
-    public let hash: String
+    // MARK: - Public Properties
     
-    enum CodingKeys: String, CodingKey {
-        case hash
-    }
+    public let hash: String
 }
 
 /*

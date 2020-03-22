@@ -10,15 +10,6 @@ import Foundation
 
 class HandleErrors {
     
-    /*func checkStatusCode(statusCode: Int) {
-        if (200..<300).contains(statusCode) {
-            let value = responseJSON.result.value
-            print("value: ", value ?? "nil")
-        } else {
-            print("error")
-        }
-    }*/
-    
     enum NetworkResponse: String {
         case success
         case authenticationError = "Необходимо зарегистрироваться."

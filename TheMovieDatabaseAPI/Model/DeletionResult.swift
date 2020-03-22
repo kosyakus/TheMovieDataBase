@@ -13,8 +13,4 @@ public struct DeletionResult: Codable {
     // MARK: - Public Properties
     
     public let success: Bool
-    
-    enum CodingKeys: String, CodingKey {
-        case success
-    }
 }
