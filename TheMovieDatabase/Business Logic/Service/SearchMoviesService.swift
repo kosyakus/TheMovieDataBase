@@ -9,8 +9,8 @@
 import Foundation
 import TheMovieDatabaseAPI
 
-public protocol SearchMoviesService {
-
+protocol SearchMoviesService {
+    
     /// - Parameters:
     ///   - completionHandler: Обработчик результата входа.
     /// - Returns: Прогресс выполнения входа.
@@ -18,7 +18,7 @@ public protocol SearchMoviesService {
     func fetchSearchMovies(
         language: String?,
         query: String,
-        completion: @escaping (Result<Movies, Error>) -> Void) -> Progress
+        completion: @escaping (Result<[Movie], Error>) -> Void)
 }
 
 final public class SearchMoviesServiceImplementation: SearchMoviesService {
@@ -30,13 +30,28 @@ final public class SearchMoviesServiceImplementation: SearchMoviesService {
     }
     
     @discardableResult
-    public func fetchSearchMovies(
+    func fetchSearchMovies(
         language: String?,
         query: String,
-        completion: @escaping (Result<Movies, Error>) -> Void) -> Progress {
+        completion: @escaping (Result<[Movie], Error>) -> Void) {
         
         client.request(SearchMoviesEndpoint(language: language, query: query)) { result in
-            completion(result)
+            let moviesResult = result.flatMap { movies -> Result<[Movie], Error> in
+                let movies = movies.map(self.movie(from:))
+                return .success(movies)
+            }
+            completion(moviesResult)
         }
+    }
+    
+    private func movie(from movie: APIMovie) -> Movie {
+        Movie(
+            id: movie.id,
+            title: movie.title,
+            originalTitle: movie.originalTitle,
+            voteAverage: movie.voteAverage,
+            voteCount: movie.voteCount,
+            overview: movie.overview,
+            poster: "https://image.tmdb.org/t/p/w185\(movie.posterPath ?? "")")
     }
 }

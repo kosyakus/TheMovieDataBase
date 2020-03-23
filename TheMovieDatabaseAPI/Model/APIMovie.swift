@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Movie: Codable {
+public struct APIMovie: Decodable {
     
     // MARK: - Public Properties
     
@@ -21,7 +21,7 @@ public struct Movie: Codable {
     public let posterPath: String?
     public let runtime: Int?
    
-    public func getPoster() -> String {
-        "https://image.tmdb.org/t/p/w185\(posterPath ?? "")"
-    }
+//    public func getPoster() -> String {
+//        "https://image.tmdb.org/t/p/w185\(posterPath ?? "")"
+//    }
 }

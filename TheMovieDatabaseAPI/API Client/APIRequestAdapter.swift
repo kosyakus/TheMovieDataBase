@@ -21,7 +21,7 @@ public final class APIRequestAdapter: Alamofire.RequestAdapter {
     /// Сессия.
     // TODO: Подумать, может его стоит передавать как-то подругому
     public var sessionId: String?
-
+    
     /// Создать адаптер с базовым `URL` и `apiKey`.
     ///
     /// - Parameter baseURL: Базовый `URL`
@@ -30,14 +30,14 @@ public final class APIRequestAdapter: Alamofire.RequestAdapter {
         self.apiKey = apiKey
         self.sessionId = sessionId
     }
-
+    
     // MARK: - Alamofire.RequestAdapter
     
     public func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
         var request = urlRequest
         guard let requestPath = request.url?.path,
             var components = URLComponents(
-                url: baseURL.appendingPathComponent(requestPath),
+                url: baseURL, //.appendingPathComponent(requestPath),
                 resolvingAgainstBaseURL: true
             )
             else { return urlRequest }
@@ -49,8 +49,8 @@ public final class APIRequestAdapter: Alamofire.RequestAdapter {
         }
         components.queryItems = queryItems
 
-        request.url = components.url
-
+        request.url = components.url!.appendingPathComponent(requestPath)
+        print("FINAL \(request)")
         return request
     }
     

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HandleErrors {
+final class HandleErrors {
     
     enum NetworkResponse: String {
         case success

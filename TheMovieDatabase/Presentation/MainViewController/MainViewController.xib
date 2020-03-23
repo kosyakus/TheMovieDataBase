@@ -37,6 +37,7 @@
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Поиск фильмов" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XOj-fY-Wem">
                     <rect key="frame" x="24" y="200" width="319" height="48"/>
                     <color key="backgroundColor" name="LightGray"/>
+                    <accessibility key="accessibilityConfiguration" identifier="FindMovieTF"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="rOv-aT-uGU"/>
                     </constraints>

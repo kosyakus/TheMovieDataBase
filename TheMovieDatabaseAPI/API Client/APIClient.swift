@@ -11,7 +11,7 @@
 import Alamofire
 import Foundation
 
-class APIClient {
+final class APIClient {
     
     @discardableResult
     static func performRequest<T: Decodable> (route: URLRequestConvertible,

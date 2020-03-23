@@ -13,7 +13,7 @@ final class FavoriveViewController: UIViewController {
     
     @IBOutlet weak var noMovieView: UIImageView!
     
-    private let favoriteService: FavoriteServices
+    var favoriteService: FavoriteServices
     
     init(favoriteService: FavoriteServices = ServiceLayer.shared.favoriteService) {
         self.favoriteService = favoriteService
@@ -48,16 +48,14 @@ final class FavoriveViewController: UIViewController {
         self.navigationController?.navigationItem.rightBarButtonItems = [searchButton, listButton]
     }
     
-    //Этим методом можно протестировать загрузку любимых фильмов и постеров
-    
     func loadFavoriteMovies() {
         
-        favoriteService.obtainFavoriteMovies(accountId: "9116288") { result in //9121461
+        favoriteService.fetchFavoriteMovies(accountId: "9116288") { result in //9121461
             print(result)
             switch result {
             case .success(let movies):
-                for movie in movies.results {
-                let url = URL(string: movie.getPoster())
+                for movie in movies {
+                    let url = URL(string: movie.poster ?? "")
                 self.noMovieView.load(url: url!)
                 }
             case .failure(let error):

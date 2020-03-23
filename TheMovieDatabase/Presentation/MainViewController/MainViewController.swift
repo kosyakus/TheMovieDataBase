@@ -15,7 +15,7 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var findMovieTextField: UITextField!
     
-    private let searchMoviesService: SearchMoviesService
+    var searchMoviesService: SearchMoviesService
     
     init(searchMoviesService: SearchMoviesService = ServiceLayer.shared.searchMoviesService) {
         self.searchMoviesService = searchMoviesService

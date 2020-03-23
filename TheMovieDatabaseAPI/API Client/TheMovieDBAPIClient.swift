@@ -37,7 +37,7 @@ public final class TheMovieDBAPIClient {
         completionHandler: @escaping (Swift.Result<T.Content, Error>) -> Void) -> Progress where T: Endpoint {
 
         let anyRequest = AnyRequest(create: endpoint.makeRequest)
-        print("anyRequest \(anyRequest.urlRequest)")
+        //print("anyRequest \(anyRequest.urlRequest)")
         let request = sessionManager.request(anyRequest).responseData { (response: DataResponse<Data>) in
             switch response.result {
             case .success(let data):

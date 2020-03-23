@@ -18,7 +18,7 @@ public protocol Endpoint {
 }
 
 extension Endpoint {
-    func content(from data: Data, response: URLResponse?) throws -> Content {
+    public func content(from data: Data, response: URLResponse?) throws -> Content {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         

@@ -13,10 +13,5 @@ public struct Errors: Codable {
     // MARK: - Public Properties
     
     public let statusCode: Int
-    public let errorMessage: String
-    
-    enum CodingKeys: String, CodingKey {
-        case statusCode = "status_code"
-        case errorMessage = "status_message"
-    }
+    public let statusMessage: String
 }

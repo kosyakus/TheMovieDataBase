@@ -10,7 +10,7 @@ import Foundation
 import TheMovieDatabaseAPI
 
 /// Сервис работы с избранным.
-public protocol FavoriteServices {
+protocol FavoriteServices {
 
     /// Загрузка избранных фильмов.
     ///
@@ -18,9 +18,9 @@ public protocol FavoriteServices {
     ///   - completionHandler: Обработчик результата входа.
     /// - Returns: Прогресс выполнения входа.
     @discardableResult
-    func obtainFavoriteMovies(
+    func fetchFavoriteMovies(
         accountId: String,
-        completion: @escaping (Result<Movies, Error>) -> Void) -> Progress
+        completion: @escaping (Result<[Movie], Error>) -> Void)
 }
 
 final public class FavoriteServicesImplementation: FavoriteServices {
@@ -32,12 +32,27 @@ final public class FavoriteServicesImplementation: FavoriteServices {
     }
     
     @discardableResult
-    public func obtainFavoriteMovies(
+    func fetchFavoriteMovies(
         accountId: String,
-        completion: @escaping (Result<Movies, Error>) -> Void) -> Progress {
+        completion: @escaping (Result<[Movie], Error>) -> Void) {
         
         client.request(FavoriteEndpoint(accountId: accountId)) { result in
-            completion(result)
+        let moviesResult = result.flatMap { movies -> Result<[Movie], Error> in
+            let movies = movies.results.map(self.movie(from:))
+            return .success(movies)
         }
+        completion(moviesResult)
+        }
+    }
+    
+    private func movie(from movie: APIMovie) -> Movie {
+        Movie(
+            id: movie.id,
+            title: movie.title,
+            originalTitle: movie.originalTitle,
+            voteAverage: movie.voteAverage,
+            voteCount: movie.voteCount,
+            overview: movie.overview,
+            poster: "https://image.tmdb.org/t/p/w185\(movie.posterPath ?? "")")
     }
 }

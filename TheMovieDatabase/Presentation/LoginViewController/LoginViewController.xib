@@ -44,6 +44,7 @@
                     <rect key="frame" x="24" y="187" width="367" height="48"/>
                     <color key="backgroundColor" name="LightGray"/>
                     <color key="tintColor" name="Light"/>
+                    <accessibility key="accessibilityConfiguration" identifier="LoginTF"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="EQE-jb-4Ld"/>
                     </constraints>
@@ -54,6 +55,7 @@
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aoT-ji-AqT">
                     <rect key="frame" x="24" y="259" width="367" height="48"/>
                     <color key="backgroundColor" name="LightGray"/>
+                    <accessibility key="accessibilityConfiguration" identifier="PassTF"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="DF8-B9-fy8"/>
                     </constraints>
@@ -64,6 +66,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QEP-cS-wUb">
                     <rect key="frame" x="24" y="779" width="367" height="56"/>
                     <color key="backgroundColor" name="LightGray"/>
+                    <accessibility key="accessibilityConfiguration" identifier="loginButton"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="56" id="VA3-aW-fFx"/>
                     </constraints>

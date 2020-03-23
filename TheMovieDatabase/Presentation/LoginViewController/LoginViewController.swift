@@ -62,12 +62,13 @@ class LoginViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         
         TheMovieDatabaseAPI.LoginService.parseTokenFromJson { token in
-            print("Token \(token.token)")
+            print("Token \(token.requestToken)")
             TheMovieDatabaseAPI.LoginService.validateToken(username: login,
                                                            password: password,
-                                                           requestToken: token.token) {_ in
+                                                           requestToken: token.requestToken) {_ in
                 print("validated")
-                TheMovieDatabaseAPI.LoginService.parseSessionFromJson(requestToken: token.token) { session in
+                TheMovieDatabaseAPI.LoginService.parseSessionFromJson(
+                    requestToken: token.requestToken) { session in
                         print("Session \(session)")
                         try? ManageKeychain().saveSessionId(sessionId: session.sessionId,
                                                             user: KeychainUser(username: login))

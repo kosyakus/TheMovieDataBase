@@ -9,9 +9,9 @@
 import Alamofire
 import Foundation
 
-public struct SearchMoviesEndpoint: Endpoint {
+public struct SearchMoviesEndpoint: Endpoint, Encodable {
     
-    public typealias Content = Movies
+    public typealias Content = [APIMovie]
 
     private let language: String
     private let query: String
@@ -26,18 +26,30 @@ public struct SearchMoviesEndpoint: Endpoint {
         self.language = lang
         //self.parameters = ["language": self.language, "query": query]
     }
-    //private var parameters: Parameters
+    //private var parameters: [String: Any]?
     
     public func makeRequest() throws -> URLRequest {
-        var urlComp = URLComponents(url: URL(string: "search/movie")!, resolvingAgainstBaseURL: true)!
-        let dict = ["language": self.language, "query": query]
-        urlComp.setQueryItems(with: dict)
-        //let queryItem = URLQueryItem(name: "query", value: query)
+//        if let params = parameters {
+//            queryItems.append(contentsOf: params.map {
+//                let item = URLQueryItem(name: "\($0)", value: "\($1)")
+//                return item
+//            })
+//        }
+        
+        var urlComp = URLComponents(string: "search/movie")!
+        let queryItem = [URLQueryItem(name: "query", value: query),
+                         URLQueryItem(name: "language", value: self.language)]
+        urlComp.queryItems = queryItem
+        //let dict = ["language": self.language, "query": query]
+//        urlComp.setQueryItems(with: dict)
+        
         //var request = URLComponents(url: URL(string: "search/movie")!, resolvingAgainstBaseURL: true)
-        var request = URLRequest(url: URL(string: "search/movie")!)
+        var request = URLRequest(url: URL(string: "search/movie")!) // try urlComp.asURL())
         request.url = urlComp.url
 //        let encoder = JSONEncoder()
-//        request.httpBody = try encoder.encode(self)
+        //request.httpBody = try JSONSerialization.data(withJSONObject: dict)
+        //request.httpBody = try JSONEncoder().encode(self)
+        //request.httpBody = dict.percentEncode()
         
         request.httpMethod = "GET"
         
@@ -64,4 +76,19 @@ extension URLComponents {
         self.queryItems = parameters.map { URLQueryItem(name: $0.key, value: $0.value) }
     }
     
+}
+
+extension Dictionary {
+    
+    /// Вспомогательный метод кодирования тела HTTP запроса на основе допустимых символов
+    /// https://en.wikipedia.org/wiki/Percent-encoding
+    func percentEncode() -> Data? {
+        self.map { key, value in
+            let escapedKey = "\(key)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+            let escapedValue = "\(value)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+            return escapedKey + "=" + escapedValue
+        }
+        .joined(separator: "&")
+        .data(using: .utf8)
+    }
 }
