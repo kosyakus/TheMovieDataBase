@@ -32,12 +32,13 @@ class MainViewController: UIViewController {
         if let image = UIImage(named: searchIcon) {
             findMovieTextField.setLeftView(image: image)
         }
+        findMovieTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         self.hideKeyboardWhenTappedAround()
         self.searchMovies(language: "ru-RU", query: "дулиттл")
     }
     
     func searchMovies(language: String?, query: String) {
-        searchMoviesService.fetchSearchMovies(language: language, query: "дулиттл") { result in
+        searchMoviesService.fetchSearchMovies(language: language, query: query) { result in
             switch result {
             case .success(let movie):
                 print(movie)
@@ -45,9 +46,10 @@ class MainViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
-        
-//        TheMovieDatabaseAPI.SearchMoviesService.parseMoviesFromJson(language: language, query: query) { _ in
-//            //print("Movies list \(result)")
-//        }
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+        self.searchMovies(language: Locale.current.languageCode!, query: text)
     }
 }

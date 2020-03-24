@@ -41,17 +41,39 @@ public final class APIRequestAdapter: Alamofire.RequestAdapter {
                 resolvingAgainstBaseURL: true
             )
             else { return urlRequest }
-
+        
+        var params = [String: String]()
+        if let query = request.url?.query {
+            params = convertParamsIntoDict(params: query)
+        }
+        
         request.setValue(apiKey, forHTTPHeaderField: "api_key")
         var queryItems = [URLQueryItem(name: "api_key", value: apiKey)]
         if let sessionId = sessionId {
             queryItems.append(URLQueryItem(name: "session_id", value: sessionId))
         }
+        
+        if !params.isEmpty {
+            queryItems.append(contentsOf: params.map {
+                let item = URLQueryItem(name: "\($0)", value: "\($1)")
+                return item
+            })
+        }
+        
         components.queryItems = queryItems
-
         request.url = components.url!.appendingPathComponent(requestPath)
         print("FINAL \(request)")
         return request
+    }
+    
+    func convertParamsIntoDict(params: String) -> [String: String] {
+        let params = params.components(separatedBy: "&").map( {
+            $0.components(separatedBy: "=")}).reduce(into: [String: String]()) {dict, pair in
+                if pair.count == 2 {
+                    dict[pair[0]] = pair[1]
+                }
+        }
+        return params
     }
     
 //    public func adapt(_ urlRequest: URLRequest) throws -> URLRequest {

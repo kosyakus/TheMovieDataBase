@@ -14,6 +14,11 @@ target 'TheMovieDatabase' do
     # Pods for testing
   end
 
+  target 'TheMovieDatabaseUITests' do
+    inherit! :search_paths
+    pod 'Catbird'
+  end
+
 end
 
 target 'TheMovieDatabaseAPI' do

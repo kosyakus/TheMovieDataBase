@@ -11,13 +11,18 @@ import XCTest
 
 final class MainViewControllerTests: ViewControllerTestCase {
     
-    var viewController: MainViewController { rootViewController as! MainViewController }
+    var mainViewController: MainViewController { rootViewController as! MainViewController }
 
     override func setUp() {
         super.setUp()
         let mainViewController = MainViewController()
         mainViewController.searchMoviesService = SearchMovieMock(movies: .stub)
         rootViewController = mainViewController
+    }
+    
+    /// Тесты на наличие поля поиска фильмов
+    func testTextFieldExists() {
+        XCTAssertNotNil(mainViewController.findMovieTextField.isEnabled)
     }
     
 }

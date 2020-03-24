@@ -12,7 +12,7 @@ import XCTest
 
 final class LoginViewControllerTests: ViewControllerTestCase {
     
-    var loginViewController: LoginViewController { rootViewController as! LoginViewController}
+    var loginViewController: LoginViewController {rootViewController as! LoginViewController}
 
     override func setUp() {
         super.setUp()
@@ -36,6 +36,7 @@ final class LoginViewControllerTests: ViewControllerTestCase {
         XCTAssertNotNil(loginButton)
     }
     
+    /// Тест на наличие скрытого текста ошибки
     func testErrorLabelExists() {
         XCTAssertTrue(loginViewController.errorLabel.isHidden)
     }

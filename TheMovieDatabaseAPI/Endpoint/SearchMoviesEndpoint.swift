@@ -9,52 +9,32 @@
 import Alamofire
 import Foundation
 
-public struct SearchMoviesEndpoint: Endpoint, Encodable {
+public struct SearchMoviesEndpoint: Endpoint {
     
     public typealias Content = [APIMovie]
 
     private let language: String
     private let query: String
+    public var params: [String : Any]?
     
     public init(language: String?, query: String) {
         self.query = query
         guard let lang = language else {
             self.language = Locale.current.languageCode!
-            //self.parameters = ["language": self.language, "query": query]
             return
         }
         self.language = lang
-        //self.parameters = ["language": self.language, "query": query]
     }
-    //private var parameters: [String: Any]?
     
     public func makeRequest() throws -> URLRequest {
-//        if let params = parameters {
-//            queryItems.append(contentsOf: params.map {
-//                let item = URLQueryItem(name: "\($0)", value: "\($1)")
-//                return item
-//            })
-//        }
         
         var urlComp = URLComponents(string: "search/movie")!
-        let queryItem = [URLQueryItem(name: "query", value: query),
-                         URLQueryItem(name: "language", value: self.language)]
-        urlComp.queryItems = queryItem
-        //let dict = ["language": self.language, "query": query]
-//        urlComp.setQueryItems(with: dict)
+        let dict = ["language": self.language, "query": query]
+        urlComp.setQueryItems(with: dict)
         
-        //var request = URLComponents(url: URL(string: "search/movie")!, resolvingAgainstBaseURL: true)
-        var request = URLRequest(url: URL(string: "search/movie")!) // try urlComp.asURL())
+        var request = URLRequest(url: URL(string: "search/movie")!)
         request.url = urlComp.url
-//        let encoder = JSONEncoder()
-        //request.httpBody = try JSONSerialization.data(withJSONObject: dict)
-        //request.httpBody = try JSONEncoder().encode(self)
-        //request.httpBody = dict.percentEncode()
-        
         request.httpMethod = "GET"
-        
-        //request = try URLEncoding.queryString.encode(request, with: ["language": self.language, "query": query])
-        print(request)
         return request
     }
     

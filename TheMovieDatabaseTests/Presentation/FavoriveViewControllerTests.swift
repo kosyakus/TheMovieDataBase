@@ -12,7 +12,7 @@ import XCTest
 
 final class FavoriveViewControllerTests: ViewControllerTestCase {
     
-    var viewController: FavoriveViewController { rootViewController as! FavoriveViewController }
+    var favoriteViewController: FavoriveViewController { rootViewController as! FavoriveViewController }
 
     override func setUp() {
         super.setUp()
@@ -23,8 +23,13 @@ final class FavoriveViewControllerTests: ViewControllerTestCase {
     
     /// Тест на появление на экране картинки с попкорном
     func testImageViewAppear() throws {
-        let imageView = try XCTUnwrap(viewController.noMovieView)
+        let imageView = try XCTUnwrap(favoriteViewController.noMovieView)
         XCTAssertEqual(imageView.image, UIImage(named: "no_movie"))
+    }
+    
+    /// Тесты на наличие кнопки поиска фильмов
+    func testSearchButtonExists() {
+        XCTAssertNotNil(favoriteViewController.findMoviesButton.isEnabled)
     }
 
 }

@@ -39,4 +39,5 @@ final class LoginViewControllerUITests: XCTestCase {
     func testPasswordPlaceholderExists() {
         XCTAssertEqual(app.secureTextFields["PassTF"].placeholderValue, "Пароль")
     }
+    
 }

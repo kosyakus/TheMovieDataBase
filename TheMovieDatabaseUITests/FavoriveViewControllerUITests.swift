@@ -6,11 +6,13 @@
 //  Copyright © 2020 Redmadrobot. All rights reserved.
 //
 
+import Catbird
 @testable import TheMovieDatabase
 import XCTest
 
 final class FavoriveViewControllerUITests: XCTestCase {
     
+    private let catbird = Catbird()
     private var app: XCUIApplication!
     
     override func setUp() {
@@ -18,10 +20,18 @@ final class FavoriveViewControllerUITests: XCTestCase {
         continueAfterFailure = false
         app = XCUIApplication()
         
+        let url = catbird.url
+        app.launchArguments = ["-url_key", url.absoluteString]
+//        XCTAssertNoThrow(try catbird.send(Command.add(
+//            pattern: FavoriteMovieAPIMock().pattern,
+//            data: FavoriteMovieAPIMock().responseData
+//        )))
+        
         app.launch()
     }
     
     override func tearDown() {
+        //XCTAssertNoThrow(try catbird.send(.clear), "Remove all requests")
         super.tearDown()
     }
     
@@ -33,5 +43,14 @@ final class FavoriveViewControllerUITests: XCTestCase {
         let button = app.buttons["FindMovieButton"]
         XCTAssertTrue(button.isHittable)
     }
+    
+//    func testLogin() {
+//        XCTAssertNoThrow(try catbird.send(.add(FavoriteMovieAPIMock.success)))
+//
+//        app.textFields["FindMovieTF"].tap()
+//        app.textFields["FindMovieTF"].typeText("муравей")
+//
+//        wait(forElement: app.staticTexts[""])
+//    }
     
 }

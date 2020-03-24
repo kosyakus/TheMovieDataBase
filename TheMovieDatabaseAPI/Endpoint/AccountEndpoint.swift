@@ -9,9 +9,11 @@
 import Alamofire
 import Foundation
 
-public struct AccountEndpoint: Endpoint, Encodable {
+public struct AccountEndpoint: Endpoint {
     
     public typealias Content = User
+    
+    public var params: [String : Any]?
     
     public init() {}
 

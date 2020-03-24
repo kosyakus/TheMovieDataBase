@@ -12,6 +12,7 @@ import UIKit
 final class FavoriveViewController: UIViewController {
     
     @IBOutlet weak var noMovieView: UIImageView!
+    @IBOutlet weak var findMoviesButton: UIButton!
     
     var favoriteService: FavoriteServices
     
