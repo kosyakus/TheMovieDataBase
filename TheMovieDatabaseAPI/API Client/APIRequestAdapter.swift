@@ -37,65 +37,22 @@ public final class APIRequestAdapter: Alamofire.RequestAdapter {
         var request = urlRequest
         guard let requestPath = request.url?.path,
             var components = URLComponents(
-                url: baseURL, //.appendingPathComponent(requestPath),
+                url: baseURL.appendingPathComponent(requestPath),
                 resolvingAgainstBaseURL: true
             )
             else { return urlRequest }
         
-        var params = [String: String]()
-        if let query = request.url?.query {
-            params = convertParamsIntoDict(params: query)
-        }
+        components.percentEncodedQuery = request.url?.query
         
         request.setValue(apiKey, forHTTPHeaderField: "api_key")
-        var queryItems = [URLQueryItem(name: "api_key", value: apiKey)]
+        let apiQueryItem = URLQueryItem(name: "api_key", value: apiKey)
+        components.queryItems?.append(apiQueryItem)
         if let sessionId = sessionId {
-            queryItems.append(URLQueryItem(name: "session_id", value: sessionId))
+            components.queryItems?.append(URLQueryItem(name: "session_id", value: sessionId))
         }
-        
-        if !params.isEmpty {
-            queryItems.append(contentsOf: params.map {
-                let item = URLQueryItem(name: "\($0)", value: "\($1)")
-                return item
-            })
-        }
-        
-        components.queryItems = queryItems
-        request.url = components.url!.appendingPathComponent(requestPath)
+       
+        request.url = components.url
         print("FINAL \(request)")
         return request
     }
-    
-    func convertParamsIntoDict(params: String) -> [String: String] {
-        let params = params.components(separatedBy: "&").map( {
-            $0.components(separatedBy: "=")}).reduce(into: [String: String]()) {dict, pair in
-                if pair.count == 2 {
-                    dict[pair[0]] = pair[1]
-                }
-        }
-        return params
-    }
-    
-//    public func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
-//        guard let url = urlRequest.url else { return urlRequest }
-//
-//        var request = urlRequest
-//        request.url = appendingBaseURL(to: url)
-//
-//        request.setValue(apiKey, forHTTPHeaderField: "api_key")
-//
-//        return request
-//    }
-//
-//    private func appendingBaseURL(to url: URL) -> URL {
-//        var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)!
-//        components.percentEncodedQuery = url.query
-//        var queryItems = [URLQueryItem(name: "api_key", value: apiKey)]
-//        if let sessionId = sessionId {
-//            queryItems.append(URLQueryItem(name: "session_id", value: sessionId))
-//        }
-//        components.queryItems = queryItems
-//
-//        return components.url!.appendingPathComponent(url.path)
-//    }
 }
