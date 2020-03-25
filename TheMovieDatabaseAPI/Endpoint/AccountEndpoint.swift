@@ -13,8 +13,6 @@ public struct AccountEndpoint: Endpoint {
     
     public typealias Content = User
     
-    public var params: [String : Any]?
-    
     public init() {}
 
     public func makeRequest() throws -> URLRequest {

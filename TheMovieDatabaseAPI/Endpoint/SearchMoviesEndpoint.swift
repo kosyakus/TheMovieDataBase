@@ -9,28 +9,28 @@
 import Alamofire
 import Foundation
 
-public struct SearchMoviesEndpoint: Endpoint {
+public struct SearchMoviesEndpoint: Endpoint, Codable {
     
-    public typealias Content = [APIMovie]
+    public typealias Content = Movies
 
     private let language: String
     private let query: String
-    public var params: [String : Any]?
+    private var params: [String: String]
     
     public init(language: String?, query: String) {
         self.query = query
         guard let lang = language else {
             self.language = Locale.current.languageCode!
+            self.params = ["language": self.language, "query": query]
             return
         }
         self.language = lang
+        self.params = ["language": self.language, "query": query]
     }
     
     public func makeRequest() throws -> URLRequest {
-        
         var urlComp = URLComponents(string: "search/movie")!
-        let dict = ["language": self.language, "query": query]
-        urlComp.setQueryItems(with: dict)
+        urlComp.setQueryItems(with: params)
         
         var request = URLRequest(url: URL(string: "search/movie")!)
         request.url = urlComp.url

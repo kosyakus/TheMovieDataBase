@@ -20,8 +20,9 @@ class SearchMovieMock: SearchMoviesService {
     
     func fetchSearchMovies(language: String?,
                            query: String,
-                           completion: @escaping (Result<[Movie], Error>) -> Void) {
+                           completion: @escaping (Result<[Movie], Error>) -> Void) -> Progress {
         completion(Result.success(movies))
+        return Progress()
     }
     
 }
@@ -34,8 +35,9 @@ class FavoriteMock: FavoriteServices {
         self.movies = movies
     }
     
-    func fetchFavoriteMovies(accountId: String, completion: @escaping (Result<[Movie], Error>) -> Void) {
+    func fetchFavoriteMovies(accountId: String, completion: @escaping (Result<[Movie], Error>) -> Void) -> Progress {
         completion(Result.success(movies))
+        return Progress()
     }
     
 }

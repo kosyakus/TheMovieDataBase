@@ -14,7 +14,6 @@ public struct FavoriteEndpoint: Endpoint {
     public typealias Content = Movies
     
     private let accountId: String
-    public var params: [String : Any]?
     
     public init(accountId: String) {
         self.accountId = accountId

@@ -33,6 +33,7 @@ public final class APIRequestAdapter: Alamofire.RequestAdapter {
     
     // MARK: - Alamofire.RequestAdapter
     
+    /// Адаптер URLRequest
     public func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
         var request = urlRequest
         guard let requestPath = request.url?.path,
@@ -42,15 +43,21 @@ public final class APIRequestAdapter: Alamofire.RequestAdapter {
             )
             else { return urlRequest }
         
-        components.percentEncodedQuery = request.url?.query
-        
-        request.setValue(apiKey, forHTTPHeaderField: "api_key")
-        let apiQueryItem = URLQueryItem(name: "api_key", value: apiKey)
-        components.queryItems?.append(apiQueryItem)
-        if let sessionId = sessionId {
-            components.queryItems?.append(URLQueryItem(name: "session_id", value: sessionId))
+        if request.url?.query != nil {
+            components.percentEncodedQuery = request.url?.query
+            components.queryItems?.append(URLQueryItem(name: "api_key", value: apiKey))
+            if let sessionId = sessionId {
+                components.queryItems?.append(URLQueryItem(name: "session_id", value: sessionId))
+            }
+        } else {
+            var queryItems = [URLQueryItem(name: "api_key", value: apiKey)]
+            if let sessionId = sessionId {
+                queryItems.append(URLQueryItem(name: "session_id", value: sessionId))
+            }
+            components.queryItems = queryItems
         }
-       
+        request.setValue(apiKey, forHTTPHeaderField: "api_key")
+        
         request.url = components.url
         print("FINAL \(request)")
         return request

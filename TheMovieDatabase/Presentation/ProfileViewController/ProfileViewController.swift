@@ -48,20 +48,14 @@ class ProfileViewController: UIViewController {
         
         accountService.fetchUser() { result in
             print(result)
-        }
-//        guard let session = try? ManageKeychain().getSessionID() else { return }
-//        print("Session \(session)")
-//        TheMovieDatabaseAPI.AccountService.parseUserFromJson(session: session) { result in
-//            print("User \(result)")
 //            let decodedimage = result.avatar.gravatar.hash.toUIImage
-//            //   .hash.toUIImage
 //            self.avatarImageView.image = decodedimage
 //            if !result.name.isEmpty {
 //                self.nameLabel.text = result.name
 //            } else {
 //                self.nameLabel.text = result.username
 //            }
-//        }
+        }
     }
     
     // MARK: - IBAction

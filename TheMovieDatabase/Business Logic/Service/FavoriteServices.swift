@@ -20,7 +20,7 @@ protocol FavoriteServices {
     @discardableResult
     func fetchFavoriteMovies(
         accountId: String,
-        completion: @escaping (Result<[Movie], Error>) -> Void)
+        completion: @escaping (Result<[Movie], Error>) -> Void) -> Progress
 }
 
 final public class FavoriteServicesImplementation: FavoriteServices {
@@ -34,7 +34,7 @@ final public class FavoriteServicesImplementation: FavoriteServices {
     @discardableResult
     func fetchFavoriteMovies(
         accountId: String,
-        completion: @escaping (Result<[Movie], Error>) -> Void) {
+        completion: @escaping (Result<[Movie], Error>) -> Void) -> Progress {
         
         client.request(FavoriteEndpoint(accountId: accountId)) { result in
         let moviesResult = result.flatMap { movies -> Result<[Movie], Error> in

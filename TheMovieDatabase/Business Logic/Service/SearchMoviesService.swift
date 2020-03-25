@@ -18,7 +18,7 @@ protocol SearchMoviesService {
     func fetchSearchMovies(
         language: String?,
         query: String,
-        completion: @escaping (Result<[Movie], Error>) -> Void)
+        completion: @escaping (Result<[Movie], Error>) -> Void) -> Progress
 }
 
 final public class SearchMoviesServiceImplementation: SearchMoviesService {
@@ -33,11 +33,11 @@ final public class SearchMoviesServiceImplementation: SearchMoviesService {
     func fetchSearchMovies(
         language: String?,
         query: String,
-        completion: @escaping (Result<[Movie], Error>) -> Void) {
+        completion: @escaping (Result<[Movie], Error>) -> Void) -> Progress {
         
         client.request(SearchMoviesEndpoint(language: language, query: query)) { result in
             let moviesResult = result.flatMap { movies -> Result<[Movie], Error> in
-                let movies = movies.map(self.movie(from:))
+                let movies = movies.results.map(self.movie(from:))
                 return .success(movies)
             }
             completion(moviesResult)
