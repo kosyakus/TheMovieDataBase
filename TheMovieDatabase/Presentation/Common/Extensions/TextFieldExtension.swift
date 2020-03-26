@@ -53,7 +53,7 @@ extension UITextField {
         self.isSecureTextEntry = false
     }
     
-    func setBorderPuppure() {
+    @objc func setBorderPuppure() {
         self.layer.borderColor = UIColor(named: "Purpure")?.cgColor
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 0.02 * self.bounds.size.width

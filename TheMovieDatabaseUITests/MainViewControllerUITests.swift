@@ -44,7 +44,6 @@ class MainViewControllerUITests: XCTestCase {
     }
     
     /// Тест на поиск фильмов. Когда доделаю апи поиска- должен заработать. А еще список на экране нужно отобразить
-    
     func testSearchMovies() {
         XCTAssertNoThrow(try catbird.send(Command.add(
             pattern: FavoriteMovieAPIMock().pattern,
