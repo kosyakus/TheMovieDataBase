@@ -75,6 +75,7 @@ final class FavoriveViewController: UIViewController {
     }
     
     @objc func didTapSearchButton(sender: AnyObject) {
+        print("didTapSearchButton")
     }
     
 }
