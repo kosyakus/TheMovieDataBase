@@ -14,7 +14,11 @@ final class FavoriveViewController: UIViewController {
     @IBOutlet weak var noMovieView: UIImageView!
     @IBOutlet weak var findMoviesButton: UIButton!
     
+    // MARK: - Public Properties
+    
     var favoriteService: FavoriteServices
+    
+    // MARK: - Initializers
     
     init(favoriteService: FavoriteServices = ServiceLayer.shared.favoriteService) {
         self.favoriteService = favoriteService
@@ -73,18 +77,4 @@ final class FavoriveViewController: UIViewController {
     @objc func didTapSearchButton(sender: AnyObject) {
     }
     
-}
-
-extension UIImageView {
-    func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
-    }
 }

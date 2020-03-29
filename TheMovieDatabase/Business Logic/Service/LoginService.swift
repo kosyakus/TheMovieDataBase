@@ -37,20 +37,14 @@ final public class LoginServicesImplementation: LoginServices {
         self.client = client
     }
     
+    /// Функция получения токена
     @discardableResult
     func fetchToken(login: String, password: String, completion: @escaping (Token) -> Void) -> Progress {
         
         client.request(TokenEndpoint()) { result in
-            //            let tokenResult = result.flatMap { token -> Result<Token, Error> in
-            //                let token = Token(token: token.requestToken)
-            //                return .success(token)
-            //            }
-            //
-            //            completion(tokenResult)
             switch result {
             case .success(let token):
                 self.thenValidateToken(login: login, password: password, requestToken: token.requestToken) {
-                    
                     let token = Token(token: token.requestToken)
                     completion(token)
                 }
@@ -60,6 +54,7 @@ final public class LoginServicesImplementation: LoginServices {
         }
     }
     
+    /// Валидация токена при помощи логина и пароля
     func validateToken(login: String,
                        password: String,
                        requestToken: String,
@@ -70,6 +65,7 @@ final public class LoginServicesImplementation: LoginServices {
         }
     }
     
+    /// Срздание сессии
     func createSession(requestToken: String, completion: @escaping (Result<Session, Error>) -> Void) -> Progress {
         client.request(CreateSessionEndpoint(token: requestToken)) { result in
             let sessionResult = result.flatMap { session -> Result<Session, Error> in
@@ -80,6 +76,7 @@ final public class LoginServicesImplementation: LoginServices {
         }
     }
     
+    /// Вспомогательная функция валидирования токена после успешного получения токена
     private func thenValidateToken(login: String,
                                    password: String,
                                    requestToken: String,
@@ -96,6 +93,7 @@ final public class LoginServicesImplementation: LoginServices {
         }
     }
     
+    /// Вспомогательная функция получения сессии после успешной валидации
     private func thenCreateSession(login: String, requestToken: String, completion: @escaping () -> Void) {
         createSession(requestToken: requestToken) { result in
             switch result {
@@ -108,16 +106,4 @@ final public class LoginServicesImplementation: LoginServices {
             }
         }
     }
-    
-    //    private func token(from token: APIToken) -> Token {
-    //        Token(
-    //            token: token.requestToken
-    //        )
-    //    }
-    //
-    //    private func session(from session: APISession) -> Session {
-    //        Session(
-    //            sessionID: session.sessionId
-    //        )
-    //    }
 }

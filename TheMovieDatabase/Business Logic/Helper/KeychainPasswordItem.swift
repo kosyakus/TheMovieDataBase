@@ -10,7 +10,7 @@ import Foundation
 
 struct KeychainPasswordItem {
     
-    // - MARK: Types
+    // MARK: - Types
     
     enum KeychainError: Error {
         case noPassword
@@ -19,7 +19,7 @@ struct KeychainPasswordItem {
         case unhandledError(status: OSStatus)
     }
     
-    // - MARK: Properties
+    // MARK: - Properties
     
     let service: String
     
@@ -27,7 +27,7 @@ struct KeychainPasswordItem {
     
     let accessGroup: String?
     
-    // - MARK: Intialization
+    // MARK: - Intialization
     
     init(service: String, account: String, accessGroup: String? = nil) {
         self.service = service
@@ -35,7 +35,7 @@ struct KeychainPasswordItem {
         self.accessGroup = accessGroup
     }
     
-    // - MARK: Keychain access
+    // MARK: - Keychain access
     
     func readPassword() throws -> String {
         /*
@@ -167,7 +167,7 @@ struct KeychainPasswordItem {
         return passwordItems
     }
     
-    // - MARK: Convenience
+    // MARK: - Convenience
     
     private static func keychainQuery(withService service: String,
                                       account: String? = nil,

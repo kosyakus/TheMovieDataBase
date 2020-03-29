@@ -50,6 +50,8 @@
 		E18AC751242E5FD600727107 /* APIToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC750242E5FD600727107 /* APIToken.swift */; };
 		E18AC753243083E600727107 /* DeleteSessionEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC752243083E600727107 /* DeleteSessionEndpoint.swift */; };
 		E18AC7552430847A00727107 /* DeleteSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC7542430847900727107 /* DeleteSessionService.swift */; };
+		E18AC7572430B7FE00727107 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC7562430B7FD00727107 /* UIImageViewExtension.swift */; };
+		E18AC7592430B85000727107 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC7582430B85000727107 /* Session.swift */; };
 		E1B48E572423F07800AE89EF /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B48E562423F07800AE89EF /* UserSettings.swift */; };
 		E1B48E652426902800AE89EF /* APIRequestAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B48E642426902800AE89EF /* APIRequestAdapter.swift */; };
 		E1B48E672426916400AE89EF /* TheMovieDBAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B48E662426916400AE89EF /* TheMovieDBAPIClient.swift */; };
@@ -178,6 +180,8 @@
 		E18AC750242E5FD600727107 /* APIToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIToken.swift; sourceTree = "<group>"; };
 		E18AC752243083E600727107 /* DeleteSessionEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteSessionEndpoint.swift; sourceTree = "<group>"; };
 		E18AC7542430847900727107 /* DeleteSessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteSessionService.swift; sourceTree = "<group>"; };
+		E18AC7562430B7FD00727107 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		E18AC7582430B85000727107 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		E1B48E562423F07800AE89EF /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		E1B48E642426902800AE89EF /* APIRequestAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestAdapter.swift; sourceTree = "<group>"; };
 		E1B48E662426916400AE89EF /* TheMovieDBAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMovieDBAPIClient.swift; sourceTree = "<group>"; };
@@ -289,6 +293,7 @@
 				E1B48E562423F07800AE89EF /* UserSettings.swift */,
 				E18AC7372427F2B600727107 /* Movie.swift */,
 				E18AC74E242E2D9200727107 /* Token.swift */,
+				E18AC7582430B85000727107 /* Session.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -476,6 +481,7 @@
 				E1FF6EFF241A17A20007B93D /* NotificationExtension.swift */,
 				E1FF6F01241BE2D80007B93D /* UIColorExtension.swift */,
 				E11C767E241FEDB7000969C7 /* StringExtension.swift */,
+				E18AC7562430B7FD00727107 /* UIImageViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -930,11 +936,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E18AC7592430B85000727107 /* Session.swift in Sources */,
 				E1C736D02412A67400E60D7C /* LoginViewController.swift in Sources */,
 				E18AC74F242E2D9200727107 /* Token.swift in Sources */,
 				E1C737012413C85900E60D7C /* TextFieldExtension.swift in Sources */,
 				E11C7675241F5687000969C7 /* KeychainUser.swift in Sources */,
 				E18AC7382427F2B600727107 /* Movie.swift in Sources */,
+				E18AC7572430B7FE00727107 /* UIImageViewExtension.swift in Sources */,
 				E1C736A22411153B00E60D7C /* AppDelegate.swift in Sources */,
 				E11C7672241ECFC9000969C7 /* ManageKeychain.swift in Sources */,
 				E1C7370A2413DF6000E60D7C /* MainViewController.swift in Sources */,

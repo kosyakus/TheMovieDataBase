@@ -19,8 +19,12 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
+    // MARK: - Private Properties
+    
     private let accountService: AccountService
     private let deleteSessionService: DeleteSessionService
+    
+    // MARK: - Initializers
     
     init(accountService: AccountService = ServiceLayer.shared.accountService,
          deleteSessionService: DeleteSessionService = ServiceLayer.shared.deleteSessionService) {

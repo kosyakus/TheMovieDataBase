@@ -19,7 +19,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var enterButton: UIButton!
     
+    // MARK: - Public Properties
+    
     var loginService: LoginServices
+    
+    // MARK: - Initializers
     
     init(loginService: LoginServices = ServiceLayer.shared.loginService) {
         self.loginService = loginService
