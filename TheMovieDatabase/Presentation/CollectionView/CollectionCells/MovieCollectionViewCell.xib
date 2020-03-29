@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFProDisplay-Regular.ttf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MovieCollectionViewCell" customModule="TheMovieDatabase" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="152" height="302"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="152" height="302"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6L2-Ix-BNu">
+                        <rect key="frame" x="0.0" y="0.0" width="152" height="208"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="208" id="yYO-Xf-JoL"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="9qI-qz-SWZ">
+                        <rect key="frame" x="0.0" y="217" width="152" height="85"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название фильма" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3s-fz-4av">
+                                <rect key="frame" x="0.0" y="0.0" width="152" height="18.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="16"/>
+                                <color key="textColor" name="Light"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Оригинальное название" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1g-Qq-Dae">
+                                <rect key="frame" x="0.0" y="22.5" width="152" height="18"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="12"/>
+                                <color key="textColor" name="Gray"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Жанр" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1B4-ok-mc5">
+                                <rect key="frame" x="0.0" y="44.5" width="152" height="18.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="12"/>
+                                <color key="textColor" name="Light"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="6J9-75-Nal">
+                                <rect key="frame" x="0.0" y="67" width="152" height="18"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="xHc-Bk-LzL">
+                                        <rect key="frame" x="0.0" y="0.0" width="64.5" height="18"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8.8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zjo-Ci-z2L">
+                                                <rect key="frame" x="0.0" y="0.0" width="23" height="18"/>
+                                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="16"/>
+                                                <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="59 286" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aAp-lM-N5o">
+                                                <rect key="frame" x="27" y="0.0" width="37.5" height="18"/>
+                                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="12"/>
+                                                <color key="textColor" name="Gray"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Ywf-dP-dtP">
+                                        <rect key="frame" x="87.5" y="0.0" width="64.5" height="18"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time_icon" translatesAutoresizingMaskIntoConstraints="NO" id="4eB-lK-KS6">
+                                                <rect key="frame" x="0.0" y="0.0" width="18.5" height="18"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="4eB-lK-KS6" secondAttribute="height" multiplier="1:1" id="KvB-sG-cTU"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 мин" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PQI-q5-AHV">
+                                                <rect key="frame" x="22.5" y="0.0" width="42" height="18"/>
+                                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="12"/>
+                                                <color key="textColor" name="Light"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="9qI-qz-SWZ" secondAttribute="bottom" id="HAm-GW-z0T"/>
+                <constraint firstItem="6L2-Ix-BNu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="UOe-05-0S2"/>
+                <constraint firstItem="9qI-qz-SWZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="VeG-GM-STS"/>
+                <constraint firstItem="9qI-qz-SWZ" firstAttribute="top" secondItem="6L2-Ix-BNu" secondAttribute="bottom" constant="9" id="boN-VE-Sol"/>
+                <constraint firstItem="6L2-Ix-BNu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="e7J-hT-3NP"/>
+                <constraint firstAttribute="trailing" secondItem="6L2-Ix-BNu" secondAttribute="trailing" id="fla-9D-DL9"/>
+                <constraint firstAttribute="trailing" secondItem="9qI-qz-SWZ" secondAttribute="trailing" id="or3-dn-p1e"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="210" height="198"/>
+            <connections>
+                <outlet property="genreLable" destination="1B4-ok-mc5" id="Bac-fK-4bq"/>
+                <outlet property="movieImageView" destination="6L2-Ix-BNu" id="bFo-Z3-Chl"/>
+                <outlet property="movieNameLabel" destination="O3s-fz-4av" id="q0h-g6-BCy"/>
+                <outlet property="originalMovieNameLabel" destination="y1g-Qq-Dae" id="GNp-ql-e5t"/>
+                <outlet property="runtimeLabel" destination="PQI-q5-AHV" id="EvV-3y-7Vt"/>
+                <outlet property="voteCountLabel" destination="aAp-lM-N5o" id="RtL-Dj-pF5"/>
+                <outlet property="voteLabel" destination="zjo-Ci-z2L" id="yHd-J7-jSo"/>
+            </connections>
+            <point key="canvasLocation" x="256.52173913043481" y="178.125"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="time_icon" width="15.5" height="15"/>
+        <namedColor name="Gray">
+            <color red="0.39599999785423279" green="0.42699998617172241" blue="0.54100000858306885" alpha="0.39500001072883606" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Light">
+            <color red="0.90600001811981201" green="0.92900002002716064" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
