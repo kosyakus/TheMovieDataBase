@@ -13,10 +13,6 @@ public struct Movies: Decodable {
     // MARK: - Public Properties
     
     public let results: [APIMovie]
-    
-//    enum CodingKeys: String, CodingKey {
-//        case results
-//    }
 }
 
 // image path http://image.tmdb.org/t/p/w185/Av40pxbR5LPeCCNnqw4gHh4TtSP.jpg

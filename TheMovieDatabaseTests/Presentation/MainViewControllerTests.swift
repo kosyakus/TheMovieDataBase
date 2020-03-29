@@ -25,4 +25,10 @@ final class MainViewControllerTests: ViewControllerTestCase {
         XCTAssertNotNil(mainViewController.findMovieTextField.isEnabled)
     }
     
+    /// Тест на то, что в ячейках правильно отображаются найденные фильмы
+    /// TODO: Сделать отображение ячеек таблицы
+//    func testSearchMovieCalled() {
+//
+//    }
+    
 }

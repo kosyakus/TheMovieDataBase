@@ -6,7 +6,6 @@
 //  Copyright © 2020 Redmadrobot. All rights reserved.
 //
 
-import Alamofire
 import Foundation
 
 public struct AccountEndpoint: Endpoint {

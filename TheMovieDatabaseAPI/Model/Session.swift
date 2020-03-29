@@ -8,13 +8,13 @@
 
 import Foundation
 
-public struct Session: Codable {
+public struct APISession: Codable {
     
     // MARK: - Public Properties
     
     public let sessionId: String
-    
-    enum CodingKeys: String, CodingKey {
-        case sessionId = "session_id"
-    }
+//    
+//    enum CodingKeys: String, CodingKey {
+//        case sessionId = "session_id"
+//    }
 }

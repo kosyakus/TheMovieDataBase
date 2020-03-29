@@ -6,68 +6,95 @@
 //  Copyright © 2020 Redmadrobot. All rights reserved.
 //
 
-import Alamofire
 import Foundation
 
-enum LoginEndpoint: URLRequestConvertible {
+public struct TokenEndpoint: Endpoint, Codable {
     
-    case getCreateRequestToken(apiKey: String)
-    case postValidateToken(username: String, password: String, requestToken: String, apiKey: String)
-    case postCreateSession(requestToken: String, apiKey: String)
-    case deleteSession(sessionId: String, apiKey: String)
+    public typealias Content = APIToken
     
-    private var basePath: String {
-        UserDefaults.standard.string(forKey: "kBaseUrl") ?? "https://api.themoviedb.org/3/"
+    public init() {}
+    
+    public func makeRequest() throws -> URLRequest {
+        
+        var request = URLRequest(url: URL(string: "authentication/token/new")!)
+        request.httpMethod = "GET"
+        return request
     }
     
-    private var path: String {
-        switch self {
-        case .getCreateRequestToken:
-            return "authentication/token/new"
-        case .postValidateToken:
-            return "authentication/token/validate_with_login"
-        case .postCreateSession:
-            return "authentication/session/new"
-        case .deleteSession:
-            return "authentication/session"
-        }
+    public func content(from data: Data, response: URLResponse?) throws -> Content {
+        
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
+        decoder.dateDecodingStrategy = .formatted(formatter)
+        return try decoder.decode(Content.self, from: data)
+    }
+}
+
+public struct ValidateTokenEndpoint: Endpoint, Codable {
+    
+    public typealias Content = ResponseResult
+
+    private let login: String
+    private let password: String
+    private let token: String
+    private var params: [String: String]
+    
+    public init(login: String, password: String, token: String) {
+        self.login = login
+        self.password = password
+        self.token = token
+        self.params = ["username": login, "password": password, "request_token": token]
     }
     
-    private var method: HTTPMethod {
-        switch self {
-        case .getCreateRequestToken:
-            return .get
-        case .postValidateToken:
-            return .post
-        case .postCreateSession:
-            return .post
-        case .deleteSession:
-            return .delete
-        }
+    public func makeRequest() throws -> URLRequest {
+        var request = URLRequest(url: URL(string: "authentication/token/validate_with_login")!)
+        request.httpBody = self.params.percentEncode()
+        request.httpMethod = "POST"
+        return request
     }
     
-    private var parameters: Parameters {
-        switch self {
-        case let .getCreateRequestToken(apiKey):
-            return ["api_key": apiKey]
-        case let .postValidateToken(username, password, requestToken, apiKey):
-            return ["username": username, "password": password, "request_token": requestToken, "api_key": apiKey]
-        case let .postCreateSession(requestToken, apiKey):
-            return ["request_token": requestToken, "api_key": apiKey]
-        case let .deleteSession(sessionId, apiKey):
-        return ["session_id": sessionId, "api_key": apiKey]
-        }
+    public func content(from data: Data, response: URLResponse?) throws -> Content {
+        
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
+        decoder.dateDecodingStrategy = .formatted(formatter)
+        return try decoder.decode(Content.self, from: data)
+    }
+}
+
+public struct CreateSessionEndpoint: Endpoint, Codable {
+    
+    public typealias Content = APISession
+
+    private let token: String
+    private var params: [String: String]
+    
+    public init(token: String) {
+        self.token = token
+        self.params = ["request_token": token]
     }
     
-    func asURLRequest() throws -> URLRequest {
-        let url = try basePath.asURL()
-        var urlRequest = URLRequest(url: url.appendingPathComponent(path))
-        // HTTP Method
-        urlRequest.httpMethod = method.rawValue
-        // Common Headers
-        urlRequest.setValue(Constants.ProductionServer.apiKey,
-                            forHTTPHeaderField: Constants.HTTPHeaderField.authentication.rawValue)
-        return try URLEncoding.queryString.encode(urlRequest, with: parameters)
-        //URLEncoding.default.encode(urlRequest, with: parameters)
+    public func makeRequest() throws -> URLRequest {
+        var request = URLRequest(url: URL(string: "authentication/session/new")!)
+        request.httpBody = self.params.percentEncode()
+        request.httpMethod = "POST"
+        return request
+    }
+    
+    public func content(from data: Data, response: URLResponse?) throws -> Content {
+        
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
+        decoder.dateDecodingStrategy = .formatted(formatter)
+        return try decoder.decode(Content.self, from: data)
     }
 }

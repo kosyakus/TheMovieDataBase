@@ -14,9 +14,7 @@
 		E11C7661241D62E0000969C7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7660241D62E0000969C7 /* Constants.swift */; };
 		E11C7668241D712E000969C7 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7667241D712E000969C7 /* Endpoint.swift */; };
 		E11C766A241D75AF000969C7 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7669241D75AF000969C7 /* Session.swift */; };
-		E11C766C241E1F89000969C7 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C766B241E1F89000969C7 /* Token.swift */; };
 		E11C766E241EC425000969C7 /* LoginEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C766D241EC425000969C7 /* LoginEndpoint.swift */; };
-		E11C7670241ECBE9000969C7 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C766F241ECBE9000969C7 /* LoginService.swift */; };
 		E11C7672241ECFC9000969C7 /* ManageKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7671241ECFC9000969C7 /* ManageKeychain.swift */; };
 		E11C7675241F5687000969C7 /* KeychainUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7674241F5687000969C7 /* KeychainUser.swift */; };
 		E11C7677241F5DCA000969C7 /* DeletionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7676241F5DCA000969C7 /* DeletionResult.swift */; };
@@ -47,6 +45,11 @@
 		E18AC747242941A300727107 /* FavoriteMovieAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC746242941A300727107 /* FavoriteMovieAPIMock.swift */; };
 		E18AC7492429437500727107 /* SearchMovies.json in Resources */ = {isa = PBXBuildFile; fileRef = E18AC7482429437500727107 /* SearchMovies.json */; };
 		E18AC74B242AB3B600727107 /* ProfileViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC74A242AB3B500727107 /* ProfileViewControllerTests.swift */; };
+		E18AC74D242E2C6A00727107 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC74C242E2C6900727107 /* LoginService.swift */; };
+		E18AC74F242E2D9200727107 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC74E242E2D9200727107 /* Token.swift */; };
+		E18AC751242E5FD600727107 /* APIToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC750242E5FD600727107 /* APIToken.swift */; };
+		E18AC753243083E600727107 /* DeleteSessionEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC752243083E600727107 /* DeleteSessionEndpoint.swift */; };
+		E18AC7552430847A00727107 /* DeleteSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC7542430847900727107 /* DeleteSessionService.swift */; };
 		E1B48E572423F07800AE89EF /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B48E562423F07800AE89EF /* UserSettings.swift */; };
 		E1B48E652426902800AE89EF /* APIRequestAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B48E642426902800AE89EF /* APIRequestAdapter.swift */; };
 		E1B48E672426916400AE89EF /* TheMovieDBAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B48E662426916400AE89EF /* TheMovieDBAPIClient.swift */; };
@@ -138,9 +141,7 @@
 		E11C7660241D62E0000969C7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E11C7667241D712E000969C7 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		E11C7669241D75AF000969C7 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		E11C766B241E1F89000969C7 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		E11C766D241EC425000969C7 /* LoginEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEndpoint.swift; sourceTree = "<group>"; };
-		E11C766F241ECBE9000969C7 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		E11C7671241ECFC9000969C7 /* ManageKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageKeychain.swift; sourceTree = "<group>"; };
 		E11C7674241F5687000969C7 /* KeychainUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainUser.swift; sourceTree = "<group>"; };
 		E11C7676241F5DCA000969C7 /* DeletionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletionResult.swift; sourceTree = "<group>"; };
@@ -172,6 +173,11 @@
 		E18AC746242941A300727107 /* FavoriteMovieAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovieAPIMock.swift; sourceTree = "<group>"; };
 		E18AC7482429437500727107 /* SearchMovies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SearchMovies.json; sourceTree = "<group>"; };
 		E18AC74A242AB3B500727107 /* ProfileViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewControllerTests.swift; sourceTree = "<group>"; };
+		E18AC74C242E2C6900727107 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		E18AC74E242E2D9200727107 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		E18AC750242E5FD600727107 /* APIToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIToken.swift; sourceTree = "<group>"; };
+		E18AC752243083E600727107 /* DeleteSessionEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteSessionEndpoint.swift; sourceTree = "<group>"; };
+		E18AC7542430847900727107 /* DeleteSessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteSessionService.swift; sourceTree = "<group>"; };
 		E1B48E562423F07800AE89EF /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		E1B48E642426902800AE89EF /* APIRequestAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestAdapter.swift; sourceTree = "<group>"; };
 		E1B48E662426916400AE89EF /* TheMovieDBAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMovieDBAPIClient.swift; sourceTree = "<group>"; };
@@ -268,6 +274,7 @@
 			children = (
 				E11C7667241D712E000969C7 /* Endpoint.swift */,
 				E11C766D241EC425000969C7 /* LoginEndpoint.swift */,
+				E18AC752243083E600727107 /* DeleteSessionEndpoint.swift */,
 				E11C7678241FC612000969C7 /* AccountEndpoint.swift */,
 				E11C768424200C95000969C7 /* SearchMoviesEndpoint.swift */,
 				E11C76882420D426000969C7 /* FavoriteEndpoint.swift */,
@@ -281,6 +288,7 @@
 				E11C7674241F5687000969C7 /* KeychainUser.swift */,
 				E1B48E562423F07800AE89EF /* UserSettings.swift */,
 				E18AC7372427F2B600727107 /* Movie.swift */,
+				E18AC74E242E2D9200727107 /* Token.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -330,6 +338,8 @@
 				E1B48E6B242695BF00AE89EF /* FavoriteServices.swift */,
 				E18AC7262427342F00727107 /* SearchMoviesService.swift */,
 				E18AC7282427691400727107 /* AccountService.swift */,
+				E18AC74C242E2C6900727107 /* LoginService.swift */,
+				E18AC7542430847900727107 /* DeleteSessionService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -416,12 +426,12 @@
 			isa = PBXGroup;
 			children = (
 				E11C7669241D75AF000969C7 /* Session.swift */,
-				E11C766B241E1F89000969C7 /* Token.swift */,
 				E11C7676241F5DCA000969C7 /* DeletionResult.swift */,
 				E11C767C241FCA10000969C7 /* User.swift */,
 				E11C76802420009E000969C7 /* Movies.swift */,
 				E11C7682242006E8000969C7 /* APIMovie.swift */,
 				E11C768C2420FC02000969C7 /* Errors.swift */,
+				E18AC750242E5FD600727107 /* APIToken.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -561,7 +571,6 @@
 		E1FF6F17241BEBA00007B93D /* API Client */ = {
 			isa = PBXGroup;
 			children = (
-				E11C766F241ECBE9000969C7 /* LoginService.swift */,
 				E1FF6F1B241C15370007B93D /* HandleErrors.swift */,
 				E11C765E241D6131000969C7 /* APIClient.swift */,
 				E11C7660241D62E0000969C7 /* Constants.swift */,
@@ -922,12 +931,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1C736D02412A67400E60D7C /* LoginViewController.swift in Sources */,
+				E18AC74F242E2D9200727107 /* Token.swift in Sources */,
 				E1C737012413C85900E60D7C /* TextFieldExtension.swift in Sources */,
 				E11C7675241F5687000969C7 /* KeychainUser.swift in Sources */,
 				E18AC7382427F2B600727107 /* Movie.swift in Sources */,
 				E1C736A22411153B00E60D7C /* AppDelegate.swift in Sources */,
 				E11C7672241ECFC9000969C7 /* ManageKeychain.swift in Sources */,
 				E1C7370A2413DF6000E60D7C /* MainViewController.swift in Sources */,
+				E18AC74D242E2C6A00727107 /* LoginService.swift in Sources */,
 				E1FF6F02241BE2D80007B93D /* UIColorExtension.swift in Sources */,
 				E1FF6EFC241981250007B93D /* KeychainPasswordItem.swift in Sources */,
 				E11C767F241FEDB7000969C7 /* StringExtension.swift in Sources */,
@@ -942,6 +953,7 @@
 				E16B938424175AA300814B94 /* HelperLoginVC.swift in Sources */,
 				E1FF6EFE241981520007B93D /* KeychainSettings.swift in Sources */,
 				E18AC7292427691400727107 /* AccountService.swift in Sources */,
+				E18AC7552430847A00727107 /* DeleteSessionService.swift in Sources */,
 				E18AC7272427342F00727107 /* SearchMoviesService.swift in Sources */,
 				E1C736FF2413C40B00E60D7C /* ViewControllerExtension.swift in Sources */,
 			);
@@ -979,7 +991,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E11C7661241D62E0000969C7 /* Constants.swift in Sources */,
-				E11C766C241E1F89000969C7 /* Token.swift in Sources */,
 				E1B48E652426902800AE89EF /* APIRequestAdapter.swift in Sources */,
 				E11C768D2420FC02000969C7 /* Errors.swift in Sources */,
 				E11C7683242006E8000969C7 /* APIMovie.swift in Sources */,
@@ -991,11 +1002,12 @@
 				E11C766E241EC425000969C7 /* LoginEndpoint.swift in Sources */,
 				E11C7679241FC612000969C7 /* AccountEndpoint.swift in Sources */,
 				E11C76892420D426000969C7 /* FavoriteEndpoint.swift in Sources */,
-				E11C7670241ECBE9000969C7 /* LoginService.swift in Sources */,
 				E1FF6F1C241C15370007B93D /* HandleErrors.swift in Sources */,
+				E18AC751242E5FD600727107 /* APIToken.swift in Sources */,
 				E11C765F241D6131000969C7 /* APIClient.swift in Sources */,
 				E11C766A241D75AF000969C7 /* Session.swift in Sources */,
 				E11C76812420009E000969C7 /* Movies.swift in Sources */,
+				E18AC753243083E600727107 /* DeleteSessionEndpoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

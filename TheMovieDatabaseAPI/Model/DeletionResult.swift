@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct DeletionResult: Codable {
+public struct ResponseResult: Codable {
     
     // MARK: - Public Properties
     

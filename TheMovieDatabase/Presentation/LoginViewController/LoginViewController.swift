@@ -18,7 +18,17 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var enterButton: UIButton!
-    //let userService = UserService()
+    
+    var loginService: LoginServices
+    
+    init(loginService: LoginServices = ServiceLayer.shared.loginService) {
+        self.loginService = loginService
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,30 +71,44 @@ class LoginViewController: UIViewController {
     func sendApiRequest(login: String, password: String) {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         
-        TheMovieDatabaseAPI.LoginService.parseTokenFromJson { token in
-            print("Token \(token.requestToken)")
-            TheMovieDatabaseAPI.LoginService.validateToken(username: login,
-                                                           password: password,
-                                                           requestToken: token.requestToken) {_ in
-                print("validated")
-                TheMovieDatabaseAPI.LoginService.parseSessionFromJson(
-                    requestToken: token.requestToken) { session in
-                        print("Session \(session)")
-                        try? ManageKeychain().saveSessionId(sessionId: session.sessionId,
-                                                            user: KeychainUser(username: login))
-                        appDelegate?.presentViewController()
-                }
-            }
+        loginService.fetchToken(login: login, password: password) { _ in
+            appDelegate?.presentViewController()
         }
     }
+        
+//        loginService.fetchToken() { result in
+//
+//            switch result {
+//            case .success(let token):
+//                self.loginService.validateToken(login: login, password: password, requestToken: token.token) { result in
+//                    switch result {
+//                    case .success:
+//                        self.loginService.createSession(requestToken: token.token) { result in
+//                            switch result {
+//                            case .success(let session):
+//                                try? ManageKeychain().saveSessionId(sessionId: session.sessionID,
+//                                                                    user: KeychainUser(username: login))
+//                                appDelegate?.presentViewController()
+//                            case .failure(let error):
+//                                print(error.localizedDescription)
+//                            }
+//                        }
+//                    case .failure(let error):
+//                        print(error.localizedDescription)
+//                    }
+//                }
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
     
     // MARK: - IBAction
     
     @IBAction func tapEnterButton(_ sender: Any) {
         guard HelperLoginVC().validate(login: loginTextField.text, password: passwordTextField.text) else { return }
-         guard let login = loginTextField.text,
-         let password = passwordTextField.text
-         else { return }
-         sendApiRequest(login: login, password: password)
+        guard let login = loginTextField.text,
+            let password = passwordTextField.text
+            else { return }
+        sendApiRequest(login: login, password: password)
     }
 }

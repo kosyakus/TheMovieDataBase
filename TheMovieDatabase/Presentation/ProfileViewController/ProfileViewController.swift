@@ -20,9 +20,12 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     
     private let accountService: AccountService
+    private let deleteSessionService: DeleteSessionService
     
-    init(accountService: AccountService = ServiceLayer.shared.accountService) {
+    init(accountService: AccountService = ServiceLayer.shared.accountService,
+         deleteSessionService: DeleteSessionService = ServiceLayer.shared.deleteSessionService) {
         self.accountService = accountService
+        self.deleteSessionService = deleteSessionService
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -32,11 +35,11 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setUpButtonAndImage()
         loadProfile()
     }
-
+    
     // MARK: - Public methods
     
     func setUpButtonAndImage() {
@@ -48,13 +51,18 @@ class ProfileViewController: UIViewController {
         
         accountService.fetchUser() { result in
             print(result)
-//            let decodedimage = result.avatar.gravatar.hash.toUIImage
-//            self.avatarImageView.image = decodedimage
-//            if !result.name.isEmpty {
-//                self.nameLabel.text = result.name
-//            } else {
-//                self.nameLabel.text = result.username
-//            }
+            switch result {
+            case .success(let user):
+                let decodedimage = user.avatar.gravatar.hash.toUIImage
+                self.avatarImageView.image = decodedimage
+                if !user.name.isEmpty {
+                    self.nameLabel.text = user.name
+                } else {
+                    self.nameLabel.text = user.username
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
         }
     }
     
@@ -62,11 +70,16 @@ class ProfileViewController: UIViewController {
     
     @IBAction func exitButtonTapped(_ sender: Any) {
         guard let session = try? ManageKeychain().getSessionID() else { return }
-        TheMovieDatabaseAPI.LoginService.deleteSession(session: session) { result in
-            print("deletion result \(result)")
-            try? ManageKeychain().deleteSessionId()
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate
-            appDelegate?.presentViewController()
+        deleteSessionService.deleteSession(session: session) { result in
+            switch result {
+            case .success:
+                try? ManageKeychain().deleteSessionId()
+                let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                appDelegate?.presentViewController()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            
         }
     }
 }

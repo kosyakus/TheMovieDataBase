@@ -1,32 +1,34 @@
 //
-//  FavoriteEndpoint.swift
+//  DeleteSessionEndpoint.swift
 //  TheMovieDatabaseAPI
 //
-//  Created by Natali on 17.03.2020.
+//  Created by Natali on 29.03.2020.
 //  Copyright © 2020 Redmadrobot. All rights reserved.
 //
 
 import Foundation
 
-public struct FavoriteEndpoint: Endpoint {
+public struct DeleteSessionEndpoint: Endpoint, Codable {
     
-    public typealias Content = Movies
+    public typealias Content = ResponseResult
+
+    private let session: String
+    private var params: [String: String]
     
-    private let accountId: String
-    
-    public init(accountId: String) {
-        self.accountId = accountId
+    public init(session: String) {
+        self.session = session
+        self.params = ["session_id": session]
     }
     
     public func makeRequest() throws -> URLRequest {
-        var request = URLRequest(url: URL(string: "account/\(accountId)/favorite/movies")!)
-        request.httpMethod = "GET"
+        var request = URLRequest(url: URL(string: "authentication/session")!)
+        request.httpBody = self.params.percentEncode()
+        request.httpMethod = "DELETE"
         return request
     }
     
     public func content(from data: Data, response: URLResponse?) throws -> Content {
         
-        // TODO: Вынести общие данные в базовый Endpoint
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         

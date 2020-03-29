@@ -18,6 +18,8 @@ final class ServiceLayer {
     lazy var favoriteService: FavoriteServices = FavoriteServicesImplementation(client: apiClient)
     lazy var searchMoviesService: SearchMoviesService = SearchMoviesServiceImplementation(client: apiClient)
     lazy var accountService: AccountService = AccountServicesImplementation(client: apiClient)
+    lazy var loginService: LoginServices = LoginServicesImplementation(client: apiClient)
+    lazy var deleteSessionService: DeleteSessionService = DeleteSessionServiceImplementation(client: apiClient)
 
     // TODO: Подумать, как правильно передать сессию в адаптер.
     // Так же, сейчас каждый раз создается новый клиент, когда мы его передаем в сервис.
