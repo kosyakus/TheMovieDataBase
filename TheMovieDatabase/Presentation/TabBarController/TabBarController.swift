@@ -27,13 +27,12 @@ class TabBarController: UITabBarController {
         tag: 0)
 
         let secondViewController = FavoriveViewController()
-
         secondViewController.tabBarItem = UITabBarItem(
         title: "Избранное",
         image: #imageLiteral(resourceName: "favorite_tabbar_icon"),
         tag: 1)
+        
         let thirdViewController = ProfileViewController()
-
         thirdViewController.tabBarItem = UITabBarItem(
         title: "Профиль",
         image: #imageLiteral(resourceName: "account_tabbar_icon"),

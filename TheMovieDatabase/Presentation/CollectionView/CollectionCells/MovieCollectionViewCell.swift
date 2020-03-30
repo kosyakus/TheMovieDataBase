@@ -20,7 +20,11 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        backgroundColor = .clear
+        clipsToBounds = false
+        layer.cornerRadius = 4
+        movieImageView.layer.cornerRadius = 4
+        movieNameLabel.text = "MovieName"
     }
-
+    
 }

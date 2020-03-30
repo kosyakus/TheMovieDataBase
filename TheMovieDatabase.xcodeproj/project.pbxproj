@@ -52,12 +52,12 @@
 		E18AC7552430847A00727107 /* DeleteSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC7542430847900727107 /* DeleteSessionService.swift */; };
 		E18AC7572430B7FE00727107 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC7562430B7FD00727107 /* UIImageViewExtension.swift */; };
 		E18AC7592430B85000727107 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC7582430B85000727107 /* Session.swift */; };
-		E18AC75F2430E2BB00727107 /* MoviesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC75D2430E2BB00727107 /* MoviesCollectionViewController.swift */; };
-		E18AC7602430E2BB00727107 /* MoviesCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E18AC75E2430E2BB00727107 /* MoviesCollectionViewController.xib */; };
+		E18AC75F2430E2BB00727107 /* MoviesCollectionViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC75D2430E2BB00727107 /* MoviesCollectionViewController2.swift */; };
 		E18AC7642430E32700727107 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC7622430E32700727107 /* MovieCollectionViewCell.swift */; };
 		E18AC7652430E32700727107 /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E18AC7632430E32700727107 /* MovieCollectionViewCell.xib */; };
-		E18AC7682430E34200727107 /* MovieTableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC7662430E34200727107 /* MovieTableCollectionViewCell.swift */; };
 		E18AC7692430E34200727107 /* MovieTableCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E18AC7672430E34200727107 /* MovieTableCollectionViewCell.xib */; };
+		E18AC76B24321B9900727107 /* MoviesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC76A24321B9900727107 /* MoviesCollectionViewController.swift */; };
+		E18AC76E2432863E00727107 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC76D2432863D00727107 /* LoadingViewController.swift */; };
 		E1B48E572423F07800AE89EF /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B48E562423F07800AE89EF /* UserSettings.swift */; };
 		E1B48E652426902800AE89EF /* APIRequestAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B48E642426902800AE89EF /* APIRequestAdapter.swift */; };
 		E1B48E672426916400AE89EF /* TheMovieDBAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B48E662426916400AE89EF /* TheMovieDBAPIClient.swift */; };
@@ -188,12 +188,12 @@
 		E18AC7542430847900727107 /* DeleteSessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteSessionService.swift; sourceTree = "<group>"; };
 		E18AC7562430B7FD00727107 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		E18AC7582430B85000727107 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		E18AC75D2430E2BB00727107 /* MoviesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCollectionViewController.swift; sourceTree = "<group>"; };
-		E18AC75E2430E2BB00727107 /* MoviesCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoviesCollectionViewController.xib; sourceTree = "<group>"; };
+		E18AC75D2430E2BB00727107 /* MoviesCollectionViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCollectionViewController2.swift; sourceTree = "<group>"; };
 		E18AC7622430E32700727107 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		E18AC7632430E32700727107 /* MovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionViewCell.xib; sourceTree = "<group>"; };
-		E18AC7662430E34200727107 /* MovieTableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableCollectionViewCell.swift; sourceTree = "<group>"; };
 		E18AC7672430E34200727107 /* MovieTableCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableCollectionViewCell.xib; sourceTree = "<group>"; };
+		E18AC76A24321B9900727107 /* MoviesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCollectionViewController.swift; sourceTree = "<group>"; };
+		E18AC76D2432863D00727107 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		E1B48E562423F07800AE89EF /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		E1B48E642426902800AE89EF /* APIRequestAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestAdapter.swift; sourceTree = "<group>"; };
 		E1B48E662426916400AE89EF /* TheMovieDBAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMovieDBAPIClient.swift; sourceTree = "<group>"; };
@@ -353,8 +353,8 @@
 			isa = PBXGroup;
 			children = (
 				E18AC7612430E2FD00727107 /* CollectionCells */,
-				E18AC75D2430E2BB00727107 /* MoviesCollectionViewController.swift */,
-				E18AC75E2430E2BB00727107 /* MoviesCollectionViewController.xib */,
+				E18AC75D2430E2BB00727107 /* MoviesCollectionViewController2.swift */,
+				E18AC76A24321B9900727107 /* MoviesCollectionViewController.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -364,10 +364,17 @@
 			children = (
 				E18AC7622430E32700727107 /* MovieCollectionViewCell.swift */,
 				E18AC7632430E32700727107 /* MovieCollectionViewCell.xib */,
-				E18AC7662430E34200727107 /* MovieTableCollectionViewCell.swift */,
 				E18AC7672430E34200727107 /* MovieTableCollectionViewCell.xib */,
 			);
 			path = CollectionCells;
+			sourceTree = "<group>";
+		};
+		E18AC76C243285EB00727107 /* LoadingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E18AC76D2432863D00727107 /* LoadingViewController.swift */,
+			);
+			path = LoadingViewController;
 			sourceTree = "<group>";
 		};
 		E1B48E682426957600AE89EF /* Service */ = {
@@ -477,6 +484,7 @@
 		E1C736C9241197B900E60D7C /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				E18AC76C243285EB00727107 /* LoadingViewController */,
 				E18AC75A2430E00E00727107 /* CollectionView */,
 				E1C736FC2413C3BB00E60D7C /* Common */,
 				E1C737112413FEA500E60D7C /* ProfileViewController */,
@@ -784,7 +792,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E18AC7602430E2BB00727107 /* MoviesCollectionViewController.xib in Resources */,
 				E1C736D12412A67400E60D7C /* LoginViewController.xib in Resources */,
 				E1C736AE2411154700E60D7C /* LaunchScreen.storyboard in Resources */,
 				E1C736D32412A84E00E60D7C /* SFProDisplay-Regular.ttf in Resources */,
@@ -975,6 +982,7 @@
 			files = (
 				E18AC7592430B85000727107 /* Session.swift in Sources */,
 				E1C736D02412A67400E60D7C /* LoginViewController.swift in Sources */,
+				E18AC76B24321B9900727107 /* MoviesCollectionViewController.swift in Sources */,
 				E18AC74F242E2D9200727107 /* Token.swift in Sources */,
 				E1C737012413C85900E60D7C /* TextFieldExtension.swift in Sources */,
 				E11C7675241F5687000969C7 /* KeychainUser.swift in Sources */,
@@ -986,16 +994,16 @@
 				E18AC74D242E2C6A00727107 /* LoginService.swift in Sources */,
 				E1FF6F02241BE2D80007B93D /* UIColorExtension.swift in Sources */,
 				E1FF6EFC241981250007B93D /* KeychainPasswordItem.swift in Sources */,
-				E18AC7682430E34200727107 /* MovieTableCollectionViewCell.swift in Sources */,
 				E11C767F241FEDB7000969C7 /* StringExtension.swift in Sources */,
 				E1FF6F00241A17A20007B93D /* NotificationExtension.swift in Sources */,
 				E1C737052413DCE200E60D7C /* TabBarController.swift in Sources */,
 				E1C7370F2413F84800E60D7C /* FavoriveViewController.swift in Sources */,
 				E1C737142413FECA00E60D7C /* ProfileViewController.swift in Sources */,
+				E18AC76E2432863E00727107 /* LoadingViewController.swift in Sources */,
 				E1B48E6C242695BF00AE89EF /* FavoriteServices.swift in Sources */,
 				E1B48E6A2426959200AE89EF /* ServiceLayer.swift in Sources */,
 				E1B48E572423F07800AE89EF /* UserSettings.swift in Sources */,
-				E18AC75F2430E2BB00727107 /* MoviesCollectionViewController.swift in Sources */,
+				E18AC75F2430E2BB00727107 /* MoviesCollectionViewController2.swift in Sources */,
 				E1C73717241540A400E60D7C /* NavigationControllerExtension.swift in Sources */,
 				E16B938424175AA300814B94 /* HelperLoginVC.swift in Sources */,
 				E1FF6EFE241981520007B93D /* KeychainSettings.swift in Sources */,
