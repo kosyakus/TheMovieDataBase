@@ -8,8 +8,6 @@
 
 import UIKit
 
-import TheMovieDatabaseAPI
-
 class ProfileViewController: UIViewController {
     
     // MARK: - IBOutlet
@@ -41,7 +39,6 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         setUpButtonAndImage()
-        loadProfile()
     }
     
     // MARK: - Public methods
@@ -51,24 +48,7 @@ class ProfileViewController: UIViewController {
         avatarImageView.layer.cornerRadius = 0.17 * exitButton.bounds.size.width
     }
     
-    func loadProfile() {
-        
-        accountService.fetchUser() { result in
-            print(result)
-            switch result {
-            case .success(let user):
-                let decodedimage = user.avatar.gravatar.hash.toUIImage
-                self.avatarImageView.image = decodedimage
-                if !user.name.isEmpty {
-                    self.nameLabel.text = user.name
-                } else {
-                    self.nameLabel.text = user.username
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
+    
     
     // MARK: - IBAction
     
@@ -78,6 +58,7 @@ class ProfileViewController: UIViewController {
             switch result {
             case .success:
                 try? ManageKeychain().deleteSessionId()
+                UserSettings.shareInstance.setNilValueForKey("accountID")
                 let appDelegate = UIApplication.shared.delegate as? AppDelegate
                 appDelegate?.presentViewController()
             case .failure(let error):

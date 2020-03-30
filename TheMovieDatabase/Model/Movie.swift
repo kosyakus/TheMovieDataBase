@@ -12,8 +12,8 @@ struct Movie {
     let id: Int
     let title: String?
     let originalTitle: String?
-    let voteAverage: Double
+    let voteAverage: Double?
     let voteCount: Int?
     let overview: String?
-    let poster: String?
+    let poster: URL?
 }

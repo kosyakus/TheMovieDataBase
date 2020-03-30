@@ -9,6 +9,12 @@
 import TheMovieDatabaseAPI
 import UIKit
 
+protocol ParentToChildProtocol: class {
+
+    func navBarButtonClickedByUser()
+    func loadFavoriteMovies()
+}
+
 final class FavoriveViewController: UIViewController {
     
     @IBOutlet weak var noMovieView: UIImageView!
@@ -17,9 +23,10 @@ final class FavoriveViewController: UIViewController {
     
     // MARK: - Public Properties
     
-    var favoriteService: FavoriteServices
+    //var favoriteService: FavoriteServices
     let cellVC = MoviesCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
     var cellType: CellType = .collectionCell
+    weak var delegate: ParentToChildProtocol?
     
     var buttonImage: UIImage {
         switch cellType {
@@ -32,21 +39,22 @@ final class FavoriveViewController: UIViewController {
     
     // MARK: - Initializers
     
-    init(favoriteService: FavoriteServices = ServiceLayer.shared.favoriteService) {
-        self.favoriteService = favoriteService
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    init(favoriteService: FavoriteServices = ServiceLayer.shared.favoriteService) {
+//        self.favoriteService = favoriteService
+//        super.init(nibName: nil, bundle: nil)
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavBar()
         updatePresentationStyle()
-       
-        loadFavoriteMovies()
+        
+        delegate?.loadFavoriteMovies()
+        
         addContainerView()
     }
     
@@ -65,32 +73,23 @@ final class FavoriveViewController: UIViewController {
                                          target: self,
                                          action: #selector(didTapSearchButton))
         
-        self.navigationController?.navigationItem.rightBarButtonItems = [searchButton, listButton]
+        navigationItem.rightBarButtonItems = [searchButton, listButton]
     }
     
     private func updatePresentationStyle() {
         self.navigationController?.navigationItem.rightBarButtonItem?.image = buttonImage
     }
     
-    func loadFavoriteMovies() {
-        
-        favoriteService.fetchFavoriteMovies(accountId: "9116288") { result in //9121461
-            print(result)
-            switch result {
-            case .success(let movies):
-                for movie in movies {
-                    let url = URL(string: movie.poster ?? "")
-                self.noMovieView.load(url: url!)
-                }
-            case .failure(let error):
-                print(error)
-            
-            }
-        }
-    }
-    
     @objc func didTapEditButton(sender: AnyObject) {
         print("didTapEditButton")
+        delegate?.navBarButtonClickedByUser()
+        switch cellType {
+        case .collectionCell:
+            cellType = .tableCell
+        case .tableCell:
+            cellType = .collectionCell
+        }
+        updatePresentationStyle()
     }
     
     @objc func didTapSearchButton(sender: AnyObject) {

@@ -9,22 +9,21 @@
 import Foundation
 
 @objc class UserSettings: NSObject {
-
+    
     fileprivate let standartUserDefaults = UserDefaults.standard
-    fileprivate let kBaseUrl = "baseUrl"
-    
-    let sharedDefaults = UserDefaults.standard
     static let shareInstance = UserSettings()
-    
     fileprivate override init() {}
+
+    fileprivate let kAccountID = "accountID"
     
-    var baseUrl: String {
+    var accountID: String {
         get {
-            let value = sharedDefaults.object(forKey: kBaseUrl) != nil ? sharedDefaults.string(forKey: kBaseUrl) : "https://api.themoviedb.org/3/"
+            let value = standartUserDefaults.object(forKey: kAccountID) != nil ?
+                standartUserDefaults.string(forKey: kAccountID) : ""
             return value!
         }
         set {
-            sharedDefaults.set(newValue, forKey: kBaseUrl)
+            standartUserDefaults.set(newValue, forKey: kAccountID)
         }
     }
 }

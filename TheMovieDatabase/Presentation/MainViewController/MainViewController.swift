@@ -6,7 +6,6 @@
 //  Copyright © 2020 Redmadrobot. All rights reserved.
 //
 
-import TheMovieDatabaseAPI
 import UIKit
 
 class MainViewController: UIViewController {
@@ -38,7 +37,9 @@ class MainViewController: UIViewController {
         }
         findMovieTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         self.hideKeyboardWhenTappedAround()
-        self.searchMovies(language: "ru-RU", query: "дулиттл")
+        self.checkUserIdExists()
+        
+        //self.searchMovies(language: "ru-RU", query: "дулиттл")
     }
     
     func searchMovies(language: String?, query: String) {
@@ -50,6 +51,11 @@ class MainViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    func checkUserIdExists() {
+        guard UserSettings.shareInstance.accountID.isEmpty else { return }
+        LoadAccount().loadProfile()
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {

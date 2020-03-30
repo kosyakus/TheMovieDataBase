@@ -24,6 +24,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
         clipsToBounds = false
         layer.cornerRadius = 4
         movieImageView.layer.cornerRadius = 4
+        movieImageView.contentMode = .scaleToFill
         movieNameLabel.text = "MovieName"
     }
     
