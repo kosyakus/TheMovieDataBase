@@ -13,9 +13,10 @@ protocol ParentToChildProtocol: class {
 
     func navBarButtonClickedByUser()
     func loadFavoriteMovies()
+    func searchMovies(language: String?, query: String)
 }
 
-final class FavoriveViewController: UIViewController {
+final class FavoriveViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBOutlet weak var noMovieView: UIImageView!
     @IBOutlet weak var findMoviesButton: UIButton!
@@ -23,7 +24,6 @@ final class FavoriveViewController: UIViewController {
     
     // MARK: - Public Properties
     
-    //var favoriteService: FavoriteServices
     let cellVC = MoviesCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
     var cellType: CellType = .collectionCell
     weak var delegate: ParentToChildProtocol?
@@ -37,24 +37,9 @@ final class FavoriveViewController: UIViewController {
         }
     }
     
-    // MARK: - Initializers
-    
-//    init(favoriteService: FavoriteServices = ServiceLayer.shared.favoriteService) {
-//        self.favoriteService = favoriteService
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavBar()
-        updatePresentationStyle()
-        
-        delegate?.loadFavoriteMovies()
-        
         addContainerView()
     }
     
@@ -64,20 +49,20 @@ final class FavoriveViewController: UIViewController {
         let searchImage = #imageLiteral(resourceName: "search_icon")
         //let listImage = #imageLiteral(resourceName: "list_icon")
         
-        let searchButton = UIBarButtonItem(image: searchImage,
+        let searchButton = UIBarButtonItem(image: buttonImage,
                                            style: .plain,
                                            target: self,
                                            action: #selector(didTapEditButton))
-        let listButton = UIBarButtonItem(image: buttonImage,
+        let listButton = UIBarButtonItem(image: searchImage,
                                          style: .plain,
                                          target: self,
                                          action: #selector(didTapSearchButton))
         
-        navigationItem.rightBarButtonItems = [searchButton, listButton]
+        navigationItem.rightBarButtonItems = [listButton, searchButton]
     }
     
     private func updatePresentationStyle() {
-        self.navigationController?.navigationItem.rightBarButtonItem?.image = buttonImage
+        navigationItem.rightBarButtonItems?[1].image = buttonImage
     }
     
     @objc func didTapEditButton(sender: AnyObject) {
@@ -104,6 +89,8 @@ final class FavoriveViewController: UIViewController {
         cellVC.view.frame = containerView.bounds
         containerView.addSubview(cellVC.collectionView)
         cellVC.didMove(toParent: self)
+        self.delegate = cellVC
+        delegate?.loadFavoriteMovies()
     }
     
     private func removeContainerView() {

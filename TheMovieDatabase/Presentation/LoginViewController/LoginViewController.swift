@@ -76,35 +76,10 @@ class LoginViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         
         loginService.fetchToken(login: login, password: password) { _ in
+            self.remove()
             appDelegate?.presentViewController()
         }
     }
-        
-//        loginService.fetchToken() { result in
-//
-//            switch result {
-//            case .success(let token):
-//                self.loginService.validateToken(login: login, password: password, requestToken: token.token) { result in
-//                    switch result {
-//                    case .success:
-//                        self.loginService.createSession(requestToken: token.token) { result in
-//                            switch result {
-//                            case .success(let session):
-//                                try? ManageKeychain().saveSessionId(sessionId: session.sessionID,
-//                                                                    user: KeychainUser(username: login))
-//                                appDelegate?.presentViewController()
-//                            case .failure(let error):
-//                                print(error.localizedDescription)
-//                            }
-//                        }
-//                    case .failure(let error):
-//                        print(error.localizedDescription)
-//                    }
-//                }
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
     
     // MARK: - IBAction
     
@@ -113,6 +88,8 @@ class LoginViewController: UIViewController {
         guard let login = loginTextField.text,
             let password = passwordTextField.text
             else { return }
+        let loadingViewController = LoadingViewController()
+        add(loadingViewController)
         sendApiRequest(login: login, password: password)
     }
 }

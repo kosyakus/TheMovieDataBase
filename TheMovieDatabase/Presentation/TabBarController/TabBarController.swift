@@ -39,8 +39,9 @@ class TabBarController: UITabBarController {
         tag: 2)
 
         let tabBarList = [firstViewController, secondViewController, thirdViewController]
+        viewControllers = tabBarList.map { UINavigationController(rootViewController: $0, isTranslucent: false) }
 
-        viewControllers = tabBarList
+        //viewControllers = tabBarList
         UITabBar.appearance().tintColor = UIColor.CustomColor.orange
     }
 }

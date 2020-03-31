@@ -16,6 +16,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="TheMovieDatabase" customModuleProvider="target">
             <connections>
+                <outlet property="findMovieLabel" destination="z85-Ye-vcx" id="3E4-DN-y4B"/>
+                <outlet property="findMovieStackView" destination="Gi2-2S-Grw" id="Ci2-sA-vJI"/>
                 <outlet property="findMovieTextField" destination="XOj-fY-Wem" id="HQS-sY-G9M"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -34,27 +36,39 @@
                     <color key="textColor" name="Light"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Поиск фильмов" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XOj-fY-Wem">
-                    <rect key="frame" x="24" y="200" width="319" height="48"/>
-                    <color key="backgroundColor" name="LightGray"/>
-                    <accessibility key="accessibilityConfiguration" identifier="FindMovieTF"/>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Gi2-2S-Grw">
+                    <rect key="frame" x="24" y="200" width="366" height="48"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Поиск фильмов" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XOj-fY-Wem">
+                            <rect key="frame" x="0.0" y="0.0" width="276" height="48"/>
+                            <color key="backgroundColor" name="LightGray"/>
+                            <accessibility key="accessibilityConfiguration" identifier="FindMovieTF"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="rOv-aT-uGU"/>
+                            </constraints>
+                            <color key="textColor" name="Light"/>
+                            <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="16"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hA5-4R-BaU">
+                            <rect key="frame" x="276" y="0.0" width="90" height="48"/>
+                            <state key="normal" image="list_icon"/>
+                        </button>
+                    </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="48" id="rOv-aT-uGU"/>
+                        <constraint firstAttribute="height" constant="48" id="7I0-4W-Ill"/>
                     </constraints>
-                    <color key="textColor" name="Light"/>
-                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="16"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
+                </stackView>
             </subviews>
             <color key="backgroundColor" name="Bg_black"/>
             <constraints>
-                <constraint firstItem="XOj-fY-Wem" firstAttribute="top" secondItem="z85-Ye-vcx" secondAttribute="bottom" constant="33" id="1iq-tR-CoP"/>
-                <constraint firstItem="XOj-fY-Wem" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="3ow-W8-fjk"/>
+                <constraint firstItem="Gi2-2S-Grw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="IV5-08-gVW"/>
                 <constraint firstAttribute="trailing" secondItem="z85-Ye-vcx" secondAttribute="trailing" constant="116" id="Ji8-lS-iWP"/>
                 <constraint firstAttribute="trailing" secondItem="3PD-tq-4Jf" secondAttribute="trailing" id="T1S-kN-T17"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="XOj-fY-Wem" secondAttribute="trailing" constant="71" id="U8h-dk-p2U"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="3PD-tq-4Jf" secondAttribute="bottom" id="lqy-sh-qmz"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Gi2-2S-Grw" secondAttribute="trailing" constant="24" id="mEq-te-yA3"/>
                 <constraint firstItem="z85-Ye-vcx" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="11" id="tEl-2i-hv0"/>
+                <constraint firstItem="Gi2-2S-Grw" firstAttribute="top" secondItem="z85-Ye-vcx" secondAttribute="bottom" constant="33" id="wSB-5U-o8b"/>
                 <constraint firstItem="z85-Ye-vcx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="23" id="wbn-Zm-0Ca"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -62,6 +76,7 @@
         </view>
     </objects>
     <resources>
+        <image name="list_icon" width="24" height="24"/>
         <image name="women_under_the_tree" width="275" height="458"/>
         <namedColor name="Bg_black">
             <color red="0.097999997437000275" green="0.10199999809265137" blue="0.14499999582767487" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

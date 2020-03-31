@@ -12,9 +12,34 @@ import UIKit
 extension UINavigationController {
     convenience init(rootViewController: UIViewController, isTranslucent: Bool) {
         self.init(rootViewController: rootViewController)
-        self.navigationBar.barTintColor = UIColor(named: "Bg_black")
-        self.navigationBar.isTranslucent = false
-        self.navigationBar.tintColor = UIColor(named: "Light")
-        self.navigationBar.setValue(true, forKey: "hidesShadow")
+        setNavBar()
     }
+    
+    private func setNavBar() {
+        self.navigationBar.barTintColor = UIColor.CustomColor.bgBlack
+        self.navigationBar.isTranslucent = false
+        self.navigationBar.tintColor = UIColor.CustomColor.light
+        self.navigationBar.setValue(true, forKey: "hidesShadow")
+        navigationItem.title = "navTitle"
+    }
+    
+    //    func initRootViewController(vc: UIViewController,
+    //                                transitionType type: CATransitionType = CATransitionType.fade,
+    //                                duration: CFTimeInterval = 0.3) {
+    //        self.addTransition(transitionType: type, duration: duration)
+    //        setNavBar()
+    //        self.viewControllers.removeAll()
+    //        self.pushViewController(vc, animated: false)
+    //        self.popToRootViewController(animated: false)
+    //    }
+    
+    
+    //    private func addTransition(transitionType type: CATransitionType = CATransitionType.fade,
+    //                               duration: CFTimeInterval = 0.3) {
+    //        let transition = CATransition()
+    //        transition.duration = duration
+    //        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+    //        transition.type = type
+    //        self.view.layer.add(transition, forKey: nil)
+    //    }
 }

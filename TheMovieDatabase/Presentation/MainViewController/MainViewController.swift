@@ -12,22 +12,13 @@ class MainViewController: UIViewController {
     
     // MARK: - IBOutlet
     
+    @IBOutlet weak var findMovieLabel: UILabel!
     @IBOutlet weak var findMovieTextField: UITextField!
+    @IBOutlet weak var findMovieStackView: UIStackView!
     
     // MARK: - Public Properties
     
-    var searchMoviesService: SearchMoviesService
-    
-    // MARK: - Initializers
-    
-    init(searchMoviesService: SearchMoviesService = ServiceLayer.shared.searchMoviesService) {
-        self.searchMoviesService = searchMoviesService
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    weak var delegate: ParentToChildProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,22 +26,10 @@ class MainViewController: UIViewController {
         if let image = UIImage(named: searchIcon) {
             findMovieTextField.setLeftView(image: image)
         }
+        findMovieTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .allTouchEvents)
         findMovieTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         self.hideKeyboardWhenTappedAround()
         self.checkUserIdExists()
-        
-        //self.searchMovies(language: "ru-RU", query: "дулиттл")
-    }
-    
-    func searchMovies(language: String?, query: String) {
-        searchMoviesService.fetchSearchMovies(language: language, query: query) { result in
-            switch result {
-            case .success(let movie):
-                print(movie)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
     }
     
     func checkUserIdExists() {
@@ -59,7 +38,8 @@ class MainViewController: UIViewController {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
+        findMovieLabel.isHidden = true
         guard let text = textField.text else { return }
-        self.searchMovies(language: Locale.current.languageCode!, query: text)
+        delegate?.searchMovies(language: Locale.current.languageCode!, query: text)
     }
 }

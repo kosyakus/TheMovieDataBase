@@ -14,18 +14,24 @@ enum CellType {
 
 class MoviesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var cellType: CellType = .tableCell
+    // MARK: - Public Properties
+    
+    var cellType: CellType = .collectionCell
     var moviesArray = [Movie]()
     let favoriteService: FavoriteServices = ServiceLayer.shared.favoriteService
+    let searchMoviesService: SearchMoviesService = ServiceLayer.shared.searchMoviesService
+    
+    // MARK: - MoviesCollectionViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         collectionView.backgroundColor = .clear
         setUpCell()
-        loadFavoriteMovies()
     }
     
+    // MARK: - Public methods
+    
+    /// Метод для регистрации ячейки коллекции
     func setUpCell() {
         switch cellType {
         case .collectionCell:
@@ -39,6 +45,8 @@ class MoviesCollectionViewController: UICollectionViewController, UICollectionVi
 }
 
 extension MoviesCollectionViewController: ParentToChildProtocol {
+    
+    /// Метод для переключения типов ячейки коллекции
     func navBarButtonClickedByUser() {
         switch cellType {
         case .collectionCell:
@@ -46,20 +54,42 @@ extension MoviesCollectionViewController: ParentToChildProtocol {
         case .tableCell:
             cellType = .collectionCell
         }
+        setUpCell()
+        self.collectionView.reloadData()
     }
     
+    /// Метод для загрузки любимых фильмов.  Получает фильмы, добавляет их в moviesArray и обновляет коллекцию
     func loadFavoriteMovies() {
-        favoriteService.fetchFavoriteMovies(accountId: UserSettings.shareInstance.accountID) { result in //9121461
-            print(result)
+        favoriteService.fetchFavoriteMovies(accountId: UserSettings.shareInstance.accountID) { result in
+            //print(result)
+            var array = [Movie]()
             switch result {
             case .success(let movies):
                 for movie in movies {
-                    self.moviesArray.append(movie)
+                    array.append(movie)
                 }
+                self.moviesArray = array
                 self.collectionView.reloadData()
             case .failure(let error):
                 print(error)
             
+            }
+        }
+    }
+    
+    /// Метод для поиска любимых фильмов.  Получает фильмы, добавляет их в moviesArray и обновляет коллекцию
+    func searchMovies(language: String?, query: String) {
+        searchMoviesService.fetchSearchMovies(language: language, query: query) { result in
+            var array = [Movie]()
+            switch result {
+            case .success(let movies):
+                for movie in movies {
+                    array.append(movie)
+                }
+                self.moviesArray = array
+                self.collectionView.reloadData()
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }
@@ -68,12 +98,14 @@ extension MoviesCollectionViewController: ParentToChildProtocol {
     // MARK: - UICollectionViewDataSource
 
 extension MoviesCollectionViewController {
-     
+
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard !moviesArray.isEmpty else { return 0 }
+        guard !moviesArray.isEmpty else {
+
+            return 0 }
         return moviesArray.count
     }
-    
+
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cellIdentifier = ""
@@ -84,7 +116,7 @@ extension MoviesCollectionViewController {
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier,
                                                       for: indexPath) as! MovieCollectionViewCell
-        
+
         guard !moviesArray.isEmpty else { return cell }
         let movie = moviesArray[indexPath.row]
         if let poster = movie.poster {
@@ -94,7 +126,7 @@ extension MoviesCollectionViewController {
         cell.originalMovieNameLabel.text = movie.originalTitle
         cell.voteLabel.text = "\(movie.voteAverage ?? 0)"
         cell.voteCountLabel.text = "\(movie.voteCount ?? 0)"
-        
+
         return cell
     }
 }

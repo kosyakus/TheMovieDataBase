@@ -44,11 +44,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             var mainVC = UIViewController()
             if isSignedIn {
                 mainVC = TabBarController()
+                window.rootViewController = mainVC
             } else {
                 mainVC = LoginViewController()
+                navigationController = UINavigationController(rootViewController: mainVC, isTranslucent: false)
+                window.rootViewController = navigationController
             }
-            navigationController = UINavigationController(rootViewController: mainVC, isTranslucent: false)
-            window.rootViewController = navigationController
             window.makeKeyAndVisible()
         }
     }

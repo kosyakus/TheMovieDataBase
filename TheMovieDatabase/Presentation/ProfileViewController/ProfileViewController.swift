@@ -48,8 +48,6 @@ class ProfileViewController: UIViewController {
         avatarImageView.layer.cornerRadius = 0.17 * exitButton.bounds.size.width
     }
     
-    
-    
     // MARK: - IBAction
     
     @IBAction func exitButtonTapped(_ sender: Any) {
@@ -58,7 +56,7 @@ class ProfileViewController: UIViewController {
             switch result {
             case .success:
                 try? ManageKeychain().deleteSessionId()
-                UserSettings.shareInstance.setNilValueForKey("accountID")
+                UserSettings.shareInstance.accountID = ""
                 let appDelegate = UIApplication.shared.delegate as? AppDelegate
                 appDelegate?.presentViewController()
             case .failure(let error):
