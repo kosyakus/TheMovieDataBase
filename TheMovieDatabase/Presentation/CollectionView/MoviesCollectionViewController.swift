@@ -80,6 +80,7 @@ extension MoviesCollectionViewController: ParentToChildProtocol {
     /// Метод для поиска любимых фильмов.  Получает фильмы, добавляет их в moviesArray и обновляет коллекцию
     func searchMovies(language: String?, query: String) {
         searchMoviesService.fetchSearchMovies(language: language, query: query) { result in
+            //print(result)
             var array = [Movie]()
             switch result {
             case .success(let movies):

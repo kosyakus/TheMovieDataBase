@@ -16,6 +16,7 @@ class LoadingViewController: UIViewController {
 
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.color = UIColor.CustomColor.light
+        //view.backgroundColor = UIColor.CustomColor.darkBlue
         view.addSubview(activityIndicator)
 
         NSLayoutConstraint.activate([
