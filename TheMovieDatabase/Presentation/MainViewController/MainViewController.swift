@@ -10,6 +10,12 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    // MARK: - Constants
+    
+    private let listImage = #imageLiteral(resourceName: "list_icon")
+    private let searchImage = #imageLiteral(resourceName: "search_icon")
+    private let collectionImage = #imageLiteral(resourceName: "widgets_icon")
+    
     // MARK: - IBOutlet
     
     @IBOutlet weak var findMovieLabel: UILabel!
@@ -21,58 +27,48 @@ class MainViewController: UIViewController {
     // MARK: - Public Properties
     
     weak var delegate: ParentToChildProtocol?
-    var containerView: UIView?
     let cellVC = MoviesCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
     var cellType: CellType = .collectionCell
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let searchIcon = "search_icon"
-        if let image = UIImage(named: searchIcon) {
-            findMovieTextField.setLeftView(image: image)
-        }
-        findMovieTextField.addTarget(self, action: #selector(textFieldDidTap(_:)), for: .touchDown)
+        findMovieTextField.setLeftView(image: searchImage)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
         findMovieTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         self.hideKeyboardWhenTappedAround()
         self.checkUserIdExists()
     }
+    
+    // MARK: - Public methods
     
     func checkUserIdExists() {
         guard UserSettings.shareInstance.accountID.isEmpty else { return }
         LoadAccount().loadProfile()
     }
     
-    @objc func textFieldDidTap(_ textField: UITextField) {
+    /// Обработка экрана при появлении клавиатуры
+    @objc func keyboardWillShow(notification: NSNotification) {
+        findMovieStackView.frame.origin.y = 30
         findMovieLabel.isHidden = true
-        findMovieStackView.frame.origin.y = 33
         girlImageView.isHidden = true
-        addContainerView()
+        addCollection(cellVC)
     }
     
+    /// Обработка экрана при скрытии клавиатуры
+    @objc func keyboardWillHide(notification: NSNotification) {
+    }
+    
+    /// Передаем делегат в child contriler при введении текста в полепоиска
     @objc func textFieldDidChange(_ textField: UITextField) {
         guard let text = textField.text else { return }
         delegate?.searchMovies(language: Locale.current.languageCode!, query: text)
     }
     
-    // MARK: - Private Methods
-    
-    private func addContainerView() {
-        self.containerView = UIView(frame: CGRect(x: 0, y: view.frame.origin.y + 100,
-                                                  width: view.frame.width, height: view.frame.height - 100))
-        self.view.addSubview(containerView!)
-        self.addChild(cellVC)
-        cellVC.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        cellVC.view.frame = containerView?.bounds ?? view.bounds
-        containerView?.addSubview(cellVC.collectionView)
-        cellVC.didMove(toParent: self)
-        self.delegate = cellVC
-    }
-    
-    private func removeContainerView() {
-        cellVC.willMove(toParent: nil)
-        cellVC.collectionView.removeFromSuperview()
-        cellVC.removeFromParent()
-    }
+    // MARK: - IBAction
     
     @IBAction func listButtonTapped(_ sender: Any) {
         print("didTapListButton")
@@ -80,8 +76,18 @@ class MainViewController: UIViewController {
         switch cellType {
         case .collectionCell:
             cellType = .tableCell
+            listButton.imageView?.image = collectionImage
         case .tableCell:
             cellType = .collectionCell
+            listButton.imageView?.image = listImage
         }
+    }
+    
+    // MARK: - Private Methods
+    
+    /// Добавление childView
+    private func addCollection(_ viewController: UIViewController) {
+        self.addContainerView(viewController)
+        self.delegate = cellVC
     }
 }

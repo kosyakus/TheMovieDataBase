@@ -10,13 +10,21 @@ import TheMovieDatabaseAPI
 import UIKit
 
 protocol ParentToChildProtocol: class {
-
+    
     func navBarButtonClickedByUser()
     func loadFavoriteMovies()
     func searchMovies(language: String?, query: String)
 }
 
 final class FavoriveViewController: UIViewController, UINavigationControllerDelegate {
+    
+    // MARK: - Constants
+    
+    private let listImage = #imageLiteral(resourceName: "list_icon")
+    private let searchImage = #imageLiteral(resourceName: "search_icon")
+    private let collectionImage = #imageLiteral(resourceName: "widgets_icon")
+    
+    // MARK: - IBOutlet
     
     @IBOutlet weak var noMovieView: UIImageView!
     @IBOutlet weak var findMoviesButton: UIButton!
@@ -27,40 +35,39 @@ final class FavoriveViewController: UIViewController, UINavigationControllerDele
     let cellVC = MoviesCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
     var cellType: CellType = .collectionCell
     weak var delegate: ParentToChildProtocol?
-    
     var buttonImage: UIImage {
         switch cellType {
         case .collectionCell:
-            return #imageLiteral(resourceName: "list_icon")
+            return listImage
         case .tableCell:
-            return #imageLiteral(resourceName: "widgets_icon")
+            return collectionImage
         }
     }
+    
+    // MARK: - FavoriveViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavBar()
-        addContainerView()
+        addCollection(cellVC)
     }
     
     // MARK: - Public methods
     
     func setUpNavBar() {
-        let searchImage = #imageLiteral(resourceName: "search_icon")
-        //let listImage = #imageLiteral(resourceName: "list_icon")
-        
-        let searchButton = UIBarButtonItem(image: buttonImage,
-                                           style: .plain,
-                                           target: self,
-                                           action: #selector(didTapEditButton))
-        let listButton = UIBarButtonItem(image: searchImage,
+        let listButton = UIBarButtonItem(image: buttonImage,
                                          style: .plain,
                                          target: self,
-                                         action: #selector(didTapSearchButton))
+                                         action: #selector(didTapEditButton))
+        let searchButton = UIBarButtonItem(image: searchImage,
+                                           style: .plain,
+                                           target: self,
+                                           action: #selector(didTapSearchButton))
         
         navigationItem.rightBarButtonItems = [listButton, searchButton]
     }
     
+    /// Обновление изображения списка/таблицы
     private func updatePresentationStyle() {
         navigationItem.rightBarButtonItems?[1].image = buttonImage
     }
@@ -83,36 +90,10 @@ final class FavoriveViewController: UIViewController, UINavigationControllerDele
     
     // MARK: - Private Methods
     
-    private func addContainerView() {
-        self.addChild(cellVC)
-        cellVC.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        cellVC.view.frame = containerView.bounds
-        containerView.addSubview(cellVC.collectionView)
-        cellVC.didMove(toParent: self)
+    /// Добавление childView
+    private func addCollection(_ viewController: UIViewController) {
+        self.addContainerView(viewController)
         self.delegate = cellVC
         delegate?.loadFavoriteMovies()
     }
-    
-    private func removeContainerView() {
-        // Notify Child View Controller
-        cellVC.willMove(toParent: nil)
-        // Remove Child View From Superview
-        cellVC.collectionView.removeFromSuperview()
-        // Notify Child View Controller
-        cellVC.removeFromParent()
-    }
-    
-//    private func updateView() {
-//        if self.navigationController?.navigationItem.rightBarButtonItems?[0] {
-//
-//        }
-//        if segmentedControl.selectedSegmentIndex == 0 {
-//            remove(asChildViewController: sessionsViewController)
-//            add(asChildViewController: summaryViewController)
-//        } else {
-//            remove(asChildViewController: summaryViewController)
-//            add(asChildViewController: sessionsViewController)
-//        }
-//    }
-    
 }

@@ -11,17 +11,18 @@ import UIKit
 
    // MARK: - UICollectionViewDataSource
 
-//extension MoviesCollectionViewController {
-//    func moviesDidLoad(_ movies: [Movie]) {
-//        var cellIdentifier = ""
-//        if cellType == .tableCell {
-//            cellIdentifier = "tableCell"
-//        } else {
-//            cellIdentifier = "collectionCell"
-//        }
-//        collectionView.dataSource = CollectionViewDataSource.make(for: movies, reuseIdentifier: cellIdentifier)
-//    }
-//}
+extension MoviesCollectionViewController {
+    func moviesDidLoad(_ movies: [Movie]) {
+        var cellIdentifier = ""
+        if cellType == .tableCell {
+            cellIdentifier = "tableCell"
+        } else {
+            cellIdentifier = "collectionCell"
+        }
+        self.dataSource = .make(for: movies, reuseIdentifier: cellIdentifier)
+        collectionView.dataSource = dataSource
+    }
+}
 
 class CollectionViewDataSource<Model>: NSObject, UICollectionViewDataSource {
     typealias CellConfigurator = (Model, MovieCollectionViewCell) -> Void
@@ -61,7 +62,6 @@ class CollectionViewDataSource<Model>: NSObject, UICollectionViewDataSource {
 
         return cell
     }
-    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {

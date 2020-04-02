@@ -12,7 +12,7 @@ enum CellType {
     case collectionCell, tableCell
 }
 
-class MoviesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+final class MoviesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     // MARK: - Public Properties
     
@@ -21,26 +21,25 @@ class MoviesCollectionViewController: UICollectionViewController, UICollectionVi
     let favoriteService: FavoriteServices = ServiceLayer.shared.favoriteService
     let searchMoviesService: SearchMoviesService = ServiceLayer.shared.searchMoviesService
     
+    var dataSource: CollectionViewDataSource<Movie>?
+    
     // MARK: - MoviesCollectionViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .clear
         setUpCell()
+        //self.moviesDidLoad(self.moviesArray)
     }
     
     // MARK: - Public methods
     
     /// Метод для регистрации ячейки коллекции
     func setUpCell() {
-        switch cellType {
-        case .collectionCell:
-            self.collectionView!.register(UINib(nibName: "MovieCollectionViewCell", bundle: nil),
+        self.collectionView!.register(UINib(nibName: "MovieCollectionViewCell", bundle: nil),
                                           forCellWithReuseIdentifier: "collectionCell")
-        case .tableCell:
-            self.collectionView!.register(UINib(nibName: "MovieTableCollectionViewCell", bundle: nil),
+        self.collectionView!.register(UINib(nibName: "MovieTableCollectionViewCell", bundle: nil),
                                           forCellWithReuseIdentifier: "tableCell")
-        }
     }
 }
 
@@ -54,7 +53,6 @@ extension MoviesCollectionViewController: ParentToChildProtocol {
         case .tableCell:
             cellType = .collectionCell
         }
-        setUpCell()
         self.collectionView.reloadData()
     }
     
@@ -62,13 +60,9 @@ extension MoviesCollectionViewController: ParentToChildProtocol {
     func loadFavoriteMovies() {
         favoriteService.fetchFavoriteMovies(accountId: UserSettings.shareInstance.accountID) { result in
             //print(result)
-            var array = [Movie]()
             switch result {
             case .success(let movies):
-                for movie in movies {
-                    array.append(movie)
-                }
-                self.moviesArray = array
+                self.moviesArray = movies
                 self.collectionView.reloadData()
             case .failure(let error):
                 print(error)
@@ -81,13 +75,9 @@ extension MoviesCollectionViewController: ParentToChildProtocol {
     func searchMovies(language: String?, query: String) {
         searchMoviesService.fetchSearchMovies(language: language, query: query) { result in
             //print(result)
-            var array = [Movie]()
             switch result {
             case .success(let movies):
-                for movie in movies {
-                    array.append(movie)
-                }
-                self.moviesArray = array
+                self.moviesArray = movies
                 self.collectionView.reloadData()
             case .failure(let error):
                 print(error.localizedDescription)
@@ -118,7 +108,6 @@ extension MoviesCollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier,
                                                       for: indexPath) as! MovieCollectionViewCell
 
-        guard !moviesArray.isEmpty else { return cell }
         let movie = moviesArray[indexPath.row]
         if let poster = movie.poster {
             cell.movieImageView.load(url: poster)

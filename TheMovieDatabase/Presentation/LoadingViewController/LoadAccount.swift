@@ -13,7 +13,7 @@ final class LoadAccount {
     let accountService: AccountService = ServiceLayer.shared.accountService
     
     func loadProfile() {
-        accountService.fetchUser() { result in
+        accountService.fetchUser { result in
             print(result)
             switch result {
             case .success(let user):

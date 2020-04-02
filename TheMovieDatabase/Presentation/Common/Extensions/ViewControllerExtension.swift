@@ -22,6 +22,26 @@ extension UIViewController {
 }
 
 extension UIViewController {
+    
+    func addContainerView(_ viewController: UIViewController) {
+        self.addChild(viewController)
+        viewController.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        viewController.view.frame = CGRect(x: 0, y: view.frame.origin.y + 100,
+                                           width: view.frame.width, height: view.frame.height - 100)
+        self.view.addSubview(viewController.view)
+        viewController.didMove(toParent: self)
+    }
+    
+    func removeContainerView(_ viewController: UIViewController) {
+        // Notify Child View Controller
+        viewController.willMove(toParent: nil)
+        // Remove Child View From Superview
+        viewController.view.removeFromSuperview()
+        // Notify Child View Controller
+        viewController.removeFromParent()
+    }
+    
+    
     func add(_ child: UIViewController) {
         addChild(child)
         view.addSubview(child.view)
