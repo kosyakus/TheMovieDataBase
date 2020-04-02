@@ -18,8 +18,6 @@ final class MoviesCollectionViewController: UICollectionViewController, UICollec
     
     var cellType: CellType = .collectionCell
     var moviesArray = [Movie]()
-    let favoriteService: FavoriteServices = ServiceLayer.shared.favoriteService
-    let searchMoviesService: SearchMoviesService = ServiceLayer.shared.searchMoviesService
     
     var dataSource: CollectionViewDataSource<Movie>?
     
@@ -56,33 +54,8 @@ extension MoviesCollectionViewController: ParentToChildProtocol {
         self.collectionView.reloadData()
     }
     
-    /// Метод для загрузки любимых фильмов.  Получает фильмы, добавляет их в moviesArray и обновляет коллекцию
-    func loadFavoriteMovies() {
-        favoriteService.fetchFavoriteMovies(accountId: UserSettings.shareInstance.accountID) { result in
-            //print(result)
-            switch result {
-            case .success(let movies):
-                self.moviesArray = movies
-                self.collectionView.reloadData()
-            case .failure(let error):
-                print(error)
-            
-            }
-        }
-    }
-    
-    /// Метод для поиска любимых фильмов.  Получает фильмы, добавляет их в moviesArray и обновляет коллекцию
-    func searchMovies(language: String?, query: String) {
-        searchMoviesService.fetchSearchMovies(language: language, query: query) { result in
-            //print(result)
-            switch result {
-            case .success(let movies):
-                self.moviesArray = movies
-                self.collectionView.reloadData()
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+    func reloadData() {
+        self.collectionView.reloadData()
     }
 }
 

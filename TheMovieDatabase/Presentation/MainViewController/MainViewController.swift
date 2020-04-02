@@ -27,6 +27,7 @@ class MainViewController: UIViewController {
     // MARK: - Public Properties
     
     weak var delegate: ParentToChildProtocol?
+    let searchMoviesService: SearchMoviesService = ServiceLayer.shared.searchMoviesService
     let cellVC = MoviesCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
     var cellType: CellType = .collectionCell
     
@@ -65,7 +66,7 @@ class MainViewController: UIViewController {
     /// Передаем делегат в child contriler при введении текста в полепоиска
     @objc func textFieldDidChange(_ textField: UITextField) {
         guard let text = textField.text else { return }
-        delegate?.searchMovies(language: Locale.current.languageCode!, query: text)
+        self.searchMovies(language: Locale.current.languageCode!, query: text)
     }
     
     // MARK: - IBAction
@@ -89,5 +90,18 @@ class MainViewController: UIViewController {
     private func addCollection(_ viewController: UIViewController) {
         self.addContainerView(viewController)
         self.delegate = cellVC
+    }
+    
+    /// Метод для поиска любимых фильмов.  Получает фильмы, добавляет их в moviesArray и обновляет коллекцию
+    private func searchMovies(language: String?, query: String) {
+        searchMoviesService.fetchSearchMovies(language: language, query: query) { result in
+            switch result {
+            case .success(let movies):
+                self.delegate?.moviesArray = movies
+                self.delegate?.reloadData()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }

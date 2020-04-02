@@ -16,8 +16,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavoriveViewController" customModule="TheMovieDatabase" customModuleProvider="target">
             <connections>
-                <outlet property="containerView" destination="4yF-jl-FgQ" id="XOL-Rr-fLc"/>
                 <outlet property="findMoviesButton" destination="It3-6K-IUK" id="S17-RF-hns"/>
+                <outlet property="noMovieLabel" destination="aCb-GY-30r" id="pG5-6N-ejH"/>
                 <outlet property="noMovieView" destination="ZX5-zt-K5u" id="sZx-6s-3aK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -56,24 +56,16 @@
                         <color key="titleColor" name="Purpure"/>
                     </state>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4yF-jl-FgQ">
-                    <rect key="frame" x="0.0" y="195.5" width="414" height="666.5"/>
-                    <color key="backgroundColor" name="Bg_black"/>
-                </view>
             </subviews>
             <color key="backgroundColor" name="Bg_black"/>
             <constraints>
                 <constraint firstItem="aCb-GY-30r" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="9QE-b9-Ece"/>
                 <constraint firstItem="ZX5-zt-K5u" firstAttribute="top" secondItem="It3-6K-IUK" secondAttribute="bottom" constant="88" id="AfV-57-xZa"/>
                 <constraint firstItem="COX-IK-2Wa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="24" id="Cb3-pM-Gwj"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4yF-jl-FgQ" secondAttribute="trailing" id="R37-xO-QiK"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="4yF-jl-FgQ" secondAttribute="bottom" id="ah8-m0-y5B"/>
-                <constraint firstItem="4yF-jl-FgQ" firstAttribute="top" secondItem="It3-6K-IUK" secondAttribute="bottom" constant="8" symbolic="YES" id="biL-xr-nbK"/>
                 <constraint firstItem="COX-IK-2Wa" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="11" id="ebJ-vW-9XT"/>
                 <constraint firstItem="aCb-GY-30r" firstAttribute="top" secondItem="COX-IK-2Wa" secondAttribute="bottom" constant="34" id="jCx-1L-ZBQ"/>
                 <constraint firstItem="ZX5-zt-K5u" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="kbh-IR-e0t"/>
                 <constraint firstItem="It3-6K-IUK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="lbO-w6-7ER"/>
-                <constraint firstItem="4yF-jl-FgQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="qPK-Ht-yFk"/>
                 <constraint firstItem="It3-6K-IUK" firstAttribute="top" secondItem="aCb-GY-30r" secondAttribute="bottom" constant="13" id="tUU-6V-YQK"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

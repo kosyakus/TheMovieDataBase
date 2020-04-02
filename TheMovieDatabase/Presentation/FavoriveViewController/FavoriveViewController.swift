@@ -11,9 +11,10 @@ import UIKit
 
 protocol ParentToChildProtocol: class {
     
+    var moviesArray: [Movie] { get set }
+    
     func navBarButtonClickedByUser()
-    func loadFavoriteMovies()
-    func searchMovies(language: String?, query: String)
+    func reloadData()
 }
 
 final class FavoriveViewController: UIViewController, UINavigationControllerDelegate {
@@ -27,11 +28,12 @@ final class FavoriveViewController: UIViewController, UINavigationControllerDele
     // MARK: - IBOutlet
     
     @IBOutlet weak var noMovieView: UIImageView!
+    @IBOutlet weak var noMovieLabel: UILabel!
     @IBOutlet weak var findMoviesButton: UIButton!
-    @IBOutlet weak var containerView: UIView!
     
     // MARK: - Public Properties
     
+    let favoriteService: FavoriteServices = ServiceLayer.shared.favoriteService
     let cellVC = MoviesCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
     var cellType: CellType = .collectionCell
     weak var delegate: ParentToChildProtocol?
@@ -50,6 +52,7 @@ final class FavoriveViewController: UIViewController, UINavigationControllerDele
         super.viewDidLoad()
         setUpNavBar()
         addCollection(cellVC)
+        loadFavoriteMovies()
     }
     
     // MARK: - Public methods
@@ -65,11 +68,6 @@ final class FavoriveViewController: UIViewController, UINavigationControllerDele
                                            action: #selector(didTapSearchButton))
         
         navigationItem.rightBarButtonItems = [listButton, searchButton]
-    }
-    
-    /// Обновление изображения списка/таблицы
-    private func updatePresentationStyle() {
-        navigationItem.rightBarButtonItems?[1].image = buttonImage
     }
     
     @objc func didTapEditButton(sender: AnyObject) {
@@ -94,6 +92,31 @@ final class FavoriveViewController: UIViewController, UINavigationControllerDele
     private func addCollection(_ viewController: UIViewController) {
         self.addContainerView(viewController)
         self.delegate = cellVC
-        delegate?.loadFavoriteMovies()
+        //delegate?.loadFavoriteMovies()
+    }
+    
+    /// Метод для загрузки любимых фильмов.  Получает фильмы, добавляет их в moviesArray и обновляет коллекцию
+    private func loadFavoriteMovies() {
+        favoriteService.fetchFavoriteMovies(accountId: UserSettings.shareInstance.accountID) { result in
+            //print(result)
+            switch result {
+            case .success(let movies):
+                if !movies.isEmpty {
+                    self.noMovieView.isHidden = true
+                    self.noMovieLabel.isHidden = true
+                    self.findMoviesButton.isHidden = true
+                    self.delegate?.moviesArray = movies
+                    self.delegate?.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            
+            }
+        }
+    }
+    
+    /// Обновление изображения списка/таблицы
+    private func updatePresentationStyle() {
+        navigationItem.rightBarButtonItems?[1].image = buttonImage
     }
 }
