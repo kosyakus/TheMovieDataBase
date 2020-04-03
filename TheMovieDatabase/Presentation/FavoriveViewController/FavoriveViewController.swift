@@ -17,7 +17,7 @@ protocol ParentToChildProtocol: class {
     func reloadData()
 }
 
-final class FavoriveViewController: UIViewController, UINavigationControllerDelegate {
+final class FavoriveViewController: UIViewController {
     
     // MARK: - Constants
     
@@ -117,6 +117,6 @@ final class FavoriveViewController: UIViewController, UINavigationControllerDele
     
     /// Обновление изображения списка/таблицы
     private func updatePresentationStyle() {
-        navigationItem.rightBarButtonItems?[1].image = buttonImage
+        navigationItem.rightBarButtonItems?[0].image = buttonImage
     }
 }

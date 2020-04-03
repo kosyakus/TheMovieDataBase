@@ -26,7 +26,7 @@ class MainViewController: UIViewController {
     
     // MARK: - Public Properties
     
-    weak var delegate: ParentToChildProtocol?
+    weak var childVC: ParentToChildProtocol?
     let searchMoviesService: SearchMoviesService = ServiceLayer.shared.searchMoviesService
     let cellVC = MoviesCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
     var cellType: CellType = .collectionCell
@@ -73,7 +73,7 @@ class MainViewController: UIViewController {
     
     @IBAction func listButtonTapped(_ sender: Any) {
         print("didTapListButton")
-        delegate?.navBarButtonClickedByUser()
+        childVC?.navBarButtonClickedByUser()
         switch cellType {
         case .collectionCell:
             cellType = .tableCell
@@ -89,7 +89,7 @@ class MainViewController: UIViewController {
     /// Добавление childView
     private func addCollection(_ viewController: UIViewController) {
         self.addContainerView(viewController)
-        self.delegate = cellVC
+        self.childVC = cellVC
     }
     
     /// Метод для поиска любимых фильмов.  Получает фильмы, добавляет их в moviesArray и обновляет коллекцию
@@ -97,8 +97,8 @@ class MainViewController: UIViewController {
         searchMoviesService.fetchSearchMovies(language: language, query: query) { result in
             switch result {
             case .success(let movies):
-                self.delegate?.moviesArray = movies
-                self.delegate?.reloadData()
+                self.childVC?.moviesArray = movies
+                self.childVC?.reloadData()
             case .failure(let error):
                 print(error.localizedDescription)
             }

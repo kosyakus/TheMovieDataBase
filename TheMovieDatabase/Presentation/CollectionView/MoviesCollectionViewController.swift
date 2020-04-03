@@ -14,6 +14,11 @@ enum CellType {
 
 final class MoviesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    // MARK: - Constants
+    
+    let collection = "collectionCell"
+    let table = "tableCell"
+    
     // MARK: - Public Properties
     
     var cellType: CellType = .collectionCell
@@ -35,9 +40,9 @@ final class MoviesCollectionViewController: UICollectionViewController, UICollec
     /// Метод для регистрации ячейки коллекции
     func setUpCell() {
         self.collectionView!.register(UINib(nibName: "MovieCollectionViewCell", bundle: nil),
-                                          forCellWithReuseIdentifier: "collectionCell")
+                                      forCellWithReuseIdentifier: collection)
         self.collectionView!.register(UINib(nibName: "MovieTableCollectionViewCell", bundle: nil),
-                                          forCellWithReuseIdentifier: "tableCell")
+                                      forCellWithReuseIdentifier: table)
     }
 }
 
@@ -59,28 +64,29 @@ extension MoviesCollectionViewController: ParentToChildProtocol {
     }
 }
 
-    // MARK: - UICollectionViewDataSource
+// MARK: - UICollectionViewDataSource
 
 extension MoviesCollectionViewController {
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard !moviesArray.isEmpty else {
-
+            
             return 0 }
         return moviesArray.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cellIdentifier = ""
-        if cellType == .tableCell {
-            cellIdentifier = "tableCell"
-        } else {
-            cellIdentifier = "collectionCell"
+        switch cellType {
+        case .collectionCell:
+            cellIdentifier = collection
+        case .tableCell:
+            cellIdentifier = table
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier,
                                                       for: indexPath) as! MovieCollectionViewCell
-
+        
         let movie = moviesArray[indexPath.row]
         if let poster = movie.poster {
             cell.movieImageView.load(url: poster)
@@ -89,15 +95,15 @@ extension MoviesCollectionViewController {
         cell.originalMovieNameLabel.text = movie.originalTitle
         cell.voteLabel.text = "\(movie.voteAverage ?? 0)"
         cell.voteCountLabel.text = "\(movie.voteCount ?? 0)"
-
+        
         return cell
     }
 }
 
-    // MARK: - UICollectionViewDelegate
+// MARK: - UICollectionViewDelegate
 
 extension MoviesCollectionViewController {
-
+    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -107,5 +113,5 @@ extension MoviesCollectionViewController {
             return CGSize(width: 152, height: 302)
         }
     }
-
+    
 }
