@@ -23,6 +23,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var findMovieStackView: UIStackView!
     @IBOutlet weak var girlImageView: UIImageView!
     @IBOutlet weak var listButton: UIButton!
+    @IBOutlet weak var topStackViewConstraint: NSLayoutConstraint!
     
     // MARK: - Public Properties
     
@@ -53,7 +54,9 @@ class MainViewController: UIViewController {
     
     /// Обработка экрана при появлении клавиатуры
     @objc func keyboardWillShow(notification: NSNotification) {
-        findMovieStackView.frame.origin.y = 30
+        topStackViewConstraint.constant = -70
+        findMovieStackView.setNeedsLayout()
+        
         findMovieLabel.isHidden = true
         girlImageView.isHidden = true
         addCollection(cellVC)

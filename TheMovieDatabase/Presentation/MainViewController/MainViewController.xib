@@ -21,6 +21,7 @@
                 <outlet property="findMovieTextField" destination="XOj-fY-Wem" id="HQS-sY-G9M"/>
                 <outlet property="girlImageView" destination="3PD-tq-4Jf" id="YBS-9X-0IW"/>
                 <outlet property="listButton" destination="hA5-4R-BaU" id="5Fj-wa-O5X"/>
+                <outlet property="topStackViewConstraint" destination="wSB-5U-o8b" id="5UN-xX-th4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

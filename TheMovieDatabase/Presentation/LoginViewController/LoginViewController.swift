@@ -18,10 +18,12 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var enterButton: UIButton!
+    @IBOutlet weak var buttonBottomConstraint: NSLayoutConstraint!
     
     // MARK: - Public Properties
     
     var loginService: LoginServices
+    let loginButton = UIButton()
     
     // MARK: - Initializers
     
@@ -50,16 +52,19 @@ class LoginViewController: UIViewController {
         passwordTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         loginTextField.addTarget(self, action: #selector(textFieldDidBeginEditing(_:)), for: .allTouchEvents)
         passwordTextField.addTarget(self, action: #selector(textFieldDidBeginEditing(_:)), for: .allTouchEvents)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        if HelperLoginVC().validate(login: loginTextField.text, password: passwordTextField.text) {
-            enterButton.titleLabel?.textColor = UIColor(named: "Light")
-            enterButton.backgroundColor = UIColor.CustomColor.orange
-        } else {
-            enterButton.titleLabel?.textColor = UIColor.CustomColor.gray
-            enterButton.backgroundColor = UIColor.CustomColor.lightGray
-        }
+        setUpButton()
     }
     
     @objc func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -70,6 +75,32 @@ class LoginViewController: UIViewController {
             loginTextField.setBorderClear()
             passwordTextField.setBorderPuppure()
         }
+        setUpButton()
+    }
+    
+    func setUpButton() {
+        if HelperLoginVC().validate(login: loginTextField.text, password: passwordTextField.text) {
+            enterButton.titleLabel?.textColor = UIColor(named: "Light")
+            enterButton.backgroundColor = UIColor.CustomColor.orange
+        } else {
+            enterButton.titleLabel?.textColor = UIColor.CustomColor.gray
+            enterButton.backgroundColor = UIColor.CustomColor.lightGray
+        }
+    }
+    
+    /// Обработка экрана при появлении клавиатуры
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        let keyboardFrame = keyboardSize.cgRectValue
+        buttonBottomConstraint.constant = keyboardFrame.height + 5
+        enterButton.setNeedsLayout()
+    }
+    
+    /// Обработка экрана при скрытии клавиатуры
+    @objc func keyboardWillHide(notification: NSNotification) {
+        buttonBottomConstraint.constant = 0.0
+        enterButton.setNeedsLayout()
     }
     
     func sendApiRequest(login: String, password: String) {

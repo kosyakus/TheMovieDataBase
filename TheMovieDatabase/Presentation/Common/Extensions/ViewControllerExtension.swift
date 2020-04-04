@@ -26,8 +26,16 @@ extension UIViewController {
     func addContainerView(_ viewController: UIViewController) {
         self.addChild(viewController)
         viewController.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        viewController.view.frame = CGRect(x: 0, y: view.frame.origin.y + 100,
-                                           width: view.frame.width, height: view.frame.height - 100)
+//        let constraint: [NSLayoutConstraint] = [
+//            viewController.view.topAnchor.constraint(
+//                equalTo: view.topAnchor, constant: 100),
+//            viewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            viewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            viewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+//        ]
+//        NSLayoutConstraint.activate(constraint)
+        viewController.view.frame = CGRect(x: 0, y: view.frame.origin.y + 60,
+                                           width: view.frame.width, height: view.frame.height - 60)
         self.view.addSubview(viewController.view)
         viewController.didMove(toParent: self)
     }
@@ -40,7 +48,6 @@ extension UIViewController {
         // Notify Child View Controller
         viewController.removeFromParent()
     }
-    
     
     func add(_ child: UIViewController) {
         addChild(child)

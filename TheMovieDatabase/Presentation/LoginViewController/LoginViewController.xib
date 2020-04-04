@@ -16,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="TheMovieDatabase" customModuleProvider="target">
             <connections>
+                <outlet property="buttonBottomConstraint" destination="Jqz-SP-QDG" id="u53-t3-ddy"/>
                 <outlet property="enterButton" destination="QEP-cS-wUb" id="g2N-H2-nSO"/>
                 <outlet property="errorLabel" destination="pii-dR-aWD" id="iiq-ve-vel"/>
                 <outlet property="loginTextField" destination="g8f-EZ-Fio" id="ZQr-On-mIF"/>
@@ -91,8 +92,8 @@
                 <constraint firstItem="qlV-dn-ehh" firstAttribute="top" secondItem="6bp-c6-kqf" secondAttribute="bottom" constant="25" id="5h7-Yl-dej"/>
                 <constraint firstItem="g8f-EZ-Fio" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="9Ua-dH-Cku"/>
                 <constraint firstItem="QEP-cS-wUb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="EHE-HU-6HG"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="QEP-cS-wUb" secondAttribute="bottom" constant="27" id="Jqz-SP-QDG"/>
                 <constraint firstItem="6bp-c6-kqf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="11" id="Lox-f7-Bsy"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="QEP-cS-wUb" secondAttribute="bottom" constant="27" id="NRD-tf-HVn"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="pii-dR-aWD" secondAttribute="trailing" constant="23" id="T1W-Dc-yDN"/>
                 <constraint firstItem="pii-dR-aWD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="UXo-DY-T8e"/>
                 <constraint firstItem="aoT-ji-AqT" firstAttribute="top" secondItem="g8f-EZ-Fio" secondAttribute="bottom" constant="24" id="Ve8-au-GOe"/>
