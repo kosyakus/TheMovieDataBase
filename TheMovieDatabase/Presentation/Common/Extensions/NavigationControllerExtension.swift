@@ -20,7 +20,6 @@ extension UINavigationController {
         self.navigationBar.isTranslucent = false
         self.navigationBar.tintColor = UIColor.CustomColor.light
         self.navigationBar.setValue(true, forKey: "hidesShadow")
-        navigationItem.title = "navTitle"
     }
     
     //    func initRootViewController(vc: UIViewController,

@@ -142,14 +142,10 @@ class LoginViewController: UIViewController {
         add(loadingViewController)
         sendApiRequest(login: login, password: password)
     }
-}
-
-extension UIView {
-    func shake() {
-        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
-        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-        animation.duration = 0.6
-        animation.values = [-20.0, 20.0, -20.0, 20.0, -10.0, 10.0, -5.0, 5.0, 0.0 ]
-        layer.add(animation, forKey: "shake")
+    
+    @IBAction func moveToPinVCButtonTapped(_ sender: Any) {
+        let makePinVC = MakePinViewController()
+        self.navigationController?.pushViewController(makePinVC, animated: true)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 }

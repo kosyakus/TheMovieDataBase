@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFProDisplay-Regular.ttf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MakePinViewController" customModule="TheMovieDatabase" customModuleProvider="target">
+            <connections>
+                <outlet property="pinSuggestionsLabel" destination="Ny6-QR-xxf" id="xv0-zP-kuE"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="wrongPinLabel" destination="2kU-0f-ln4" id="gYq-bG-c4L"/>
+                <outletCollection property="numberButton" destination="ZNW-Qm-agi" collectionClass="NSMutableArray" id="3Bo-Ku-fLa"/>
+                <outletCollection property="numberButton" destination="4h9-Nf-ED3" collectionClass="NSMutableArray" id="87Q-jt-QuW"/>
+                <outletCollection property="numberButton" destination="abW-34-uHq" collectionClass="NSMutableArray" id="JXK-Op-L3Y"/>
+                <outletCollection property="numberButton" destination="tGd-9W-Spp" collectionClass="NSMutableArray" id="OwD-Hi-sVf"/>
+                <outletCollection property="numberButton" destination="NQw-it-vOV" collectionClass="NSMutableArray" id="GYD-en-Zbz"/>
+                <outletCollection property="numberButton" destination="23Q-wW-HcQ" collectionClass="NSMutableArray" id="gew-8c-ht1"/>
+                <outletCollection property="numberButton" destination="jLT-5i-Asu" collectionClass="NSMutableArray" id="2T7-ID-tbc"/>
+                <outletCollection property="numberButton" destination="ykS-jh-KMT" collectionClass="NSMutableArray" id="Ic1-4N-FG2"/>
+                <outletCollection property="numberButton" destination="Dt7-Iu-2eY" collectionClass="NSMutableArray" id="QaK-uv-nqw"/>
+                <outletCollection property="numberButton" destination="UAQ-MJ-gL8" collectionClass="NSMutableArray" id="QTh-Ix-Xcv"/>
+                <outletCollection property="pinViewsCollection" destination="b77-yA-ZL4" collectionClass="NSMutableArray" id="vi9-YJ-QWu"/>
+                <outletCollection property="pinViewsCollection" destination="j43-DI-pKQ" collectionClass="NSMutableArray" id="Il4-ky-CCU"/>
+                <outletCollection property="pinViewsCollection" destination="NJR-Qt-DLp" collectionClass="NSMutableArray" id="YQC-lC-9FY"/>
+                <outletCollection property="pinViewsCollection" destination="U2g-Le-t67" collectionClass="NSMutableArray" id="eA8-YH-zZb"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Придумайте пин-код  для быстрого входа" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ny6-QR-xxf">
+                    <rect key="frame" x="24" y="99" width="367" height="56"/>
+                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="24"/>
+                    <color key="textColor" name="Light"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ob3-Zw-XWu">
+                    <rect key="frame" x="179" y="180" width="56" height="8"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b77-yA-ZL4" userLabel="pin1">
+                            <rect key="frame" x="0.0" y="0.0" width="8" height="8"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="errorColor">
+                                    <color key="value" name="Red"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
+                                    <color key="value" name="Purpure"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
+                                    <color key="value" name="DarkBlue"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j43-DI-pKQ" userLabel="pin2" customClass="PasscodeSignPlaceholderView" customModule="PasscodeLock" customModuleProvider="target">
+                            <rect key="frame" x="16" y="0.0" width="8" height="8"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="errorColor">
+                                    <color key="value" name="Red"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
+                                    <color key="value" name="Purpure"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
+                                    <color key="value" name="DarkBlue"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NJR-Qt-DLp" userLabel="pin3" customClass="PasscodeSignPlaceholderView" customModule="PasscodeLock" customModuleProvider="target">
+                            <rect key="frame" x="32" y="0.0" width="8" height="8"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="errorColor">
+                                    <color key="value" name="Red"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
+                                    <color key="value" name="Purpure"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
+                                    <color key="value" name="DarkBlue"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2g-Le-t67" userLabel="pin4" customClass="PasscodeSignPlaceholderView" customModule="PasscodeLock" customModuleProvider="target">
+                            <rect key="frame" x="48" y="0.0" width="8" height="8"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="errorColor">
+                                    <color key="value" name="Red"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
+                                    <color key="value" name="Purpure"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
+                                    <color key="value" name="DarkBlue"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="8" id="2Ly-Uj-ovs"/>
+                        <constraint firstAttribute="width" constant="56" id="Wg5-U9-BIz"/>
+                    </constraints>
+                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Неверный пин-код" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2kU-0f-ln4">
+                    <rect key="frame" x="56" y="204" width="303" height="19"/>
+                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="16"/>
+                    <color key="textColor" name="Red"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Bfg-n8-9V2">
+                    <rect key="frame" x="39" y="400" width="336" height="452"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="G9h-XY-9f9">
+                            <rect key="frame" x="0.0" y="0.0" width="336" height="107"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZNW-Qm-agi">
+                                    <rect key="frame" x="0.0" y="0.0" width="106.5" height="107"/>
+                                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
+                                    <state key="normal" title="1">
+                                        <color key="titleColor" name="Light"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4h9-Nf-ED3">
+                                    <rect key="frame" x="114.5" y="0.0" width="107" height="107"/>
+                                    <color key="backgroundColor" name="Orange"/>
+                                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
+                                    <state key="normal" title="2">
+                                        <color key="titleColor" name="Light"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abW-34-uHq">
+                                    <rect key="frame" x="229.5" y="0.0" width="106.5" height="107"/>
+                                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
+                                    <state key="normal" title="3">
+                                        <color key="titleColor" name="Light"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="49d-Tx-2LR">
+                            <rect key="frame" x="0.0" y="115" width="336" height="107"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tGd-9W-Spp">
+                                    <rect key="frame" x="0.0" y="0.0" width="106.5" height="107"/>
+                                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
+                                    <state key="normal" title="4">
+                                        <color key="titleColor" name="Light"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQw-it-vOV">
+                                    <rect key="frame" x="114.5" y="0.0" width="107" height="107"/>
+                                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
+                                    <state key="normal" title="5">
+                                        <color key="titleColor" name="Light"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23Q-wW-HcQ">
+                                    <rect key="frame" x="229.5" y="0.0" width="106.5" height="107"/>
+                                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
+                                    <state key="normal" title="6">
+                                        <color key="titleColor" name="Light"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VFb-XO-PkX">
+                            <rect key="frame" x="0.0" y="230" width="336" height="107"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLT-5i-Asu">
+                                    <rect key="frame" x="0.0" y="0.0" width="106.5" height="107"/>
+                                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
+                                    <state key="normal" title="7">
+                                        <color key="titleColor" name="Light"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ykS-jh-KMT">
+                                    <rect key="frame" x="114.5" y="0.0" width="107" height="107"/>
+                                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
+                                    <state key="normal" title="8">
+                                        <color key="titleColor" name="Light"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dt7-Iu-2eY">
+                                    <rect key="frame" x="229.5" y="0.0" width="106.5" height="107"/>
+                                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
+                                    <state key="normal" title="9">
+                                        <color key="titleColor" name="Light"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Wss-qi-Oto">
+                            <rect key="frame" x="0.0" y="345" width="336" height="107"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RqF-uC-gmI">
+                                    <rect key="frame" x="0.0" y="0.0" width="106.5" height="107"/>
+                                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
+                                    <state key="normal">
+                                        <color key="titleColor" name="Gray"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAQ-MJ-gL8">
+                                    <rect key="frame" x="114.5" y="0.0" width="107" height="107"/>
+                                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
+                                    <state key="normal" title="0">
+                                        <color key="titleColor" name="Light"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5n-DB-0KP">
+                                    <rect key="frame" x="229.5" y="0.0" width="106.5" height="107"/>
+                                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
+                                    <state key="normal">
+                                        <color key="titleColor" name="Gray"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Bfg-n8-9V2" secondAttribute="height" multiplier="29:39" id="DBa-FM-H1Q"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" name="Bg_black"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Bfg-n8-9V2" secondAttribute="bottom" constant="10" id="33K-kX-Avy"/>
+                <constraint firstItem="2kU-0f-ln4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="56" id="3W5-dC-UxY"/>
+                <constraint firstItem="2kU-0f-ln4" firstAttribute="top" secondItem="Ob3-Zw-XWu" secondAttribute="bottom" constant="16" id="9hs-Xz-Qg6"/>
+                <constraint firstItem="Ob3-Zw-XWu" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="FBS-md-MNy"/>
+                <constraint firstItem="Ob3-Zw-XWu" firstAttribute="top" secondItem="Ny6-QR-xxf" secondAttribute="bottom" constant="25" id="SsI-cp-RqV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Bfg-n8-9V2" secondAttribute="trailing" constant="39" id="X9o-mp-Sxk"/>
+                <constraint firstItem="Ny6-QR-xxf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="aLn-0e-Keq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ny6-QR-xxf" secondAttribute="trailing" constant="23" id="b3W-6a-aH3"/>
+                <constraint firstItem="Ny6-QR-xxf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="55" id="jk6-Vc-TQA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="2kU-0f-ln4" secondAttribute="trailing" constant="55" id="mEM-q7-Ixe"/>
+                <constraint firstItem="Bfg-n8-9V2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="39" id="pB4-qv-JGn"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="140.57971014492756" y="103.79464285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="Bg_black">
+            <color red="0.097999997437000275" green="0.10199999809265137" blue="0.14499999582767487" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DarkBlue">
+            <color red="0.16500000655651093" green="0.18000000715255737" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Gray">
+            <color red="0.39599999785423279" green="0.42699998617172241" blue="0.54100000858306885" alpha="0.39500001072883606" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Light">
+            <color red="0.90600001811981201" green="0.92900002002716064" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Orange">
+            <color red="0.99599999189376831" green="0.3059999942779541" blue="0.15299999713897705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Purpure">
+            <color red="0.42399999499320984" green="0.3880000114440918" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Red">
+            <color red="0.88200002908706665" green="0.090000003576278687" blue="0.18400000035762787" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

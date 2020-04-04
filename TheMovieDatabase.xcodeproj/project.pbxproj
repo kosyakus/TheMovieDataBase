@@ -30,6 +30,9 @@
 		E16B938424175AA300814B94 /* HelperLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16B938324175AA300814B94 /* HelperLoginVC.swift */; };
 		E1728CA424329557004F0DE9 /* LoadAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1728CA324329557004F0DE9 /* LoadAccount.swift */; };
 		E1728CA624337AB6004F0DE9 /* MoviesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1728CA524337AB6004F0DE9 /* MoviesDataSource.swift */; };
+		E1728CAA2438D30E004F0DE9 /* MakePinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1728CA82438D30D004F0DE9 /* MakePinViewController.swift */; };
+		E1728CAB2438D30E004F0DE9 /* MakePinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1728CA92438D30D004F0DE9 /* MakePinViewController.xib */; };
+		E1728CAD24390A1A004F0DE9 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1728CAC24390A19004F0DE9 /* UIView+Extension.swift */; };
 		E18AC7272427342F00727107 /* SearchMoviesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC7262427342F00727107 /* SearchMoviesService.swift */; };
 		E18AC7292427691400727107 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC7282427691400727107 /* AccountService.swift */; };
 		E18AC72C2427E1D700727107 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC72B2427E1D700727107 /* MainViewControllerTests.swift */; };
@@ -167,6 +170,9 @@
 		E16B938324175AA300814B94 /* HelperLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperLoginVC.swift; sourceTree = "<group>"; };
 		E1728CA324329557004F0DE9 /* LoadAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadAccount.swift; sourceTree = "<group>"; };
 		E1728CA524337AB6004F0DE9 /* MoviesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDataSource.swift; sourceTree = "<group>"; };
+		E1728CA82438D30D004F0DE9 /* MakePinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePinViewController.swift; sourceTree = "<group>"; };
+		E1728CA92438D30D004F0DE9 /* MakePinViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MakePinViewController.xib; sourceTree = "<group>"; };
+		E1728CAC24390A19004F0DE9 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		E18AC7262427342F00727107 /* SearchMoviesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesService.swift; sourceTree = "<group>"; };
 		E18AC7282427691400727107 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		E18AC72B2427E1D700727107 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
@@ -310,6 +316,15 @@
 				E18AC7582430B85000727107 /* Session.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E1728CA72438D2D0004F0DE9 /* MakePinViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E1728CA82438D30D004F0DE9 /* MakePinViewController.swift */,
+				E1728CA92438D30D004F0DE9 /* MakePinViewController.xib */,
+			);
+			path = MakePinViewController;
 			sourceTree = "<group>";
 		};
 		E18AC72A2427E11D00727107 /* Presentation */ = {
@@ -495,6 +510,7 @@
 				E1C737072413DF2300E60D7C /* MainViewController */,
 				E1C737022413DC9900E60D7C /* TabBarController */,
 				E1C736CD2412A63C00E60D7C /* LoginViewController */,
+				E1728CA72438D2D0004F0DE9 /* MakePinViewController */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -527,6 +543,7 @@
 				E1FF6F01241BE2D80007B93D /* UIColorExtension.swift */,
 				E11C767E241FEDB7000969C7 /* StringExtension.swift */,
 				E18AC7562430B7FD00727107 /* UIImageViewExtension.swift */,
+				E1728CAC24390A19004F0DE9 /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -799,6 +816,7 @@
 				E1C736AE2411154700E60D7C /* LaunchScreen.storyboard in Resources */,
 				E1C736D32412A84E00E60D7C /* SFProDisplay-Regular.ttf in Resources */,
 				E1C737062413DCE200E60D7C /* TabBarController.xib in Resources */,
+				E1728CAB2438D30E004F0DE9 /* MakePinViewController.xib in Resources */,
 				E1C736AB2411154700E60D7C /* Assets.xcassets in Resources */,
 				E1C737152413FECA00E60D7C /* ProfileViewController.xib in Resources */,
 				E18AC7692430E34200727107 /* MovieTableCollectionViewCell.xib in Resources */,
@@ -987,9 +1005,11 @@
 				E1C736D02412A67400E60D7C /* LoginViewController.swift in Sources */,
 				E18AC76B24321B9900727107 /* MoviesCollectionViewController.swift in Sources */,
 				E18AC74F242E2D9200727107 /* Token.swift in Sources */,
+				E1728CAA2438D30E004F0DE9 /* MakePinViewController.swift in Sources */,
 				E1C737012413C85900E60D7C /* TextFieldExtension.swift in Sources */,
 				E11C7675241F5687000969C7 /* KeychainUser.swift in Sources */,
 				E18AC7382427F2B600727107 /* Movie.swift in Sources */,
+				E1728CAD24390A1A004F0DE9 /* UIView+Extension.swift in Sources */,
 				E18AC7572430B7FE00727107 /* UIImageViewExtension.swift in Sources */,
 				E1C736A22411153B00E60D7C /* AppDelegate.swift in Sources */,
 				E11C7672241ECFC9000969C7 /* ManageKeychain.swift in Sources */,
