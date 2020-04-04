@@ -117,9 +117,24 @@ class LoginViewController: UIViewController {
         loadingViewController.remove()
     }
     
+    func zoomInAndOut() {
+        let bounds = self.enterButton.bounds
+        UIView.animate(withDuration: 1.0,
+                       delay: 0.0,
+                       usingSpringWithDamping: 0.2,
+                       initialSpringVelocity: 10,
+                       animations: {
+            self.enterButton.bounds = CGRect(x: bounds.origin.x - 20,
+                                             y: bounds.origin.y,
+                                             width: bounds.size.width + 60,
+                                             height: bounds.size.height)
+        }, completion: nil)
+    }
+    
     // MARK: - IBAction
     
     @IBAction func tapEnterButton(_ sender: Any) {
+        zoomInAndOut()
         guard HelperLoginVC().validate(login: loginTextField.text, password: passwordTextField.text) else { return }
         guard let login = loginTextField.text,
             let password = passwordTextField.text
