@@ -24,6 +24,8 @@ class LoginViewController: UIViewController {
     
     var loginService: LoginServices
     let loginButton = UIButton()
+    let loadingViewController = LoadingViewController()
+    var activeTextField = UITextField()
     
     // MARK: - Initializers
     
@@ -76,6 +78,7 @@ class LoginViewController: UIViewController {
             passwordTextField.setBorderPuppure()
         }
         setUpButton()
+        self.activeTextField = textField
     }
     
     func setUpButton() {
@@ -110,6 +113,8 @@ class LoginViewController: UIViewController {
             self.remove()
             appDelegate?.presentViewController()
         }
+        activeTextField.shake()
+        loadingViewController.remove()
     }
     
     // MARK: - IBAction
@@ -119,8 +124,17 @@ class LoginViewController: UIViewController {
         guard let login = loginTextField.text,
             let password = passwordTextField.text
             else { return }
-        let loadingViewController = LoadingViewController()
         add(loadingViewController)
         sendApiRequest(login: login, password: password)
+    }
+}
+
+extension UIView {
+    func shake() {
+        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        animation.duration = 0.6
+        animation.values = [-20.0, 20.0, -20.0, 20.0, -10.0, 10.0, -5.0, 5.0, 0.0 ]
+        layer.add(animation, forKey: "shake")
     }
 }
