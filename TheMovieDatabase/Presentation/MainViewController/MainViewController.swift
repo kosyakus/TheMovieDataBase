@@ -31,6 +31,7 @@ class MainViewController: UIViewController {
     let searchMoviesService: SearchMoviesService = ServiceLayer.shared.searchMoviesService
     let cellVC = MoviesCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
     var cellType: CellType = .collectionCell
+    var ufoImage = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,11 +101,26 @@ class MainViewController: UIViewController {
         searchMoviesService.fetchSearchMovies(language: language, query: query) { result in
             switch result {
             case .success(let movies):
-                self.childVC?.moviesArray = movies
-                self.childVC?.reloadData()
+                if !movies.isEmpty {
+                    self.childVC?.moviesArray = movies
+                    self.childVC?.reloadData()
+                } else {
+                    self.proceedNoMovieScreen()
+                }
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    func proceedNoMovieScreen() {
+        cellVC.view.isHidden = true
+        ufoImage = UIImageView(frame: CGRect(x: 64, y: 244, width: 248, height: 215))
+        ufoImage.image = UIImage(named: "ufo")
+        self.view.addSubview(ufoImage)
+    }
+    
+    func proceedFindedMovieScreen() {
+        ufoImage.isHidden = false
     }
 }

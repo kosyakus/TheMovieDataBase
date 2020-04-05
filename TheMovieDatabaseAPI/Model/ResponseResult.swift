@@ -14,3 +14,11 @@ public struct ResponseResult: Codable {
     
     public let success: Bool
 }
+
+public struct AddFavoriteMovieResult: Codable {
+    
+    // MARK: - Public Properties
+    
+    public let statusCode: Int
+    public let statusMessage: String
+}

@@ -20,7 +20,7 @@ protocol LoginServices {
     @discardableResult
     func fetchToken(login: String,
                     password: String,
-                    completion: @escaping (Token) -> Void) -> Progress
+                    completion: @escaping (Bool) -> Void) -> Progress
     func validateToken(login: String,
                        password: String,
                        requestToken: String,
@@ -39,14 +39,38 @@ final public class LoginServicesImplementation: LoginServices {
     
     /// Функция получения токена
     @discardableResult
-    func fetchToken(login: String, password: String, completion: @escaping (Token) -> Void) -> Progress {
+    func fetchToken(login: String, password: String, completion: @escaping (Bool) -> Void) -> Progress {
         
         client.request(TokenEndpoint()) { result in
             switch result {
             case .success(let token):
-                self.thenValidateToken(login: login, password: password, requestToken: token.requestToken) {
-                    let token = Token(token: token.requestToken)
-                    completion(token)
+                self.thenValidateToken(login: login, password: password, requestToken: token.requestToken) { result in
+                    if result {
+                        completion(true)
+                    } else {
+                        completion(false)
+                    }
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    /// Вспомогательная функция валидирования токена после успешного получения токена
+    private func thenValidateToken(login: String,
+                                   password: String,
+                                   requestToken: String,
+                                   completion: @escaping (Bool) -> Void) {
+        validateToken(login: login, password: password, requestToken: requestToken) { result in
+            switch result {
+            case .success(let bool):
+                if bool {
+                    self.thenCreateSession(login: login, requestToken: requestToken) {
+                        completion(true)
+                    }
+                } else {
+                    completion(false)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -60,8 +84,14 @@ final public class LoginServicesImplementation: LoginServices {
                        requestToken: String,
                        completion: @escaping (Result<Bool, Error>) -> Void) -> Progress {
         
-        client.request(ValidateTokenEndpoint(login: login, password: password, token: requestToken)) { _ in
-            completion(.success(true))
+        client.request(ValidateTokenEndpoint(login: login, password: password, token: requestToken)) { result in
+            switch result {
+            case .success:
+                completion(.success(true))
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(.success(false))
+            }
         }
     }
     
@@ -73,23 +103,6 @@ final public class LoginServicesImplementation: LoginServices {
                 return .success(session)
             }
             completion(sessionResult)
-        }
-    }
-    
-    /// Вспомогательная функция валидирования токена после успешного получения токена
-    private func thenValidateToken(login: String,
-                                   password: String,
-                                   requestToken: String,
-                                   completion: @escaping () -> Void) {
-        validateToken(login: login, password: password, requestToken: requestToken) { result in
-            switch result {
-            case .success:
-                self.thenCreateSession(login: login, requestToken: requestToken) {
-                    completion()
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
         }
     }
     

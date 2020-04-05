@@ -70,6 +70,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.errorLabel.isHidden = true
         if textField == loginTextField {
             loginTextField.setBorderPuppure()
             passwordTextField.setBorderClear()
@@ -96,7 +97,7 @@ class LoginViewController: UIViewController {
         guard let userInfo = notification.userInfo else { return }
         guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         let keyboardFrame = keyboardSize.cgRectValue
-        buttonBottomConstraint.constant = keyboardFrame.height + 5
+        buttonBottomConstraint.constant = keyboardFrame.height
         enterButton.setNeedsLayout()
     }
     
@@ -109,12 +110,16 @@ class LoginViewController: UIViewController {
     func sendApiRequest(login: String, password: String) {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         
-        loginService.fetchToken(login: login, password: password) { _ in
-            self.remove()
-            appDelegate?.presentViewController()
+        loginService.fetchToken(login: login, password: password) { result in
+            if result {
+                self.loadingViewController.remove()
+                appDelegate?.presentViewController()
+            } else {
+                self.activeTextField.shake()
+                self.loadingViewController.remove()
+                self.errorLabel.isHidden = false
+            }
         }
-        activeTextField.shake()
-        loadingViewController.remove()
     }
     
     func zoomInAndOut() {

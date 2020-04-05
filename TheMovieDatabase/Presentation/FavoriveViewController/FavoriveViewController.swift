@@ -51,8 +51,7 @@ final class FavoriveViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavBar()
-        addCollection(cellVC)
-        loadFavoriteMovies()
+        //loadFavoriteMovies()
     }
     
     // MARK: - Public methods
@@ -92,16 +91,16 @@ final class FavoriveViewController: UIViewController {
     private func addCollection(_ viewController: UIViewController) {
         self.addContainerView(viewController)
         self.delegate = cellVC
-        //delegate?.loadFavoriteMovies()
     }
     
     /// Метод для загрузки любимых фильмов.  Получает фильмы, добавляет их в moviesArray и обновляет коллекцию
     private func loadFavoriteMovies() {
-        favoriteService.fetchFavoriteMovies(accountId: UserSettings.shareInstance.accountID) { result in
+        favoriteService.fetchFavoriteMovies { result in
             //print(result)
             switch result {
             case .success(let movies):
                 if !movies.isEmpty {
+                    self.addCollection(self.cellVC)
                     self.noMovieView.isHidden = true
                     self.noMovieLabel.isHidden = true
                     self.findMoviesButton.isHidden = true

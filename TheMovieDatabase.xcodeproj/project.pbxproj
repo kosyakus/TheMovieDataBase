@@ -17,7 +17,7 @@
 		E11C766E241EC425000969C7 /* LoginEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C766D241EC425000969C7 /* LoginEndpoint.swift */; };
 		E11C7672241ECFC9000969C7 /* ManageKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7671241ECFC9000969C7 /* ManageKeychain.swift */; };
 		E11C7675241F5687000969C7 /* KeychainUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7674241F5687000969C7 /* KeychainUser.swift */; };
-		E11C7677241F5DCA000969C7 /* DeletionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7676241F5DCA000969C7 /* DeletionResult.swift */; };
+		E11C7677241F5DCA000969C7 /* ResponseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7676241F5DCA000969C7 /* ResponseResult.swift */; };
 		E11C7679241FC612000969C7 /* AccountEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7678241FC612000969C7 /* AccountEndpoint.swift */; };
 		E11C767D241FCA10000969C7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C767C241FCA10000969C7 /* User.swift */; };
 		E11C767F241FEDB7000969C7 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C767E241FEDB7000969C7 /* StringExtension.swift */; };
@@ -35,6 +35,8 @@
 		E1728CAD24390A1A004F0DE9 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1728CAC24390A19004F0DE9 /* UIView+Extension.swift */; };
 		E1728CB124390D2E004F0DE9 /* FilmDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1728CAF24390D2E004F0DE9 /* FilmDetailViewController.swift */; };
 		E1728CB224390D2E004F0DE9 /* FilmDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1728CB024390D2E004F0DE9 /* FilmDetailViewController.xib */; };
+		E1728CB42439F30D004F0DE9 /* AddMovieToFavoriteEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1728CB32439F30D004F0DE9 /* AddMovieToFavoriteEndpoint.swift */; };
+		E1728CB6243A148B004F0DE9 /* AddMovieToFavoriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1728CB5243A148A004F0DE9 /* AddMovieToFavoriteService.swift */; };
 		E18AC7272427342F00727107 /* SearchMoviesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC7262427342F00727107 /* SearchMoviesService.swift */; };
 		E18AC7292427691400727107 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC7282427691400727107 /* AccountService.swift */; };
 		E18AC72C2427E1D700727107 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC72B2427E1D700727107 /* MainViewControllerTests.swift */; };
@@ -158,7 +160,7 @@
 		E11C766D241EC425000969C7 /* LoginEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEndpoint.swift; sourceTree = "<group>"; };
 		E11C7671241ECFC9000969C7 /* ManageKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageKeychain.swift; sourceTree = "<group>"; };
 		E11C7674241F5687000969C7 /* KeychainUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainUser.swift; sourceTree = "<group>"; };
-		E11C7676241F5DCA000969C7 /* DeletionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletionResult.swift; sourceTree = "<group>"; };
+		E11C7676241F5DCA000969C7 /* ResponseResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseResult.swift; sourceTree = "<group>"; };
 		E11C7678241FC612000969C7 /* AccountEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountEndpoint.swift; sourceTree = "<group>"; };
 		E11C767C241FCA10000969C7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E11C767E241FEDB7000969C7 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -177,6 +179,8 @@
 		E1728CAC24390A19004F0DE9 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		E1728CAF24390D2E004F0DE9 /* FilmDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailViewController.swift; sourceTree = "<group>"; };
 		E1728CB024390D2E004F0DE9 /* FilmDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmDetailViewController.xib; sourceTree = "<group>"; };
+		E1728CB32439F30D004F0DE9 /* AddMovieToFavoriteEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieToFavoriteEndpoint.swift; sourceTree = "<group>"; };
+		E1728CB5243A148A004F0DE9 /* AddMovieToFavoriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieToFavoriteService.swift; sourceTree = "<group>"; };
 		E18AC7262427342F00727107 /* SearchMoviesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesService.swift; sourceTree = "<group>"; };
 		E18AC7282427691400727107 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		E18AC72B2427E1D700727107 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
@@ -306,6 +310,7 @@
 				E11C7678241FC612000969C7 /* AccountEndpoint.swift */,
 				E11C768424200C95000969C7 /* SearchMoviesEndpoint.swift */,
 				E11C76882420D426000969C7 /* FavoriteEndpoint.swift */,
+				E1728CB32439F30D004F0DE9 /* AddMovieToFavoriteEndpoint.swift */,
 			);
 			path = Endpoint;
 			sourceTree = "<group>";
@@ -416,6 +421,7 @@
 				E18AC7282427691400727107 /* AccountService.swift */,
 				E18AC74C242E2C6900727107 /* LoginService.swift */,
 				E18AC7542430847900727107 /* DeleteSessionService.swift */,
+				E1728CB5243A148A004F0DE9 /* AddMovieToFavoriteService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -502,7 +508,7 @@
 			isa = PBXGroup;
 			children = (
 				E11C7669241D75AF000969C7 /* Session.swift */,
-				E11C7676241F5DCA000969C7 /* DeletionResult.swift */,
+				E11C7676241F5DCA000969C7 /* ResponseResult.swift */,
 				E11C767C241FCA10000969C7 /* User.swift */,
 				E11C76802420009E000969C7 /* Movies.swift */,
 				E11C7682242006E8000969C7 /* APIMovie.swift */,
@@ -1023,6 +1029,7 @@
 				E18AC74F242E2D9200727107 /* Token.swift in Sources */,
 				E1728CAA2438D30E004F0DE9 /* MakePinViewController.swift in Sources */,
 				E1C737012413C85900E60D7C /* TextFieldExtension.swift in Sources */,
+				E1728CB6243A148B004F0DE9 /* AddMovieToFavoriteService.swift in Sources */,
 				E11C7675241F5687000969C7 /* KeychainUser.swift in Sources */,
 				E18AC7382427F2B600727107 /* Movie.swift in Sources */,
 				E1728CAD24390A1A004F0DE9 /* UIView+Extension.swift in Sources */,
@@ -1094,9 +1101,10 @@
 				E11C767D241FCA10000969C7 /* User.swift in Sources */,
 				E11C7668241D712E000969C7 /* Endpoint.swift in Sources */,
 				E11C768524200C95000969C7 /* SearchMoviesEndpoint.swift in Sources */,
-				E11C7677241F5DCA000969C7 /* DeletionResult.swift in Sources */,
+				E11C7677241F5DCA000969C7 /* ResponseResult.swift in Sources */,
 				E11C766E241EC425000969C7 /* LoginEndpoint.swift in Sources */,
 				E11C7679241FC612000969C7 /* AccountEndpoint.swift in Sources */,
+				E1728CB42439F30D004F0DE9 /* AddMovieToFavoriteEndpoint.swift in Sources */,
 				E11C76892420D426000969C7 /* FavoriteEndpoint.swift in Sources */,
 				E1FF6F1C241C15370007B93D /* HandleErrors.swift in Sources */,
 				E18AC751242E5FD600727107 /* APIToken.swift in Sources */,

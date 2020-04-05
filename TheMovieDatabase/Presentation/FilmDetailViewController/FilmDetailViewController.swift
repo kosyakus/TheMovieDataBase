@@ -29,6 +29,7 @@ class FilmDetailViewController: UIViewController {
     // MARK: - Public Properties
     
     var movie: Movie?
+    let addMovieToFavoriteService: AddMovieToFavoriteService = ServiceLayer.shared.addMovieToFavoriteService
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,7 @@ class FilmDetailViewController: UIViewController {
     
     // MARK: - Public methods
     
+    /// Добавление сердечка в NavBar
     func setUpNavBar() {
         let favoriteButton = UIBarButtonItem(image: plainHeartImage,
                                              style: .plain,
@@ -52,6 +54,7 @@ class FilmDetailViewController: UIViewController {
         if let poster = movie.poster {
             movieImageView.load(url: poster)
         }
+        movieImageView.layer.cornerRadius = 2
         movieTitleLabel.text = movie.title
         movieOriginalTitleLabel.text = movie.originalTitle
         movieGenreLabel.text = ""
@@ -62,13 +65,22 @@ class FilmDetailViewController: UIViewController {
         
     }
 
+    /// Обработка нажатия на сердечко
     @objc func didTapFavoriteButton(sender: AnyObject) {
         print("didTapFavoriteButton")
-        updatePresentationStyle()
+        addFavoriteMovie()
     }
     
     /// Обновление изображения сердечка
     private func updatePresentationStyle() {
         navigationItem.rightBarButtonItem?.image = filledHeartImage
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.purpure
+    }
+    
+    /// Метод для добавления фильмов в избранное. 
+    private func addFavoriteMovie() {
+        addMovieToFavoriteService.addMovieToFavorite(movieId: movie?.id ?? 0) { _ in
+            self.updatePresentationStyle()
+        }
     }
 }
