@@ -114,4 +114,12 @@ extension MoviesCollectionViewController {
         }
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let filmDetailVC = FilmDetailViewController()
+        filmDetailVC.movie = moviesArray[indexPath.row]
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationController?.pushViewController(filmDetailVC, animated: true)
+    }
+    
 }

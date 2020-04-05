@@ -33,6 +33,8 @@
 		E1728CAA2438D30E004F0DE9 /* MakePinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1728CA82438D30D004F0DE9 /* MakePinViewController.swift */; };
 		E1728CAB2438D30E004F0DE9 /* MakePinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1728CA92438D30D004F0DE9 /* MakePinViewController.xib */; };
 		E1728CAD24390A1A004F0DE9 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1728CAC24390A19004F0DE9 /* UIView+Extension.swift */; };
+		E1728CB124390D2E004F0DE9 /* FilmDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1728CAF24390D2E004F0DE9 /* FilmDetailViewController.swift */; };
+		E1728CB224390D2E004F0DE9 /* FilmDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1728CB024390D2E004F0DE9 /* FilmDetailViewController.xib */; };
 		E18AC7272427342F00727107 /* SearchMoviesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC7262427342F00727107 /* SearchMoviesService.swift */; };
 		E18AC7292427691400727107 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC7282427691400727107 /* AccountService.swift */; };
 		E18AC72C2427E1D700727107 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AC72B2427E1D700727107 /* MainViewControllerTests.swift */; };
@@ -173,6 +175,8 @@
 		E1728CA82438D30D004F0DE9 /* MakePinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePinViewController.swift; sourceTree = "<group>"; };
 		E1728CA92438D30D004F0DE9 /* MakePinViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MakePinViewController.xib; sourceTree = "<group>"; };
 		E1728CAC24390A19004F0DE9 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		E1728CAF24390D2E004F0DE9 /* FilmDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailViewController.swift; sourceTree = "<group>"; };
+		E1728CB024390D2E004F0DE9 /* FilmDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmDetailViewController.xib; sourceTree = "<group>"; };
 		E18AC7262427342F00727107 /* SearchMoviesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesService.swift; sourceTree = "<group>"; };
 		E18AC7282427691400727107 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		E18AC72B2427E1D700727107 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
@@ -325,6 +329,15 @@
 				E1728CA92438D30D004F0DE9 /* MakePinViewController.xib */,
 			);
 			path = MakePinViewController;
+			sourceTree = "<group>";
+		};
+		E1728CAE24390CE0004F0DE9 /* FilmDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E1728CAF24390D2E004F0DE9 /* FilmDetailViewController.swift */,
+				E1728CB024390D2E004F0DE9 /* FilmDetailViewController.xib */,
+			);
+			path = FilmDetailViewController;
 			sourceTree = "<group>";
 		};
 		E18AC72A2427E11D00727107 /* Presentation */ = {
@@ -502,6 +515,7 @@
 		E1C736C9241197B900E60D7C /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				E1728CAE24390CE0004F0DE9 /* FilmDetailViewController */,
 				E18AC76C243285EB00727107 /* LoadingViewController */,
 				E18AC75A2430E00E00727107 /* CollectionView */,
 				E1C736FC2413C3BB00E60D7C /* Common */,
@@ -819,6 +833,7 @@
 				E1728CAB2438D30E004F0DE9 /* MakePinViewController.xib in Resources */,
 				E1C736AB2411154700E60D7C /* Assets.xcassets in Resources */,
 				E1C737152413FECA00E60D7C /* ProfileViewController.xib in Resources */,
+				E1728CB224390D2E004F0DE9 /* FilmDetailViewController.xib in Resources */,
 				E18AC7692430E34200727107 /* MovieTableCollectionViewCell.xib in Resources */,
 				E1C737102413F84800E60D7C /* FavoriveViewController.xib in Resources */,
 				E1C736FB2413C1AB00E60D7C /* Default-568h@2x.png in Resources */,
@@ -1004,6 +1019,7 @@
 				E18AC7592430B85000727107 /* Session.swift in Sources */,
 				E1C736D02412A67400E60D7C /* LoginViewController.swift in Sources */,
 				E18AC76B24321B9900727107 /* MoviesCollectionViewController.swift in Sources */,
+				E1728CB124390D2E004F0DE9 /* FilmDetailViewController.swift in Sources */,
 				E18AC74F242E2D9200727107 /* Token.swift in Sources */,
 				E1728CAA2438D30E004F0DE9 /* MakePinViewController.swift in Sources */,
 				E1C737012413C85900E60D7C /* TextFieldExtension.swift in Sources */,
