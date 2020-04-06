@@ -34,6 +34,8 @@ class MainViewController: UIViewController {
     var ufoImage = UIImageView()
     var notFoundMovieLabel = UILabel()
     
+    // MARK: - MainViewController
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         findMovieTextField.setLeftView(image: searchImage)

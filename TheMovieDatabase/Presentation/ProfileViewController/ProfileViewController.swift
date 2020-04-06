@@ -102,7 +102,9 @@ class ProfileViewController: UIViewController {
         let popcornParticleEmitter = CAEmitterLayer()
         popcornParticleEmitter.emitterPosition = CGPoint(x: ufoImage.frame.origin.x + 45,
                                                          y: ufoImage.frame.origin.y + 70)
-        //popcornParticleEmitter.emitterShape = .line
+        popcornParticleEmitter.emitterShape = .circle
+        //popcornParticleEmitter.emitterSize = CGSize(width: 50, height: 1)
+        popcornParticleEmitter.emitterMode = .outline
         let popcorn = makePopcornEmitterCell(image: "popcorn_image")
         popcornParticleEmitter.emitterCells = [popcorn]
         view.layer.addSublayer(popcornParticleEmitter)
@@ -165,9 +167,8 @@ class ProfileViewController: UIViewController {
         cell.scale = 0.35
         cell.velocity = 100
         cell.velocityRange = 50
-        cell.emissionLongitude = CGFloat.pi
-        cell.emissionRange = CGFloat.pi / 4
-        //cell.spin = 1
+        cell.emissionLongitude = 1
+        cell.emissionRange = 100
         cell.contents = UIImage(named: image)?.cgImage
         return cell
     }
