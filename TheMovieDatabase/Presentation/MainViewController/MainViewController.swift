@@ -32,6 +32,7 @@ class MainViewController: UIViewController {
     let cellVC = MoviesCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
     var cellType: CellType = .collectionCell
     var ufoImage = UIImageView()
+    var notFoundMovieLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,8 @@ class MainViewController: UIViewController {
         findMovieTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         self.hideKeyboardWhenTappedAround()
         self.checkUserIdExists()
+        
+        addNoMovieElements()
     }
     
     // MARK: - Public methods
@@ -94,6 +97,7 @@ class MainViewController: UIViewController {
     private func addCollection(_ viewController: UIViewController) {
         self.addContainerView(viewController)
         self.childVC = cellVC
+        cellVC.view.isHidden = true
     }
     
     /// Метод для поиска любимых фильмов.  Получает фильмы, добавляет их в moviesArray и обновляет коллекцию
@@ -102,6 +106,7 @@ class MainViewController: UIViewController {
             switch result {
             case .success(let movies):
                 if !movies.isEmpty {
+                    self.proceedFindedMovieScreen()
                     self.childVC?.moviesArray = movies
                     self.childVC?.reloadData()
                 } else {
@@ -113,14 +118,31 @@ class MainViewController: UIViewController {
         }
     }
     
-    func proceedNoMovieScreen() {
-        cellVC.view.isHidden = true
+    func addNoMovieElements() {
         ufoImage = UIImageView(frame: CGRect(x: 64, y: 244, width: 248, height: 215))
         ufoImage.image = UIImage(named: "ufo")
         self.view.addSubview(ufoImage)
+        
+        notFoundMovieLabel = UILabel(frame: CGRect(x: 24, y: 161, width: 220, height: 50))
+        notFoundMovieLabel.text = "По вашему запросу ничего не найдено :("
+        notFoundMovieLabel.numberOfLines = 0
+        notFoundMovieLabel.font = UIFont(name: "SFProDisplay", size: 16)
+        notFoundMovieLabel.textColor = UIColor.CustomColor.light
+        self.view.addSubview(notFoundMovieLabel)
+        
+        ufoImage.isHidden = true
+        notFoundMovieLabel.isHidden = true
+    }
+    
+    func proceedNoMovieScreen() {
+        cellVC.view.isHidden = true
+        ufoImage.isHidden = false
+        notFoundMovieLabel.isHidden = false
     }
     
     func proceedFindedMovieScreen() {
-        ufoImage.isHidden = false
+        cellVC.view.isHidden = false
+        ufoImage.isHidden = true
+        notFoundMovieLabel.isHidden = true
     }
 }
