@@ -41,10 +41,10 @@
                     <color key="textColor" name="Light"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_movie" translatesAutoresizingMaskIntoConstraints="NO" id="ZX5-zt-K5u">
-                    <rect key="frame" x="83" y="275.5" width="248" height="193"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wheel_part" translatesAutoresizingMaskIntoConstraints="NO" id="ZX5-zt-K5u">
+                    <rect key="frame" x="83" y="275.5" width="248" height="162"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="193" id="4Gk-75-eIb"/>
+                        <constraint firstAttribute="height" constant="162" id="4Gk-75-eIb"/>
                         <constraint firstAttribute="width" constant="248" id="HzY-Ow-RbF"/>
                     </constraints>
                 </imageView>
@@ -73,7 +73,7 @@
         </view>
     </objects>
     <resources>
-        <image name="no_movie" width="248" height="193"/>
+        <image name="wheel_part" width="248" height="162"/>
         <namedColor name="Bg_black">
             <color red="0.097999997437000275" green="0.10199999809265137" blue="0.14499999582767487" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
