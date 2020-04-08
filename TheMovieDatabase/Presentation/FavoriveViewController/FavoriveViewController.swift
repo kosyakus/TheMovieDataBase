@@ -51,11 +51,16 @@ final class FavoriveViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavBar()
-        loadFavoriteMovies()
+        //loadFavoriteMovies()
         
         self.addCollection(self.cellVC)
         cellVC.view.isHidden = true
         noMovieView.isHidden = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        loadFavoriteMovies()
     }
     
     // MARK: - Public methods
@@ -99,8 +104,8 @@ final class FavoriveViewController: UIViewController {
     
     /// Метод для загрузки любимых фильмов.  Получает фильмы, добавляет их в moviesArray и обновляет коллекцию
     private func loadFavoriteMovies() {
-        favoriteService.fetchFavoriteMovies { result in
-            //print(result)
+        guard let session = try? ManageKeychain().getSessionID() else { return }
+        favoriteService.fetchFavoriteMovies(session: session) { result in
             switch result {
             case .success(let movies):
                 if !movies.isEmpty {
@@ -123,7 +128,7 @@ final class FavoriveViewController: UIViewController {
     }
     
     /// Обработка экрана при отсутствии фильмов в избранном
-    func proceedNoMovieScreen() {
+    private func proceedNoMovieScreen() {
         cellVC.view.isHidden = true
         self.noMovieView.isHidden = false
         self.noMovieLabel.isHidden = false
@@ -132,7 +137,13 @@ final class FavoriveViewController: UIViewController {
     }
     
     /// Обработка экрана при получении фильмов в избранном
-    func proceedFindedMovieScreen() {
+    private func proceedFindedMovieScreen() {
+        let layers = view.layer.sublayers
+        for layer in layers! {
+            if layer.isKind(of: CAEmitterLayer.self) {
+                layer.removeFromSuperlayer()
+            }
+        }
         cellVC.view.isHidden = false
         self.noMovieView.isHidden = true
         self.noMovieLabel.isHidden = true
@@ -140,7 +151,7 @@ final class FavoriveViewController: UIViewController {
     }
     
     /// Создание анимации при отсутствии фильмов в избранном
-    func createParticles() {
+    private func createParticles() {
         let wheelParticleEmitter = CAEmitterLayer()
         wheelParticleEmitter.emitterPosition = CGPoint(x: noMovieView.frame.origin.x + 128,
                                                        y: noMovieView.frame.origin.y + 73)
@@ -167,54 +178,38 @@ final class FavoriveViewController: UIViewController {
         popcornParticleEmitter.emitterPosition = CGPoint(x: noMovieView.frame.origin.x + 45,
                                                          y: noMovieView.frame.origin.y + 70)
         popcornParticleEmitter.emitterShape = .circle
-        //popcornParticleEmitter.emitterSize = CGSize(width: 50, height: 1)
         popcornParticleEmitter.emitterMode = .outline
         let popcorn = makePopcornEmitterCell(image: "popcorn_image")
         popcornParticleEmitter.emitterCells = [popcorn]
         view.layer.addSublayer(popcornParticleEmitter)
     }
 
-    func makeWheelEmitterCell(color: UIColor) -> CAEmitterCell {
+    private func makeWheelEmitterCell(color: UIColor) -> CAEmitterCell {
         let cell = CAEmitterCell()
         cell.birthRate = 1
         cell.lifetime = 1.0
         cell.scale = 0.35
-        //cell.lifetimeRange = 0
         cell.color = color.cgColor
-        //cell.velocity = 1
-        //cell.velocityRange = 100
-        //cell.emissionLongitude = CGFloat.pi
-        //cell.emissionRange = CGFloat.pi / 4
         cell.spin = 1
-        //cell.spinRange = 3
-        //cell.scaleRange = 1
-        //cell.scaleSpeed = -0.05
-
-        cell.contents = UIImage(named: "wheel_image")?.cgImage
+        let wheelImage = "wheel_image"
+        cell.contents = UIImage(named: wheelImage)?.cgImage
         return cell
     }
     
-    func makePipeEmitterCell(color: UIColor) -> CAEmitterCell {
+    private func makePipeEmitterCell(color: UIColor) -> CAEmitterCell {
         let cell = CAEmitterCell()
         cell.birthRate = 1
         cell.lifetime = 1.0
         cell.scale = 0.35
-        //cell.lifetimeRange = 0
         cell.color = color.cgColor
         cell.velocity = 0.5
-        //cell.velocityRange = 10
-        //cell.emissionLongitude = CGFloat.pi
-        //cell.emissionRange = CGFloat.pi / 4
         cell.spin = 0.3
-        //cell.spinRange = 3
-        //cell.scaleRange = 1
-        //cell.scaleSpeed = -0.05
-
-        cell.contents = UIImage(named: "pipe_image")?.cgImage
+        let pipeImage = "pipe_image"
+        cell.contents = UIImage(named: pipeImage)?.cgImage
         return cell
     }
     
-    func makeOtherEmitterCell(image: String) -> CAEmitterCell {
+    private func makeOtherEmitterCell(image: String) -> CAEmitterCell {
         let cell = CAEmitterCell()
         cell.birthRate = 1
         cell.lifetime = 1.0
@@ -223,10 +218,10 @@ final class FavoriveViewController: UIViewController {
         return cell
     }
     
-    func makePopcornEmitterCell(image: String) -> CAEmitterCell {
+    private func makePopcornEmitterCell(image: String) -> CAEmitterCell {
         let cell = CAEmitterCell()
         cell.birthRate = 3
-        cell.lifetime = 10.0
+        cell.lifetime = 1.0
         cell.lifetimeRange = 0
         cell.scale = 0.35
         cell.velocity = 100

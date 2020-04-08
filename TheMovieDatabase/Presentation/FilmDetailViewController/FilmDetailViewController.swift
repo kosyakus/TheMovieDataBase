@@ -39,16 +39,7 @@ class FilmDetailViewController: UIViewController {
     
     // MARK: - Public methods
     
-    /// Добавление сердечка в NavBar
-    func setUpNavBar() {
-        let favoriteButton = UIBarButtonItem(image: plainHeartImage,
-                                             style: .plain,
-                                             target: self,
-                                             action: #selector(didTapFavoriteButton))
-        
-        navigationItem.rightBarButtonItem = favoriteButton
-    }
-    
+    /// Обработка фильма
     func showMovie() {
         guard let movie = movie else { return }
         if let poster = movie.poster {
@@ -68,18 +59,49 @@ class FilmDetailViewController: UIViewController {
     /// Обработка нажатия на сердечко
     @objc func didTapFavoriteButton(sender: AnyObject) {
         print("didTapFavoriteButton")
+        addAnimationToBarButton()
         addFavoriteMovie()
     }
     
+    // MARK: - Private methods
+    
+    /// Добавление сердечка в NavBar
+    private func setUpNavBar() {
+        let favImageView = UIImageView(image: plainHeartImage)
+        let button = UIButton(type: .custom)
+        button.bounds = favImageView.bounds
+        button.addSubview(favImageView)
+        button.addTarget(self, action: #selector(didTapFavoriteButton), for: .touchUpInside)
+        let favoriteButton = UIBarButtonItem(customView: button)
+
+        navigationItem.rightBarButtonItem = favoriteButton
+    }
+    
+    /// Добавление анимации на сердечко (rightBarButtonItem)
+    private func addAnimationToBarButton() {
+        navigationItem.rightBarButtonItem?.customView?.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+        UIView.animate(withDuration: 2.0,
+                       delay: 0,
+                       usingSpringWithDamping: CGFloat(0.20),
+                       initialSpringVelocity: CGFloat(6.0),
+                       options: UIView.AnimationOptions.allowUserInteraction,
+                       animations: {
+                        self.navigationItem.rightBarButtonItem?.customView?.transform =
+                            CGAffineTransform.identity },
+                       completion: { _ in })
+    }
+
     /// Обновление изображения сердечка
     private func updatePresentationStyle() {
-        navigationItem.rightBarButtonItem?.image = filledHeartImage
+        let fillImage = UIImageView(image: filledHeartImage)
+        navigationItem.rightBarButtonItem?.customView?.addSubview(fillImage)
         navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.purpure
     }
     
     /// Метод для добавления фильмов в избранное. 
     private func addFavoriteMovie() {
-        addMovieToFavoriteService.addMovieToFavorite(movieId: movie?.id ?? 0) { _ in
+        guard let session = try? ManageKeychain().getSessionID() else { return }
+        addMovieToFavoriteService.addMovieToFavorite(session: session, movieId: movie?.id ?? 0) { _ in
             self.updatePresentationStyle()
         }
     }

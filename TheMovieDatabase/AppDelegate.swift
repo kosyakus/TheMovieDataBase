@@ -44,7 +44,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             var mainVC = UIViewController()
             if isSignedIn {
                 mainVC = TabBarController()
-                window.rootViewController = mainVC
+                
+                UIView.transition(with: self.window!,
+                                  duration: 0.5,
+                                  options: .transitionFlipFromLeft,
+                                  animations: {
+                    self.window?.rootViewController = mainVC
+                }, completion: nil)
             } else {
                 mainVC = LoginViewController()
                 navigationController = UINavigationController(rootViewController: mainVC, isTranslucent: false)

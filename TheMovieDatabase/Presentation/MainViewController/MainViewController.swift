@@ -85,11 +85,11 @@ class MainViewController: UIViewController {
         childVC?.navBarButtonClickedByUser()
         switch cellType {
         case .collectionCell:
-            cellType = .tableCell
             listButton.imageView?.image = collectionImage
+            cellType = .tableCell
         case .tableCell:
-            cellType = .collectionCell
             listButton.imageView?.image = listImage
+            cellType = .collectionCell
         }
     }
     

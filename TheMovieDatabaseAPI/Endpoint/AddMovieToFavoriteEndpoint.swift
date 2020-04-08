@@ -14,12 +14,14 @@ public struct AddMovieToFavoriteEndpoint: Endpoint {
     
     private let accountId: String
     private let movieId: Int
+    private let session: String
     private var params: [String: Any]
     
-    public init(accountId: String, movieId: Int) {
+    public init(session: String, accountId: String, movieId: Int) {
+        self.session = session
         self.accountId = accountId
         self.movieId = movieId
-        self.params = ["media_type": "movie", "media_id": movieId, "favorite": true]
+        self.params = ["media_type": "movie", "media_id": movieId, "favorite": true, "session_id": session]
     }
     
     public func makeRequest() throws -> URLRequest {

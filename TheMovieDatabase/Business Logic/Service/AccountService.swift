@@ -15,8 +15,8 @@ public protocol AccountService {
     ///   - completionHandler: Обработчик результата входа.
     /// - Returns: Прогресс выполнения входа.
     @discardableResult
-    func fetchUser(
-        completion: @escaping (Result<User, Error>) -> Void) -> Progress
+    func fetchUser(session: String,
+                   completion: @escaping (Result<User, Error>) -> Void) -> Progress
 }
 
 final public class AccountServicesImplementation: AccountService {
@@ -28,10 +28,10 @@ final public class AccountServicesImplementation: AccountService {
     }
     
     @discardableResult
-    public func fetchUser(
-        completion: @escaping (Result<User, Error>) -> Void) -> Progress {
+    public func fetchUser(session: String,
+                          completion: @escaping (Result<User, Error>) -> Void) -> Progress {
         
-        client.request(AccountEndpoint()) { result in
+        client.request(AccountEndpoint(session: session)) { result in
             completion(result)
         }
     }

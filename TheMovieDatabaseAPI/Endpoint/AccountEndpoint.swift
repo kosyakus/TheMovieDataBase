@@ -11,14 +11,29 @@ import Foundation
 public struct AccountEndpoint: Endpoint {
     
     public typealias Content = User
+    private let session: String
+    private var params: [String: String]
     
-    public init() {}
-
+    public init(session: String) {
+        self.session = session
+        self.params = ["session_id": session]
+    }
+    
     public func makeRequest() throws -> URLRequest {
+        var urlComp = URLComponents(string: "account")!
+        urlComp.setQueryItems(with: params)
+        
         var request = URLRequest(url: URL(string: "account")!)
+        request.url = urlComp.url
         request.httpMethod = "GET"
         return request
     }
+
+//    public func makeRequest() throws -> URLRequest {
+//        var request = URLRequest(url: URL(string: "account")!)
+//        request.httpMethod = "GET"
+//        return request
+//    }
     
     public func content(from data: Data, response: URLResponse?) throws -> Content {
         

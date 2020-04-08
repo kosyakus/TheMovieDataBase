@@ -18,8 +18,8 @@ protocol FavoriteServices {
     ///   - completionHandler: Обработчик результата входа.
     /// - Returns: Прогресс выполнения входа.
     @discardableResult
-    func fetchFavoriteMovies(
-        completion: @escaping (Result<[Movie], Error>) -> Void) -> Progress
+    func fetchFavoriteMovies(session: String,
+                             completion: @escaping (Result<[Movie], Error>) -> Void) -> Progress
 }
 
 final public class FavoriteServicesImplementation: FavoriteServices {
@@ -31,10 +31,10 @@ final public class FavoriteServicesImplementation: FavoriteServices {
     }
     
     @discardableResult
-    func fetchFavoriteMovies(
-        completion: @escaping (Result<[Movie], Error>) -> Void) -> Progress {
+    func fetchFavoriteMovies(session: String,
+                             completion: @escaping (Result<[Movie], Error>) -> Void) -> Progress {
         
-        client.request(FavoriteEndpoint(accountId: UserSettings.shareInstance.accountID)) { result in
+        client.request(FavoriteEndpoint(session: session, accountId: UserSettings.shareInstance.accountID)) { result in
         let moviesResult = result.flatMap { movies -> Result<[Movie], Error> in
             let movies = movies.results.map(self.movie(from:))
             return .success(movies)

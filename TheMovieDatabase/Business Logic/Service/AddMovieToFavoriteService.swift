@@ -15,7 +15,8 @@ public protocol AddMovieToFavoriteService {
     ///   - completionHandler: Обработчик результата входа.
     /// - Returns: Прогресс выполнения входа.
     @discardableResult
-    func addMovieToFavorite(movieId: Int,
+    func addMovieToFavorite(session: String,
+                            movieId: Int,
                             completion: @escaping (Result<Bool, Error>) -> Void) -> Progress
 }
 
@@ -28,10 +29,12 @@ final public class AddMovieToFavoriteServiceImplementation: AddMovieToFavoriteSe
     }
     
     @discardableResult
-    public func addMovieToFavorite(movieId: Int,
+    public func addMovieToFavorite(session: String,
+                                   movieId: Int,
                                    completion: @escaping (Result<Bool, Error>) -> Void) -> Progress {
         
-        client.request(AddMovieToFavoriteEndpoint(accountId: UserSettings.shareInstance.accountID,
+        client.request(AddMovieToFavoriteEndpoint(session: session,
+                                                  accountId: UserSettings.shareInstance.accountID,
                                                   movieId: movieId)) { _ in
             completion(.success(true))
         }

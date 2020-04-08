@@ -13,7 +13,8 @@ final class LoadAccount {
     let accountService: AccountService = ServiceLayer.shared.accountService
     
     func loadProfile() {
-        accountService.fetchUser { result in
+        guard let session = try? ManageKeychain().getSessionID() else { return }
+        accountService.fetchUser(session: session) { result in
             print(result)
             switch result {
             case .success(let user):

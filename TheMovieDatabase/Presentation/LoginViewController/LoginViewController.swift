@@ -112,7 +112,6 @@ class LoginViewController: UIViewController {
         
         loginService.fetchToken(login: login, password: password) { result in
             if result {
-                self.loadingViewController.remove()
                 appDelegate?.presentViewController()
             } else {
                 self.activeTextField.shake()

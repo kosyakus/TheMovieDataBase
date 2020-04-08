@@ -13,13 +13,22 @@ public struct FavoriteEndpoint: Endpoint {
     public typealias Content = Movies
     
     private let accountId: String
+    private let session: String
+    private var params: [String: String]
     
-    public init(accountId: String) {
+    public init(session: String, accountId: String) {
         self.accountId = accountId
+        self.session = session
+        self.params = ["session_id": session]
     }
     
     public func makeRequest() throws -> URLRequest {
+        var urlComp = URLComponents(string: "account/\(accountId)/favorite/movies")!
+        urlComp.setQueryItems(with: params)
+        
         var request = URLRequest(url: URL(string: "account/\(accountId)/favorite/movies")!)
+        request.url = urlComp.url
+        
         request.httpMethod = "GET"
         return request
     }
