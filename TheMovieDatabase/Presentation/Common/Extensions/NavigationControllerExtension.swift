@@ -21,24 +21,4 @@ extension UINavigationController {
         self.navigationBar.tintColor = UIColor.CustomColor.light
         self.navigationBar.setValue(true, forKey: "hidesShadow")
     }
-    
-    //    func initRootViewController(vc: UIViewController,
-    //                                transitionType type: CATransitionType = CATransitionType.fade,
-    //                                duration: CFTimeInterval = 0.3) {
-    //        self.addTransition(transitionType: type, duration: duration)
-    //        setNavBar()
-    //        self.viewControllers.removeAll()
-    //        self.pushViewController(vc, animated: false)
-    //        self.popToRootViewController(animated: false)
-    //    }
-    
-    
-    //    private func addTransition(transitionType type: CATransitionType = CATransitionType.fade,
-    //                               duration: CFTimeInterval = 0.3) {
-    //        let transition = CATransition()
-    //        transition.duration = duration
-    //        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-    //        transition.type = type
-    //        self.view.layer.add(transition, forKey: nil)
-    //    }
 }

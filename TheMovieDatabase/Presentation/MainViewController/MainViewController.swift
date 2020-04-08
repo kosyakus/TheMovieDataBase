@@ -120,9 +120,11 @@ class MainViewController: UIViewController {
         }
     }
     
+    /// Создание заранее элементов для случая когда фильмы не найдены
     func addNoMovieElements() {
         ufoImage = UIImageView(frame: CGRect(x: 64, y: 244, width: 248, height: 215))
-        ufoImage.image = UIImage(named: "ufo")
+        let ufoStar = "ufo_stars_image"
+        ufoImage.image = UIImage(named: ufoStar)
         self.view.addSubview(ufoImage)
         
         notFoundMovieLabel = UILabel(frame: CGRect(x: 24, y: 161, width: 220, height: 50))
@@ -140,11 +142,82 @@ class MainViewController: UIViewController {
         cellVC.view.isHidden = true
         ufoImage.isHidden = false
         notFoundMovieLabel.isHidden = false
+        createParticles()
     }
     
     func proceedFindedMovieScreen() {
+        let layers = view.layer.sublayers
+        for layer in layers! {
+            if layer.isKind(of: CAEmitterLayer.self) {
+                layer.removeFromSuperlayer()
+            }
+        }
         cellVC.view.isHidden = false
         ufoImage.isHidden = true
         notFoundMovieLabel.isHidden = true
+    }
+    
+    /// Создание анимации при отсутствии фильмов в поиске
+    private func createParticles() {
+        let lightParticleEmitter = CAEmitterLayer()
+        lightParticleEmitter.emitterPosition = CGPoint(x: ufoImage.center.x,
+                                                       y: ufoImage.center.y)
+        let light = makeLightEmitterCell()
+        lightParticleEmitter.emitterCells = [light]
+        view.layer.addSublayer(lightParticleEmitter)
+        
+        let ghostParticleEmitter = CAEmitterLayer()
+        ghostParticleEmitter.emitterPosition = CGPoint(x: ufoImage.center.x,
+                                                       y: ufoImage.center.y)
+        let ghost = makeGhostEmitterCell()
+        ghostParticleEmitter.emitterShape = .point
+        ghostParticleEmitter.emitterCells = [ghost]
+        view.layer.addSublayer(ghostParticleEmitter)
+        
+        let plateParticleEmitter = CAEmitterLayer()
+        plateParticleEmitter.emitterPosition = CGPoint(x: ufoImage.center.x,
+                                                       y: ufoImage.center.y)
+        let plate = makePlateEmitterCell()
+        plateParticleEmitter.emitterShape = .line
+        plateParticleEmitter.emitterCells = [plate]
+        view.layer.addSublayer(plateParticleEmitter)
+    }
+
+    private func makeLightEmitterCell() -> CAEmitterCell {
+        let cell = CAEmitterCell()
+        cell.birthRate = 1
+        cell.lifetime = 1.0
+        cell.scale = 0.35
+        cell.alphaSpeed = -0.5
+        let wheelImage = "ufo_light_image"
+        cell.contents = UIImage(named: wheelImage)?.cgImage
+        return cell
+    }
+    
+    private func makeGhostEmitterCell() -> CAEmitterCell {
+        let cell = CAEmitterCell()
+        cell.birthRate = 1
+        cell.lifetime = 1.0
+        cell.scale = 0.35
+        cell.velocity = 10
+        //cell.velocityRange = 15
+        //cell.emissionRange = 5
+        
+        let pipeImage = "ufo_ghost_image"
+        cell.contents = UIImage(named: pipeImage)?.cgImage
+        return cell
+    }
+    
+    private func makePlateEmitterCell() -> CAEmitterCell {
+        let cell = CAEmitterCell()
+        cell.birthRate = 1
+        cell.lifetime = 1.0
+        cell.scale = 0.35
+        cell.velocity = 10
+        cell.emissionLongitude = .pi
+        
+        let pipeImage = "ufo_plate"
+        cell.contents = UIImage(named: pipeImage)?.cgImage
+        return cell
     }
 }
