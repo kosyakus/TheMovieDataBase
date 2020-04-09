@@ -47,7 +47,7 @@ class ProfileViewController: UIViewController {
     
     func setUpButtonAndImage() {
         exitButton.layer.cornerRadius = 0.02 * exitButton.bounds.size.width
-        avatarImageView.layer.cornerRadius = 0.17 * exitButton.bounds.size.width
+        avatarImageView.layer.cornerRadius = avatarImageView.bounds.size.height / 2
     }
     
     // MARK: - IBAction

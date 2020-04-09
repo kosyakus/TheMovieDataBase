@@ -153,15 +153,15 @@ final class FavoriveViewController: UIViewController {
     /// Создание анимации при отсутствии фильмов в избранном
     private func createParticles() {
         let wheelParticleEmitter = CAEmitterLayer()
-        wheelParticleEmitter.emitterPosition = CGPoint(x: noMovieView.frame.origin.x + 128,
-                                                       y: noMovieView.frame.origin.y + 73)
+        wheelParticleEmitter.emitterPosition = CGPoint(x: noMovieView.center.x,
+                                                       y: noMovieView.center.y)
         let wheel = makeWheelEmitterCell(color: UIColor.white)
         wheelParticleEmitter.emitterCells = [wheel]
         view.layer.addSublayer(wheelParticleEmitter)
         
         let pipeParticleEmitter = CAEmitterLayer()
-        pipeParticleEmitter.emitterPosition = CGPoint(x: noMovieView.frame.origin.x + 233,
-                                                      y: noMovieView.frame.origin.y + 68)
+        pipeParticleEmitter.emitterPosition = CGPoint(x: noMovieView.center.x,
+                                                      y: noMovieView.center.y)
         let pipe = makePipeEmitterCell(color: UIColor.white)
         pipeParticleEmitter.emitterCells = [pipe]
         view.layer.insertSublayer(pipeParticleEmitter, below: noMovieView.layer)
@@ -204,6 +204,7 @@ final class FavoriveViewController: UIViewController {
         cell.color = color.cgColor
         cell.velocity = 0.5
         cell.spin = 0.3
+        cell.autoreverses = true
         let pipeImage = "pipe_image"
         cell.contents = UIImage(named: pipeImage)?.cgImage
         return cell

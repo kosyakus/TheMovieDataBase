@@ -28,10 +28,10 @@ class MakePinViewController: UIViewController {
     
     private func setupView() {
         for button in numberButton {
-            button.layer.cornerRadius = 45
+            button.layer.cornerRadius = button.bounds.size.height / 2
         }
         for pin in pinViewsCollection {
-            pin.layer.cornerRadius = 4
+            pin.layer.cornerRadius = pin.bounds.size.height / 2
         }
         //backgroundColor = inactiveColor
     }

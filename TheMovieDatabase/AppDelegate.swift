@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                   options: .transitionFlipFromLeft,
                                   animations: {
                     self.window?.rootViewController = mainVC
-                }, completion: nil)
+                })
             } else {
                 mainVC = LoginViewController()
                 navigationController = UINavigationController(rootViewController: mainVC, isTranslucent: false)

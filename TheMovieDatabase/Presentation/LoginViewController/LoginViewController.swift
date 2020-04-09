@@ -49,7 +49,7 @@ class LoginViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
         errorLabel.isHidden = true
         passwordTextField.setVisibilityOnIcon()
-        enterButton.layer.cornerRadius = 0.02 * enterButton.bounds.size.width
+        enterButton.layer.cornerRadius = enterButton.bounds.size.height / 20
         loginTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         loginTextField.addTarget(self, action: #selector(textFieldDidBeginEditing(_:)), for: .allTouchEvents)
