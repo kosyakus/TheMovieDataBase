@@ -10,6 +10,7 @@
 		05B8B6ED3631E86C4B016D58 /* Pods_TheMovieDatabaseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638654E9E95DFD9A5CB5F2FC /* Pods_TheMovieDatabaseUITests.framework */; };
 		34414F6FF03942E213ADEDD2 /* Pods_TheMovieDatabaseAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BCC2272996F4023B8E6E00 /* Pods_TheMovieDatabaseAPI.framework */; };
 		C8B5D0F6AE81E6D0D9BB7EA8 /* Pods_TheMovieDatabaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97DC9B31A6DF12A6DAC00704 /* Pods_TheMovieDatabaseTests.framework */; };
+		E106B7D52440D8E1004B8209 /* AnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106B7D42440D8E1004B8209 /* AnimationController.swift */; };
 		E11C765F241D6131000969C7 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C765E241D6131000969C7 /* APIClient.swift */; };
 		E11C7661241D62E0000969C7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7660241D62E0000969C7 /* Constants.swift */; };
 		E11C7668241D712E000969C7 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7667241D712E000969C7 /* Endpoint.swift */; };
@@ -153,6 +154,7 @@
 		B69970511E691E7B3E2CDE77 /* Pods-TheMovieDatabase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieDatabase.release.xcconfig"; path = "Target Support Files/Pods-TheMovieDatabase/Pods-TheMovieDatabase.release.xcconfig"; sourceTree = "<group>"; };
 		B7660A608791AB3ACE54BDA3 /* Pods-TheMovieDatabaseAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieDatabaseAPI.release.xcconfig"; path = "Target Support Files/Pods-TheMovieDatabaseAPI/Pods-TheMovieDatabaseAPI.release.xcconfig"; sourceTree = "<group>"; };
 		CBFF849678DBDCC236B10C53 /* Pods-TheMovieDatabase-TheMovieDatabaseAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieDatabase-TheMovieDatabaseAPI.release.xcconfig"; path = "Target Support Files/Pods-TheMovieDatabase-TheMovieDatabaseAPI/Pods-TheMovieDatabase-TheMovieDatabaseAPI.release.xcconfig"; sourceTree = "<group>"; };
+		E106B7D42440D8E1004B8209 /* AnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationController.swift; sourceTree = "<group>"; };
 		E11C765E241D6131000969C7 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		E11C7660241D62E0000969C7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E11C7667241D712E000969C7 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -299,6 +301,14 @@
 				638654E9E95DFD9A5CB5F2FC /* Pods_TheMovieDatabaseUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E106B7D32440D88F004B8209 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				E106B7D42440D8E1004B8209 /* AnimationController.swift */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 		E11C7666241D7107000969C7 /* Endpoint */ = {
@@ -521,6 +531,7 @@
 		E1C736C9241197B900E60D7C /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				E106B7D32440D88F004B8209 /* Animation */,
 				E1728CAE24390CE0004F0DE9 /* FilmDetailViewController */,
 				E18AC76C243285EB00727107 /* LoadingViewController */,
 				E18AC75A2430E00E00727107 /* CollectionView */,
@@ -1044,6 +1055,7 @@
 				E1FF6EFC241981250007B93D /* KeychainPasswordItem.swift in Sources */,
 				E11C767F241FEDB7000969C7 /* StringExtension.swift in Sources */,
 				E1FF6F00241A17A20007B93D /* NotificationExtension.swift in Sources */,
+				E106B7D52440D8E1004B8209 /* AnimationController.swift in Sources */,
 				E1C737052413DCE200E60D7C /* TabBarController.swift in Sources */,
 				E1C7370F2413F84800E60D7C /* FavoriveViewController.swift in Sources */,
 				E1C737142413FECA00E60D7C /* ProfileViewController.swift in Sources */,

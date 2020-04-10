@@ -152,25 +152,26 @@ final class FavoriveViewController: UIViewController {
     
     /// Создание анимации при отсутствии фильмов в избранном
     private func createParticles() {
+        let animation = AnimationController()
         let wheelParticleEmitter = CAEmitterLayer()
         wheelParticleEmitter.emitterPosition = CGPoint(x: noMovieView.center.x,
                                                        y: noMovieView.center.y)
-        let wheel = makeWheelEmitterCell(color: UIColor.white)
+        let wheel = animation.makeWheelEmitterCell(color: UIColor.white)
         wheelParticleEmitter.emitterCells = [wheel]
         view.layer.addSublayer(wheelParticleEmitter)
         
         let pipeParticleEmitter = CAEmitterLayer()
         pipeParticleEmitter.emitterPosition = CGPoint(x: noMovieView.center.x,
                                                       y: noMovieView.center.y)
-        let pipe = makePipeEmitterCell(color: UIColor.white)
+        let pipe = animation.makePipeEmitterCell(color: UIColor.white)
         pipeParticleEmitter.emitterCells = [pipe]
         view.layer.insertSublayer(pipeParticleEmitter, below: noMovieView.layer)
         
         let cornCupParticleEmitter = CAEmitterLayer()
         cornCupParticleEmitter.emitterPosition = CGPoint(x: noMovieView.center.x,
                                                          y: noMovieView.center.y)
-        let cornCup = makeOtherEmitterCell(image: "popcorn_cup")
-        let waterCup = makeOtherEmitterCell(image: "water_cup")
+        let cornCup = animation.makeOtherEmitterCell(image: "popcorn_cup")
+        let waterCup = animation.makeOtherEmitterCell(image: "water_cup")
         cornCupParticleEmitter.emitterCells = [cornCup, waterCup]
         view.layer.addSublayer(cornCupParticleEmitter)
         
@@ -179,57 +180,8 @@ final class FavoriveViewController: UIViewController {
                                                          y: noMovieView.frame.origin.y + 70)
         popcornParticleEmitter.emitterShape = .circle
         popcornParticleEmitter.emitterMode = .outline
-        let popcorn = makePopcornEmitterCell(image: "popcorn_image")
+        let popcorn = animation.makePopcornEmitterCell(image: "popcorn_image")
         popcornParticleEmitter.emitterCells = [popcorn]
         view.layer.addSublayer(popcornParticleEmitter)
-    }
-
-    private func makeWheelEmitterCell(color: UIColor) -> CAEmitterCell {
-        let cell = CAEmitterCell()
-        cell.birthRate = 1
-        cell.lifetime = 1.0
-        cell.scale = 0.35
-        cell.color = color.cgColor
-        cell.spin = 1
-        let wheelImage = "wheel_image"
-        cell.contents = UIImage(named: wheelImage)?.cgImage
-        return cell
-    }
-    
-    private func makePipeEmitterCell(color: UIColor) -> CAEmitterCell {
-        let cell = CAEmitterCell()
-        cell.birthRate = 1
-        cell.lifetime = 1.0
-        cell.scale = 0.35
-        cell.color = color.cgColor
-        cell.velocity = 0.5
-        cell.spin = 0.3
-        cell.autoreverses = true
-        let pipeImage = "pipe_image"
-        cell.contents = UIImage(named: pipeImage)?.cgImage
-        return cell
-    }
-    
-    private func makeOtherEmitterCell(image: String) -> CAEmitterCell {
-        let cell = CAEmitterCell()
-        cell.birthRate = 1
-        cell.lifetime = 1.0
-        cell.scale = 0.35
-        cell.contents = UIImage(named: image)?.cgImage
-        return cell
-    }
-    
-    private func makePopcornEmitterCell(image: String) -> CAEmitterCell {
-        let cell = CAEmitterCell()
-        cell.birthRate = 3
-        cell.lifetime = 1.0
-        cell.lifetimeRange = 0
-        cell.scale = 0.35
-        cell.velocity = 100
-        cell.velocityRange = 50
-        cell.emissionLongitude = 1
-        cell.emissionRange = 100
-        cell.contents = UIImage(named: image)?.cgImage
-        return cell
     }
 }

@@ -159,17 +159,18 @@ class MainViewController: UIViewController {
     
     /// Создание анимации при отсутствии фильмов в поиске
     private func createParticles() {
+        let animation = AnimationController()
         let lightParticleEmitter = CAEmitterLayer()
         lightParticleEmitter.emitterPosition = CGPoint(x: ufoImage.center.x,
                                                        y: ufoImage.center.y)
-        let light = makeLightEmitterCell()
+        let light = animation.makeLightEmitterCell()
         lightParticleEmitter.emitterCells = [light]
         view.layer.addSublayer(lightParticleEmitter)
         
         let ghostParticleEmitter = CAEmitterLayer()
         ghostParticleEmitter.emitterPosition = CGPoint(x: ufoImage.center.x,
                                                        y: ufoImage.center.y)
-        let ghost = makeGhostEmitterCell()
+        let ghost = animation.makeGhostEmitterCell()
         ghostParticleEmitter.emitterShape = .point
         ghostParticleEmitter.emitterCells = [ghost]
         view.layer.addSublayer(ghostParticleEmitter)
@@ -177,47 +178,9 @@ class MainViewController: UIViewController {
         let plateParticleEmitter = CAEmitterLayer()
         plateParticleEmitter.emitterPosition = CGPoint(x: ufoImage.center.x,
                                                        y: ufoImage.center.y)
-        let plate = makePlateEmitterCell()
+        let plate = animation.makePlateEmitterCell()
         plateParticleEmitter.emitterShape = .line
         plateParticleEmitter.emitterCells = [plate]
         view.layer.addSublayer(plateParticleEmitter)
-    }
-
-    private func makeLightEmitterCell() -> CAEmitterCell {
-        let cell = CAEmitterCell()
-        cell.birthRate = 1
-        cell.lifetime = 1.0
-        cell.scale = 0.35
-        cell.alphaSpeed = -0.5
-        let wheelImage = "ufo_light_image"
-        cell.contents = UIImage(named: wheelImage)?.cgImage
-        return cell
-    }
-    
-    private func makeGhostEmitterCell() -> CAEmitterCell {
-        let cell = CAEmitterCell()
-        cell.birthRate = 1
-        cell.lifetime = 1.0
-        cell.scale = 0.35
-        cell.velocity = 10
-        //cell.velocityRange = 15
-        //cell.emissionRange = 5
-        
-        let pipeImage = "ufo_ghost_image"
-        cell.contents = UIImage(named: pipeImage)?.cgImage
-        return cell
-    }
-    
-    private func makePlateEmitterCell() -> CAEmitterCell {
-        let cell = CAEmitterCell()
-        cell.birthRate = 1
-        cell.lifetime = 1.0
-        cell.scale = 0.35
-        cell.velocity = 10
-        cell.emissionLongitude = .pi
-        
-        let pipeImage = "ufo_plate"
-        cell.contents = UIImage(named: pipeImage)?.cgImage
-        return cell
     }
 }

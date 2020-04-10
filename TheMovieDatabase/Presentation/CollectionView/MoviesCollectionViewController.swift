@@ -33,6 +33,7 @@ final class MoviesCollectionViewController: UICollectionViewController, UICollec
         collectionView.backgroundColor = .clear
         setUpCell()
         //self.moviesDidLoad(self.moviesArray)
+        collectionView.contentInset = .init(top: 0, left: 10, bottom: 0, right: 10)
     }
     
     // MARK: - Public methods
