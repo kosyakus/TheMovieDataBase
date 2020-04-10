@@ -24,6 +24,7 @@ final class FavoriveViewController: UIViewController {
     private let listImage = #imageLiteral(resourceName: "list_icon")
     private let searchImage = #imageLiteral(resourceName: "search_icon")
     private let collectionImage = #imageLiteral(resourceName: "widgets_icon")
+    private let expandableView = ExpandableView()
     
     // MARK: - IBOutlet
     
@@ -56,6 +57,7 @@ final class FavoriveViewController: UIViewController {
         self.addCollection(self.cellVC)
         cellVC.view.isHidden = true
         noMovieView.isHidden = true
+        setUpSearchBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +66,19 @@ final class FavoriveViewController: UIViewController {
     }
     
     // MARK: - Public methods
+    
+    func setUpSearchBar() {
+        navigationItem.titleView = expandableView
+
+        let searchBar = UISearchBar()
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        expandableView.addSubview(searchBar)
+        searchBar.leftAnchor.constraint(equalTo: expandableView.leftAnchor).isActive = true
+        searchBar.rightAnchor.constraint(equalTo: expandableView.rightAnchor).isActive = true
+        searchBar.topAnchor.constraint(equalTo: expandableView.topAnchor).isActive = true
+        searchBar.bottomAnchor.constraint(equalTo: expandableView.bottomAnchor).isActive = true
+        expandableView.isHidden = true
+    }
     
     func setUpNavBar() {
         let listButton = UIBarButtonItem(image: buttonImage,
@@ -92,6 +107,8 @@ final class FavoriveViewController: UIViewController {
     
     @objc func didTapSearchButton(sender: AnyObject) {
         print("didTapSearchButton")
+        expandableView.isHidden = false
+        self.navigationItem.titleView?.layoutIfNeeded()
     }
     
     // MARK: - Private Methods
@@ -183,5 +200,22 @@ final class FavoriveViewController: UIViewController {
         let popcorn = animation.makePopcornEmitterCell(image: "popcorn_image")
         popcornParticleEmitter.emitterCells = [popcorn]
         view.layer.addSublayer(popcornParticleEmitter)
+    }
+}
+
+class ExpandableView: UIView {
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        translatesAutoresizingMaskIntoConstraints = false
+
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    override var intrinsicContentSize: CGSize {
+        return UIView.layoutFittingExpandedSize
     }
 }
