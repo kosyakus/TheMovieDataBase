@@ -16,6 +16,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     // MARK: - Private Properties
     
@@ -68,12 +69,15 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    var ufoImage = UIImageView()
-    
-    func addNoMovieElements() {
-        ufoImage = UIImageView(frame: CGRect(x: 64, y: 244, width: 248, height: 162))
-        ufoImage.image = UIImage(named: "wheel_part")
-        self.view.addSubview(ufoImage)
+    @IBAction func dataBaseSegmentControlTapped(_ sender: Any) {
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            UserSettings.shareInstance.dataBase = 0
+        case 1:
+            UserSettings.shareInstance.dataBase = 1
+        default:
+            UserSettings.shareInstance.dataBase = 0
+        }
     }
     
 }

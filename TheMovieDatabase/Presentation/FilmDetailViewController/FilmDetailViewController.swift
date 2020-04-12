@@ -42,8 +42,8 @@ class FilmDetailViewController: UIViewController {
     /// Обработка фильма
     func showMovie() {
         guard let movie = movie else { return }
-        if let poster = movie.poster {
-            movieImageView.load(url: poster)
+        if let posterUrl = URL(string: movie.poster ?? "") {
+            movieImageView.load(url: posterUrl)
         }
         movieImageView.layer.cornerRadius = 2
         movieTitleLabel.text = movie.title

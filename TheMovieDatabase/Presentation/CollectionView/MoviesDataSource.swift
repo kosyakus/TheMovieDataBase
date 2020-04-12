@@ -77,7 +77,9 @@ extension CollectionViewDataSource where Model == Movie {
             reuseIdentifier: reuseIdentifier
         ) { movie, cell in
             if let poster = movie.poster {
-                cell.movieImageView.load(url: poster)
+                if let posterUrl = URL(string: poster) {
+                    cell.movieImageView.load(url: posterUrl)
+                }
             }
             cell.movieNameLabel.text = movie.title
             cell.originalMovieNameLabel.text = movie.originalTitle

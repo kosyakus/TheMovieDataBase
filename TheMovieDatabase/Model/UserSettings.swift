@@ -15,6 +15,7 @@ import Foundation
     fileprivate override init() {}
 
     fileprivate let kAccountID = "accountID"
+    fileprivate let kDataBase = "dataBase"
     
     var accountID: String {
         get {
@@ -24,6 +25,17 @@ import Foundation
         }
         set {
             standartUserDefaults.set(newValue, forKey: kAccountID)
+        }
+    }
+    
+    var dataBase: Int {
+        get {
+            let value = standartUserDefaults.object(forKey: kDataBase) != nil ?
+                standartUserDefaults.integer(forKey: kDataBase) : 0
+            return value
+        }
+        set {
+            standartUserDefaults.set(newValue, forKey: kDataBase)
         }
     }
 }

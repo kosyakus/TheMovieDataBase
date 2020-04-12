@@ -15,6 +15,18 @@
 		E106B7DF2442258F004B8209 /* TheMovieDatabaseDBLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = E106B7DD2442258F004B8209 /* TheMovieDatabaseDBLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E106B7E22442258F004B8209 /* TheMovieDatabaseDBLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E106B7DB2442258E004B8209 /* TheMovieDatabaseDBLayer.framework */; };
 		E106B7E32442258F004B8209 /* TheMovieDatabaseDBLayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E106B7DB2442258E004B8209 /* TheMovieDatabaseDBLayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E106B820244306EF004B8209 /* CDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106B81F244306EF004B8209 /* CDModel.swift */; };
+		E106B8222443070F004B8209 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106B8212443070F004B8209 /* CoreDataRepository.swift */; };
+		E106B8242443073C004B8209 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106B8232443073C004B8209 /* Repository.swift */; };
+		E106B82624430754004B8209 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106B82524430754004B8209 /* CoreDataService.swift */; };
+		E106B82824430785004B8209 /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106B82724430785004B8209 /* Storable.swift */; };
+		E106B82A244308EE004B8209 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106B829244308EE004B8209 /* RealmRepository.swift */; };
+		E106B82C24432B58004B8209 /* RepositoryForRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106B82B24432B58004B8209 /* RepositoryForRealm.swift */; };
+		E106B82E24432B96004B8209 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106B82D24432B96004B8209 /* RealmModel.swift */; };
+		E106B83024432CBC004B8209 /* RealmStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106B82F24432CBC004B8209 /* RealmStorable.swift */; };
+		E106B8332443855F004B8209 /* ExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106B8322443855F004B8209 /* ExpandableView.swift */; };
+		E106B836244385DD004B8209 /* RealmMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106B835244385DD004B8209 /* RealmMovieViewModel.swift */; };
+		E106B83824438606004B8209 /* CDMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106B83724438606004B8209 /* CDMovieViewModel.swift */; };
 		E11C765F241D6131000969C7 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C765E241D6131000969C7 /* APIClient.swift */; };
 		E11C7661241D62E0000969C7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7660241D62E0000969C7 /* Constants.swift */; };
 		E11C7668241D712E000969C7 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7667241D712E000969C7 /* Endpoint.swift */; };
@@ -173,6 +185,18 @@
 		E106B7DB2442258E004B8209 /* TheMovieDatabaseDBLayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TheMovieDatabaseDBLayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E106B7DD2442258F004B8209 /* TheMovieDatabaseDBLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TheMovieDatabaseDBLayer.h; sourceTree = "<group>"; };
 		E106B7DE2442258F004B8209 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E106B81F244306EF004B8209 /* CDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDModel.swift; sourceTree = "<group>"; };
+		E106B8212443070F004B8209 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
+		E106B8232443073C004B8209 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		E106B82524430754004B8209 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		E106B82724430785004B8209 /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
+		E106B829244308EE004B8209 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
+		E106B82B24432B58004B8209 /* RepositoryForRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryForRealm.swift; sourceTree = "<group>"; };
+		E106B82D24432B96004B8209 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
+		E106B82F24432CBC004B8209 /* RealmStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorable.swift; sourceTree = "<group>"; };
+		E106B8322443855F004B8209 /* ExpandableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableView.swift; sourceTree = "<group>"; };
+		E106B835244385DD004B8209 /* RealmMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMovieViewModel.swift; sourceTree = "<group>"; };
+		E106B83724438606004B8209 /* CDMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDMovieViewModel.swift; sourceTree = "<group>"; };
 		E11C765E241D6131000969C7 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		E11C7660241D62E0000969C7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E11C7667241D712E000969C7 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -342,6 +366,7 @@
 		E106B7DC2442258F004B8209 /* TheMovieDatabaseDBLayer */ = {
 			isa = PBXGroup;
 			children = (
+				E106B81E244306DA004B8209 /* Model */,
 				E106B81D2442FFC2004B8209 /* Realm */,
 				E106B81C2442FEFF004B8209 /* CoreData */,
 				E106B7DD2442258F004B8209 /* TheMovieDatabaseDBLayer.h */,
@@ -353,6 +378,10 @@
 		E106B81C2442FEFF004B8209 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				E106B8212443070F004B8209 /* CoreDataRepository.swift */,
+				E106B8232443073C004B8209 /* Repository.swift */,
+				E106B82524430754004B8209 /* CoreDataService.swift */,
+				E106B82724430785004B8209 /* Storable.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -360,8 +389,37 @@
 		E106B81D2442FFC2004B8209 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
+				E106B829244308EE004B8209 /* RealmRepository.swift */,
+				E106B82B24432B58004B8209 /* RepositoryForRealm.swift */,
+				E106B82F24432CBC004B8209 /* RealmStorable.swift */,
 			);
 			path = Realm;
+			sourceTree = "<group>";
+		};
+		E106B81E244306DA004B8209 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E106B81F244306EF004B8209 /* CDModel.swift */,
+				E106B82D24432B96004B8209 /* RealmModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E106B83124438545004B8209 /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				E106B8322443855F004B8209 /* ExpandableView.swift */,
+			);
+			path = SearchBar;
+			sourceTree = "<group>";
+		};
+		E106B834244385B0004B8209 /* DataBaseModels */ = {
+			isa = PBXGroup;
+			children = (
+				E106B835244385DD004B8209 /* RealmMovieViewModel.swift */,
+				E106B83724438606004B8209 /* CDMovieViewModel.swift */,
+			);
+			path = DataBaseModels;
 			sourceTree = "<group>";
 		};
 		E11C7666241D7107000969C7 /* Endpoint */ = {
@@ -381,6 +439,7 @@
 		E11C7673241F565C000969C7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E106B834244385B0004B8209 /* DataBaseModels */,
 				E11C7674241F5687000969C7 /* KeychainUser.swift */,
 				E1B48E562423F07800AE89EF /* UserSettings.swift */,
 				E18AC7372427F2B600727107 /* Movie.swift */,
@@ -586,6 +645,7 @@
 		E1C736C9241197B900E60D7C /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				E106B83124438545004B8209 /* SearchBar */,
 				E106B7D32440D88F004B8209 /* Animation */,
 				E1728CAE24390CE0004F0DE9 /* FilmDetailViewController */,
 				E18AC76C243285EB00727107 /* LoadingViewController */,
@@ -1152,6 +1212,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E106B82C24432B58004B8209 /* RepositoryForRealm.swift in Sources */,
+				E106B83024432CBC004B8209 /* RealmStorable.swift in Sources */,
+				E106B82624430754004B8209 /* CoreDataService.swift in Sources */,
+				E106B82824430785004B8209 /* Storable.swift in Sources */,
+				E106B8222443070F004B8209 /* CoreDataRepository.swift in Sources */,
+				E106B820244306EF004B8209 /* CDModel.swift in Sources */,
+				E106B82E24432B96004B8209 /* RealmModel.swift in Sources */,
+				E106B8242443073C004B8209 /* Repository.swift in Sources */,
+				E106B82A244308EE004B8209 /* RealmRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1163,6 +1232,7 @@
 				E1C736D02412A67400E60D7C /* LoginViewController.swift in Sources */,
 				E18AC76B24321B9900727107 /* MoviesCollectionViewController.swift in Sources */,
 				E1728CB124390D2E004F0DE9 /* FilmDetailViewController.swift in Sources */,
+				E106B83824438606004B8209 /* CDMovieViewModel.swift in Sources */,
 				E18AC74F242E2D9200727107 /* Token.swift in Sources */,
 				E1728CAA2438D30E004F0DE9 /* MakePinViewController.swift in Sources */,
 				E1C737012413C85900E60D7C /* TextFieldExtension.swift in Sources */,
@@ -1190,7 +1260,9 @@
 				E1B48E6A2426959200AE89EF /* ServiceLayer.swift in Sources */,
 				E1B48E572423F07800AE89EF /* UserSettings.swift in Sources */,
 				E1C73717241540A400E60D7C /* NavigationControllerExtension.swift in Sources */,
+				E106B8332443855F004B8209 /* ExpandableView.swift in Sources */,
 				E16B938424175AA300814B94 /* HelperLoginVC.swift in Sources */,
+				E106B836244385DD004B8209 /* RealmMovieViewModel.swift in Sources */,
 				E1FF6EFE241981520007B93D /* KeychainSettings.swift in Sources */,
 				E18AC7292427691400727107 /* AccountService.swift in Sources */,
 				E18AC7552430847A00727107 /* DeleteSessionService.swift in Sources */,
@@ -1313,7 +1385,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = TheMovieDatabaseDBLayer/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1344,7 +1416,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = TheMovieDatabaseDBLayer/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

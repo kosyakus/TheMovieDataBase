@@ -20,6 +20,7 @@
                 <outlet property="emailLabel" destination="skr-Iv-r0V" id="hVO-pN-ueB"/>
                 <outlet property="exitButton" destination="6R5-K4-Wqd" id="2QA-h7-nfk"/>
                 <outlet property="nameLabel" destination="QE1-OF-2ng" id="47o-SY-6LP"/>
+                <outlet property="segmentedControl" destination="OdG-dL-V6f" id="ezF-Yd-3c0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -62,6 +63,16 @@
                     <color key="textColor" name="Gray"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="OdG-dL-V6f">
+                    <rect key="frame" x="129.5" y="352.5" width="155" height="32"/>
+                    <segments>
+                        <segment title="Realm"/>
+                        <segment title="CoreData"/>
+                    </segments>
+                    <connections>
+                        <action selector="dataBaseSegmentControlTapped:" destination="-1" eventType="valueChanged" id="TT8-zb-cMa"/>
+                    </connections>
+                </segmentedControl>
             </subviews>
             <color key="backgroundColor" name="Bg_black"/>
             <constraints>
@@ -70,6 +81,8 @@
                 <constraint firstItem="jzh-Oi-MHB" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="6tj-51-33U"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6R5-K4-Wqd" secondAttribute="trailing" constant="23" id="9QY-ye-S64"/>
                 <constraint firstItem="jzh-Oi-MHB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="44" id="FTi-A7-KDp"/>
+                <constraint firstItem="OdG-dL-V6f" firstAttribute="top" secondItem="skr-Iv-r0V" secondAttribute="bottom" constant="40" id="TiM-cq-a1j"/>
+                <constraint firstItem="OdG-dL-V6f" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="YgY-19-S2M"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="skr-Iv-r0V" secondAttribute="trailing" constant="23" id="bhz-Cy-KbW"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="QE1-OF-2ng" secondAttribute="trailing" constant="23" id="cD3-mB-An3"/>
                 <constraint firstItem="QE1-OF-2ng" firstAttribute="top" secondItem="jzh-Oi-MHB" secondAttribute="bottom" constant="31" id="h3m-xD-yMb"/>

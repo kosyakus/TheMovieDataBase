@@ -89,8 +89,8 @@ extension MoviesCollectionViewController {
                                                       for: indexPath) as! MovieCollectionViewCell
         
         let movie = moviesArray[indexPath.row]
-        if let poster = movie.poster {
-            cell.movieImageView.load(url: poster)
+        if let posterUrl = URL(string: movie.poster ?? "") {
+            cell.movieImageView.load(url: posterUrl)
         }
         cell.movieNameLabel.text = movie.title
         cell.originalMovieNameLabel.text = movie.originalTitle

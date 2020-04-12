@@ -7,6 +7,7 @@
 //
 
 import TheMovieDatabaseAPI
+import TheMovieDatabaseDBLayer
 import UIKit
 
 protocol ParentToChildProtocol: class {
@@ -46,6 +47,8 @@ final class FavoriveViewController: UIViewController {
             return collectionImage
         }
     }
+    
+    var moviesArray: [Movie]?
     
     // MARK: - FavoriveViewController
     
@@ -127,6 +130,8 @@ final class FavoriveViewController: UIViewController {
             case .success(let movies):
                 if !movies.isEmpty {
                     self.proceedFindedMovieScreen()
+                    self.moviesArray = movies
+                    self.saveFavoriteToDB()
                     self.delegate?.moviesArray = movies
                     self.delegate?.reloadData()
                 } else {
@@ -201,21 +206,18 @@ final class FavoriveViewController: UIViewController {
         popcornParticleEmitter.emitterCells = [popcorn]
         view.layer.addSublayer(popcornParticleEmitter)
     }
-}
-
-class ExpandableView: UIView {
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        translatesAutoresizingMaskIntoConstraints = false
-
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-
-    override var intrinsicContentSize: CGSize {
-        return UIView.layoutFittingExpandedSize
+    
+    func saveFavoriteToDB() {
+        guard let movArray = moviesArray else {
+            return
+        }
+        if UserSettings.shareInstance.dataBase == 0 {
+            let viewModel = RealmMovieViewModel(with: AnyRepository())
+            viewModel.testRepository(movArray: movArray)
+        } else {
+            let CDviewModel = CDMovieViewModel(with: CoreDataRepository(persistentContainer:
+                CoreDataService.shared.persistentContainer))
+            CDviewModel.testRepository(movArray: movArray)
+        }
     }
 }
