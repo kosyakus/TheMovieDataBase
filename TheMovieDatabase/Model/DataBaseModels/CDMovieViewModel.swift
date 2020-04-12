@@ -17,8 +17,8 @@ class CDMovieViewModel {
         repository = repo
     }
     
-    func testRepository(movArray: [Movie]) {
-        
+    func saveRepository(movArray: [Movie]) {
+        //try? repository.deleteAll()
         for movie in movArray {
             let movie = RMovie(id: movie.id, title: movie.title, originalTitle: movie.originalTitle,
                                voteAverage: movie.voteAverage, voteCount: movie.voteCount,
@@ -33,12 +33,11 @@ class CDMovieViewModel {
         }
     }
     
-    func deleteRepository(movArray: [Movie]) {
-        for movie in movArray {
-            let movie = RMovie(id: movie.id, title: movie.title, originalTitle: movie.originalTitle,
-                               voteAverage: movie.voteAverage, voteCount: movie.voteCount,
-                               overview: movie.overview, poster: movie.poster)
-            try? repository.delete(item: movie)
-        }
+    func deleteRepository() {
+        try? repository.deleteAll()
+        // swiftlint:disable:next force_try
+        let items: [RMovie] = try! repository.getAll(where: nil)
+        
+        print("CoreDATA Number of existing items after deletion: \(items.count)")
     }
 }

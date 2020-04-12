@@ -213,11 +213,11 @@ final class FavoriveViewController: UIViewController {
         }
         if UserSettings.shareInstance.dataBase == 0 {
             let viewModel = RealmMovieViewModel(with: AnyRepository())
-            viewModel.testRepository(movArray: movArray)
+            viewModel.saveRepository(movArray: movArray)
         } else {
             let CDviewModel = CDMovieViewModel(with: CoreDataRepository(persistentContainer:
                 CoreDataService.shared.persistentContainer))
-            CDviewModel.testRepository(movArray: movArray)
+            CDviewModel.saveRepository(movArray: movArray)
         }
     }
 }

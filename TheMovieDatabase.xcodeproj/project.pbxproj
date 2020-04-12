@@ -110,6 +110,7 @@
 		E1C73717241540A400E60D7C /* NavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C73716241540A200E60D7C /* NavigationControllerExtension.swift */; };
 		E1DCEEBC241D070400A96E7E /* TheMovieDatabaseAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FF6F08241BE70A0007B93D /* TheMovieDatabaseAPI.framework */; };
 		E1DCEEBD241D070400A96E7E /* TheMovieDatabaseAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E1FF6F08241BE70A0007B93D /* TheMovieDatabaseAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E1F08EAD2443A891004D0D65 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1F08EAB2443A891004D0D65 /* Model.xcdatamodeld */; };
 		E1FF6EFC241981250007B93D /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF6EFB241981250007B93D /* KeychainPasswordItem.swift */; };
 		E1FF6EFE241981520007B93D /* KeychainSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF6EFD241981520007B93D /* KeychainSettings.swift */; };
 		E1FF6F00241A17A20007B93D /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF6EFF241A17A20007B93D /* NotificationExtension.swift */; };
@@ -285,6 +286,7 @@
 		E1C73716241540A200E60D7C /* NavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerExtension.swift; sourceTree = "<group>"; };
 		E1D3211D2416C2470076A1B5 /* TheMovieDatabaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheMovieDatabaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D321212416C2470076A1B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1F08EAC2443A891004D0D65 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		E1FF6EFB241981250007B93D /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		E1FF6EFD241981520007B93D /* KeychainSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainSettings.swift; sourceTree = "<group>"; };
 		E1FF6EFF241A17A20007B93D /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 				E106B8232443073C004B8209 /* Repository.swift */,
 				E106B82524430754004B8209 /* CoreDataService.swift */,
 				E106B82724430785004B8209 /* Storable.swift */,
+				E1F08EAB2443A891004D0D65 /* Model.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -1219,6 +1222,7 @@
 				E106B8222443070F004B8209 /* CoreDataRepository.swift in Sources */,
 				E106B820244306EF004B8209 /* CDModel.swift in Sources */,
 				E106B82E24432B96004B8209 /* RealmModel.swift in Sources */,
+				E1F08EAD2443A891004D0D65 /* Model.xcdatamodeld in Sources */,
 				E106B8242443073C004B8209 /* Repository.swift in Sources */,
 				E106B82A244308EE004B8209 /* RealmRepository.swift in Sources */,
 			);
@@ -1792,6 +1796,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E1F08EAB2443A891004D0D65 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E1F08EAC2443A891004D0D65 /* Model.xcdatamodel */,
+			);
+			currentVersion = E1F08EAC2443A891004D0D65 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E1C736962411153B00E60D7C /* Project object */;
 }

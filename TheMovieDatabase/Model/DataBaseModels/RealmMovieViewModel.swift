@@ -17,7 +17,7 @@ class RealmMovieViewModel {
         repository = repo
     }
 
-    func testRepository(movArray: [Movie]) {
+    func saveRepository(movArray: [Movie]) {
         
         try? repository.deleteAll()
         
@@ -33,5 +33,9 @@ class RealmMovieViewModel {
 
             print("REALM Number of saved items: \(items.count)")
         }
+    }
+    
+    func deleteRepository() {
+        try? repository.deleteAll()
     }
 }

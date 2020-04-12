@@ -43,6 +43,16 @@ public class CoreDataRepository<RepositoryObject>: CDRepository
         saveContext()
     }
     
+    public func deleteAll() throws {
+        // Create Fetch Request
+        let entityName = String(describing: RepositoryObject.StoreType.self)
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        let context = persistentContainer.viewContext
+        // Create Batch Delete Request
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: request)
+        try context.execute(batchDeleteRequest)
+    }
+    
     private func getManagedObjects(with predicate: NSPredicate?) throws -> [RepositoryObject.StoreType] {
         let entityName = String(describing: RepositoryObject.StoreType.self)
         let request = NSFetchRequest<RepositoryObject.StoreType>(entityName: entityName)

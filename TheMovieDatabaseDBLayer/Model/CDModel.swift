@@ -31,11 +31,11 @@ public class CDMovie: NSManagedObject {
 }
 
 extension CDMovie {
-    
+
     @nonobjc public class func fetchRequest() -> NSFetchRequest<CDMovie> {
         NSFetchRequest<CDMovie>(entityName: "CDMovie")
     }
-    
+
     @NSManaged public var id: Int
     @NSManaged public var title: String?
     @NSManaged public var originalTitle: String?
