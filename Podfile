@@ -31,3 +31,13 @@ target 'TheMovieDatabaseAPI' do
   pod 'Alamofire', '~> 4.8'
 
 end
+
+target 'TheMovieDatabaseDBLayer' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for TheMovieDatabaseDBLayer
+
+  pod 'RealmSwift'
+
+end

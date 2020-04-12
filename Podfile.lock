@@ -1,24 +1,34 @@
 PODS:
   - Alamofire (4.9.1)
   - Catbird (0.5.0)
+  - Realm (4.3.1):
+    - Realm/Headers (= 4.3.1)
+  - Realm/Headers (4.3.1)
+  - RealmSwift (4.3.1):
+    - Realm (= 4.3.1)
   - SwiftLint (0.39.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.8)
   - Catbird
+  - RealmSwift
   - SwiftLint
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - Catbird
+    - Realm
+    - RealmSwift
     - SwiftLint
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Catbird: 897bfb654b31ef8a4998d2f38fc694e9686a5c9a
+  Realm: 31dc40934081ef740f60feedc46d88473cbfeb40
+  RealmSwift: b5199e9a41f67b99f51acf6874a6166f5fbe93d1
   SwiftLint: 55e96a4a4d537d4a3156859fc1c54bd24851a046
 
-PODFILE CHECKSUM: bc637e012adfbe1f0c9210fc75062b0e6336e14f
+PODFILE CHECKSUM: 08b37f573c84827e1b7d3229118267af79c0ed32
 
 COCOAPODS: 1.8.4
