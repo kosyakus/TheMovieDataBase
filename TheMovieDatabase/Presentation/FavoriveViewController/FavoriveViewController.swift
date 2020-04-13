@@ -48,6 +48,9 @@ final class FavoriveViewController: UIViewController {
         }
     }
     
+    let viewModel = RealmMovieViewModel(with: AnyRepository())
+    let CDviewModel = CDMovieViewModel(with: CoreDataRepository(persistentContainer:
+        CoreDataService.shared.persistentContainer))
     var moviesArray: [Movie]?
     
     // MARK: - FavoriveViewController
@@ -66,6 +69,7 @@ final class FavoriveViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         loadFavoriteMovies()
+        getFavoriteFromDB()
     }
     
     // MARK: - Public methods
@@ -212,12 +216,20 @@ final class FavoriveViewController: UIViewController {
             return
         }
         if UserSettings.shareInstance.dataBase == 0 {
-            let viewModel = RealmMovieViewModel(with: AnyRepository())
             viewModel.saveRepository(movArray: movArray)
         } else {
-            let CDviewModel = CDMovieViewModel(with: CoreDataRepository(persistentContainer:
-                CoreDataService.shared.persistentContainer))
             CDviewModel.saveRepository(movArray: movArray)
+        }
+    }
+    
+    func getFavoriteFromDB() {
+        self.proceedFindedMovieScreen()
+        if UserSettings.shareInstance.dataBase == 0 {
+            self.delegate?.moviesArray = viewModel.getMovies()
+            self.delegate?.reloadData()
+        } else {
+            self.delegate?.moviesArray = CDviewModel.getMovies()
+            self.delegate?.reloadData()
         }
     }
 }

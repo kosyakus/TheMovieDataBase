@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TheMovieDatabaseDBLayer
 
 class ProfileViewController: UIViewController {
     
@@ -51,6 +52,17 @@ class ProfileViewController: UIViewController {
         avatarImageView.layer.cornerRadius = avatarImageView.bounds.size.height / 2
     }
     
+    /// Удаленеие всех записей из БД
+    func deleteAllFromDB() {
+        let viewModel = RealmMovieViewModel(with: AnyRepository())
+        viewModel.deleteRepository()
+        let CDviewModel = CDMovieViewModel(with: CoreDataRepository(persistentContainer:
+            CoreDataService.shared.persistentContainer))
+        CDviewModel.deleteRepository()
+        
+        UserSettings.shareInstance.dataBase = 0
+    }
+    
     // MARK: - IBAction
     
     @IBAction func exitButtonTapped(_ sender: Any) {
@@ -60,6 +72,7 @@ class ProfileViewController: UIViewController {
             case .success:
                 try? ManageKeychain().deleteSessionId()
                 UserSettings.shareInstance.accountID = ""
+                self.deleteAllFromDB()
                 let appDelegate = UIApplication.shared.delegate as? AppDelegate
                 appDelegate?.presentViewController()
             case .failure(let error):

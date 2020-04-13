@@ -18,7 +18,7 @@ class CDMovieViewModel {
     }
     
     func saveRepository(movArray: [Movie]) {
-        //try? repository.deleteAll()
+        try? repository.deleteAll()
         for movie in movArray {
             let movie = RMovie(id: movie.id, title: movie.title, originalTitle: movie.originalTitle,
                                voteAverage: movie.voteAverage, voteCount: movie.voteCount,
@@ -31,6 +31,18 @@ class CDMovieViewModel {
             
             print("CoreDATA Number of saved items: \(items.count)")
         }
+    }
+    
+    func getMovies() -> [Movie] {
+        var movies = [Movie]()
+        guard let items: [RMovie] = try? repository.getAll(where: nil) else { return movies }
+        for item in items {
+            let movie = Movie(id: item.id, title: item.title, originalTitle: item.originalTitle,
+                              voteAverage: item.voteAverage, voteCount: item.voteCount,
+                              overview: item.overview, poster: item.poster)
+            movies.append(movie)
+        }
+        return movies
     }
     
     func deleteRepository() {

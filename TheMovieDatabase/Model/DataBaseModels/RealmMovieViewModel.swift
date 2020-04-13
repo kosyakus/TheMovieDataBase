@@ -25,14 +25,26 @@ class RealmMovieViewModel {
             let moviee = RMovie(id: movie.id, title: movie.title, originalTitle: movie.originalTitle,
                                 voteAverage: movie.voteAverage, voteCount: movie.voteCount,
                                 overview: movie.overview, poster: movie.poster)
-            //insert article
+            //insert
             try? repository.update(item: moviee)
             
-            //get all articles
+            //get all
             let items: [RMovie] = repository.getAll()
 
             print("REALM Number of saved items: \(items.count)")
         }
+    }
+    
+    func getMovies() -> [Movie] {
+        var movies = [Movie]()
+        let items: [RMovie] = repository.getAll()
+        for item in items {
+            let movie = Movie(id: item.id, title: item.title, originalTitle: item.originalTitle,
+                              voteAverage: item.voteAverage, voteCount: item.voteCount,
+                              overview: item.overview, poster: item.poster)
+            movies.append(movie)
+        }
+        return movies
     }
     
     func deleteRepository() {

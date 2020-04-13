@@ -89,6 +89,7 @@ extension MoviesCollectionViewController {
                                                       for: indexPath) as! MovieCollectionViewCell
         
         let movie = moviesArray[indexPath.row]
+        
         if let posterUrl = URL(string: movie.poster ?? "") {
             cell.movieImageView.load(url: posterUrl)
         }
