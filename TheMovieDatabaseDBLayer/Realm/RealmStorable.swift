@@ -18,7 +18,7 @@ extension RMovie: Entity {
         realmAMovie.voteAverage = voteAverage ?? 0.0
         realmAMovie.voteCount = voteCount ?? 0
         realmAMovie.overview = overview ?? ""
-        realmAMovie.poster = poster ?? ""
+        realmAMovie.poster = poster ?? Data()
         realmAMovie.uuid = "\(id)"
         return realmAMovie
     }
@@ -36,7 +36,7 @@ public class StorableArticle: Object, Storable {
     @objc dynamic var voteAverage: Double = 0.0
     @objc dynamic var voteCount: Int = 0
     @objc dynamic var overview: String = ""
-    @objc dynamic var poster: String =  ""
+    @objc dynamic var poster: Data =  Data()
     @objc dynamic public var uuid: String = ""
     
     public var model: RMovie {

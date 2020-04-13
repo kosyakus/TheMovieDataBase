@@ -15,5 +15,5 @@ struct Movie {
     let voteAverage: Double?
     let voteCount: Int?
     let overview: String?
-    let poster: String?
+    let poster: Data?
 }

@@ -18,10 +18,10 @@ public struct RMovie {
     public var voteAverage: Double?
     public var voteCount: Int?
     public var overview: String?
-    public var poster: String?
+    public var poster: Data?
     
     public init(id: Int, title: String?, originalTitle: String?,
-                voteAverage: Double?, voteCount: Int?, overview: String?, poster: String?) {
+                voteAverage: Double?, voteCount: Int?, overview: String?, poster: Data?) {
         self.id = id
         self.title = title
         self.originalTitle = originalTitle

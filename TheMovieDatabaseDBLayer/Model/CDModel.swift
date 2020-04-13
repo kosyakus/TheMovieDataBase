@@ -42,7 +42,7 @@ extension CDMovie {
     @NSManaged public var voteAverage: Double
     @NSManaged public var voteCount: Int
     @NSManaged public var overview: String?
-    @NSManaged public var poster: String?
+    @NSManaged public var poster: Data?
     @NSManaged public var uuid: String
 }
 

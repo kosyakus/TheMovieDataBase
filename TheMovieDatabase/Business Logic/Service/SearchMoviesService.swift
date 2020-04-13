@@ -52,6 +52,6 @@ final public class SearchMoviesServiceImplementation: SearchMoviesService {
             voteAverage: movie.voteAverage,
             voteCount: movie.voteCount,
             overview: movie.overview,
-            poster: "https://image.tmdb.org/t/p/w185\(movie.posterPath ?? "")") 
+            poster: URL(string: "https://image.tmdb.org/t/p/w185\(movie.posterPath ?? "")")?.convertUrlToData())
     }
 }
