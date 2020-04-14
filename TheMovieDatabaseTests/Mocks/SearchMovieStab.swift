@@ -12,7 +12,7 @@ import Foundation
 extension Array where Element == Movie {
     
     static var stub: Self {
-        return [
+        [
             Movie(
                 id: 447281,
                 title: "Слон и муравей",
@@ -20,7 +20,7 @@ extension Array where Element == Movie {
                 voteAverage: 3,
                 voteCount: 1,
                 overview: "По басне народного поэта Дагестана Гамзата Цадассы.",
-                poster: ""
+                poster: nil
             ),
             Movie(
                 id: 139231,
@@ -29,13 +29,13 @@ extension Array where Element == Movie {
                 voteAverage: 6.1,
                 voteCount: 14,
                 overview: "",
-                poster: ""
+                poster: nil
             )
         ]
     }
     
     static var stubFavorite: Self {
-        return [
+        [
             Movie(
                 id: 155,
                 title: "The Dark Knight",
@@ -43,7 +43,7 @@ extension Array where Element == Movie {
                 voteAverage: 8.4,
                 voteCount: 21301,
                 overview: "",
-                poster: "https://image.tmdb.org/t/p/w185/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
+                poster: nil
             )
         ]
     }

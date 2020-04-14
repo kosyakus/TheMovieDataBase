@@ -35,7 +35,7 @@ final class FavoriveViewController: UIViewController {
     
     // MARK: - Public Properties
     
-    let favoriteService: FavoriteServices = ServiceLayer.shared.favoriteService
+    var favoriteService: FavoriteServices = ServiceLayer.shared.favoriteService
     let cellVC = MoviesCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
     var cellType: CellType = .collectionCell
     weak var delegate: ParentToChildProtocol?

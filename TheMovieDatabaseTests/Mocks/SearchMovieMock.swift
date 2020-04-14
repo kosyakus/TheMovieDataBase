@@ -35,7 +35,8 @@ class FavoriteMock: FavoriteServices {
         self.movies = movies
     }
     
-    func fetchFavoriteMovies(accountId: String, completion: @escaping (Result<[Movie], Error>) -> Void) -> Progress {
+    func fetchFavoriteMovies(session: String,
+                             completion: @escaping (Result<[Movie], Error>) -> Void) -> Progress {
         completion(Result.success(movies))
         return Progress()
     }

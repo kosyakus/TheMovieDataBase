@@ -90,7 +90,7 @@ extension MoviesCollectionViewController {
         
         let movie = moviesArray[indexPath.row]
         
-        if let posterData =  movie.poster {
+        if let posterData = movie.poster {
             cell.movieImageView.image = UIImage(data: posterData)
         }
         cell.movieNameLabel.text = movie.title

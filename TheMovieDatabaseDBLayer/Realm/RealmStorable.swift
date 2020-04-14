@@ -36,7 +36,7 @@ public class StorableArticle: Object, Storable {
     @objc dynamic var voteAverage: Double = 0.0
     @objc dynamic var voteCount: Int = 0
     @objc dynamic var overview: String = ""
-    @objc dynamic var poster: Data =  Data()
+    @objc dynamic var poster: Data = Data()
     @objc dynamic public var uuid: String = ""
     
     public var model: RMovie {

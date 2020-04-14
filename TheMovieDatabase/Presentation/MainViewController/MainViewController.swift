@@ -28,7 +28,7 @@ class MainViewController: UIViewController {
     // MARK: - Public Properties
     
     weak var childVC: ParentToChildProtocol?
-    let searchMoviesService: SearchMoviesService = ServiceLayer.shared.searchMoviesService
+    var searchMoviesService: SearchMoviesService = ServiceLayer.shared.searchMoviesService
     let cellVC = MoviesCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
     var cellType: CellType = .collectionCell
     var ufoImage = UIImageView()

@@ -42,7 +42,7 @@ class FilmDetailViewController: UIViewController {
     /// Обработка фильма
     func showMovie() {
         guard let movie = movie else { return }
-        if let posterData =  movie.poster {
+        if let posterData = movie.poster {
             movieImageView.image = UIImage(data: posterData)
         }
         movieImageView.layer.cornerRadius = 2

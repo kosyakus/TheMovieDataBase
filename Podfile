@@ -40,4 +40,9 @@ target 'TheMovieDatabaseDBLayer' do
 
   pod 'RealmSwift'
 
+  target 'TheMovieDatabaseDBLayerTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
 end

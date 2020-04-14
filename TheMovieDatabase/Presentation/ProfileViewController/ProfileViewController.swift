@@ -6,8 +6,8 @@
 //  Copyright © 2020 Redmadrobot. All rights reserved.
 //
 
-import UIKit
 import TheMovieDatabaseDBLayer
+import UIKit
 
 class ProfileViewController: UIViewController {
     

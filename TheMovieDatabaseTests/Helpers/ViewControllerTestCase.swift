@@ -14,7 +14,7 @@ class ViewControllerTestCase: XCTestCase {
 
     var rootViewController: UIViewController? {
         get {
-            return window.rootViewController
+            window.rootViewController
         }
         set {
             window.rootViewController = newValue
