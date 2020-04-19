@@ -117,6 +117,7 @@
 		E1F08EC22445E0DD004D0D65 /* DBLayerRealmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F08EC12445E0DD004D0D65 /* DBLayerRealmTests.swift */; };
 		E1F08EC42445E715004D0D65 /* DBLayerCoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F08EC32445E715004D0D65 /* DBLayerCoreDataTests.swift */; };
 		E1F08EC62445FD4F004D0D65 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F08EC52445FD4F004D0D65 /* CoreDataHelper.swift */; };
+		E1F08EC9244B9726004D0D65 /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F08EC8244B9726004D0D65 /* AuthenticationController.swift */; };
 		E1FF6EFC241981250007B93D /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF6EFB241981250007B93D /* KeychainPasswordItem.swift */; };
 		E1FF6EFE241981520007B93D /* KeychainSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF6EFD241981520007B93D /* KeychainSettings.swift */; };
 		E1FF6F00241A17A20007B93D /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF6EFF241A17A20007B93D /* NotificationExtension.swift */; };
@@ -309,6 +310,7 @@
 		E1F08EC12445E0DD004D0D65 /* DBLayerRealmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBLayerRealmTests.swift; sourceTree = "<group>"; };
 		E1F08EC32445E715004D0D65 /* DBLayerCoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBLayerCoreDataTests.swift; sourceTree = "<group>"; };
 		E1F08EC52445FD4F004D0D65 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		E1F08EC8244B9726004D0D65 /* AuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
 		E1FF6EFB241981250007B93D /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		E1FF6EFD241981520007B93D /* KeychainSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainSettings.swift; sourceTree = "<group>"; };
 		E1FF6EFF241A17A20007B93D /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 		E11C7673241F565C000969C7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E1F08EC7244B9690004D0D65 /* SaveInfo */,
 				E106B834244385B0004B8209 /* DataBaseModels */,
 				E11C7674241F5687000969C7 /* KeychainUser.swift */,
 				E1B48E562423F07800AE89EF /* UserSettings.swift */,
@@ -806,6 +809,14 @@
 				E1F08EC52445FD4F004D0D65 /* CoreDataHelper.swift */,
 			);
 			path = TheMovieDatabaseDBLayerTests;
+			sourceTree = "<group>";
+		};
+		E1F08EC7244B9690004D0D65 /* SaveInfo */ = {
+			isa = PBXGroup;
+			children = (
+				E1F08EC8244B9726004D0D65 /* AuthenticationController.swift */,
+			);
+			path = SaveInfo;
 			sourceTree = "<group>";
 		};
 		E1FF6EFA241980DA0007B93D /* Helper */ = {
@@ -1373,6 +1384,7 @@
 				E18AC7292427691400727107 /* AccountService.swift in Sources */,
 				E18AC7552430847A00727107 /* DeleteSessionService.swift in Sources */,
 				E18AC7642430E32700727107 /* MovieCollectionViewCell.swift in Sources */,
+				E1F08EC9244B9726004D0D65 /* AuthenticationController.swift in Sources */,
 				E18AC7272427342F00727107 /* SearchMoviesService.swift in Sources */,
 				E1C736FF2413C40B00E60D7C /* ViewControllerExtension.swift in Sources */,
 			);

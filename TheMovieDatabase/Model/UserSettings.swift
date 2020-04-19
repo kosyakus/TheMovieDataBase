@@ -16,6 +16,7 @@ import Foundation
 
     fileprivate let kAccountID = "accountID"
     fileprivate let kDataBase = "dataBase"
+    fileprivate let kIsPinCreated = "isPinCreated"
     
     var accountID: String {
         get {
@@ -36,6 +37,17 @@ import Foundation
         }
         set {
             standartUserDefaults.set(newValue, forKey: kDataBase)
+        }
+    }
+    
+    var isPinCreated: Bool {
+        get {
+            let value = standartUserDefaults.object(forKey: kIsPinCreated) != nil ?
+                standartUserDefaults.bool(forKey: kIsPinCreated) : false
+            return value
+        }
+        set {
+            standartUserDefaults.set(newValue, forKey: kIsPinCreated)
         }
     }
 }

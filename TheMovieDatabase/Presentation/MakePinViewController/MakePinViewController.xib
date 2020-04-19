@@ -16,6 +16,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MakePinViewController" customModule="TheMovieDatabase" customModuleProvider="target">
             <connections>
+                <outlet property="exitButton" destination="RqF-uC-gmI" id="RZB-ma-ZAC"/>
+                <outlet property="faceIdButton" destination="N5n-DB-0KP" id="SRZ-vB-ngK"/>
                 <outlet property="pinSuggestionsLabel" destination="Ny6-QR-xxf" id="xv0-zP-kuE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="wrongPinLabel" destination="2kU-0f-ln4" id="gYq-bG-c4L"/>
@@ -52,62 +54,18 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b77-yA-ZL4" userLabel="pin1">
                             <rect key="frame" x="0.0" y="0.0" width="8" height="8"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="color" keyPath="errorColor">
-                                    <color key="value" name="Red"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
-                                    <color key="value" name="Purpure"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
-                                    <color key="value" name="DarkBlue"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j43-DI-pKQ" userLabel="pin2">
                             <rect key="frame" x="16" y="0.0" width="8" height="8"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="color" keyPath="errorColor">
-                                    <color key="value" name="Red"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
-                                    <color key="value" name="Purpure"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
-                                    <color key="value" name="DarkBlue"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NJR-Qt-DLp" userLabel="pin3">
                             <rect key="frame" x="32" y="0.0" width="8" height="8"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="color" keyPath="errorColor">
-                                    <color key="value" name="Red"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
-                                    <color key="value" name="Purpure"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
-                                    <color key="value" name="DarkBlue"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2g-Le-t67" userLabel="pin4">
                             <rect key="frame" x="48" y="0.0" width="8" height="8"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="color" keyPath="errorColor">
-                                    <color key="value" name="Red"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
-                                    <color key="value" name="Purpure"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
-                                    <color key="value" name="DarkBlue"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
                     <constraints>
@@ -127,79 +85,106 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="G9h-XY-9f9">
                             <rect key="frame" x="0.0" y="0.0" width="336" height="107"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZNW-Qm-agi">
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZNW-Qm-agi">
                                     <rect key="frame" x="0.0" y="0.0" width="106.5" height="107"/>
                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
                                     <state key="normal" title="1">
                                         <color key="titleColor" name="Light"/>
                                     </state>
+                                    <connections>
+                                        <action selector="numberButtonTapped:" destination="-1" eventType="touchUpInside" id="0dL-h9-qY9"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4h9-Nf-ED3">
+                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4h9-Nf-ED3">
                                     <rect key="frame" x="114.5" y="0.0" width="107" height="107"/>
-                                    <color key="backgroundColor" name="Orange"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
                                     <state key="normal" title="2">
                                         <color key="titleColor" name="Light"/>
                                     </state>
+                                    <connections>
+                                        <action selector="numberButtonTapped:" destination="-1" eventType="touchUpInside" id="J7D-6I-XEK"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abW-34-uHq">
+                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abW-34-uHq">
                                     <rect key="frame" x="229.5" y="0.0" width="106.5" height="107"/>
                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
                                     <state key="normal" title="3">
                                         <color key="titleColor" name="Light"/>
                                     </state>
+                                    <connections>
+                                        <action selector="numberButtonTapped:" destination="-1" eventType="touchUpInside" id="P1R-xV-msE"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="49d-Tx-2LR">
                             <rect key="frame" x="0.0" y="115" width="336" height="107"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tGd-9W-Spp">
+                                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tGd-9W-Spp">
                                     <rect key="frame" x="0.0" y="0.0" width="106.5" height="107"/>
                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
                                     <state key="normal" title="4">
                                         <color key="titleColor" name="Light"/>
                                     </state>
+                                    <connections>
+                                        <action selector="numberButtonTapped:" destination="-1" eventType="touchUpInside" id="K9s-ml-gLN"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQw-it-vOV">
+                                <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQw-it-vOV">
                                     <rect key="frame" x="114.5" y="0.0" width="107" height="107"/>
                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
                                     <state key="normal" title="5">
                                         <color key="titleColor" name="Light"/>
                                     </state>
+                                    <connections>
+                                        <action selector="numberButtonTapped:" destination="-1" eventType="touchUpInside" id="aBa-gp-Hvi"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23Q-wW-HcQ">
+                                <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23Q-wW-HcQ">
                                     <rect key="frame" x="229.5" y="0.0" width="106.5" height="107"/>
                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
                                     <state key="normal" title="6">
                                         <color key="titleColor" name="Light"/>
                                     </state>
+                                    <connections>
+                                        <action selector="numberButtonTapped:" destination="-1" eventType="touchUpInside" id="wHk-hv-eAJ"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VFb-XO-PkX">
                             <rect key="frame" x="0.0" y="230" width="336" height="107"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLT-5i-Asu">
+                                <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLT-5i-Asu">
                                     <rect key="frame" x="0.0" y="0.0" width="106.5" height="107"/>
                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
                                     <state key="normal" title="7">
                                         <color key="titleColor" name="Light"/>
                                     </state>
+                                    <connections>
+                                        <action selector="numberButtonTapped:" destination="-1" eventType="touchUpInside" id="Zhf-i7-pUD"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ykS-jh-KMT">
+                                <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ykS-jh-KMT">
                                     <rect key="frame" x="114.5" y="0.0" width="107" height="107"/>
                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
                                     <state key="normal" title="8">
                                         <color key="titleColor" name="Light"/>
                                     </state>
+                                    <connections>
+                                        <action selector="numberButtonTapped:" destination="-1" eventType="touchUpInside" id="HDZ-aV-s0e"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dt7-Iu-2eY">
+                                <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dt7-Iu-2eY">
                                     <rect key="frame" x="229.5" y="0.0" width="106.5" height="107"/>
                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
                                     <state key="normal" title="9">
                                         <color key="titleColor" name="Light"/>
                                     </state>
+                                    <connections>
+                                        <action selector="numberButtonTapped:" destination="-1" eventType="touchUpInside" id="2na-JT-vgS"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -210,8 +195,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="106.5" height="107"/>
                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
                                     <state key="normal">
-                                        <color key="titleColor" name="Gray"/>
+                                        <color key="titleColor" name="DarkBlue"/>
                                     </state>
+                                    <connections>
+                                        <action selector="exitButtonTapped:" destination="-1" eventType="touchUpInside" id="g2b-Du-rxD"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAQ-MJ-gL8">
                                     <rect key="frame" x="114.5" y="0.0" width="107" height="107"/>
@@ -219,13 +207,19 @@
                                     <state key="normal" title="0">
                                         <color key="titleColor" name="Light"/>
                                     </state>
+                                    <connections>
+                                        <action selector="numberButtonTapped:" destination="-1" eventType="touchUpInside" id="L57-R0-miS"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5n-DB-0KP">
                                     <rect key="frame" x="229.5" y="0.0" width="106.5" height="107"/>
                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
                                     <state key="normal">
-                                        <color key="titleColor" name="Gray"/>
+                                        <color key="titleColor" name="DarkBlue"/>
                                     </state>
+                                    <connections>
+                                        <action selector="faceIdButtonTapped:" destination="-1" eventType="touchUpInside" id="GhE-8R-V8a"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -260,17 +254,8 @@
         <namedColor name="DarkBlue">
             <color red="0.16500000655651093" green="0.18000000715255737" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="Gray">
-            <color red="0.39599999785423279" green="0.42699998617172241" blue="0.54100000858306885" alpha="0.39500001072883606" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="Light">
             <color red="0.90600001811981201" green="0.92900002002716064" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Orange">
-            <color red="0.99599999189376831" green="0.3059999942779541" blue="0.15299999713897705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Purpure">
-            <color red="0.42399999499320984" green="0.3880000114440918" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Red">
             <color red="0.88200002908706665" green="0.090000003576278687" blue="0.18400000035762787" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
