@@ -24,6 +24,7 @@ class MakePinViewController: UIViewController {
     @IBOutlet weak var exitButton: UIButton!
     
     let authenticationController = AuthenticationController()
+    let cryptoController = CryptoController()
     let backspaceIcon = "backspace_icon"
     let faceIdIcon = "faceId_icon"
     let userSettings = UserSettings.shareInstance
@@ -130,6 +131,8 @@ class MakePinViewController: UIViewController {
                 if self.repeatedPin == self.pin {
                     userSettings.isPinCreated = true
                 /// TODO: Если одинаковый, то сохранить пин
+                    let salt = try? cryptoController.randomGenerateBytes(count: 5)
+                    
                 /// TODO: Предложить включить face id
                 } else {
                     setUpWrongPinView()

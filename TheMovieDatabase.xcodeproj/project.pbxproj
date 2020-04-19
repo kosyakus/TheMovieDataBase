@@ -118,6 +118,8 @@
 		E1F08EC42445E715004D0D65 /* DBLayerCoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F08EC32445E715004D0D65 /* DBLayerCoreDataTests.swift */; };
 		E1F08EC62445FD4F004D0D65 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F08EC52445FD4F004D0D65 /* CoreDataHelper.swift */; };
 		E1F08EC9244B9726004D0D65 /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F08EC8244B9726004D0D65 /* AuthenticationController.swift */; };
+		E1F08ECB244C464E004D0D65 /* CryptoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F08ECA244C464D004D0D65 /* CryptoController.swift */; };
+		E1F08ECD244CA60C004D0D65 /* AESController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F08ECC244CA60B004D0D65 /* AESController.swift */; };
 		E1FF6EFC241981250007B93D /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF6EFB241981250007B93D /* KeychainPasswordItem.swift */; };
 		E1FF6EFE241981520007B93D /* KeychainSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF6EFD241981520007B93D /* KeychainSettings.swift */; };
 		E1FF6F00241A17A20007B93D /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF6EFF241A17A20007B93D /* NotificationExtension.swift */; };
@@ -311,6 +313,8 @@
 		E1F08EC32445E715004D0D65 /* DBLayerCoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBLayerCoreDataTests.swift; sourceTree = "<group>"; };
 		E1F08EC52445FD4F004D0D65 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		E1F08EC8244B9726004D0D65 /* AuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
+		E1F08ECA244C464D004D0D65 /* CryptoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoController.swift; sourceTree = "<group>"; };
+		E1F08ECC244CA60B004D0D65 /* AESController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESController.swift; sourceTree = "<group>"; };
 		E1FF6EFB241981250007B93D /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		E1FF6EFD241981520007B93D /* KeychainSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainSettings.swift; sourceTree = "<group>"; };
 		E1FF6EFF241A17A20007B93D /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
@@ -475,7 +479,7 @@
 		E11C7673241F565C000969C7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E1F08EC7244B9690004D0D65 /* SaveInfo */,
+				E1F08EC7244B9690004D0D65 /* Authentication */,
 				E106B834244385B0004B8209 /* DataBaseModels */,
 				E11C7674241F5687000969C7 /* KeychainUser.swift */,
 				E1B48E562423F07800AE89EF /* UserSettings.swift */,
@@ -811,12 +815,14 @@
 			path = TheMovieDatabaseDBLayerTests;
 			sourceTree = "<group>";
 		};
-		E1F08EC7244B9690004D0D65 /* SaveInfo */ = {
+		E1F08EC7244B9690004D0D65 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
 				E1F08EC8244B9726004D0D65 /* AuthenticationController.swift */,
+				E1F08ECA244C464D004D0D65 /* CryptoController.swift */,
+				E1F08ECC244CA60B004D0D65 /* AESController.swift */,
 			);
-			path = SaveInfo;
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 		E1FF6EFA241980DA0007B93D /* Helper */ = {
@@ -1358,6 +1364,7 @@
 				E18AC7572430B7FE00727107 /* UIImageViewExtension.swift in Sources */,
 				E1C736A22411153B00E60D7C /* AppDelegate.swift in Sources */,
 				E11C7672241ECFC9000969C7 /* ManageKeychain.swift in Sources */,
+				E1F08ECD244CA60C004D0D65 /* AESController.swift in Sources */,
 				E1C7370A2413DF6000E60D7C /* MainViewController.swift in Sources */,
 				E18AC74D242E2C6A00727107 /* LoginService.swift in Sources */,
 				E1F08EAE2443B3FA004D0D65 /* Model.xcdatamodeld in Sources */,
@@ -1377,6 +1384,7 @@
 				E1B48E6A2426959200AE89EF /* ServiceLayer.swift in Sources */,
 				E1B48E572423F07800AE89EF /* UserSettings.swift in Sources */,
 				E1C73717241540A400E60D7C /* NavigationControllerExtension.swift in Sources */,
+				E1F08ECB244C464E004D0D65 /* CryptoController.swift in Sources */,
 				E106B8332443855F004B8209 /* ExpandableView.swift in Sources */,
 				E16B938424175AA300814B94 /* HelperLoginVC.swift in Sources */,
 				E106B836244385DD004B8209 /* RealmMovieViewModel.swift in Sources */,
