@@ -27,6 +27,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    // MARK: - UIApplication Lifecycle
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        hidePrivacyProtectionWindow()
+    }
+
+    func applicationWillResignActive(_ application: UIApplication) {
+        showPrivacyProtectionWindow()
+    }
+    
     // MARK: - Public methods
     
     func addObserver() {
@@ -62,5 +72,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             window.makeKeyAndVisible()
         }
+    }
+    
+    // MARK: - Privacy Protection
+    
+    private var privacyProtectionWindow: UIWindow?
+
+    private func showPrivacyProtectionWindow() {
+        privacyProtectionWindow = UIWindow(frame: UIScreen.main.bounds)
+        privacyProtectionWindow?.rootViewController = PrivacyProtectionViewController()
+        privacyProtectionWindow?.windowLevel = .alert + 1
+        privacyProtectionWindow?.makeKeyAndVisible()
+    }
+
+    private func hidePrivacyProtectionWindow() {
+        privacyProtectionWindow?.isHidden = true
+        privacyProtectionWindow = nil
     }
 }

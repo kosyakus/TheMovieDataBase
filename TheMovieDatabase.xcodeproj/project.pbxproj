@@ -124,6 +124,8 @@
 		E1F08ED1244DA233004D0D65 /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F08ED0244DA233004D0D65 /* Data+Extension.swift */; };
 		E1F08ED4244DA6BD004D0D65 /* DeletionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F08ED3244DA6BD004D0D65 /* DeletionController.swift */; };
 		E1F08ED6244DD73A004D0D65 /* UIDevice+JailBroken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F08ED5244DD73A004D0D65 /* UIDevice+JailBroken.swift */; };
+		E1F08EDA244DDB9F004D0D65 /* PrivacyProtectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F08ED8244DDB9F004D0D65 /* PrivacyProtectionViewController.swift */; };
+		E1F08EDB244DDB9F004D0D65 /* PrivacyProtectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1F08ED9244DDB9F004D0D65 /* PrivacyProtectionViewController.xib */; };
 		E1FF6EFC241981250007B93D /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF6EFB241981250007B93D /* KeychainPasswordItem.swift */; };
 		E1FF6EFE241981520007B93D /* KeychainSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF6EFD241981520007B93D /* KeychainSettings.swift */; };
 		E1FF6F00241A17A20007B93D /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF6EFF241A17A20007B93D /* Notification+Extension.swift */; };
@@ -323,6 +325,8 @@
 		E1F08ED0244DA233004D0D65 /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		E1F08ED3244DA6BD004D0D65 /* DeletionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletionController.swift; sourceTree = "<group>"; };
 		E1F08ED5244DD73A004D0D65 /* UIDevice+JailBroken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+JailBroken.swift"; sourceTree = "<group>"; };
+		E1F08ED8244DDB9F004D0D65 /* PrivacyProtectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyProtectionViewController.swift; sourceTree = "<group>"; };
+		E1F08ED9244DDB9F004D0D65 /* PrivacyProtectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivacyProtectionViewController.xib; sourceTree = "<group>"; };
 		E1FF6EFB241981250007B93D /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		E1FF6EFD241981520007B93D /* KeychainSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainSettings.swift; sourceTree = "<group>"; };
 		E1FF6EFF241A17A20007B93D /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
@@ -697,6 +701,7 @@
 		E1C736C9241197B900E60D7C /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				E1F08ED7244DDB7E004D0D65 /* PrivacyProtectionViewController */,
 				E106B83124438545004B8209 /* SearchBar */,
 				E106B7D32440D88F004B8209 /* Animation */,
 				E1728CAE24390CE0004F0DE9 /* FilmDetailViewController */,
@@ -842,6 +847,15 @@
 				E1F08ED3244DA6BD004D0D65 /* DeletionController.swift */,
 			);
 			path = DeletionHelper;
+			sourceTree = "<group>";
+		};
+		E1F08ED7244DDB7E004D0D65 /* PrivacyProtectionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E1F08ED8244DDB9F004D0D65 /* PrivacyProtectionViewController.swift */,
+				E1F08ED9244DDB9F004D0D65 /* PrivacyProtectionViewController.xib */,
+			);
+			path = PrivacyProtectionViewController;
 			sourceTree = "<group>";
 		};
 		E1FF6EFA241980DA0007B93D /* Keychain */ = {
@@ -1120,6 +1134,7 @@
 				E1C737152413FECA00E60D7C /* ProfileViewController.xib in Resources */,
 				E1728CB224390D2E004F0DE9 /* FilmDetailViewController.xib in Resources */,
 				E18AC7692430E34200727107 /* MovieTableCollectionViewCell.xib in Resources */,
+				E1F08EDB244DDB9F004D0D65 /* PrivacyProtectionViewController.xib in Resources */,
 				E1C737102413F84800E60D7C /* FavoriveViewController.xib in Resources */,
 				E1C736FB2413C1AB00E60D7C /* Default-568h@2x.png in Resources */,
 				E16B937E2416D6EB00814B94 /* Localizable.strings in Resources */,
@@ -1391,6 +1406,7 @@
 				E1F08ED1244DA233004D0D65 /* Data+Extension.swift in Sources */,
 				E18AC74D242E2C6A00727107 /* LoginService.swift in Sources */,
 				E1F08EAE2443B3FA004D0D65 /* Model.xcdatamodeld in Sources */,
+				E1F08EDA244DDB9F004D0D65 /* PrivacyProtectionViewController.swift in Sources */,
 				E1FF6F02241BE2D80007B93D /* UIColor+Extension.swift in Sources */,
 				E1728CA624337AB6004F0DE9 /* MoviesDataSource.swift in Sources */,
 				E1728CA424329557004F0DE9 /* LoadAccount.swift in Sources */,
