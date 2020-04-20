@@ -24,6 +24,8 @@ public final class TheMovieDBAPIClient {
         self.requestAdapter = APIRequestAdapter(baseURL: baseURL, apiKey: apiKey, sessionId: sessionId)
         self.sessionManager = SessionManager(configuration: configuration)
         self.sessionManager.adapter = requestAdapter
+        // Удалить Cookies
+        self.sessionManager.session.configuration.httpCookieAcceptPolicy = .never
     }
     
     /// Отправить запрос к API.

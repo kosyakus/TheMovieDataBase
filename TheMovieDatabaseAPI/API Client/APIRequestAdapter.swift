@@ -61,6 +61,7 @@ public final class APIRequestAdapter: Alamofire.RequestAdapter {
         request.url = components.url
         // Отключить cache
         request.cachePolicy = .reloadIgnoringCacheData
+        //request.httpShouldHandleCookies = false
         print("FINAL \(request)")
         return request
     }
