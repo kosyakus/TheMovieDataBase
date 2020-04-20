@@ -50,6 +50,11 @@ class LoginViewController: UIViewController {
         errorLabel.isHidden = true
         passwordTextField.setVisibilityOnIcon()
         enterButton.layer.cornerRadius = enterButton.bounds.size.height / 20
+        
+        /// Отключение автокоррекции
+        loginTextField.autocorrectionType = .no
+        passwordTextField.autocorrectionType = .no
+        
         loginTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         loginTextField.addTarget(self, action: #selector(textFieldDidBeginEditing(_:)), for: .allTouchEvents)

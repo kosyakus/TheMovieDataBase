@@ -30,19 +30,19 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Добро пожаловать!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bp-c6-kqf">
-                    <rect key="frame" x="24" y="55" width="296" height="37.5"/>
+                    <rect key="frame" x="24" y="55" width="276.5" height="38.5"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
                     <color key="textColor" name="Light"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Укажите логин и пароль, которые вы использовали для входа" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlV-dn-ehh">
-                    <rect key="frame" x="24" y="117.5" width="367" height="37.5"/>
+                    <rect key="frame" x="24" y="118.5" width="367" height="38.5"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="16"/>
                     <color key="textColor" name="Light"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Логин" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g8f-EZ-Fio">
-                    <rect key="frame" x="24" y="187" width="367" height="48"/>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Логин" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g8f-EZ-Fio" customClass="AuthField" customModule="TheMovieDatabase" customModuleProvider="target">
+                    <rect key="frame" x="24" y="189" width="367" height="48"/>
                     <color key="backgroundColor" name="LightGray"/>
                     <color key="tintColor" name="Light"/>
                     <accessibility key="accessibilityConfiguration" identifier="LoginTF"/>
@@ -53,8 +53,8 @@
                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="16"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aoT-ji-AqT">
-                    <rect key="frame" x="24" y="259" width="367" height="48"/>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aoT-ji-AqT" customClass="AuthField" customModule="TheMovieDatabase" customModuleProvider="target">
+                    <rect key="frame" x="24" y="261" width="367" height="48"/>
                     <color key="backgroundColor" name="LightGray"/>
                     <accessibility key="accessibilityConfiguration" identifier="PassTF"/>
                     <constraints>
@@ -80,7 +80,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Неверный логин или пароль" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pii-dR-aWD">
-                    <rect key="frame" x="24" y="331" width="367" height="19"/>
+                    <rect key="frame" x="24" y="333" width="367" height="19"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="16"/>
                     <color key="textColor" name="Red"/>
                     <nil key="highlightedColor"/>
