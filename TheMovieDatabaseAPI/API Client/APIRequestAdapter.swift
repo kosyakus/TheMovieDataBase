@@ -59,6 +59,8 @@ public final class APIRequestAdapter: Alamofire.RequestAdapter {
         request.setValue(apiKey, forHTTPHeaderField: "api_key")
         
         request.url = components.url
+        // Отключить cache
+        request.cachePolicy = .reloadIgnoringCacheData
         print("FINAL \(request)")
         return request
     }
