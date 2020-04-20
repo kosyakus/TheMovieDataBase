@@ -19,6 +19,9 @@ class CryptoController {
         try CryptorError.verify(status)
         let data = Data(bytes: bytes, count: bytes.count)
         /// TODO: Сохранить соль в keychain
+        //try? ManageKeychain().saveSalt(item: data, user: KeychainUser())
+        KeychainSaltItem.save(key: "salt", data: data)
+        print("Generated SALT \(data.map { String(format: "%02x", $0) }.joined())")
         return data
     }
     
@@ -31,9 +34,8 @@ class CryptoController {
     /// - Throws: `CryptorError`.
     /// Немного укоротила функцию, т к все параметры известны кроме пинкода
     /// func pbkdf2SHA512(password: String, salt: Data, keyByteCount: Int, rounds: Int) -> Data?
-    func pbkdf2SHA256(password: String) throws -> Data? {
-        let salt = try randomGenerateBytes(count: 8)
-        return try pbkdf2(hash: CCPBKDFAlgorithm(kCCPRFHmacAlgSHA256),
+    func pbkdf2SHA256(password: String, salt: Data) throws -> Data? {
+        try pbkdf2(hash: CCPBKDFAlgorithm(kCCPRFHmacAlgSHA256),
                           password: password,
                           salt: salt,
                           rounds: 1000)
@@ -58,7 +60,7 @@ class CryptoController {
                 &derivedKey, derivedKey.count)
         }
         try CryptorError.verify(status)
-        
+        print("Generated KEY \(Data(derivedKey).map { String(format: "%02x", $0) }.joined())")
         return Data(derivedKey)
     }
 }

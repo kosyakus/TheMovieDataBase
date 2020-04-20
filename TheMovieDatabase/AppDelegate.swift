@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        presentViewController()
+        presentViewController(fromPinVC: false)
         return true
     }
     
@@ -38,12 +38,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         )
     }
     
-    @objc func presentViewController() {
+    @objc func presentViewController(fromPinVC: Bool) {
         
         if let window = window {
             var mainVC = UIViewController()
             if isSignedIn {
-                mainVC = TabBarController()
+                mainVC = MakePinViewController()
                 
                 UIView.transition(with: self.window!,
                                   duration: 0.5,
@@ -55,6 +55,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 mainVC = LoginViewController()
                 navigationController = UINavigationController(rootViewController: mainVC, isTranslucent: false)
                 window.rootViewController = navigationController
+            }
+            if fromPinVC {
+                mainVC = TabBarController()
+                window.rootViewController = mainVC
             }
             window.makeKeyAndVisible()
         }

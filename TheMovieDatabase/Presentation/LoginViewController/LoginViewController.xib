@@ -85,13 +85,6 @@
                     <color key="textColor" name="Red"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xAW-Fv-jyO">
-                    <rect key="frame" x="96.5" y="450" width="221" height="30"/>
-                    <state key="normal" title="Перейти на экран с пин кодом"/>
-                    <connections>
-                        <action selector="moveToPinVCButtonTapped:" destination="-1" eventType="touchUpInside" id="u9a-FL-Bq8"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" name="bg_black"/>
             <constraints>
@@ -99,9 +92,7 @@
                 <constraint firstItem="qlV-dn-ehh" firstAttribute="top" secondItem="6bp-c6-kqf" secondAttribute="bottom" constant="25" id="5h7-Yl-dej"/>
                 <constraint firstItem="g8f-EZ-Fio" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="9Ua-dH-Cku"/>
                 <constraint firstItem="QEP-cS-wUb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="EHE-HU-6HG"/>
-                <constraint firstItem="xAW-Fv-jyO" firstAttribute="top" secondItem="pii-dR-aWD" secondAttribute="bottom" constant="100" id="F8d-Iu-Xj8"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="QEP-cS-wUb" secondAttribute="bottom" constant="27" id="Jqz-SP-QDG"/>
-                <constraint firstItem="xAW-Fv-jyO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="LJa-JR-qgG"/>
                 <constraint firstItem="6bp-c6-kqf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="11" id="Lox-f7-Bsy"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="pii-dR-aWD" secondAttribute="trailing" constant="23" id="T1W-Dc-yDN"/>
                 <constraint firstItem="pii-dR-aWD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="UXo-DY-T8e"/>

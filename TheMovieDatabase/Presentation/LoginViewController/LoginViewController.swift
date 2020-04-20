@@ -108,17 +108,23 @@ class LoginViewController: UIViewController {
     }
     
     func sendApiRequest(login: String, password: String) {
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
         
         loginService.fetchToken(login: login, password: password) { result in
             if result {
-                appDelegate?.presentViewController()
+                self.moveToPinVC()
             } else {
                 self.activeTextField.shake()
                 self.loadingViewController.remove()
                 self.errorLabel.isHidden = false
             }
         }
+    }
+    
+    func moveToPinVC() {
+        self.loadingViewController.remove()
+        let makePinVC = MakePinViewController()
+        self.navigationController?.pushViewController(makePinVC, animated: true)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     func zoomInAndOut() {
@@ -145,11 +151,5 @@ class LoginViewController: UIViewController {
             else { return }
         add(loadingViewController)
         sendApiRequest(login: login, password: password)
-    }
-    
-    @IBAction func moveToPinVCButtonTapped(_ sender: Any) {
-        let makePinVC = MakePinViewController()
-        self.navigationController?.pushViewController(makePinVC, animated: true)
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 }

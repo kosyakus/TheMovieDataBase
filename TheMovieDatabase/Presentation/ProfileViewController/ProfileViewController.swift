@@ -6,7 +6,6 @@
 //  Copyright © 2020 Redmadrobot. All rights reserved.
 //
 
-import TheMovieDatabaseDBLayer
 import UIKit
 
 class ProfileViewController: UIViewController {
@@ -23,6 +22,7 @@ class ProfileViewController: UIViewController {
     
     private let accountService: AccountService
     private let deleteSessionService: DeleteSessionService
+    private let deletionController = DeletionController()
     
     // MARK: - Initializers
     
@@ -41,8 +41,6 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         setUpButtonAndImage()
-        //addNoMovieElements()
-        //createParticles()
     }
     
     // MARK: - Public methods
@@ -52,16 +50,7 @@ class ProfileViewController: UIViewController {
         avatarImageView.layer.cornerRadius = avatarImageView.bounds.size.height / 2
     }
     
-    /// Удаленеие всех записей из БД
-    func deleteAllFromDB() {
-        let viewModel = RealmMovieViewModel(with: AnyRepository())
-        viewModel.deleteRepository()
-        let CDviewModel = CDMovieViewModel(with: CoreDataRepository(persistentContainer:
-            CoreDataService.shared.persistentContainer))
-        CDviewModel.deleteRepository()
-        
-        UserSettings.shareInstance.dataBase = 0
-    }
+    
     
     // MARK: - IBAction
     
@@ -70,11 +59,9 @@ class ProfileViewController: UIViewController {
         deleteSessionService.deleteSession(session: session) { result in
             switch result {
             case .success:
-                try? ManageKeychain().deleteSessionId()
-                UserSettings.shareInstance.accountID = ""
-                self.deleteAllFromDB()
+                self.deletionController.deleteAllData()
                 let appDelegate = UIApplication.shared.delegate as? AppDelegate
-                appDelegate?.presentViewController()
+                appDelegate?.presentViewController(fromPinVC: false)
             case .failure(let error):
                 print(error.localizedDescription)
             }

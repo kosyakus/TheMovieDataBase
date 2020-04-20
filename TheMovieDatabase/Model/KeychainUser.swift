@@ -10,9 +10,10 @@ import Foundation
 
 class KeychainUser: Codable {
     
-    let username: String
+    let username = "currentUser"
+    let pin = "pin"
     
-    init(username: String) {
-        self.username = username
-    }
+//    init(username: String) {
+//        self.username = username
+//    }
 }

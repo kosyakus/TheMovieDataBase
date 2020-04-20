@@ -10,12 +10,6 @@ import UIKit
 
 class MakePinViewController: UIViewController {
     
-    public enum State {
-        case inactive
-        case active
-        case error
-    }
-    
     @IBOutlet weak var pinSuggestionsLabel: UILabel!
     @IBOutlet weak var wrongPinLabel: UILabel!
     @IBOutlet var numberButton: [UIButton]!
@@ -30,12 +24,15 @@ class MakePinViewController: UIViewController {
     let userSettings = UserSettings.shareInstance
     var isPinCreated = false
     var pin = ""
-    var repeatedPin = ""
+    var firstTimePin = ""
+    
+    private let deletionController = DeletionController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpEmptyPinView()
         setUpFaceIdButton()
+        setUpTopLabel()
     }
     
     override func viewWillLayoutSubviews() {
@@ -52,12 +49,25 @@ class MakePinViewController: UIViewController {
         wrongPinLabel.isHidden = true
     }
     
+    private func setUpTopLabel() {
+        if userSettings.isPinCreated {
+            pinSuggestionsLabel.text = "Введите пин-код"
+        }
+    }
+    
     /// Отрисовка пин кружочков на экране при неправильном пинкоде
     private func setUpWrongPinView() {
         for pin in pinViewsCollection {
             pin.backgroundColor = UIColor.CustomColor.red
         }
         wrongPinLabel.isHidden = false
+    }
+    
+    private func setUpRepeatPinEmptyView() {
+        for pin in pinViewsCollection {
+            pin.backgroundColor = UIColor.CustomColor.darkBlue
+        }
+        self.pin = ""
     }
     
     /// Отрисовка цифр на экране
@@ -74,7 +84,7 @@ class MakePinViewController: UIViewController {
         /// Если первый заход в приложение или поле пин кода не пустое, то показываем символ удаления
         if !userSettings.isPinCreated || !pin.isEmpty {
             faceIdButton.setBackgroundImage(UIImage(named: backspaceIcon), for: .normal)
-        /// Если не первый раз заходим в приложение и уже есть сохраненный FaceId, и пользователь не начал вводить сам пин, то показываем иконку FaceId
+            /// Если не первый раз заходим в приложение и уже есть сохраненный FaceId, и пользователь не начал вводить сам пин, то показываем иконку FaceId
         } else  if userSettings.isPinCreated && pin.isEmpty {
             faceIdButton.setBackgroundImage(UIImage(named: faceIdIcon), for: .normal)
             exitButton.titleLabel?.text = "Выйти"
@@ -84,7 +94,7 @@ class MakePinViewController: UIViewController {
     /// Берем последние 4 цифры пинкода
     private func getFourLastDigits() {
         pin = String(pin.prefix(4))
-        repeatedPin = String(repeatedPin.prefix(4))
+        firstTimePin = String(firstTimePin.prefix(4))
     }
     
     /// Метод для изменения цвета маленьких кружочков при вводе пин-кода
@@ -95,50 +105,96 @@ class MakePinViewController: UIViewController {
         }
     }
     
+    private func moveToMainVC() {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.presentViewController(fromPinVC: true)
+    }
+    
     private func askUserToSetFaceId() {
         let ac = UIAlertController(title: "Установить вход по Face ID?", message: "", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            /// Установить вход по Face ID
-            /// TODO: Сохранить пин-код если юзер согласился на врод по биометрии
-            
+            /// TODO:  Установить вход по Face ID
+            /// Сохранить пин-код если юзер согласился на вход по биометрии
+            try? ManageKeychain().savePin(item: self.pin, user: KeychainUser())
+            print("MOVED TO MAIN SCREEN")
+            self.moveToMainVC()
         }))
-        ac.addAction(UIAlertAction(title: "Отмена", style: .default))
+        ac.addAction(UIAlertAction(title: "Отмена", style: .default, handler: { _ in
+            print("MOVED TO MAIN SCREEN")
+            self.moveToMainVC()
+        }))
         self.present(ac, animated: true)
+    }
+    
+    private func createCryptoSession() {
+        guard !pin.isEmpty, pin.count < 5 else { return }
+        guard let salt = try? cryptoController.randomGenerateBytes(count: 8) else { return }
+        guard let key = try? cryptoController.pbkdf2SHA256(password: pin, salt: salt) else { return }
+        guard let sessionId = try? ManageKeychain().getSessionID() else { return }
+        guard let sessionData = sessionId.data(using: .utf8) else { return }
+        guard let encrypted = sessionData.encryptAES256_CBC_PKCS7_IV(key: key) else { return }
+        KeychainSaltItem.save(key: "session", data: encrypted)
+        //print(String(data: decrypted, encoding: .utf8)!)
+    }
+    
+    private func checkCryptoSession() -> Bool {
+        guard !pin.isEmpty, pin.count < 5 else { return false }
+        guard let salt = KeychainSaltItem.load(key: "salt") else { return false }
+        print("GET SALT \(salt.map { String(format: "%02x", $0) }.joined())")
+        guard let key = try? cryptoController.pbkdf2SHA256(password: pin, salt: salt) else { return false }
+        guard let dataSession = KeychainSaltItem.load(key: "session") else { return false }
+        guard let decrypted = dataSession.decryptAES256_CBC_PKCS7_IV(key: key) else { return false }
+        guard String(data: decrypted, encoding: .utf8) != nil else { return false }
+        //print("Decrypted session \(String(data: decrypted, encoding: .utf8))")
+        return true
     }
     
     private func tellUserToTryAgain() {
         let ac = UIAlertController(title: "Не удалось пройти идентификацию",
-                                   message: "Попробуйте еще раз или введите пин-код",
+                                   message: "Попробуйте еще раз",
                                    preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            self.setUpRepeatPinEmptyView()
+        }))
         self.present(ac, animated: true)
     }
     
     /// Проверка пин-кода
     func checkPin(pin: String) {
         guard pin.count >= 4 else { return }
-        if !isPinCreated {
+        getFourLastDigits()
+        
+        /// Если пин еще не создавался, то предлагаем повторить пин
+        if !isPinCreated && !userSettings.isPinCreated {
             pinSuggestionsLabel.text = "Повторите ваш пин-код"
             for pin in pinViewsCollection {
                 pin.backgroundColor = UIColor.CustomColor.darkBlue
             }
             isPinCreated = true
-            getFourLastDigits()
         } else {
-            getFourLastDigits()
-            /// Если первый заход в приложение, то repeated pin не пустой и можно его сравнить с обычным пинкодом
-            if !repeatedPin.isEmpty {
-                if self.repeatedPin == self.pin {
+            /// Если первый раз устанавливаем пин, то firstTimePin не пустой и можно его сравнить с обычным пинкодом
+            if !firstTimePin.isEmpty {
+                if self.firstTimePin == self.pin {
                     userSettings.isPinCreated = true
-                /// TODO: Если одинаковый, то сохранить пин
-                    let salt = try? cryptoController.randomGenerateBytes(count: 5)
-                    
-                /// TODO: Предложить включить face id
+                    /// Если одинаковый, то сохранить соль и зашифровать сессию
+                    createCryptoSession()
+                    /// Предложить включить face id
+                    askUserToSetFaceId()
                 } else {
                     setUpWrongPinView()
+                    tellUserToTryAgain()
+                }
+            } else {
+                /// Если заход не первый, то сравнить с сохраненной сессией
+                if checkCryptoSession() { /// Если сессия верная
+                    /// Переходим на главный экран
+                    print("MOVED TO MAIN SCREEN")
+                    moveToMainVC()
+                } else {
+                    setUpWrongPinView()
+                    tellUserToTryAgain()
                 }
             }
-            /// TODO: Если заход не первый, то сравнить с сохраненным пин и пр.
         }
         
     }
@@ -147,29 +203,30 @@ class MakePinViewController: UIViewController {
     @IBAction func numberButtonTapped(_ sender: UIButton) {
         wrongPinLabel.isHidden = true
         sender.setBackgroundImage(UIColor.CustomColor.orange?.image(), for: .highlighted)
-        print("\(pin), \(repeatedPin)")
         
         if !isPinCreated && !userSettings.isPinCreated {
-            repeatedPin += "\(sender.tag)"
-            setUpEnteredPinView(pin: repeatedPin)
-            checkPin(pin: repeatedPin)
+            firstTimePin += "\(sender.tag)"
+            setUpEnteredPinView(pin: firstTimePin)
+            checkPin(pin: firstTimePin)
         } else {
             pin += "\(sender.tag)"
             setUpEnteredPinView(pin: pin)
             checkPin(pin: pin)
         }
+        //print("\(pin), \(firstTimePin)")
         setUpFaceIdButton()
     }
     
     /// Метод для нажатия правой нижней кнопки: удаление символа или сканирование отпечатка / лица
     @IBAction func faceIdButtonTapped(_ sender: UIButton) {
+        wrongPinLabel.isHidden = true
         /// Если картинка удаления символа, то перекрашиваем кружочки и удаляем 1 символ из пин кода
         if faceIdButton.backgroundImage(for: .normal) == UIImage(named: backspaceIcon) {
             setUpEmptyPinView()
             if !userSettings.isPinCreated {
-                guard !repeatedPin.isEmpty else { return }
-                repeatedPin.removeLast()
-                setUpEnteredPinView(pin: repeatedPin)
+                guard !firstTimePin.isEmpty else { return }
+                firstTimePin.removeLast()
+                setUpEnteredPinView(pin: firstTimePin)
             } else {
                 guard !pin.isEmpty else { return }
                 pin.removeLast()
@@ -180,24 +237,18 @@ class MakePinViewController: UIViewController {
             authenticationController.authenticateTapped(completion: { result in
                 if result {
                     /// Переход на главный экран
+                    print("MOVED TO MAIN SCREEN")
+                    self.moveToMainVC()
                 } else {
-                    
+                    /// Не удалось пройти идентификацию по лицу/пальцу
                     self.tellUserToTryAgain()
                 }
-                
             })
         }
     }
     
     /// Разлогиниться
     @IBAction func exitButtonTapped(_ sender: Any) {
-        try? ManageKeychain().deleteSessionId()
-        userSettings.accountID = ""
-        userSettings.isPinCreated = false
-        userSettings.dataBase = 0
-        /// TODO: Удалить все из БД
-        /// TODO: Удалить все ключи, токены и пр бабуйню
-        //self.deleteAllFromDB()
+        deletionController.deleteAllData()
     }
-    
 }

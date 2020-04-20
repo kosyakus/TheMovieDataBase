@@ -112,7 +112,7 @@ final public class LoginServicesImplementation: LoginServices {
             switch result {
             case .success(let session):
                 try? ManageKeychain().saveSessionId(sessionId: session.sessionID,
-                                                    user: KeychainUser(username: login))
+                                                    user: KeychainUser())
                 completion()
             case .failure(let error):
                 print(error.localizedDescription)

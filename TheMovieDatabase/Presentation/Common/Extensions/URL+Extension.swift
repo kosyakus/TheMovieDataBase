@@ -9,6 +9,7 @@
 import Foundation
 
 extension URL {
+    
     func convertUrlToData() -> Data {
         let data = Data()
         guard let imageData = try? Data(contentsOf: self) else { return data }
