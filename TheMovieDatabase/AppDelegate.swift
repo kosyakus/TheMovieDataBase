@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    private var privacyProtectionWindow: UIWindow?
+    
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -75,8 +77,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: - Privacy Protection
-    
-    private var privacyProtectionWindow: UIWindow?
 
     private func showPrivacyProtectionWindow() {
         privacyProtectionWindow = UIWindow(frame: UIScreen.main.bounds)

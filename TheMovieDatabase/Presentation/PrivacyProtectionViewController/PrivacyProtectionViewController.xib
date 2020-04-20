@@ -25,26 +25,28 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Информация скрыта в целях защиты приватных данных" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m5k-pQ-byI">
-                    <rect key="frame" x="20" y="392" width="374" height="112"/>
+                    <rect key="frame" x="20" y="390.5" width="374" height="115"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="32"/>
                     <color key="textColor" name="Light"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" name="Bg_black"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="m5k-pQ-byI" secondAttribute="trailing" constant="20" id="ANc-Sl-tvc"/>
                 <constraint firstItem="m5k-pQ-byI" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="T5H-ip-xEO"/>
                 <constraint firstItem="m5k-pQ-byI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="mXd-xi-SWb"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="m5k-pQ-byI"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="141" y="129"/>
         </view>
     </objects>
     <resources>
-        <namedColor name="Bg_black">
-            <color red="0.097999997437000275" green="0.10199999809265137" blue="0.14499999582767487" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="Light">
             <color red="0.90600001811981201" green="0.92900002002716064" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
