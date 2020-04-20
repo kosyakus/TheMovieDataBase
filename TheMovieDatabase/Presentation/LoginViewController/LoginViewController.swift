@@ -41,6 +41,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
+        jailbreakCheck()
     }
     
     // MARK: - Public methods
@@ -144,6 +145,12 @@ class LoginViewController: UIViewController {
                                              width: bounds.size.width + 60,
                                              height: bounds.size.height)
         }, completion: nil)
+    }
+    
+    private func jailbreakCheck() {
+        if UIDevice.current.isJailBroken {
+            add(LoadingViewController())
+        }
     }
     
     // MARK: - IBAction

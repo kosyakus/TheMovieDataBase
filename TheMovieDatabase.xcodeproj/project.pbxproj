@@ -123,6 +123,7 @@
 		E1F08ECF244CEC14004D0D65 /* KeychainSaltItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F08ECE244CEC13004D0D65 /* KeychainSaltItem.swift */; };
 		E1F08ED1244DA233004D0D65 /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F08ED0244DA233004D0D65 /* Data+Extension.swift */; };
 		E1F08ED4244DA6BD004D0D65 /* DeletionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F08ED3244DA6BD004D0D65 /* DeletionController.swift */; };
+		E1F08ED6244DD73A004D0D65 /* UIDevice+JailBroken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F08ED5244DD73A004D0D65 /* UIDevice+JailBroken.swift */; };
 		E1FF6EFC241981250007B93D /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF6EFB241981250007B93D /* KeychainPasswordItem.swift */; };
 		E1FF6EFE241981520007B93D /* KeychainSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF6EFD241981520007B93D /* KeychainSettings.swift */; };
 		E1FF6F00241A17A20007B93D /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF6EFF241A17A20007B93D /* Notification+Extension.swift */; };
@@ -321,6 +322,7 @@
 		E1F08ECE244CEC13004D0D65 /* KeychainSaltItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainSaltItem.swift; sourceTree = "<group>"; };
 		E1F08ED0244DA233004D0D65 /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		E1F08ED3244DA6BD004D0D65 /* DeletionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletionController.swift; sourceTree = "<group>"; };
+		E1F08ED5244DD73A004D0D65 /* UIDevice+JailBroken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+JailBroken.swift"; sourceTree = "<group>"; };
 		E1FF6EFB241981250007B93D /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		E1FF6EFD241981520007B93D /* KeychainSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainSettings.swift; sourceTree = "<group>"; };
 		E1FF6EFF241A17A20007B93D /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
@@ -725,6 +727,7 @@
 			isa = PBXGroup;
 			children = (
 				E1C736FD2413C3D600E60D7C /* Extensions */,
+				E1F08ED5244DD73A004D0D65 /* UIDevice+JailBroken.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1372,6 +1375,7 @@
 				E1728CB124390D2E004F0DE9 /* FilmDetailViewController.swift in Sources */,
 				E106B83824438606004B8209 /* CDMovieViewModel.swift in Sources */,
 				E18AC74F242E2D9200727107 /* Token.swift in Sources */,
+				E1F08ED6244DD73A004D0D65 /* UIDevice+JailBroken.swift in Sources */,
 				E1F08ED4244DA6BD004D0D65 /* DeletionController.swift in Sources */,
 				E1728CAA2438D30E004F0DE9 /* MakePinViewController.swift in Sources */,
 				E1C737012413C85900E60D7C /* TextField+Extension.swift in Sources */,
