@@ -10,7 +10,7 @@
         "color-space" : "srgb",
         "components" : {
           "red" : "0.396",
-          "alpha" : "0.395",
+          "alpha" : "1.000",
           "blue" : "0.541",
           "green" : "0.427"
         }

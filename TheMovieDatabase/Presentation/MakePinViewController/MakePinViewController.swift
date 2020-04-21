@@ -25,6 +25,7 @@ class MakePinViewController: UIViewController {
     var isPinCreated = false
     var pin = ""
     var firstTimePin = ""
+    var wrongPinCount = 0
     
     private let deletionController = DeletionController()
     
@@ -49,6 +50,7 @@ class MakePinViewController: UIViewController {
         wrongPinLabel.isHidden = true
     }
     
+    /// TODO: Нужно будет поменять- вместо лейбла- аватар и имя
     private func setUpTopLabel() {
         if userSettings.isPinCreated {
             pinSuggestionsLabel.text = "Введите пин-код"
@@ -63,6 +65,7 @@ class MakePinViewController: UIViewController {
         wrongPinLabel.isHidden = false
     }
     
+    /// Пустые кружочки для ввода пин-кода
     private func setUpRepeatPinEmptyView() {
         for pin in pinViewsCollection {
             pin.backgroundColor = UIColor.CustomColor.darkBlue
@@ -87,7 +90,7 @@ class MakePinViewController: UIViewController {
             /// Если не первый раз заходим в приложение и уже есть сохраненный FaceId, и пользователь не начал вводить сам пин, то показываем иконку FaceId
         } else  if userSettings.isPinCreated && pin.isEmpty {
             faceIdButton.setBackgroundImage(UIImage(named: faceIdIcon), for: .normal)
-            exitButton.titleLabel?.text = "Выйти"
+            exitButton.setTitle("Выйти", for: .normal)
         }
     }
     
@@ -105,27 +108,44 @@ class MakePinViewController: UIViewController {
         }
     }
     
+    /// Методы для навигации
+    /// Переход на главный экран
     private func moveToMainVC() {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         appDelegate?.presentViewController(fromPinVC: true)
     }
     
+    /// Переход на экран Логина
+    private func moveToLoginVC() {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.presentViewController(fromPinVC: false)
+    }
+    
+    /// Алерт контроллер, запрос на установление FaceID
     private func askUserToSetFaceId() {
         let ac = UIAlertController(title: "Установить вход по Face ID?", message: "", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
             /// TODO:  Установить вход по Face ID
             /// Сохранить пин-код если юзер согласился на вход по биометрии
             try? ManageKeychain().savePin(item: self.pin, user: KeychainUser())
-            print("MOVED TO MAIN SCREEN")
             self.moveToMainVC()
         }))
         ac.addAction(UIAlertAction(title: "Отмена", style: .default, handler: { _ in
-            print("MOVED TO MAIN SCREEN")
             self.moveToMainVC()
         }))
         self.present(ac, animated: true)
     }
     
+    private func checkWrongPinCount() {
+        wrongPinCount += 1
+        if wrongPinCount == 5 {
+            // Разлогиниться, если пароль введен неправильно 5 раз
+            deletionController.deleteAllData()
+            moveToLoginVC()
+        }
+    }
+    
+    /// Метод для шифровании сессии
     private func createCryptoSession() {
         guard !pin.isEmpty, pin.count < 5 else { return }
         guard let salt = try? cryptoController.randomGenerateBytes(count: 8) else { return }
@@ -137,6 +157,7 @@ class MakePinViewController: UIViewController {
         //print(String(data: decrypted, encoding: .utf8)!)
     }
     
+    /// Метод для расшифровки и проверк  сессии
     private func checkCryptoSession() -> Bool {
         guard !pin.isEmpty, pin.count < 5 else { return false }
         guard let salt = KeychainSaltItem.load(key: "salt") else { return false }
@@ -149,6 +170,7 @@ class MakePinViewController: UIViewController {
         return true
     }
     
+    /// Алерт контроллер - информирование юзера о том, что идентификация не пройдена
     private func tellUserToTryAgain() {
         let ac = UIAlertController(title: "Не удалось пройти идентификацию",
                                    message: "Попробуйте еще раз",
@@ -156,6 +178,8 @@ class MakePinViewController: UIViewController {
         ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
             self.setUpRepeatPinEmptyView()
         }))
+        /// Проверить сколько раз неправильно введен пароль
+        checkWrongPinCount()
         self.present(ac, animated: true)
     }
     
@@ -188,7 +212,6 @@ class MakePinViewController: UIViewController {
                 /// Если заход не первый, то сравнить с сохраненной сессией
                 if checkCryptoSession() { /// Если сессия верная
                     /// Переходим на главный экран
-                    print("MOVED TO MAIN SCREEN")
                     moveToMainVC()
                 } else {
                     setUpWrongPinView()
@@ -202,7 +225,7 @@ class MakePinViewController: UIViewController {
     /// Ввод пин-кода вручную
     @IBAction func numberButtonTapped(_ sender: UIButton) {
         wrongPinLabel.isHidden = true
-        sender.setBackgroundImage(UIColor.CustomColor.orange?.image(), for: .highlighted)
+        sender.setBackgroundImage(UIColor.CustomColor.orange?.image(), for: .normal)
         
         if !isPinCreated && !userSettings.isPinCreated {
             firstTimePin += "\(sender.tag)"
@@ -215,6 +238,9 @@ class MakePinViewController: UIViewController {
         }
         //print("\(pin), \(firstTimePin)")
         setUpFaceIdButton()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+           sender.setBackgroundImage(UIColor.clear.image(), for: .normal)
+        }
     }
     
     /// Метод для нажатия правой нижней кнопки: удаление символа или сканирование отпечатка / лица
@@ -237,7 +263,6 @@ class MakePinViewController: UIViewController {
             authenticationController.authenticateTapped(completion: { result in
                 if result {
                     /// Переход на главный экран
-                    print("MOVED TO MAIN SCREEN")
                     self.moveToMainVC()
                 } else {
                     /// Не удалось пройти идентификацию по лицу/пальцу
@@ -245,10 +270,12 @@ class MakePinViewController: UIViewController {
                 }
             })
         }
+        setUpFaceIdButton()
     }
     
     /// Разлогиниться
     @IBAction func exitButtonTapped(_ sender: Any) {
         deletionController.deleteAllData()
+        moveToLoginVC()
     }
 }

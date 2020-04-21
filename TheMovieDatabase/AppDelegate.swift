@@ -76,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    // MARK: - Privacy Protection
+    // MARK: - Private methods
 
     private func showPrivacyProtectionWindow() {
         privacyProtectionWindow = UIWindow(frame: UIScreen.main.bounds)
