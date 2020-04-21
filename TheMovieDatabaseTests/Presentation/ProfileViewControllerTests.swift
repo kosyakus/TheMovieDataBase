@@ -23,7 +23,8 @@ class ProfileViewControllerTests: ViewControllerTestCase {
     /// Тест на появление на экране картинки аватара
     func testImageViewAppear() throws {
         let imageView = try XCTUnwrap(profileViewController.avatarImageView)
-        XCTAssertEqual(imageView.image, UIImage(named: "avatar"))
+        let avatarString = "avatar"
+        XCTAssertEqual(imageView.image, UIImage(named: avatarString))
     }
     
     /// Тесты на наличие email лейбла

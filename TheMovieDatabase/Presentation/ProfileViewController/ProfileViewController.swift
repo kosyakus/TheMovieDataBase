@@ -50,8 +50,6 @@ class ProfileViewController: UIViewController {
         avatarImageView.layer.cornerRadius = avatarImageView.bounds.size.height / 2
     }
     
-    
-    
     // MARK: - IBAction
     
     @IBAction func exitButtonTapped(_ sender: Any) {

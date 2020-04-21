@@ -24,7 +24,8 @@ final class FavoriveViewControllerTests: ViewControllerTestCase {
     /// Тест на появление на экране картинки с попкорном
     func testImageViewAppear() throws {
         let imageView = try XCTUnwrap(favoriteViewController.noMovieView)
-        XCTAssertEqual(imageView.image, UIImage(named: "no_movie"))
+        let noMovieString = "no_movie"
+        XCTAssertEqual(imageView.image, UIImage(named: noMovieString))
     }
     
     /// Тесты на наличие кнопки поиска фильмов

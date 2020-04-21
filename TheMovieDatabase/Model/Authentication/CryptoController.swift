@@ -20,7 +20,7 @@ class CryptoController {
         let data = Data(bytes: bytes, count: bytes.count)
         /// TODO: Сохранить соль в keychain
         //try? ManageKeychain().saveSalt(item: data, user: KeychainUser())
-        KeychainSaltItem.save(key: "salt", data: data)
+        _ = KeychainSaltItem.save(key: "salt", data: data)
         print("Generated SALT \(data.map { String(format: "%02x", $0) }.joined())")
         return data
     }
@@ -30,15 +30,15 @@ class CryptoController {
     /// - Parameters:
     ///   - keyCount: The expected length of the derived key in bytes. (для AES256, ключ 256 бит (32 байта))
     ///   - rounds: The rounds parameter is used to make the calculation slow so that an attacker will have to spend substantial time on each attempt. Typical delay values fall in the 100ms to 500ms, shorter values can be used if there is unacceptable performance.
-    /// - Returns: Derived key.
-    /// - Throws: `CryptorError`.
-    /// Немного укоротила функцию, т к все параметры известны кроме пинкода
+    ///   - Returns: Derived key.
+    ///   - Throws: `CryptorError`
+    /// Немного укоротила функцию, т к все параметры известны кроме пинкода и соли
     /// func pbkdf2SHA512(password: String, salt: Data, keyByteCount: Int, rounds: Int) -> Data?
     func pbkdf2SHA256(password: String, salt: Data) throws -> Data? {
         try pbkdf2(hash: CCPBKDFAlgorithm(kCCPRFHmacAlgSHA256),
-                          password: password,
-                          salt: salt,
-                          rounds: 1000)
+                   password: password,
+                   salt: salt,
+                   rounds: 1000)
     }
     
     func pbkdf2(hash: CCPBKDFAlgorithm,

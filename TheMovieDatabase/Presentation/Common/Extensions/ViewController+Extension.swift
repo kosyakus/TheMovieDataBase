@@ -33,11 +33,11 @@ extension UIViewController {
     }
     
     func removeContainerView(_ viewController: UIViewController) {
-        /// Notify Child View Controller
+        // Notify Child View Controller
         viewController.willMove(toParent: nil)
-        /// Remove Child View From Superview
+        // Remove Child View From Superview
         viewController.view.removeFromSuperview()
-        /// Notify Child View Controller
+        // Notify Child View Controller
         viewController.removeFromParent()
     }
     
@@ -48,7 +48,7 @@ extension UIViewController {
     }
 
     func remove() {
-        /// Just to be safe, we check that this view controller is actually added to a parent before removing it.
+        // Just to be safe, we check that this view controller is actually added to a parent before removing it.
         guard parent != nil else {
             return
         }

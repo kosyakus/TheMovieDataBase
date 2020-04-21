@@ -62,7 +62,7 @@ final public class LoginServicesImplementation: LoginServices {
                                    password: String,
                                    requestToken: String,
                                    completion: @escaping (Bool) -> Void) {
-        validateToken(login: login, password: password, requestToken: requestToken) { result in
+        _ = validateToken(login: login, password: password, requestToken: requestToken) { result in
             switch result {
             case .success(let bool):
                 if bool {
@@ -108,7 +108,7 @@ final public class LoginServicesImplementation: LoginServices {
     
     /// Вспомогательная функция получения сессии после успешной валидации
     private func thenCreateSession(login: String, requestToken: String, completion: @escaping () -> Void) {
-        createSession(requestToken: requestToken) { result in
+        _ = createSession(requestToken: requestToken) { result in
             switch result {
             case .success(let session):
                 try? ManageKeychain().saveSessionId(sessionId: session.sessionID,

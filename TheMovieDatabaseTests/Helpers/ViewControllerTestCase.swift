@@ -22,6 +22,7 @@ class ViewControllerTestCase: XCTestCase {
     }
     
     override func setUp() {
+        super.setUp()
         if !window.isKeyWindow {
             window.makeKeyAndVisible()
         }

@@ -25,6 +25,7 @@ class AuthenticationController {
             
             guard success else {
                 // return mistake
+                completion(false)
                 return
             }
             // User authenticated successfully, take some action

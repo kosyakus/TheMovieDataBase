@@ -153,7 +153,7 @@ class MakePinViewController: UIViewController {
         guard let sessionId = try? ManageKeychain().getSessionID() else { return }
         guard let sessionData = sessionId.data(using: .utf8) else { return }
         guard let encrypted = sessionData.encryptAES256_CBC_PKCS7_IV(key: key) else { return }
-        KeychainSaltItem.save(key: "session", data: encrypted)
+        _ = KeychainSaltItem.save(key: "session", data: encrypted)
         //print(String(data: decrypted, encoding: .utf8)!)
     }
     
