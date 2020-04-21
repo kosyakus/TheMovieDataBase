@@ -37,7 +37,7 @@
 		E11C7675241F5687000969C7 /* KeychainUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7674241F5687000969C7 /* KeychainUser.swift */; };
 		E11C7677241F5DCA000969C7 /* ResponseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7676241F5DCA000969C7 /* ResponseResult.swift */; };
 		E11C7679241FC612000969C7 /* AccountEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7678241FC612000969C7 /* AccountEndpoint.swift */; };
-		E11C767D241FCA10000969C7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C767C241FCA10000969C7 /* User.swift */; };
+		E11C767D241FCA10000969C7 /* APIUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C767C241FCA10000969C7 /* APIUser.swift */; };
 		E11C767F241FEDB7000969C7 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C767E241FEDB7000969C7 /* String+Extension.swift */; };
 		E11C76812420009E000969C7 /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C76802420009E000969C7 /* Movies.swift */; };
 		E11C7683242006E8000969C7 /* APIMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C7682242006E8000969C7 /* APIMovie.swift */; };
@@ -126,6 +126,7 @@
 		E1F08ED6244DD73A004D0D65 /* UIDevice+JailBroken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F08ED5244DD73A004D0D65 /* UIDevice+JailBroken.swift */; };
 		E1F08EDA244DDB9F004D0D65 /* PrivacyProtectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F08ED8244DDB9F004D0D65 /* PrivacyProtectionViewController.swift */; };
 		E1F08EDB244DDB9F004D0D65 /* PrivacyProtectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1F08ED9244DDB9F004D0D65 /* PrivacyProtectionViewController.xib */; };
+		E1F08EDD244F5323004D0D65 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F08EDC244F5322004D0D65 /* User.swift */; };
 		E1FF6EFC241981250007B93D /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF6EFB241981250007B93D /* KeychainPasswordItem.swift */; };
 		E1FF6EFE241981520007B93D /* KeychainSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF6EFD241981520007B93D /* KeychainSettings.swift */; };
 		E1FF6F00241A17A20007B93D /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF6EFF241A17A20007B93D /* Notification+Extension.swift */; };
@@ -232,7 +233,7 @@
 		E11C7674241F5687000969C7 /* KeychainUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainUser.swift; sourceTree = "<group>"; };
 		E11C7676241F5DCA000969C7 /* ResponseResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseResult.swift; sourceTree = "<group>"; };
 		E11C7678241FC612000969C7 /* AccountEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountEndpoint.swift; sourceTree = "<group>"; };
-		E11C767C241FCA10000969C7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E11C767C241FCA10000969C7 /* APIUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUser.swift; sourceTree = "<group>"; };
 		E11C767E241FEDB7000969C7 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		E11C76802420009E000969C7 /* Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
 		E11C7682242006E8000969C7 /* APIMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMovie.swift; sourceTree = "<group>"; };
@@ -327,6 +328,7 @@
 		E1F08ED5244DD73A004D0D65 /* UIDevice+JailBroken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+JailBroken.swift"; sourceTree = "<group>"; };
 		E1F08ED8244DDB9F004D0D65 /* PrivacyProtectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyProtectionViewController.swift; sourceTree = "<group>"; };
 		E1F08ED9244DDB9F004D0D65 /* PrivacyProtectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivacyProtectionViewController.xib; sourceTree = "<group>"; };
+		E1F08EDC244F5322004D0D65 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E1FF6EFB241981250007B93D /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		E1FF6EFD241981520007B93D /* KeychainSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainSettings.swift; sourceTree = "<group>"; };
 		E1FF6EFF241A17A20007B93D /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 				E18AC7372427F2B600727107 /* Movie.swift */,
 				E18AC74E242E2D9200727107 /* Token.swift */,
 				E18AC7582430B85000727107 /* Session.swift */,
+				E1F08EDC244F5322004D0D65 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -689,7 +692,7 @@
 			children = (
 				E11C7669241D75AF000969C7 /* Session.swift */,
 				E11C7676241F5DCA000969C7 /* ResponseResult.swift */,
-				E11C767C241FCA10000969C7 /* User.swift */,
+				E11C767C241FCA10000969C7 /* APIUser.swift */,
 				E11C76802420009E000969C7 /* Movies.swift */,
 				E11C7682242006E8000969C7 /* APIMovie.swift */,
 				E11C768C2420FC02000969C7 /* Errors.swift */,
@@ -1384,6 +1387,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1F08EDD244F5323004D0D65 /* User.swift in Sources */,
 				E18AC7592430B85000727107 /* Session.swift in Sources */,
 				E1C736D02412A67400E60D7C /* LoginViewController.swift in Sources */,
 				E18AC76B24321B9900727107 /* MoviesCollectionViewController.swift in Sources */,
@@ -1484,7 +1488,7 @@
 				E11C768D2420FC02000969C7 /* Errors.swift in Sources */,
 				E11C7683242006E8000969C7 /* APIMovie.swift in Sources */,
 				E1B48E672426916400AE89EF /* TheMovieDBAPIClient.swift in Sources */,
-				E11C767D241FCA10000969C7 /* User.swift in Sources */,
+				E11C767D241FCA10000969C7 /* APIUser.swift in Sources */,
 				E11C7668241D712E000969C7 /* Endpoint.swift in Sources */,
 				E11C768524200C95000969C7 /* SearchMoviesEndpoint.swift in Sources */,
 				E11C7677241F5DCA000969C7 /* ResponseResult.swift in Sources */,

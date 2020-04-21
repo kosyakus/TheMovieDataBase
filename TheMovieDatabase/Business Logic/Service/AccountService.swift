@@ -9,14 +9,14 @@
 import Foundation
 import TheMovieDatabaseAPI
 
-public protocol AccountService {
+protocol AccountService {
 
     /// - Parameters:
     ///   - completionHandler: Обработчик результата входа.
     /// - Returns: Прогресс выполнения входа.
     @discardableResult
     func fetchUser(session: String,
-                   completion: @escaping (Result<User, Error>) -> Void) -> Progress
+                   completion: @escaping (User) -> Void) -> Progress
 }
 
 final public class AccountServicesImplementation: AccountService {
@@ -28,11 +28,24 @@ final public class AccountServicesImplementation: AccountService {
     }
     
     @discardableResult
-    public func fetchUser(session: String,
-                          completion: @escaping (Result<User, Error>) -> Void) -> Progress {
+    func fetchUser(session: String,
+                   completion: @escaping (User) -> Void) -> Progress {
         
         client.request(AccountEndpoint(session: session)) { result in
-            completion(result)
+            switch result {
+            case .success(let user):
+                completion(self.user(from: user))
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            
+            //completion(result)
         }
+    }
+    
+    private func user(from user: APIUser) -> User {
+        User(username: user.username,
+             id: user.id,
+             avatar: URL(string: "https://www.gravatar.com/avatar/\(user.avatar.gravatar.hash)")?.convertUrlToData())
     }
 }

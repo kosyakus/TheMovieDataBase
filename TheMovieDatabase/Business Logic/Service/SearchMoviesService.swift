@@ -30,10 +30,9 @@ final public class SearchMoviesServiceImplementation: SearchMoviesService {
     }
     
     @discardableResult
-    func fetchSearchMovies(
-        language: String?,
-        query: String,
-        completion: @escaping (Result<[Movie], Error>) -> Void) -> Progress {
+    func fetchSearchMovies(language: String?,
+                           query: String,
+                           completion: @escaping (Result<[Movie], Error>) -> Void) -> Progress {
         
         client.request(SearchMoviesEndpoint(language: language, query: query)) { result in
             let moviesResult = result.flatMap { movies -> Result<[Movie], Error> in

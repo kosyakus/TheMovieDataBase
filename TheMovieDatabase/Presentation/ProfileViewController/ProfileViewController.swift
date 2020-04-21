@@ -39,7 +39,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loadProfile()
         setUpButtonAndImage()
     }
     
@@ -48,6 +48,27 @@ class ProfileViewController: UIViewController {
     func setUpButtonAndImage() {
         exitButton.layer.cornerRadius = 0.02 * exitButton.bounds.size.width
         avatarImageView.layer.cornerRadius = avatarImageView.bounds.size.height / 2
+    }
+    
+    func loadProfile() {
+        let loadAccController = LoadAccount()
+        loadAccController.getUerDetails(completion: { user in
+//            if let url = URL(string: "https://www.gravatar.com/avatar/b3a75a10fac1f519b4018d01466861f7") {
+//                URLSession.shared.dataTask(with: url) { data, response, error in
+//                    guard let data = data, let image = UIImage(data: data) else {
+//                        return
+//                    }
+//                    self.avatarImageView.image = image
+//                }
+//            }
+            
+            if let avatar = user.avatar {
+                self.avatarImageView.image = UIImage(data: avatar)
+            }
+            if let name = user.username {
+                self.nameLabel.text = name
+            }
+        })
     }
     
     // MARK: - IBAction

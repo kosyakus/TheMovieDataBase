@@ -10,7 +10,7 @@ import Foundation
 
 public struct AccountEndpoint: Endpoint {
     
-    public typealias Content = User
+    public typealias Content = APIUser
     private let session: String
     private var params: [String: String]
     

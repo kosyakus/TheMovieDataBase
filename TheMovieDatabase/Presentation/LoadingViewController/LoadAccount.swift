@@ -14,15 +14,24 @@ final class LoadAccount {
     
     func loadProfile() {
         guard let session = try? ManageKeychain().getSessionID() else { return }
-        accountService.fetchUser(session: session) { result in
-            print(result)
-            switch result {
-            case .success(let user):
-                UserSettings.shareInstance.accountID = "\(user.id)"
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
+        accountService.fetchUser(session: session) { user in
+            guard let id = user.id else { return }
+            UserSettings.shareInstance.accountID = "\(id)"
+//            print(result)
+//            switch result {
+//            case .success(let user):
+//                UserSettings.shareInstance.accountID = "\(user.id)"
+//            case .failure(let error):
+//                print(error.localizedDescription)
+            //}
         }
+    }
+    
+    func getUerDetails(completion: @escaping (User) -> Void) {
+        guard let session = try? ManageKeychain().getSessionID() else { return }
+                accountService.fetchUser(session: session) { user in
+                    completion(user)
+                }
     }
     
 }

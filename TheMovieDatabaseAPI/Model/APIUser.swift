@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct User: Codable {
+public struct APIUser: Codable {
     
     // MARK: - Public Properties
     
