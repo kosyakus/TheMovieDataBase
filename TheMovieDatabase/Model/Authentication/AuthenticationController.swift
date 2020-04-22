@@ -15,21 +15,24 @@ class AuthenticationController {
         let context = LAContext()
         var error: NSError?
         
-        guard context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) else {
+        guard context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) else {
             // Could not evaluate policy
             completion(false)
             return
         }
         
-        context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Log in") { success, error in
+        context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Log in") { success, error in
             
+            DispatchQueue.main.async {
             guard success else {
                 // return mistake
                 completion(false)
                 return
             }
-            // User authenticated successfully, take some action
-            completion(true)
+                // User authenticated successfully, take some action
+                completion(true)
+            }
+            
         }
     }
     

@@ -18,10 +18,9 @@ class CryptoController {
         let status = CCRandomGenerateBytes(&bytes, bytes.count)
         try CryptorError.verify(status)
         let data = Data(bytes: bytes, count: bytes.count)
-        /// TODO: Сохранить соль в keychain
-        //try? ManageKeychain().saveSalt(item: data, user: KeychainUser())
+        /// Сохранить соль в keychain
         _ = KeychainSaltItem.save(key: "salt", data: data)
-        print("Generated SALT \(data.map { String(format: "%02x", $0) }.joined())")
+        /// Чтобы посмотреть соль: data.map { String(format: "%02x", $0) }.joined()
         return data
     }
     
@@ -60,7 +59,6 @@ class CryptoController {
                 &derivedKey, derivedKey.count)
         }
         try CryptorError.verify(status)
-        print("Generated KEY \(Data(derivedKey).map { String(format: "%02x", $0) }.joined())")
         return Data(derivedKey)
     }
 }

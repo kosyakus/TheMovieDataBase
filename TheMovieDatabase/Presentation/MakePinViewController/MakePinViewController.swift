@@ -161,7 +161,7 @@ class MakePinViewController: UIViewController {
     private func checkCryptoSession() -> Bool {
         guard !pin.isEmpty, pin.count < 5 else { return false }
         guard let salt = KeychainSaltItem.load(key: "salt") else { return false }
-        print("GET SALT \(salt.map { String(format: "%02x", $0) }.joined())")
+        //print("GET SALT \(salt.map { String(format: "%02x", $0) }.joined())")
         guard let key = try? cryptoController.pbkdf2SHA256(password: pin, salt: salt) else { return false }
         guard let dataSession = KeychainSaltItem.load(key: "session") else { return false }
         guard let decrypted = dataSession.decryptAES256_CBC_PKCS7_IV(key: key) else { return false }
