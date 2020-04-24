@@ -22,6 +22,7 @@ final class ServiceLayer {
     lazy var deleteSessionService: DeleteSessionService = DeleteSessionServiceImplementation(client: apiClient)
     lazy var addMovieToFavoriteService: AddMovieToFavoriteService =
         AddMovieToFavoriteServiceImplementation(client: apiClient)
+    //var session = ""
     
     // TODO: Подумать, как правильно передать сессию в адаптер.
     // Так же, сейчас каждый раз создается новый клиент, когда мы его передаем в сервис.
@@ -30,5 +31,14 @@ final class ServiceLayer {
         TheMovieDBAPIClient(baseURL: URL(string: "https://api.themoviedb.org/3/")!,
                             apiKey: "93a57d2565c91c4db19ce6040806f41b",
                             configuration: .ephemeral)
+                            //sessionId: session)
     }
 }
+
+//class SessionID {
+//    var session = ""
+//}
+//
+//class LibraryViewModel {
+//     var library = SessionID()
+//}

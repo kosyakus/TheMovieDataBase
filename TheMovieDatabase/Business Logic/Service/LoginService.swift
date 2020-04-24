@@ -113,6 +113,12 @@ final public class LoginServicesImplementation: LoginServices {
             case .success(let session):
                 try? ManageKeychain().saveSessionId(sessionId: session.sessionID,
                                                     user: KeychainUser())
+                
+//                let library = SessionID()
+//                library.session = session.sessionID
+//                let libraryViewModel = LibraryViewModel()
+//                libraryViewModel.library = library
+                
                 completion()
             case .failure(let error):
                 print(error.localizedDescription)
