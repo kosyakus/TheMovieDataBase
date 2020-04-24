@@ -151,7 +151,7 @@ class MakePinViewController: UIViewController {
         guard let salt = try? cryptoController.randomGenerateBytes(count: 8) else { return }
         guard let key = try? cryptoController.pbkdf2SHA256(password: pin, salt: salt) else { return }
         guard let sessionId = try? ManageKeychain().getSessionID() else { return }
-        //let sessionId = ServiceLayer().session 
+        //let sessionId = ServiceLayer().session
         guard let sessionData = sessionId.data(using: .utf8) else { return }
         guard let encrypted = sessionData.encryptAES256_CBC_PKCS7_IV(key: key) else { return }
         _ = KeychainSaltItem.save(key: "session", data: encrypted)
