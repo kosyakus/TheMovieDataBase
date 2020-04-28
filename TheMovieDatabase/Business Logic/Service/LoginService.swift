@@ -113,12 +113,7 @@ final public class LoginServicesImplementation: LoginServices {
             case .success(let session):
                 try? ManageKeychain().saveSessionId(sessionId: session.sessionID,
                                                     user: KeychainUser())
-                
-//                let library = SessionID()
-//                library.session = session.sessionID
-//                let libraryViewModel = LibraryViewModel()
-//                libraryViewModel.library = library
-                
+                //let sess = SessionID(with: session.sessionID)
                 completion()
             case .failure(let error):
                 print(error.localizedDescription)
@@ -126,3 +121,15 @@ final public class LoginServicesImplementation: LoginServices {
         }
     }
 }
+
+//protocol SessionProtocol {
+//    var session: String { get }
+//}
+//
+//class SessionID: SessionProtocol {
+//    var session: String
+//
+//    public init(with session: String) {
+//        self.session = session
+//    }
+//}

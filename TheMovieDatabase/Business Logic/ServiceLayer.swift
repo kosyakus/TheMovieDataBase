@@ -34,11 +34,3 @@ final class ServiceLayer {
                             //sessionId: session)
     }
 }
-
-//class SessionID {
-//    var session = ""
-//}
-//
-//class LibraryViewModel {
-//     var library = SessionID()
-//}

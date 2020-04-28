@@ -127,6 +127,8 @@
 		E1F08EDA244DDB9F004D0D65 /* PrivacyProtectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F08ED8244DDB9F004D0D65 /* PrivacyProtectionViewController.swift */; };
 		E1F08EDB244DDB9F004D0D65 /* PrivacyProtectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1F08ED9244DDB9F004D0D65 /* PrivacyProtectionViewController.xib */; };
 		E1F08EDD244F5323004D0D65 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F08EDC244F5322004D0D65 /* User.swift */; };
+		E1F08EDF2455EC1A004D0D65 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F08EDE2455EC19004D0D65 /* CacheService.swift */; };
+		E1F08EE1245625C3004D0D65 /* CacheServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F08EE0245625C3004D0D65 /* CacheServiceTests.swift */; };
 		E1FF6EFC241981250007B93D /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF6EFB241981250007B93D /* KeychainPasswordItem.swift */; };
 		E1FF6EFE241981520007B93D /* KeychainSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF6EFD241981520007B93D /* KeychainSettings.swift */; };
 		E1FF6F00241A17A20007B93D /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF6EFF241A17A20007B93D /* Notification+Extension.swift */; };
@@ -329,6 +331,8 @@
 		E1F08ED8244DDB9F004D0D65 /* PrivacyProtectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyProtectionViewController.swift; sourceTree = "<group>"; };
 		E1F08ED9244DDB9F004D0D65 /* PrivacyProtectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivacyProtectionViewController.xib; sourceTree = "<group>"; };
 		E1F08EDC244F5322004D0D65 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E1F08EDE2455EC19004D0D65 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
+		E1F08EE0245625C3004D0D65 /* CacheServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheServiceTests.swift; sourceTree = "<group>"; };
 		E1FF6EFB241981250007B93D /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		E1FF6EFD241981520007B93D /* KeychainSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainSettings.swift; sourceTree = "<group>"; };
 		E1FF6EFF241A17A20007B93D /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
@@ -654,6 +658,7 @@
 				E18AC72D2427E50D00727107 /* Mocks */,
 				E18AC72A2427E11D00727107 /* Presentation */,
 				E1C736BA2411154700E60D7C /* Info.plist */,
+				E1F08EE0245625C3004D0D65 /* CacheServiceTests.swift */,
 			);
 			path = TheMovieDatabaseTests;
 			sourceTree = "<group>";
@@ -892,6 +897,7 @@
 				E11C7660241D62E0000969C7 /* Constants.swift */,
 				E1B48E642426902800AE89EF /* APIRequestAdapter.swift */,
 				E1B48E662426916400AE89EF /* TheMovieDBAPIClient.swift */,
+				E1F08EDE2455EC19004D0D65 /* CacheService.swift */,
 			);
 			path = "API Client";
 			sourceTree = "<group>";
@@ -1448,6 +1454,7 @@
 			files = (
 				E18AC72F2427E5BA00727107 /* SearchMovieStab.swift in Sources */,
 				E18AC7322427E7A100727107 /* ViewControllerTestCase.swift in Sources */,
+				E1F08EE1245625C3004D0D65 /* CacheServiceTests.swift in Sources */,
 				E18AC7342427E7D700727107 /* UIView+Extension.swift in Sources */,
 				E18AC73C2428E62F00727107 /* LoginViewControllerTests.swift in Sources */,
 				E18AC7362427E8D900727107 /* SearchMovieMock.swift in Sources */,
@@ -1497,6 +1504,7 @@
 				E1728CB42439F30D004F0DE9 /* AddMovieToFavoriteEndpoint.swift in Sources */,
 				E11C76892420D426000969C7 /* FavoriteEndpoint.swift in Sources */,
 				E1FF6F1C241C15370007B93D /* HandleErrors.swift in Sources */,
+				E1F08EDF2455EC1A004D0D65 /* CacheService.swift in Sources */,
 				E18AC751242E5FD600727107 /* APIToken.swift in Sources */,
 				E11C765F241D6131000969C7 /* APIClient.swift in Sources */,
 				E11C766A241D75AF000969C7 /* Session.swift in Sources */,
