@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TabBarController" customModule="TheMovieDatabase" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tabBarController id="Lhg-s6-YD8">
+            <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tGk-VT-CoF">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <color key="backgroundColor" name="Gray"/>
+                <color key="selectedImageTintColor" name="Orange"/>
+            </tabBar>
+            <viewControllers>
+                <viewController nibName="" id="6aS-pb-H0F" customClass="MainViewController" customModule="TheMovieDatabase" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="XUj-xh-tvZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="DI3-bB-RY2"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Фильмы" image="movie_tabbar_icon" id="Klo-6Y-b8t">
+                        <color key="badgeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
+                </viewController>
+                <viewController id="bqh-yf-HqS" customClass="FavoriveViewController" customModule="TheMovieDatabase" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="Iej-Vb-PuR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Cvz-v3-y1R"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Избранное" image="favorite_tabbar_icon" id="jSS-CB-H2x"/>
+                </viewController>
+                <viewController id="1Kf-gH-BLv" userLabel="Item 3" customClass="ProfileViewController" customModule="TheMovieDatabase" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="zLI-t7-aEL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="WQ3-Ay-8UL"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Профиль" image="account_tabbar_icon" id="Oin-ke-dID"/>
+                </viewController>
+            </viewControllers>
+            <point key="canvasLocation" x="96" y="739"/>
+        </tabBarController>
+    </objects>
+    <resources>
+        <image name="account_tabbar_icon" width="24" height="24"/>
+        <image name="favorite_tabbar_icon" width="24" height="24"/>
+        <image name="movie_tabbar_icon" width="24" height="24"/>
+        <namedColor name="Gray">
+            <color red="0.396078431372549" green="0.42745098039215684" blue="0.54117647058823526" alpha="0.39482555650684931" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Orange">
+            <color red="0.99599999189376831" green="0.3059999942779541" blue="0.15299999713897705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

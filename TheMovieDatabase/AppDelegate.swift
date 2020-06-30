@@ -10,28 +10,83 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+    
+    // MARK: - Public Properties
+    
+    var window: UIWindow?
+    var navigationController: UINavigationController?
+    var isSignedIn: Bool {
+        guard KeychainSettings.currentUser != nil else { return false }
         return true
     }
-
-    // MARK: UISceneSession Lifecycle
-
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+    
+    private var privacyProtectionWindow: UIWindow?
+    
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        presentViewController(fromPinVC: false)
+        return true
+    }
+    
+    // MARK: - UIApplication Lifecycle
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        hidePrivacyProtectionWindow()
     }
 
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    func applicationWillResignActive(_ application: UIApplication) {
+        showPrivacyProtectionWindow()
+    }
+    
+    // MARK: - Public methods
+    
+    func addObserver() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(presentViewController),
+            name: .loginStatusChanged,
+            object: nil
+        )
+    }
+    
+    @objc func presentViewController(fromPinVC: Bool) {
+        
+        if let window = window {
+            var mainVC = UIViewController()
+            if isSignedIn {
+                mainVC = MakePinViewController()
+                
+                UIView.transition(with: self.window!,
+                                  duration: 0.5,
+                                  options: .transitionFlipFromLeft,
+                                  animations: {
+                    self.window?.rootViewController = mainVC
+                })
+            } else {
+                mainVC = LoginViewController()
+                navigationController = UINavigationController(rootViewController: mainVC, isTranslucent: false)
+                window.rootViewController = navigationController
+            }
+            if fromPinVC {
+                mainVC = TabBarController()
+                window.rootViewController = mainVC
+            }
+            window.makeKeyAndVisible()
+        }
+    }
+    
+    // MARK: - Private methods
+
+    private func showPrivacyProtectionWindow() {
+        privacyProtectionWindow = UIWindow(frame: UIScreen.main.bounds)
+        privacyProtectionWindow?.rootViewController = PrivacyProtectionViewController()
+        privacyProtectionWindow?.windowLevel = .alert + 1
+        privacyProtectionWindow?.makeKeyAndVisible()
     }
 
-
+    private func hidePrivacyProtectionWindow() {
+        privacyProtectionWindow?.isHidden = true
+        privacyProtectionWindow = nil
+    }
 }
-
